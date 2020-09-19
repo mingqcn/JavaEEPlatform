@@ -11,14 +11,14 @@ import javax.annotation.PostConstruct;
 
 /**
  * @author: Ming Qiu
- * @date: Created in 21:14 2020/7/31
+ * @date: Created in 21:14 2020/7/31s
  **/
-public class Book implements BeanNameAware, BeanFactoryAware,
+public class Person implements BeanNameAware, BeanFactoryAware,
         ApplicationContextAware, InitializingBean, DisposableBean {
 
     private String bookName;
 
-    public Book() {
+    public Person() {
         System.out.println("Book constructor invoke");
     }
 
