@@ -13,8 +13,8 @@ public class Boss_constructor {
     private Office office;
 
     @Autowired
-    public Boss_constructor(Car car, Office office){
-        this.car = car;
+    public Boss_constructor(Car haval, Office office){
+        this.car = haval;
         this.office = office;
     }
 }

@@ -4,7 +4,8 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author: Ming Qiu
- * @date: Created in 17:01 2020/7/31
+ * @date: Created in 8:55 2020/9/19
  **/
-public interface Car {
+@Component
+public class Toyota implements Car{
 }

@@ -30,17 +30,4 @@ public class MyInstantiationAwareBeanPostProcessor implements InstantiationAware
         return true;
     }
 
-    /**
-     * 在设置某个属性前调用，然后再调用设置属性的方法
-     * 注意：这里的设置属性是指通过配置设置属性，直接调用对象的setXX方法不会调用该方法，如bean配置中配置了属性address/age属性，将会调用该方法
-     *
-     * @param pvs 如 PropertyValues: length=2; bean property 'address'; bean property 'age'
-     */
-    @Override
-    public PropertyValues postProcessPropertyValues(PropertyValues pvs, PropertyDescriptor[] pds, Object bean, String beanName) throws BeansException {
-        //仅对容器中的person bean处理
-        System.out.println("InstantiationAwareBeanPostProcessorAdapter.postProcessPropertyValues invoke, name = " + beanName);
-        return pvs;
-    }
-
 }

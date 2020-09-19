@@ -12,8 +12,8 @@ public class BeanLifeCycleApplication {
 	}
 
 	@Bean(initMethod = "myPostConstruct", destroyMethod = "myPreDestory")
-	public Book book(){
-		return new Book();
+	public Boss boss(){
+		return new Boss();
 	}
 
 }

@@ -14,8 +14,8 @@ public class Boss_Setter {
     private Office office;
 
     @Autowired
-    public void setCar(Car car){
-        this.car = car;
+    public void setCar(Car toyota){
+        this.car = toyota;
     }
 
     @Autowired

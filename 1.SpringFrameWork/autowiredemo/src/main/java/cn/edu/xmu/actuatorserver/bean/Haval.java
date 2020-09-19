@@ -4,7 +4,8 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author: Ming Qiu
- * @date: Created in 17:01 2020/7/31
+ * @date: Created in 9:06 2020/9/19
  **/
-public interface Car {
+@Component
+public class Haval implements Car{
 }
