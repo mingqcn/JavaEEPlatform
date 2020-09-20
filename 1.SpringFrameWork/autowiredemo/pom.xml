@@ -1,19 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<!--    模型版本需要设置为 4.0。-->
 	<modelVersion>4.0.0</modelVersion>
+
+	<!--	定义pom继承关系-->
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.3.2.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
+	<!--    工程组的标识。它在一个组织或者项目中通常是唯一的-->
 	<groupId>cn.edu.xmu</groupId>
+
+	<!--    工程的标识。它通常是工程的名称。-->
 	<artifactId>autowiredemo</artifactId>
+
+	<!--    工程的版本号。在 artifact 的仓库中，它用来区分不同的版本。-->
 	<version>0.0.1-SNAPSHOT</version>
+
 	<name>autowiredemo</name>
 	<description>Demo project for Spring Boot</description>
 
+	<!--    打包的格式-->
+	<packaging>jar</packaging>
+
+	<!--    定义属性，用在后面的定义中-->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<!--    定义依赖关系-->
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -59,6 +79,7 @@
 
 	</dependencies>
 
+	<!--    定义构建的方法-->
 	<build>
 		<plugins>
 			<plugin>
@@ -68,6 +89,7 @@
 		</plugins>
 	</build>
 
+	<!--    maven的仓库-->
 	<repositories>
 		<repository>
 			<id>alimaven</id>

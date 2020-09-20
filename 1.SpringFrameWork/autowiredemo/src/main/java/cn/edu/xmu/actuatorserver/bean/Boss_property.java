@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Boss_property {
     @Autowired
-    private Car toyota;
+    private Car haval;
     @Autowired
     private Office office;
 }
