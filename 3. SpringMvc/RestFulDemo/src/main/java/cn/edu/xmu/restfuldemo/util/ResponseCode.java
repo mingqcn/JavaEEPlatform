@@ -12,6 +12,8 @@ public class ResponseCode {
     public static final String AUTH_INVALID_JWT_MSG = "JWT不合法";
     public static final Integer AUTH_JWT_EXPIRED = 502;
     public static final String AUTH_JWT_EXPIRED_MSG = "JWT过期";
+    public static final Integer FIELD_NOTVALID = 503;
+    public static final String FIELD_NOTVALID_MSG = "字段不合法";
 
     public static final Integer AUTH_INVALID_ACCOUNT = 700;
     public static final String AUTH_INVALID_ACCOUNT_MSG = "用户名不存在或者密码错误";
