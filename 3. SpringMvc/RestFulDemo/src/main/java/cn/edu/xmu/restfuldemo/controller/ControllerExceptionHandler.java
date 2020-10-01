@@ -5,6 +5,7 @@ import cn.edu.xmu.restfuldemo.util.ResponseCode;
 import cn.edu.xmu.restfuldemo.util.ReturnObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -26,9 +27,12 @@ public class ControllerExceptionHandler {
 
     private final Logger logger = LoggerFactory.getLogger(ControllerExceptionHandler.class);
 
+    @Autowired
+    HttpServletResponse httpServletResponse;
+
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Object validationBodyException(MethodArgumentNotValidException exception, HttpServletResponse httpResponse){
+    public Object methodArgumentNotValid(MethodArgumentNotValidException exception){
 
         ReturnObject retObj = new ReturnObject();
         StringBuffer msg = new StringBuffer();
@@ -37,9 +41,10 @@ public class ControllerExceptionHandler {
             msg.append(error.getDefaultMessage());
             msg.append(";");
         }
-         retObj.setErrMsg(msg.toString());
+        logger.info("methodArgumentNotValid: msg = "+ msg.toString());
+        retObj.setErrMsg(msg.toString());
         retObj.setErrNo(ResponseCode.FIELD_NOTVALID);
-        httpResponse.setContentType("application/json;charset=UTF-8");
+        httpServletResponse.setContentType("application/json;charset=UTF-8");
         return retObj;
     }
 }
