@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>cn.edu.xmu</groupId>
-	<artifactId>RestfulDemo</artifactId>
+	<artifactId>restfuldemo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>RestfulDemo</name>
-	<description>Demo project for Restful Controller</description>
+	<name>restfuldemo</name>
+	<description>Demo project for RESTful Controller</description>
 
 	<dependencies>
 		<dependency>

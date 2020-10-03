@@ -18,23 +18,29 @@ import java.util.List;
  * @date: Created in 14:34 2020/10/1
  **/
 @Data
-@ApiModel(value = "商品")
+@ApiModel(description = "商品视图对象")
 public class GoodsVo {
 
     @NotBlank(message="商品名称不能为空")
-    @ApiModelProperty(name = "商品名称")
+    @ApiModelProperty(value = "商品名称")
     private String name;
 
-    @ApiModelProperty(name = "商品描述")
+    @ApiModelProperty(value = "商品描述")
     private String brief;
 
-    @ApiModelProperty(name = "商品单位")
+    @ApiModelProperty(value = "商品单位")
     private String unit;
 
-    @ApiModelProperty(name = "商品可选规格")
+    @ApiModelProperty(value = "商品类别Id")
+    private Integer categoryId;
+
+    @ApiModelProperty(value = "商品品牌Id")
+    private Integer brandId;
+
+    @ApiModelProperty(value = "商品可选规格")
     private List<Specification> specList;
 
-    @ApiModelProperty(name = "商品规格")
+    @ApiModelProperty(value = "商品规格")
     private List<ProductVo> productList;
 
     /**
@@ -47,6 +53,8 @@ public class GoodsVo {
         goods.setBrief(this.brief);
         goods.setUnit(this.unit);
         goods.setSpecList(this.specList);
+        goods.setBrandId(this.brandId);
+        goods.setCategoryId(this.categoryId);
         return goods;
     }
 

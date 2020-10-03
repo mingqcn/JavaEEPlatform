@@ -22,11 +22,11 @@ public class GoodsController {
     @Autowired
     private GoodsService goodsService;
 
-    @ApiOperation(value = "获得商品信息",  produces="application/json")
+    @ApiOperation(value = "获得一个商品对象",  produces="application/json;charset=UTF-8")
     @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "path", dataType = "Integer", name = "id", value ="商品对象id" ,required = true)
     })
     @ApiResponses({
-            @ApiResponse(code = 0, message = "成功"),
     })
     @GetMapping("{id}")
     public Object getGoodsById(@PathVariable("id") Integer id) {
@@ -37,9 +37,9 @@ public class GoodsController {
 
     @ApiOperation(value = "用商品名称搜索",  produces="application/json")
     @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "query", dataType = "String", name = "name", value ="商品名称", required = true)
     })
     @ApiResponses({
-            @ApiResponse(code = 0, message = "成功"),
     })
     @GetMapping("search")
     public Object searchGoodsByName(@RequestParam String name) {
@@ -52,7 +52,6 @@ public class GoodsController {
     @ApiImplicitParams({
     })
     @ApiResponses({
-            @ApiResponse(code = 0, message = "成功"),
     })
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
@@ -75,9 +74,9 @@ public class GoodsController {
 
     @ApiOperation(value = "删除商品",  produces="application/json")
     @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "path", dataType = "Integer", name = "id", value ="商品对象id" ,required = true)
     })
     @ApiResponses({
-            @ApiResponse(code = 0, message = "成功"),
     })
     @DeleteMapping("{id}")
     public Object delGoods(@PathVariable("id") Integer id) {

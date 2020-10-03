@@ -32,9 +32,7 @@ public class  Swagger2Configuration {
     @Bean
     public Docket createRestApi() {
         List<ResponseMessage> responseMessageList = new ArrayList<>();
-        responseMessageList.add(new ResponseMessageBuilder().code(401).message("业务执行失败").build());
-        responseMessageList.add(new ResponseMessageBuilder().code(402).message("参数错误").build());
-        responseMessageList.add(new ResponseMessageBuilder().code(403).message("参数值错误").build());
+        responseMessageList.add(new ResponseMessageBuilder().code(0).message("成功").build());
         return new Docket(DocumentationType.SWAGGER_2)
                 .globalResponseMessage(RequestMethod.GET, responseMessageList)
                 .globalResponseMessage(RequestMethod.POST, responseMessageList)

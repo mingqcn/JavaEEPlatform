@@ -15,6 +15,7 @@ import java.util.Map;
 
 public class JacksonUtil {
 
+
     private static final Log logger = LogFactory.getLog(JacksonUtil.class);
 
     public static String parseString(String body, String field) {

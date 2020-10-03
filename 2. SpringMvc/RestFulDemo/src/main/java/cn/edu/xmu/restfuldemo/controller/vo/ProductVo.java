@@ -14,28 +14,28 @@ import javax.validation.constraints.NotNull;
  * @date: Created in 15:45 2020/10/1
  **/
 @Data
-@ApiModel(value = "商品规格")
+@ApiModel(description = "商品规格视图对象")
 public class ProductVo {
 
-    @ApiModelProperty(name = "规格序号")
+    @ApiModelProperty(value = "规格序号")
     @NotBlank
     @NotNull
     private String productSn;
 
     @NotBlank
     @NotNull
-    @ApiModelProperty(name = "描述")
+    @ApiModelProperty(value = "描述")
     private String desc;
 
-    @ApiModelProperty(name = "促销价")
+    @ApiModelProperty(value = "促销价")
     @Min(0)
     private Integer counterPrice;
 
-    @ApiModelProperty(name = "零售价")
+    @ApiModelProperty(value = "零售价")
     @Min(0)
     private Integer retailPrice;
 
-    @ApiModelProperty(name = "重量(克)")
+    @ApiModelProperty(value = "重量(克)")
     @Min(0)
     private Integer weight;
 

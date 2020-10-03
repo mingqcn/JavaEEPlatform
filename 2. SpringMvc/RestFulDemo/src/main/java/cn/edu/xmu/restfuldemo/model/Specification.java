@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+
 import java.util.List;
 
 /**
@@ -11,7 +12,7 @@ import java.util.List;
  * @date: Created in 15:54 2020/10/1
  **/
 @Data
-@ApiModel(value = "商品的可选规格")
+@ApiModel(description = "商品的可选规格")
 public class Specification {
 
     @ApiModelProperty(value = "规格名称")
