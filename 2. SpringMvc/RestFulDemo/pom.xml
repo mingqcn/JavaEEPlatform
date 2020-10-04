@@ -122,29 +122,21 @@
                     </execution>
                 </executions>
             </plugin>
-
-            <plugin>
-                <artifactId>maven-site-plugin</artifactId>
-                <version>3.8.2</version>
-                <configuration>
-                    <locales>zh_CN</locales>
-                    <outputEncoding>UTF-8</outputEncoding>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.apache.maven.wagon</groupId>
-                        <artifactId>wagon-webdav-jackrabbit</artifactId>
-                        <version>3.3.2</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
         </plugins>
+
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-webdav-jackrabbit</artifactId>
+                <version>3.3.2</version>
+            </extension>
+        </extensions>
     </build>
 
     <distributionManagement>
         <site>
             <id>www.myserver.com</id>
-            <url>dav:http://192.168.31.241:40080/</url>
+            <url>dav:http://172.16.0.183/</url>
         </site>
     </distributionManagement>
 
