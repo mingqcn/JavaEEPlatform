@@ -8,7 +8,6 @@ import cn.edu.xmu.restfuldemo.model.SpecItem;
 import cn.edu.xmu.restfuldemo.model.Specification;
 import org.springframework.stereotype.Service;
 
-import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 

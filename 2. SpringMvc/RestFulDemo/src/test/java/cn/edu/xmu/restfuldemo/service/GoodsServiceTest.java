@@ -1,5 +1,6 @@
-package cn.edu.xmu.restfuldemo;
+package cn.edu.xmu.restfuldemo.service;
 
+import cn.edu.xmu.restfuldemo.DemoApplication;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

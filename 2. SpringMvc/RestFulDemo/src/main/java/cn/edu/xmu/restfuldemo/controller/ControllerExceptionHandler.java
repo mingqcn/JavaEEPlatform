@@ -28,7 +28,7 @@ public class ControllerExceptionHandler {
     private final Logger logger = LoggerFactory.getLogger(ControllerExceptionHandler.class);
 
     @Autowired
-    HttpServletResponse httpServletResponse;
+    private HttpServletResponse httpServletResponse;
 
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)

@@ -5,6 +5,7 @@ package cn.edu.xmu.restfuldemo.util;
  * @date 2020/6/26 下午10:09
  */
 public class ResponseCode {
+
     public static final Integer OK = 0;
     public static final String OK_MSG = "成功";
 

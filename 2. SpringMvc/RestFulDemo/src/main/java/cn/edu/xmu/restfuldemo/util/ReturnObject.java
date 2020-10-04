@@ -9,6 +9,7 @@ import lombok.Data;
  **/
 @Data
 public class ReturnObject<T> {
+
     /**
      * 错误号
      */
@@ -23,4 +24,5 @@ public class ReturnObject<T> {
      * 返回值
      */
     private T data = null;
+
 }
