@@ -118,7 +118,7 @@
                         </goals>
                         <configuration>
                             <dataFile>target/jacoco.exec</dataFile>
-                            <outputDirectory>target/jacoco-ut</outputDirectory>
+                            <outputDirectory>target/site/jacoco-ut</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
@@ -135,8 +135,8 @@
                 <dependencies>
                     <dependency>
                         <groupId>org.apache.maven.wagon</groupId>
-                        <artifactId>wagon-ssh</artifactId>
-                        <version>3.3.3</version>
+                        <artifactId>wagon-webdav-jackrabbit</artifactId>
+                        <version>3.3.2</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -146,7 +146,7 @@
     <distributionManagement>
         <site>
             <id>siteserver</id>
-            <url>scp://172.16.0.183:/var/www/RestFulDemo</url>
+            <url>dav:http://172.16.4.192:/webdav/RestFulDemo</url>
         </site>
     </distributionManagement>
 
