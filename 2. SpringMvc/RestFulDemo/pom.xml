@@ -151,7 +151,7 @@
     <distributionManagement>
         <site>
             <id>siteserver</id>
-            <url>dav:http://172.16.4.192:/webdav/RestFulDemo</url>
+            <url>dav:http://172.16.4.192/webdav/RestFulDemo</url>
         </site>
     </distributionManagement>
 
