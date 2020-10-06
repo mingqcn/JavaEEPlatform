@@ -13,8 +13,8 @@ import cn.edu.xmu.restfuldemo.service.GoodsService;
 import cn.edu.xmu.restfuldemo.util.ResponseUtil;
 
 /**
+ * 商品控制器
  * @author Ming Qiu
- * @date: Created in 14:07 2020/10/1
  */
 @Api(value = "商品API", tags = "商品API")
 @RestController /*Restful的Controller对象*/

@@ -1,8 +1,8 @@
 package cn.edu.xmu.restfuldemo.util;
 
 /**
- * @auther mingqiu
- * @date 2020/6/26 下午10:09
+ * 返回的错误码
+ * @author Ming Qiu
  */
 public class ResponseCode {
 

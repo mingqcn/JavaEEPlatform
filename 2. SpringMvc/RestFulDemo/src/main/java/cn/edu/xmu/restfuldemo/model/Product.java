@@ -5,8 +5,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * @author: Ming Qiu
- * @date: Created in 15:36 2020/10/1
+ * 商品规格
+ * @author Ming Qiu
  **/
 @Data
 @ApiModel(description = "商品规格")

@@ -4,8 +4,7 @@ import lombok.Data;
 
 /**
  * 返回对象
- * @author: Ming Qiu
- * @date: Created in 16:14 2020/10/1
+ * @author Ming Qiu
  **/
 @Data
 public class ReturnObject<T> {

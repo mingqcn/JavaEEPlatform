@@ -18,10 +18,9 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 /**
- * @author: Ming Qiu
- * @date: Created in 14:07 2020/10/1
+ * 处理控制器错误
+ * @author Ming Qiu
  **/
-
 @RestControllerAdvice(annotations = RestController.class)
 public class ControllerExceptionHandler {
 

@@ -6,8 +6,8 @@ import lombok.Data;
 
 
 /**
- * @author: Ming Qiu
- * @date: Created in 16:00 2020/10/1
+ * 商品的可选规格的项
+ * @author Ming Qiu
  **/
 @Data
 @ApiModel(description = "商品的可选规格的项")

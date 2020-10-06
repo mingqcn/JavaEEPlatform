@@ -10,8 +10,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 /**
- * @author: Ming Qiu
- * @date: Created in 15:45 2020/10/1
+ * 商品规格视图对象
+ * @author Ming Qiu
  **/
 @Data
 @ApiModel(description = "商品规格视图对象")

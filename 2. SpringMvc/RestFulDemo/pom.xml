@@ -14,6 +14,11 @@
     <name>restfuldemo</name>
     <description>Demo project for RESTful Controller</description>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -104,13 +109,6 @@
                         </goals>
                     </execution>
                     <execution>
-                        <id>report</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                    <execution>
                         <id>post-unit-test</id>
                         <phase>test</phase>
                         <goals>
@@ -127,7 +125,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>3.8.2</version>
+                <version>3.9.1</version>
                 <configuration>
                     <locales>zh_CN</locales>
                     <outputEncoding>UTF-8</outputEncoding>
@@ -148,25 +146,52 @@
         </plugins>
     </build>
 
+    <reporting>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>3.1.1</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <encoding>
+                        ${project.reporting.outputEncoding}
+                    </encoding>
+                </configuration>
+                <reportSets>
+                    <reportSet><!-- by default, id = "default" -->
+                        <reports><!-- select non-aggregate reports -->
+                            <report>javadoc</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>3.0.0-M5</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>report-only</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
+    </reporting>
+
     <distributionManagement>
         <site>
             <id>siteserver</id>
             <url>dav:http://172.16.4.192/webdav/RestFulDemo</url>
         </site>
     </distributionManagement>
-
-    <repositories>
-        <repository>
-            <id>alipublic</id>
-            <name>aliyun public maven</name>
-            <url>https://maven.aliyun.com/repository/public</url>
-        </repository>
-        <repository>
-            <id>alispring</id>
-            <name>aliyun spring</name>
-            <url>https://maven.aliyun.com/repository/spring</url>
-        </repository>
-
-    </repositories>
 
 </project>

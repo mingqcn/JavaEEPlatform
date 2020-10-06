@@ -8,8 +8,8 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * @author: Ming Qiu
- * @date: Created in 15:54 2020/10/1
+ * 商品的可选规格
+ * @author Ming Qiu
  **/
 @Data
 @ApiModel(description = "商品的可选规格")
