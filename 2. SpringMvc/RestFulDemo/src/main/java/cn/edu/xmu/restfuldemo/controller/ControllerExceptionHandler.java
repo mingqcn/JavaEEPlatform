@@ -41,8 +41,8 @@ public class ControllerExceptionHandler {
             msg.append(";");
         }
         logger.info("methodArgumentNotValid: msg = "+ msg.toString());
-        retObj.setErrMsg(msg.toString());
-        retObj.setErrNo(ResponseCode.FIELD_NOTVALID);
+        retObj.setErrmsg(msg.toString());
+        retObj.setErrno(ResponseCode.FIELD_NOTVALID);
         httpServletResponse.setContentType("application/json;charset=UTF-8");
         return retObj;
     }
