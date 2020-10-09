@@ -45,16 +45,16 @@ public class GoodsService {
         Goods goods = goodsVo.createGoods();
         goods.setId(1);
         goods.setGoodsSn("11111");
-        List<Product> productList = new ArrayList<>(goodsVo.getProductList().size());
         if (goodsVo.getProductList() != null) {
+            List<Product> productList = new ArrayList<>(goodsVo.getProductList().size());
+
             for (ProductVo productVo : goodsVo.getProductList()) {
                 Product product = productVo.createProduct();
                 product.setGoodsId(goods.getId());
                 productList.add(product);
             }
+            goods.setProductList(productList);
         }
-
-        goods.setProductList(productList);
         return goods;
     }
 
