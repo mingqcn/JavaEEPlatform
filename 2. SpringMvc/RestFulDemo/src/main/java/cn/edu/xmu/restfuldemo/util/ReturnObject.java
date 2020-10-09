@@ -12,12 +12,12 @@ public class ReturnObject<T> {
     /**
      * 错误号
      */
-    Integer errNo = 0;
+    Integer errno = 0;
 
     /**
      * 错误消息
      */
-    String errMsg = "";
+    String errmsg = "";
 
     /**
      * 返回值
