@@ -79,7 +79,7 @@ public class GoodsControllerTest {
                 .andExpect(content().contentType("application/json;charset=UTF-8"))
                 .andReturn().getResponse().getContentAsString();
 
-        String expectedResponse = "{\"errno\":0,\"data\":{\"id\":1,\"goodsSn\":\"11111\",\"name\":\"红米4X\",\"categoryId\":11,\"brandId\":12,\"brief\":\"红米4X是个好用便宜的手机\",\"specList\":[{\"specName\":\"颜色\",\"specItemList\":[{\"id\":\"1\",\"content\":\"香槟金\"},{\"id\":\"2\",\"content\":\"樱花粉\"},{\"id\":\"3\",\"content\":\"磨砂黑\"}]},{\"specName\":\"内存\",\"specItemList\":[{\"id\":\"1\",\"content\":\"2G\"},{\"id\":\"2\",\"content\":\"3G\"}]},{\"specName\":\"机身存储\",\"specItemList\":[{\"id\":\"1\",\"content\":\"16G\"},{\"id\":\"1\",\"content\":\"32G\"}]}],\"productList\":null,\"picUrl\":null,\"unit\":\"台\",\"beOnSale\":null,\"addTime\":null,\"updateTime\":null,\"modiUser\":null},\"errmsg\":\"成功\"}";
+        String expectedResponse = "{\"errno\":0,\"data\":{\"id\":1,\"goodsSn\":\"11111\",\"name\":\"红米4X\",\"categoryId\":11,\"brandId\":12,\"brief\":\"红米4X是个好用便宜的手机\",\"specList\":[{\"specName\":\"颜色\",\"specItemList\":[{\"id\":\"1\",\"content\":\"香槟金\"},{\"id\":\"2\",\"content\":\"樱花粉\"},{\"id\":\"3\",\"content\":\"磨砂黑\"}]},{\"specName\":\"内存\",\"specItemList\":[{\"id\":\"1\",\"content\":\"2G\"},{\"id\":\"2\",\"content\":\"3G\"}]},{\"specName\":\"机身存储\",\"specItemList\":[{\"id\":\"1\",\"content\":\"16G\"},{\"id\":\"2\",\"content\":\"32G\"}]}],\"productList\":null,\"picUrl\":null,\"unit\":\"台\",\"beOnSale\":null,\"addTime\":null,\"updateTime\":null,\"modiUser\":null},\"errmsg\":\"成功\"}";
 
         JSONAssert.assertEquals(expectedResponse, responseString, true);
     }
