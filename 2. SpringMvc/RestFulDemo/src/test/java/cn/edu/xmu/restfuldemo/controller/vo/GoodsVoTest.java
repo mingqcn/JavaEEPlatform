@@ -7,8 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * @author: Ming Qiu
- * @date: Created in 7:50 2020/10/4
+ * @author Ming Qiu
  **/
 public class GoodsVoTest {
 

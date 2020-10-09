@@ -46,10 +46,12 @@ public class GoodsService {
         goods.setId(1);
         goods.setGoodsSn("11111");
         List<Product> productList = new ArrayList<>(goodsVo.getProductList().size());
-        for (ProductVo productVo : goodsVo.getProductList()){
-            Product product =productVo.createProduct();
-            product.setGoodsId(goods.getId());
-            productList.add(product);
+        if (goodsVo.getProductList() != null) {
+            for (ProductVo productVo : goodsVo.getProductList()) {
+                Product product = productVo.createProduct();
+                product.setGoodsId(goods.getId());
+                productList.add(product);
+            }
         }
 
         goods.setProductList(productList);
