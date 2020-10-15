@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.xmu.restfuldemo.mapper.GoodsMapper">
+    <sql id="Goods_Column_List">
+        id,
+        goods_sn,
+        name,
+        category_id,
+        brand_id,
+        brief,
+        spec_list,
+        pic_url,
+        unit,
+        be_onsale,
+        add_time,
+        update_time,
+        modi_user,
+        be_deleted
+    </sql>
+
+    <sql id="Goods_Insert_List">
+        goods_sn,
+        name,
+        category_id,
+        brand_id,
+        brief,
+        spec_list,
+        pic_url,
+        unit,
+        be_onsale,
+        add_time,
+        be_deleted
+    </sql>
+
+    <sql id="Product_Column_List">
+        id,
+        goods_id,
+        product_sn,
+        desc,
+        original_price,
+        stock,
+        weight,
+        add_time,
+        update_time
+    </sql>
+
+    <sql id="Product_Insert_List">
+        goods_id,
+        product_sn,
+        desc,
+        original_price,
+        stock,
+        weight,
+        add_time
+    </sql>
+
+    <resultMap type="ProductPo" id="ProductPriceResultMap" autoMapping="true">
+        <id property="id" column="id"/>
+        <association property="priceStockPo" javaType="cn.edu.xmu.restfuldemo.model.PriceStockPo" autoMapping="true">
+            <id property="id" column="price_id"/>
+        </association>
+    </resultMap>
+
+    <select id="findGoodsByObj" parameterType="GoodsPo" resultType="GoodsPo">
+        SELECT
+        <include refid="Goods_Column_List"/>
+        FROM oomall_goods
+        <trim prefix="WHERE" prefixOverrides="and">
+            <if test="id!=null">and id = #{id} </if>
+            <if test="goodsSn!=null and goodsSn!=''">and goods_sn = #{goodsSn} </if>
+            <if test="name!=null and name!=''">and name = #{name} </if>
+            <if test="categoryId!=null">and category_id = #{categoryId} </if>
+            <if test="brandId!=null">and brand_id = #{brandId} </if>
+            <if test="beOnsale!=null">and be_onsale = #{beOnsale} </if>
+            <if test="beDeleted!=null">and be_deleted = #{beDeleted} </if>
+        </trim>
+    </select>
+
+    <select id="findProductByObj" parameterType="ProductPo" resultType="ProductPo">
+        SELECT
+        <include refid="Product_Column_List"/>
+        s.id as price_id
+        product_id,
+        price,
+        quantity,
+        begin_time,
+        end_time
+        FROM oomall_product p
+        LEFT JOIN oomall_price_stock s ON p.id = s.product_id
+        WHERE
+        end_time &gt;= now()
+        AND begin_time &lt;= now()
+        <if test="id!=null">AND id = #{id} </if>
+        <if test="productSn!=null and productSn!=''">AND product_sn = #{productSn} </if>
+        <if test="goodsId!=null and goodsId!=''">AND goods_id = #{goodsId} </if>
+    </select>
+
+    <insert id="createProduct" parameterType="ProductPo" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO oomall_product(<include refid="Product_Insert_List"/>)
+        VALUES(#{goodsId},#{productSn},#{desc},#{originalPrice}, #{stock}, #{weight}, CURRENT_TIMESTAMP)
+    </insert>
+
+    <insert id="createGoods" parameterType="GoodsPo" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO oomall_goods(<include refid="Goods_Insert_List"/>)
+        VALUES(#{goodsSn},#{name},#{categoryId},#{brandId}, #{brief}, #{specList}, #{picUrl}, #{unit}, false, CURRENT_TIMESTAMP, false)
+    </insert>
+
+    <update id="updateGoods" parameterType="GoodsPo">
+        UPDATE oomall_goods
+        <set>
+            <if test="goodsSn!=null and goodsSn!=''">and goods_sn = #{goodsSn}, </if>
+            <if test="name!=null and name!=''">and name = #{name}, </if>
+            <if test="categoryId!=null">and category_id = #{categoryId}, </if>
+            <if test="brandId!=null">and brand_id = #{brandId}, </if>
+            <if test="brief!=null and brief!=''">and brief = #{brief}, </if>
+            <if test="specList!=null and specList!=''">and spec_list = #{specList}, </if>
+            <if test="picUrl!=null and picUrl!=''">and spec_url = #{picUrl}, </if>
+            <if test="unit!=null and unit!=''">and unit = #{unit}, </if>
+            <if test="beOnsale!=null">and be_onsale = #{beOnsale}, </if>
+            update_time = CURRENT_TIME,
+            modi_user = #{modiUser}
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <update id="deleteGoods" parameterType="Integer">
+        UPDATE oomall_goods
+        SET be_deleted = true
+        WHERE id = #{id}
+    </update>
+
+    <update id="deleteProductByGoodsId" parameterType="Integer">
+        UPDATE oomall_product
+        SET be_deleted = true
+        WHERE goods_id = #{id}
+    </update>
+
+    <update id="deleteProduct" parameterType="Integer">
+        UPDATE oomall_product
+        SET be_deleted = true
+        WHERE id = #{id}
+    </update>
+</mapper>
+
