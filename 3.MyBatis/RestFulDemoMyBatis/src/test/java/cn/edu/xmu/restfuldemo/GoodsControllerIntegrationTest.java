@@ -94,7 +94,7 @@ public class GoodsControllerIntegrationTest {
                 .andReturn().getResponse().getContentAsString();
         String expectedResponse = "{\"errno\":0,\"errmsg\":\"成功\"}";
 
-        JSONAssert.assertEquals(expectedResponse, responseString, true);
+        JSONAssert.assertEquals(expectedResponse, responseString, false);
     }
 
     @Test   //标识此方法为测试方法
@@ -106,6 +106,6 @@ public class GoodsControllerIntegrationTest {
 
         String expectedResponse = "{\"errno\":0,\"errmsg\":\"成功\"}";
 
-        JSONAssert.assertEquals(expectedResponse, responseString, true);
+        JSONAssert.assertEquals(expectedResponse, responseString, false);
     }
 }

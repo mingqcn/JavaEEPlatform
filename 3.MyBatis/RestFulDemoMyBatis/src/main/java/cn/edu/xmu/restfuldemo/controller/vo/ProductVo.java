@@ -23,7 +23,7 @@ public class ProductVo {
 
     @NotBlank
     @ApiModelProperty(value = "描述")
-    private String desc;
+    private String name;
 
     @ApiModelProperty(value = "零售价")
     @Min(0)
@@ -42,6 +42,7 @@ public class ProductVo {
         product.setProductSn(this.productSn);
         product.setOriginalPrice(this.originalPrice);
         product.setWeight(this.weight);
+        product.setName(this.name);
         return product;
     }
 }

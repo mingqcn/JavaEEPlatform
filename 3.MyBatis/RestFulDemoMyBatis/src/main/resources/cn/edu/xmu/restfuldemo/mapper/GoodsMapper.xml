@@ -36,7 +36,7 @@
         id,
         goods_id,
         product_sn,
-        desc,
+        name,
         original_price,
         stock,
         weight,
@@ -47,7 +47,7 @@
     <sql id="Product_Insert_List">
         goods_id,
         product_sn,
-        desc,
+        name,
         original_price,
         stock,
         weight,
@@ -61,7 +61,7 @@
         </association>
     </resultMap>
 
-    <select id="findGoodsByObj" parameterType="GoodsPo" resultType="GoodsPo">
+    <select id="findGoods" parameterType="GoodsPo" resultType="GoodsPo">
         SELECT
         <include refid="Goods_Column_List"/>
         FROM oomall_goods
@@ -97,7 +97,7 @@
 
     <insert id="createProduct" parameterType="ProductPo" keyProperty="id" useGeneratedKeys="true">
         INSERT INTO oomall_product(<include refid="Product_Insert_List"/>)
-        VALUES(#{goodsId},#{productSn},#{desc},#{originalPrice}, #{stock}, #{weight}, CURRENT_TIMESTAMP)
+        VALUES(#{goodsId},#{productSn},#{name},#{originalPrice}, #{stock}, #{weight}, CURRENT_TIMESTAMP)
     </insert>
 
     <insert id="createGoods" parameterType="GoodsPo" keyProperty="id" useGeneratedKeys="true">
@@ -108,15 +108,14 @@
     <update id="updateGoods" parameterType="GoodsPo">
         UPDATE oomall_goods
         <set>
-            <if test="goodsSn!=null and goodsSn!=''">and goods_sn = #{goodsSn}, </if>
-            <if test="name!=null and name!=''">and name = #{name}, </if>
-            <if test="categoryId!=null">and category_id = #{categoryId}, </if>
-            <if test="brandId!=null">and brand_id = #{brandId}, </if>
-            <if test="brief!=null and brief!=''">and brief = #{brief}, </if>
-            <if test="specList!=null and specList!=''">and spec_list = #{specList}, </if>
-            <if test="picUrl!=null and picUrl!=''">and spec_url = #{picUrl}, </if>
-            <if test="unit!=null and unit!=''">and unit = #{unit}, </if>
-            <if test="beOnsale!=null">and be_onsale = #{beOnsale}, </if>
+            <if test="name!=null and name!=''">name = #{name}, </if>
+            <if test="categoryId!=null">category_id = #{categoryId}, </if>
+            <if test="brandId!=null">brand_id = #{brandId}, </if>
+            <if test="brief!=null and brief!=''">brief = #{brief}, </if>
+            <if test="specList!=null and specList!=''">spec_list = #{specList}, </if>
+            <if test="picUrl!=null and picUrl!=''">pic_url = #{picUrl}, </if>
+            <if test="unit!=null and unit!=''">unit = #{unit}, </if>
+            <if test="beOnsale!=null">be_onsale = #{beOnsale}, </if>
             update_time = CURRENT_TIME,
             modi_user = #{modiUser}
         </set>

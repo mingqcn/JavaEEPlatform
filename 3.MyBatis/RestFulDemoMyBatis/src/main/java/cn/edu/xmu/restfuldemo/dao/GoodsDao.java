@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 
+import static cn.edu.xmu.restfuldemo.util.Common.*;
 /**
  * @author Ming Qiu
  **/
@@ -67,10 +68,15 @@ public class GoodsDao {
      */
     public ReturnObject<Goods> createGoods(Goods goods){
         GoodsPo goodsPo = goods.gotGoodsPo();
+        String seqNum = genSeqNum();
+        goodsPo.setGoodsSn("G"+seqNum);
         int ret = goodsMapper.createGoods(goodsPo);
         if (goods.getProductList() != null) {
             for (Product product : goods.getProductList()) {
                 ProductPo productPo = product.getProductPo();
+                seqNum = genSeqNum();
+                productPo.setProductSn("P"+seqNum+productPo.getProductSn());
+                productPo.setGoodsId(goodsPo.getId());
                 ret = goodsMapper.createProduct(productPo);
             }
         }

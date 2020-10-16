@@ -2,6 +2,7 @@ package cn.edu.xmu.restfuldemo.controller;
 
 import cn.edu.xmu.restfuldemo.controller.vo.GoodsVo;
 import cn.edu.xmu.restfuldemo.model.Goods;
+import cn.edu.xmu.restfuldemo.util.ResponseCode;
 import cn.edu.xmu.restfuldemo.util.ReturnObject;
 import io.swagger.annotations.*;
 import org.apache.juli.logging.Log;
@@ -12,6 +13,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import cn.edu.xmu.restfuldemo.service.GoodsService;
 import cn.edu.xmu.restfuldemo.util.ResponseUtil;
+
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * 商品控制器
@@ -27,6 +30,9 @@ public class GoodsController {
     @Autowired
     private GoodsService goodsService;
 
+    @Autowired
+    private HttpServletResponse httpServletResponse;
+
     @ApiOperation(value = "获得一个商品对象",  produces="application/json;charset=UTF-8")
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "path", dataType = "Integer", name = "id", value ="商品对象id" ,required = true)
@@ -35,7 +41,12 @@ public class GoodsController {
     })
     @GetMapping("{id}")
     public Object getGoodsById(@PathVariable("id") Integer id) {
-        return  goodsService.findById(id);
+        ReturnObject<Goods> returnObject =  goodsService.findById(id);
+
+        if (returnObject.getErrno().equals(ResponseCode.RESOURCE_ID_NOTEXIST)){
+            httpServletResponse.setStatus(HttpStatus.NOT_FOUND.value());
+        }
+        return returnObject;
     }
 
     @ApiOperation(value = "用商品名称搜索",  produces="application/json")
@@ -69,7 +80,11 @@ public class GoodsController {
     @PutMapping("{id}")
     public Object modiGood(@PathVariable Integer id, @RequestBody GoodsVo goodsVo){
 
-        return goodsService.modifyGoods(id, goodsVo, 1);
+        ReturnObject<Object> returnObject = goodsService.modifyGoods(id, goodsVo, 1);
+        if (returnObject.getErrno().equals(ResponseCode.RESOURCE_ID_NOTEXIST)){
+            httpServletResponse.setStatus(HttpStatus.NOT_FOUND.value());
+        }
+        return returnObject;
     }
 
     @ApiOperation(value = "删除商品",  produces="application/json")
@@ -80,7 +95,11 @@ public class GoodsController {
     })
     @DeleteMapping("{id}")
     public Object delGoods(@PathVariable("id") Integer id) {
-        return goodsService.delGoods(id);
+        ReturnObject<Object> returnObject = goodsService.delGoods(id);
+        if (returnObject.getErrno().equals(ResponseCode.RESOURCE_ID_NOTEXIST)){
+            httpServletResponse.setStatus(HttpStatus.NOT_FOUND.value());
+        }
+        return returnObject;
     }
 
 }

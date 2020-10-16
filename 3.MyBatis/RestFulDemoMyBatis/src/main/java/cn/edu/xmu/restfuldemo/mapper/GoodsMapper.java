@@ -53,10 +53,17 @@ public interface GoodsMapper {
      int deleteGoods(Integer id);
 
      /**
+      * 删除goods对象的所有Product对象，逻辑删除，
+      * @param id 删除的goods对象id
+      * @return
+      */
+     int deleteProductByGoodsId(Integer id);
+
+     /**
       * 删除Product对象，逻辑删除，
       * @param id 删除对象的id
       * @return
       */
-     int deleteProductByGoodsId(Integer id);
+     int deleteProduct(Integer id);
 
 }

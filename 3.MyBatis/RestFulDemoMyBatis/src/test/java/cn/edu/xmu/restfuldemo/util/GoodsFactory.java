@@ -58,84 +58,84 @@ public class GoodsFactory {
         List<ProductVo> productVoList = new ArrayList<>(12);
         ProductVo productVo = new ProductVo();
         productVo.setProductSn("1-1-1");
-        productVo.setDesc("香槟金2G内存16G存储");
+        productVo.setName("香槟金2G内存16G存储");
         productVo.setOriginalPrice(115);
         productVo.setWeight(10);
         productVoList.add(productVo);
 
         productVo = new ProductVo();
         productVo.setProductSn("1-1-2");
-        productVo.setDesc("香槟金2G内存32G存储");
+        productVo.setName("香槟金2G内存32G存储");
         productVo.setOriginalPrice(125);
         productVo.setWeight(10);
         productVoList.add(productVo);
 
         productVo = new ProductVo();
         productVo.setProductSn("1-2-1");
-        productVo.setDesc("香槟金3G内存16G存储");
+        productVo.setName("香槟金3G内存16G存储");
         productVo.setOriginalPrice(135);
         productVo.setWeight(10);
         productVoList.add(productVo);
 
         productVo = new ProductVo();
         productVo.setProductSn("1-2-2");
-        productVo.setDesc("香槟金3G内存32G存储");
+        productVo.setName("香槟金3G内存32G存储");
         productVo.setOriginalPrice(145);
         productVo.setWeight(10);
         productVoList.add(productVo);
 
         productVo = new ProductVo();
         productVo.setProductSn("2-1-1");
-        productVo.setDesc("樱花粉2G内存16G存储");
+        productVo.setName("樱花粉2G内存16G存储");
         productVo.setOriginalPrice(115);
         productVo.setWeight(10);
         productVoList.add(productVo);
 
         productVo = new ProductVo();
         productVo.setProductSn("2-1-2");
-        productVo.setDesc("樱花粉2G内存32G存储");
+        productVo.setName("樱花粉2G内存32G存储");
         productVo.setOriginalPrice(125);
         productVo.setWeight(10);
         productVoList.add(productVo);
 
         productVo = new ProductVo();
         productVo.setProductSn("2-2-1");
-        productVo.setDesc("樱花粉3G内存16G存储");
+        productVo.setName("樱花粉3G内存16G存储");
         productVo.setOriginalPrice(135);
         productVo.setWeight(10);
         productVoList.add(productVo);
 
         productVo = new ProductVo();
         productVo.setProductSn("2-2-2");
-        productVo.setDesc("樱花粉3G内存32G存储");
+        productVo.setName("樱花粉3G内存32G存储");
         productVo.setOriginalPrice(145);
         productVo.setWeight(10);
         productVoList.add(productVo);
 
         productVo = new ProductVo();
         productVo.setProductSn("3-1-1");
-        productVo.setDesc("磨砂黑2G内存16G存储");
+        productVo.setName("磨砂黑2G内存16G存储");
         productVo.setOriginalPrice(115);
         productVo.setWeight(10);
         productVoList.add(productVo);
 
         productVo = new ProductVo();
         productVo.setProductSn("3-1-2");
-        productVo.setDesc("磨砂黑2G内存32G存储");
+        productVo.setName("磨砂黑2G内存32G存储");
         productVo.setOriginalPrice(125);
         productVo.setWeight(10);
         productVoList.add(productVo);
 
         productVo = new ProductVo();
         productVo.setProductSn("3-2-1");
-        productVo.setDesc("磨砂黑3G内存16G存储");
+        productVo.setName("磨砂黑3G内存16G存储");
         productVo.setOriginalPrice(135);
         productVo.setWeight(10);
         productVoList.add(productVo);
 
         productVo = new ProductVo();
         productVo.setProductSn("3-2-2");
-        productVo.setDesc("磨砂黑3G内存32G存储");
+        productVo.setName("磨砂黑3G内存32G存储");
         productVo.setOriginalPrice(145);
         productVo.setWeight(10);
         productVoList.add(productVo);

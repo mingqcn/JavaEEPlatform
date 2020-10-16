@@ -51,8 +51,8 @@ public class Product {
     }
 
     @ApiModelProperty(value = "描述")
-    public String getDesc() {
-        return productPo.getDesc();
+    public String getName() {
+        return productPo.getName();
     }
 
     @ApiModelProperty(value = "促销价")
@@ -104,8 +104,8 @@ public class Product {
     }
 
 
-    public void setDesc(String desc) {
-        productPo.setDesc(desc);
+    public void setName(String desc) {
+        productPo.setName(desc);
     }
 
     @Override

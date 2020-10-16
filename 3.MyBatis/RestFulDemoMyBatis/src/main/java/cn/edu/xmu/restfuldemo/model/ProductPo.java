@@ -16,7 +16,7 @@ public class ProductPo {
 
     private String productSn;
 
-    private String desc;
+    private String name;
 
     private Integer goodsId;
 
