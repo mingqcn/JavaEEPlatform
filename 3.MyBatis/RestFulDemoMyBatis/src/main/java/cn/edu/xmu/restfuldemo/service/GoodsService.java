@@ -1,13 +1,10 @@
 package cn.edu.xmu.restfuldemo.service;
 
-import cn.edu.xmu.restfuldemo.controller.vo.GoodsVo;
-import cn.edu.xmu.restfuldemo.controller.vo.ProductVo;
+import cn.edu.xmu.restfuldemo.model.GoodsVo;
 import cn.edu.xmu.restfuldemo.dao.GoodsDao;
 import cn.edu.xmu.restfuldemo.model.Goods;
 import cn.edu.xmu.restfuldemo.model.GoodsPo;
-import cn.edu.xmu.restfuldemo.model.Product;
 import cn.edu.xmu.restfuldemo.model.VoObject;
-import cn.edu.xmu.restfuldemo.util.Common;
 import cn.edu.xmu.restfuldemo.util.ResponseCode;
 import cn.edu.xmu.restfuldemo.util.ReturnObject;
 import org.slf4j.Logger;
@@ -16,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

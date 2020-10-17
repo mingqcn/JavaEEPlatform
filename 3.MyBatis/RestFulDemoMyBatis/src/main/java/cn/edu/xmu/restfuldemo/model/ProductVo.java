@@ -1,4 +1,4 @@
-package cn.edu.xmu.restfuldemo.controller.vo;
+package cn.edu.xmu.restfuldemo.model;
 
 import cn.edu.xmu.restfuldemo.model.Goods;
 import cn.edu.xmu.restfuldemo.model.Product;

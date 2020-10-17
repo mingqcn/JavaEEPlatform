@@ -1,7 +1,7 @@
 package cn.edu.xmu.restfuldemo;
 
 
-import cn.edu.xmu.restfuldemo.controller.vo.GoodsVo;
+import cn.edu.xmu.restfuldemo.model.GoodsVo;
 import cn.edu.xmu.restfuldemo.util.GoodsFactory;
 import cn.edu.xmu.restfuldemo.util.JacksonUtil;
 import org.junit.jupiter.api.Test;
@@ -31,7 +31,7 @@ public class GoodsControllerIntegrationTest {
                 .andExpect(content().contentType("application/json;charset=UTF-8"))
                 .andReturn().getResponse().getContentAsString();
 
-        String expectedResponse = "{\"errno\":0,\"data\":{\"id\":1,\"goodsSn\":\"2221\",\"name\":\"商品1\",\"brief\":\"商品1描述\",\"picUrl\":null,\"state\":1,\"unit\":\"台\",\"categoryId\":2,\"brandId\":2,\"specList\":null,\"productList\":[{\"id\":1,\"productSn\":\"111111\",\"name\":\"商品1规格1\",\"originalPrice\":100,\"counterPrice\":90,\"weight\":10,\"stock\":100,\"state\":0},{\"id\":2,\"productSn\":\"111112\",\"name\":\"商品1规格2\",\"originalPrice\":200,\"counterPrice\":200,\"weight\":20,\"stock\":2000,\"state\":0}]},\"errmsg\":\"成功\"}";
+        String expectedResponse = "{\"errno\":0,\"data\":{\"id\":1,\"goodsSn\":\"2221\",\"name\":\"商品1\",\"brief\":\"商品1描述\",\"picUrl\":null,\"state\":\"发布\",\"unit\":\"台\",\"categoryId\":2,\"brandId\":2,\"specList\":null,\"productList\":[{\"id\":1,\"productSn\":\"111111\",\"name\":\"商品1规格1\",\"originalPrice\":100,\"counterPrice\":90,\"weight\":10,\"stock\":100,\"state\":0},{\"id\":2,\"productSn\":\"111112\",\"name\":\"商品1规格2\",\"originalPrice\":200,\"counterPrice\":200,\"weight\":20,\"stock\":2000,\"state\":0}]},\"errmsg\":\"成功\"}";
 
         JSONAssert.assertEquals(expectedResponse, responseString, true);
 
@@ -56,7 +56,7 @@ public class GoodsControllerIntegrationTest {
                 .andExpect(content().contentType("application/json;charset=UTF-8"))
                 .andReturn().getResponse().getContentAsString();
 
-        String expectedResponse =  "{\"errno\":0,\"data\":{\"id\":2,\"goodsSn\":\"2222\",\"name\":\"商品2\",\"brief\":\"商品2描述\",\"picUrl\":null,\"state\":0,\"unit\":\"个\",\"categoryId\":2,\"brandId\":2,\"specList\":null,\"productList\":null},\"errmsg\":\"成功\"}";
+        String expectedResponse =  "{\"errno\":0,\"data\":{\"id\":2,\"goodsSn\":\"2222\",\"name\":\"商品2\",\"brief\":\"商品2描述\",\"picUrl\":null,\"state\":\"未发布\",\"unit\":\"个\",\"categoryId\":2,\"brandId\":2,\"specList\":null,\"productList\":null},\"errmsg\":\"成功\"}";
 
         JSONAssert.assertEquals(expectedResponse, responseString, true);
     }
@@ -123,7 +123,7 @@ public class GoodsControllerIntegrationTest {
                 .andExpect(content().contentType("application/json;charset=UTF-8"))
                 .andReturn().getResponse().getContentAsString();
 
-        expectedResponse =  "{\"errno\":0,\"data\":{\"id\":1,\"goodsSn\":\"2221\",\"name\":\"测试商品\",\"brief\":\"商品1描述\",\"picUrl\":null,\"state\":0,\"unit\":\"台\",\"categoryId\":2,\"brandId\":2,\"specList\":null,\"productList\":null},\"errmsg\":\"成功\"}";
+        expectedResponse =  "{\"errno\":0,\"data\":{\"id\":1,\"goodsSn\":\"2221\",\"name\":\"测试商品\",\"brief\":\"商品1描述\",\"picUrl\":null,\"state\":\"未发布\",\"unit\":\"台\",\"categoryId\":2,\"brandId\":2,\"specList\":null,\"productList\":null},\"errmsg\":\"成功\"}";
 
         JSONAssert.assertEquals(expectedResponse, responseString, true);
 

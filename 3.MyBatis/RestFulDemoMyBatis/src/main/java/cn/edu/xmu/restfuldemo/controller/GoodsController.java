@@ -1,8 +1,7 @@
 package cn.edu.xmu.restfuldemo.controller;
 
-import cn.edu.xmu.restfuldemo.controller.vo.GoodsRetVo;
-import cn.edu.xmu.restfuldemo.controller.vo.GoodsVo;
-import cn.edu.xmu.restfuldemo.model.Goods;
+import cn.edu.xmu.restfuldemo.model.GoodsRetVo;
+import cn.edu.xmu.restfuldemo.model.GoodsVo;
 import cn.edu.xmu.restfuldemo.model.VoObject;
 import cn.edu.xmu.restfuldemo.util.ResponseCode;
 import cn.edu.xmu.restfuldemo.util.ReturnObject;
@@ -18,8 +17,6 @@ import cn.edu.xmu.restfuldemo.service.GoodsService;
 import cn.edu.xmu.restfuldemo.util.ResponseUtil;
 
 import javax.servlet.http.HttpServletResponse;
-
-import java.util.List;
 
 import static cn.edu.xmu.restfuldemo.util.Common.*;
 /**

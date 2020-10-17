@@ -1,12 +1,9 @@
-package cn.edu.xmu.restfuldemo.controller.vo;
+package cn.edu.xmu.restfuldemo.model;
 
-import cn.edu.xmu.restfuldemo.model.Goods;
-import cn.edu.xmu.restfuldemo.model.Product;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +31,7 @@ public class GoodsRetVo {
     private String picUrl;
 
     @ApiModelProperty(value = "商品状态")
-    private Integer state;
+    private String state;
 
     @ApiModelProperty(value = "商品单位")
     private String unit;
@@ -67,7 +64,7 @@ public class GoodsRetVo {
         this.categoryId = goods.getCategoryId();
 
         if (null != goods.getState()) {
-            this.state = goods.getState().getCode();
+            this.state = goods.getState().getDescription();
         }
         if (null != goods.getProductList()) {
             List<ProductRetVo> productList = new ArrayList<>(goods.getProductList().size());

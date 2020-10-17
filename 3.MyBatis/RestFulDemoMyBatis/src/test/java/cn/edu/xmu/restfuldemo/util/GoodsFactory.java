@@ -1,7 +1,7 @@
 package cn.edu.xmu.restfuldemo.util;
 
-import cn.edu.xmu.restfuldemo.controller.vo.GoodsVo;
-import cn.edu.xmu.restfuldemo.controller.vo.ProductVo;
+import cn.edu.xmu.restfuldemo.model.GoodsVo;
+import cn.edu.xmu.restfuldemo.model.ProductVo;
 
 import java.util.ArrayList;
 import java.util.List;

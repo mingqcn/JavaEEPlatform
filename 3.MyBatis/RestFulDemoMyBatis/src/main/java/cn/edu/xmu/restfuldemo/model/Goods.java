@@ -1,13 +1,8 @@
 package cn.edu.xmu.restfuldemo.model;
 
-import cn.edu.xmu.restfuldemo.controller.vo.GoodsRetVo;
-import cn.edu.xmu.restfuldemo.controller.vo.ProductVo;
-import cn.edu.xmu.restfuldemo.util.JacksonUtil;
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,6 +41,8 @@ public class Goods implements VoObject {
         public Integer getCode(){
             return code;
         }
+
+        public String getDescription() {return description;}
 
     }
     /**
