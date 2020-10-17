@@ -37,7 +37,8 @@ public class GoodsService {
         GoodsPo queryObj = new GoodsPo();
         queryObj.setId(id);
         ReturnObject<VoObject> retGoods = null;
-        ReturnObject<List<Goods>> returnObject = goodsDao.findGoods(queryObj, true);
+        //ReturnObject<List<Goods>> returnObject = goodsDao.findGoods(queryObj, true);
+        ReturnObject<List<Goods>> returnObject = goodsDao.findGoodsWithProduct(queryObj);
         if (returnObject.getCode().equals(ResponseCode.OK)) {
             if (returnObject.getData().size() == 1) {
                 retGoods = new ReturnObject<>(returnObject.getData().get(0));
@@ -59,14 +60,17 @@ public class GoodsService {
         queryObj.setName(name);
         ReturnObject<VoObject> retGoods = null;
         ReturnObject<List<Goods>> returnObject = goodsDao.findGoods(queryObj, false);
-        logger.info("searchByName: returnObject = "+returnObject);
+        logger.info("searchByName: returnObject = "+returnObject.getCode());
         if (returnObject.getCode().equals(ResponseCode.OK)) {
             if (returnObject.getData().size() == 1) {
                 retGoods = new ReturnObject<>(returnObject.getData().get(0));
+            }else{
+                retGoods = new ReturnObject<>();
             }
         }else{
             retGoods = new ReturnObject<>(returnObject.getCode(), returnObject.getErrmsg());
         }
+        logger.info("searchByName: retGoods = "+retGoods);
         return retGoods;
     }
 
@@ -77,7 +81,9 @@ public class GoodsService {
      */
     @Transactional
     public ReturnObject<VoObject> createGoods(GoodsVo goodsVo) {
+        logger.info("createGoods: goodsVo = " + goodsVo);
         Goods goods = goodsVo.createGoods();
+        logger.info("createGoods: goods = " + goods);
         ReturnObject<Goods> retObj = goodsDao.createGoods(goods);
         ReturnObject<VoObject> retGoods = null;
         if (retObj.getCode().equals(ResponseCode.OK)) {
@@ -85,6 +91,7 @@ public class GoodsService {
         }else{
             retGoods = new ReturnObject<>(retObj.getCode(), retObj.getErrmsg());
         }
+        logger.info("createGoods: retGoods = " + retGoods.getData());
         return retGoods;
     }
 

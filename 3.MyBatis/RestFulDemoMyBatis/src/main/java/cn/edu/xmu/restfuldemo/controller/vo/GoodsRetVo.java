@@ -65,8 +65,11 @@ public class GoodsRetVo {
         this.specList = goods.getSpecList();
         this.brandId = goods.getBrandId();
         this.categoryId = goods.getCategoryId();
-        this.state = goods.getState().getCode();
-        if (goods.getProductList() != null) {
+
+        if (null != goods.getState()) {
+            this.state = goods.getState().getCode();
+        }
+        if (null != goods.getProductList()) {
             List<ProductRetVo> productList = new ArrayList<>(goods.getProductList().size());
 
             for (Product product : goods.getProductList()) {

@@ -61,6 +61,8 @@ public class GoodsController {
         }
     }
 
+
+
     @ApiOperation(value = "用商品名称搜索",  produces="application/json")
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "query", dataType = "String", name = "name", value ="商品名称", required = true)

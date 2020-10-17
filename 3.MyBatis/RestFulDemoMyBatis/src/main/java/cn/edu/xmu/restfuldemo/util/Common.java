@@ -86,6 +86,7 @@ public class Common {
                 VoObject data = returnObject.getData();
                 if (data != null){
                     Object voObj = data.createVo();
+                    logger.info("getRetObject: voObj =" + voObj);
                     return ResponseUtil.ok(voObj);
                 }else{
                     return ResponseUtil.ok();

@@ -5,6 +5,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.apache.ibatis.type.Alias;
 
+import java.time.LocalDateTime;
+
 /**
  * @author Ming Qiu
  **/
@@ -27,4 +29,8 @@ public class ProductPo {
     private Integer weight;
 
     private Integer state;
+
+    private LocalDateTime addTime;
+
+    private LocalDateTime updateTime;
 }

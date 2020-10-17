@@ -47,8 +47,8 @@
             <id property="id" column="product_id"/>
             <result property="name" column="product_name"/>
             <result property="state" column="product_state"/>
-            <result property="add_time" column="product_add_time"/>
-            <result property="update_time" column="product_update_time"/>
+            <result property="addTime" column="product_add_time"/>
+            <result property="updateTime" column="product_update_time"/>
         </collection>
     </resultMap>
 
@@ -78,8 +78,8 @@
         pic_url,
         unit,
         g.state as state,
-        add_time,
-        update_time,
+        g.add_time as add_time,
+        g.update_time as update_time,
         modi_user,
         p.id as product_id,
         product_sn,
@@ -94,7 +94,7 @@
         ON g.id = p.goods_id
         WHERE
         g.state != 2
-        <if test="id!=null">and id = #{id} </if>
+        <if test="id!=null">and g.id = #{id} </if>
         <if test="goodsSn!=null and goodsSn!=''">and goods_sn = #{goodsSn} </if>
         <if test="name!=null and name!=''">and g.name = #{name} </if>
         <if test="categoryId!=null">and category_id = #{categoryId} </if>

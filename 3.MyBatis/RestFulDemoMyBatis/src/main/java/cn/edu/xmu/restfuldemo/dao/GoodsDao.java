@@ -31,6 +31,7 @@ public class GoodsDao {
      * @return  Goods对象列表，带关联的Product返回
      */
     public ReturnObject<List<Goods>> findGoods(GoodsPo goodsPo, Boolean withProduct){
+        logger.info("findGoods: goodsPo =" + goodsPo+" withProduct = "+withProduct);
         List<GoodsPo> goodsPos = goodsMapper.findGoods(goodsPo);
         logger.info("findGoods: goodsPos =" + goodsPos);
         List<Goods> retGoods = new ArrayList<>(goodsPos.size());

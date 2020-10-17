@@ -2,9 +2,12 @@ package cn.edu.xmu.restfuldemo.controller.vo;
 
 import cn.edu.xmu.restfuldemo.model.Goods;
 import cn.edu.xmu.restfuldemo.model.Product;
+import cn.edu.xmu.restfuldemo.util.Common;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
@@ -17,6 +20,8 @@ import java.util.List;
 @Data
 @ApiModel(description = "商品视图对象")
 public class GoodsVo {
+
+    private static Logger logger = LoggerFactory.getLogger(GoodsVo.class);
 
     @NotBlank(message="商品名称不能为空")
     @ApiModelProperty(value = "商品名称")
@@ -52,15 +57,17 @@ public class GoodsVo {
         goods.setSpecList(this.specList);
         goods.setBrandId(this.brandId);
         goods.setCategoryId(this.categoryId);
+        goods.setState(Goods.Status.UNPUBLISHED);
 
-        if (this.productList != null) {
-            List<Product> productList = new ArrayList<>(this.productList.size());
+        if (null != this.productList) {
+            logger.info("createGoods: this.productList = "+this.productList);
+            List<Product> newProductList = new ArrayList<>(this.productList.size());
 
             for (ProductVo productVo : this.productList) {
                 Product product = productVo.createProduct();
-                productList.add(product);
+                newProductList.add(product);
             }
-            goods.setProductList(productList);
+            goods.setProductList(newProductList);
         }
 
         return goods;

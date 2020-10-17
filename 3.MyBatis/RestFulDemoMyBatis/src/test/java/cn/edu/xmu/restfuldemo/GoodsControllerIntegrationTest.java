@@ -44,7 +44,7 @@ public class GoodsControllerIntegrationTest {
                 .andExpect(content().contentType("application/json;charset=UTF-8"))
                 .andReturn().getResponse().getContentAsString();
 
-        String expectedResponse =  "{\"errno\":0,\"data\":null,\"errmsg\":\"成功\"}";
+        String expectedResponse =  "{\"errno\":0,\"errmsg\":\"成功\"}";
 
         JSONAssert.assertEquals(expectedResponse, responseString, true);
     }

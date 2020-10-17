@@ -1,5 +1,6 @@
 package cn.edu.xmu.restfuldemo.controller.vo;
 
+import cn.edu.xmu.restfuldemo.model.Goods;
 import cn.edu.xmu.restfuldemo.model.Product;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -43,6 +44,8 @@ public class ProductVo {
         product.setOriginalPrice(this.originalPrice);
         product.setWeight(this.weight);
         product.setName(this.name);
+        product.setStock(0);
+        product.setStatus(Goods.Status.UNPUBLISHED);
         return product;
     }
 }
