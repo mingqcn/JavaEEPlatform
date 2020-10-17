@@ -42,6 +42,8 @@ public class GoodsService {
         if (returnObject.getCode().equals(ResponseCode.OK)) {
             if (returnObject.getData().size() == 1) {
                 retGoods = new ReturnObject<>(returnObject.getData().get(0));
+            }else{
+                retGoods = new ReturnObject<>(ResponseCode.RESOURCE_ID_NOTEXIST);
             }
         }else{
             retGoods = new ReturnObject<>(returnObject.getCode(), returnObject.getErrmsg());

@@ -52,7 +52,7 @@ public class GoodsController {
         switch (code){
             case RESOURCE_ID_NOTEXIST:
                 httpServletResponse.setStatus(HttpStatus.NOT_FOUND.value());
-                return ResponseUtil.fail(returnObject.getCode());
+                return ResponseUtil.fail(returnObject.getCode(), returnObject.getErrmsg());
             case OK:
                 GoodsRetVo goodsRetVo = (GoodsRetVo) returnObject.getData().createVo();
                 return ResponseUtil.ok(goodsRetVo);

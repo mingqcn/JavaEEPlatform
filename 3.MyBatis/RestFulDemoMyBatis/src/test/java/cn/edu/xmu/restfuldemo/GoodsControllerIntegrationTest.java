@@ -38,13 +38,25 @@ public class GoodsControllerIntegrationTest {
     }
 
     @Test
-    public void searchGoodsByNameTest() throws Exception {
+    public void searchGoodsByNameTest1() throws Exception {
         String responseString = this.mvc.perform(get("/goods/search?name=墨迹"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json;charset=UTF-8"))
                 .andReturn().getResponse().getContentAsString();
 
         String expectedResponse =  "{\"errno\":0,\"errmsg\":\"成功\"}";
+
+        JSONAssert.assertEquals(expectedResponse, responseString, true);
+    }
+
+    @Test
+    public void searchGoodsByNameTest2() throws Exception {
+        String responseString = this.mvc.perform(get("/goods/search?name=商品2"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json;charset=UTF-8"))
+                .andReturn().getResponse().getContentAsString();
+
+        String expectedResponse =  "{\"errno\":0,\"data\":{\"id\":2,\"goodsSn\":\"2222\",\"name\":\"商品2\",\"brief\":\"商品2描述\",\"picUrl\":null,\"state\":0,\"unit\":\"个\",\"categoryId\":2,\"brandId\":2,\"specList\":null,\"productList\":null},\"errmsg\":\"成功\"}";
 
         JSONAssert.assertEquals(expectedResponse, responseString, true);
     }
@@ -63,6 +75,16 @@ public class GoodsControllerIntegrationTest {
         String expectedResponse = "{\"errno\":0,\"errmsg\":\"成功\"}";
 
         JSONAssert.assertEquals(expectedResponse, responseString, false);
+
+        responseString = this.mvc.perform(get("/goods/search?name=红米4X"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json;charset=UTF-8"))
+                .andReturn().getResponse().getContentAsString();
+
+        expectedResponse =  "{\"errno\":0,\"errmsg\":\"成功\"}";
+
+        JSONAssert.assertEquals(expectedResponse, responseString, false);
+
     }
 
     @Test
@@ -95,6 +117,17 @@ public class GoodsControllerIntegrationTest {
         String expectedResponse = "{\"errno\":0,\"errmsg\":\"成功\"}";
 
         JSONAssert.assertEquals(expectedResponse, responseString, false);
+
+        responseString = this.mvc.perform(get("/goods/search?name=测试商品"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json;charset=UTF-8"))
+                .andReturn().getResponse().getContentAsString();
+
+        expectedResponse =  "{\"errno\":0,\"data\":{\"id\":1,\"goodsSn\":\"2221\",\"name\":\"测试商品\",\"brief\":\"商品1描述\",\"picUrl\":null,\"state\":0,\"unit\":\"台\",\"categoryId\":2,\"brandId\":2,\"specList\":null,\"productList\":null},\"errmsg\":\"成功\"}";
+
+        JSONAssert.assertEquals(expectedResponse, responseString, true);
+
+
     }
 
     @Test   //标识此方法为测试方法
@@ -105,6 +138,15 @@ public class GoodsControllerIntegrationTest {
                 .andReturn().getResponse().getContentAsString();
 
         String expectedResponse = "{\"errno\":0,\"errmsg\":\"成功\"}";
+
+        JSONAssert.assertEquals(expectedResponse, responseString, false);
+
+        responseString = this.mvc.perform(get("/goods/1"))
+                .andExpect(status().isNotFound())
+                .andExpect(content().contentType("application/json;charset=UTF-8"))
+                .andReturn().getResponse().getContentAsString();
+
+        expectedResponse = "{\"errno\":504}";
 
         JSONAssert.assertEquals(expectedResponse, responseString, false);
     }
