@@ -1,15 +1,53 @@
 package cn.edu.xmu.restfuldemo.model;
 
+import cn.edu.xmu.restfuldemo.controller.vo.GoodsRetVo;
+import cn.edu.xmu.restfuldemo.controller.vo.ProductVo;
 import cn.edu.xmu.restfuldemo.util.JacksonUtil;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @ApiModel(description = "商品")
-public class Goods {
+public class Goods implements VoObject {
+    /**
+     * 商品状态
+     */
+    public enum Status {
+        UNPUBLISHED(0,"未发布"),
+        PUBLISHED(1,"发布"),
+        DELETED(2,"废弃");
 
+        private static final Map<Integer, Status> stateMap;
+
+        static { //由类加载机制，静态块初始加载对应的枚举属性到map中，而不用每次取属性时，遍历一次所有枚举值
+            stateMap = new HashMap();
+            for (Status enum1 : values()) {
+                stateMap.put(enum1.code, enum1);
+            }
+        }
+
+        private int code;
+        private String description;
+
+        Status(int code, String description) {
+            this.code=code;
+            this.description=description;
+        }
+
+        public static Status getStatusByCode(Integer code){
+            return stateMap.get(code);
+        }
+
+        public Integer getCode(){
+            return code;
+        }
+
+    }
     /**
      * 代理对象
      */
@@ -30,6 +68,14 @@ public class Goods {
     }
 
     /**
+     * 由Goods对象创建Vo对象
+     */
+    @Override
+    public Object createVo(){
+        return new GoodsRetVo(this);
+    }
+
+    /**
      * 获得内部的代理对象
      * @return GoodsPo对象
      */
@@ -37,22 +83,18 @@ public class Goods {
         return this.goodsPo;
     }
 
-    @ApiModelProperty(value = "商品id")
     public Integer getId() {
         return goodsPo.getId();
     }
 
-    @ApiModelProperty(value = "商品编号")
     public String getGoodsSn() {
         return goodsPo.getGoodsSn();
     }
 
-    @ApiModelProperty(value = "商品名称")
     public String getName() {
         return goodsPo.getName();
     }
 
-    @ApiModelProperty(value = "类别id")
     public Integer getCategoryId() {
         return goodsPo.getCategoryId();
     }
@@ -73,17 +115,14 @@ public class Goods {
         goodsPo.setPicUrl(picUrl);
     }
 
-    @ApiModelProperty(value = "品牌id")
     public Integer getBrandId() {
         return goodsPo.getBrandId();
     }
 
-    @ApiModelProperty(value = "商品描述")
     public String getBrief() {
         return goodsPo.getBrief();
     }
 
-    @ApiModelProperty(value = "图片url")
     public String getPicUrl() {
         return goodsPo.getPicUrl();
     }
@@ -92,25 +131,22 @@ public class Goods {
         goodsPo.setUnit(unit);
     }
 
-    public void setBeOnsale(Boolean beOnSale) {
-        goodsPo.setBeOnsale(beOnSale);
+    public void setState(Status state) {
+        goodsPo.setState(state.getCode());
     }
 
     public String getUnit() {
         return goodsPo.getUnit();
     }
 
-    @ApiModelProperty(value = "最后一次修改时间")
     public LocalDateTime getUpdateTime() {
         return goodsPo.getUpdateTime();
     }
 
-    @ApiModelProperty(value ="是否上架")
-    public Boolean getBeOnsale() {
-        return goodsPo.getBeOnsale();
+    public Status getState() {
+        return Status.getStatusByCode(goodsPo.getState());
     }
 
-    @ApiModelProperty(value = "商品可选规格")
     public String getSpecList() {
         return goodsPo.getSpecList();
     }
@@ -123,7 +159,6 @@ public class Goods {
         goodsPo.setAddTime(addTime);
     }
 
-    @ApiModelProperty(value = "修改者")
     public Integer getModiUser() {
         return goodsPo.getModiUser();
     }
@@ -144,7 +179,6 @@ public class Goods {
         goodsPo.setModiUser(modiUser);
     }
 
-    @ApiModelProperty(value = "创建时间")
     public LocalDateTime getAddTime() {
         return goodsPo.getAddTime();
     }
@@ -157,7 +191,6 @@ public class Goods {
         return goodsPo.canEqual(other);
     }
 
-    @ApiModelProperty(value = "商品规格")
     private List<Product> productList;
 
     public List<Product> getProductList() {

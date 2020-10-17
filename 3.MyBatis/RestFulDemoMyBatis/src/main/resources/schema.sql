@@ -32,18 +32,17 @@ CREATE TABLE `oomall_goods` (
   `spec_list` varchar(3000) DEFAULT NULL,
   `pic_url` varchar(200) DEFAULT NULL,
   `unit` varchar(10) DEFAULT NULL,
-  `be_onsale` tinyint DEFAULT NULL,
+  `state` tinyint DEFAULT NULL,
   `add_time` datetime DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
   `modi_user` bigint DEFAULT NULL,
-  `be_deleted` tinyint DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `oomall_goods_goods_sn_uindex` (`goods_sn`),
   KEY `oomall_goods_name_index` (`name`),
   KEY `oomall_goods_category_id_index` (`category_id`),
   KEY `oomall_goods_brand_id_index` (`brand_id`),
-  KEY `oomall_goods_be_onsale_index` (`be_onsale`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='商品';
+  KEY `oomall_goods_be_onsale_index` (`state`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='商品';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -81,11 +80,11 @@ CREATE TABLE `oomall_product` (
   `weight` int DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
   `add_time` datetime NOT NULL,
-  `be_deleted` tinyint NOT NULL DEFAULT '0',
+  `state` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `product_product_sn_uindex` (`product_sn`),
   KEY `product_goods_id_index` (`goods_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -97,4 +96,4 @@ CREATE TABLE `oomall_product` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-16 21:19:14
+-- Dump completed on 2020-10-17 11:31:36

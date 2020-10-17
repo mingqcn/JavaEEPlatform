@@ -26,7 +26,5 @@ public class ProductPo {
 
     private Integer weight;
 
-    private Boolean beOnSale;
-
-    private PriceStockPo priceStockPo;
+    private Integer state;
 }

@@ -1,46 +1,72 @@
 package cn.edu.xmu.restfuldemo.util;
 
-import lombok.Data;
-
-import java.util.HashMap;
-import java.util.Map;
+import lombok.Getter;
 
 /**
  * 返回对象
  * @author Ming Qiu
  **/
-@Data
+@Getter
 public class ReturnObject<T> {
 
     /**
      * 错误号
      */
-    Integer errno = 0;
+    ResponseCode code = ResponseCode.OK;
 
     /**
-     * 错误消息
+     * 自定义的错误码
      */
-    String errmsg = "";
+    String errmsg = null;
 
     /**
      * 返回值
      */
     private T data = null;
 
+    /**
+     * 默认构造函数，错误码为OK
+     */
     public ReturnObject() {
-        this.errno = ResponseCode.OK;
-        this.errmsg = ResponseCode.OK_MSG;
     }
 
+    /**
+     * 带值构造函数
+     * @param data 返回值
+     */
     public ReturnObject(T data) {
-        this.errno = ResponseCode.OK;
-        this.errmsg = ResponseCode.OK_MSG;
+        this();
         this.data = data;
     }
 
-    public ReturnObject(Integer errno, String errmsg) {
-        this.errno = errno;
+    /**
+     * 有错误码的构造函数
+     * @param code 错误码
+     */
+    public ReturnObject(ResponseCode code) {
+        this.code = code;
+    }
+
+    /**
+     * 有错误码和自定义message的构造函数
+     * @param code 错误码
+     * @param errmsg 自定义message
+     */
+    public ReturnObject(ResponseCode code, String errmsg) {
+        this(code);
         this.errmsg = errmsg;
+    }
+
+    /**
+     * 错误信息
+     * @return 错误信息
+     */
+    public String getErrmsg() {
+        if (null != this.errmsg) {
+            return this.errmsg;
+        }else{
+            return this.code.getMessage();
+        }
     }
 
 }

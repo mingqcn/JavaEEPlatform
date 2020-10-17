@@ -31,7 +31,7 @@ public class GoodsControllerIntegrationTest {
                 .andExpect(content().contentType("application/json;charset=UTF-8"))
                 .andReturn().getResponse().getContentAsString();
 
-        String expectedResponse = "{\"errno\":0,\"data\":{\"id\":1,\"goodsSn\":\"111111\",\"name\":\"红米4X\",\"categoryId\":null,\"brandId\":null,\"brief\":\"红米4X是个好用便宜的手机\",\"specList\":[{\"specName\":\"颜色\",\"specItemList\":[{\"id\":\"1\",\"content\":\"香槟金\"},{\"id\":\"2\",\"content\":\"樱花粉\"},{\"id\":\"3\",\"content\":\"磨砂黑\"}]},{\"specName\":\"内存\",\"specItemList\":[{\"id\":\"1\",\"content\":\"2G\"},{\"id\":\"2\",\"content\":\"3G\"}]},{\"specName\":\"机身存储\",\"specItemList\":[{\"id\":\"1\",\"content\":\"16G\"},{\"id\":\"2\",\"content\":\"32G\"}]},{\"specName\":\"机身存储\",\"specItemList\":[{\"id\":\"1\",\"content\":\"16G\"},{\"id\":\"2\",\"content\":\"32G\"}]}],\"productList\":null,\"picUrl\":null,\"unit\":\"台\",\"beOnSale\":null,\"addTime\":null,\"updateTime\":null,\"modiUser\":null},\"errmsg\":\"成功\"}";
+        String expectedResponse = "{\"errno\":0,\"data\":{\"id\":1,\"goodsSn\":\"2221\",\"name\":\"商品1\",\"brief\":\"商品1描述\",\"picUrl\":null,\"state\":1,\"unit\":\"台\",\"categoryId\":2,\"brandId\":2,\"specList\":null,\"productList\":[{\"id\":1,\"productSn\":\"111111\",\"name\":\"商品1规格1\",\"originalPrice\":100,\"counterPrice\":90,\"weight\":10,\"stock\":100,\"state\":0},{\"id\":2,\"productSn\":\"111112\",\"name\":\"商品1规格2\",\"originalPrice\":200,\"counterPrice\":200,\"weight\":20,\"stock\":2000,\"state\":0}]},\"errmsg\":\"成功\"}";
 
         JSONAssert.assertEquals(expectedResponse, responseString, true);
 
@@ -44,7 +44,7 @@ public class GoodsControllerIntegrationTest {
                 .andExpect(content().contentType("application/json;charset=UTF-8"))
                 .andReturn().getResponse().getContentAsString();
 
-        String expectedResponse =  "{\"errno\":0,\"data\":{\"id\":1,\"goodsSn\":\"111111\",\"name\":\"墨迹\",\"categoryId\":null,\"brandId\":null,\"brief\":\"红米4X是个好用便宜的手机\",\"specList\":[{\"specName\":\"颜色\",\"specItemList\":[{\"id\":\"1\",\"content\":\"香槟金\"},{\"id\":\"2\",\"content\":\"樱花粉\"},{\"id\":\"3\",\"content\":\"磨砂黑\"}]},{\"specName\":\"内存\",\"specItemList\":[{\"id\":\"1\",\"content\":\"2G\"},{\"id\":\"2\",\"content\":\"3G\"}]}],\"productList\":null,\"picUrl\":null,\"unit\":\"台\",\"beOnSale\":null,\"addTime\":null,\"updateTime\":null,\"modiUser\":null},\"errmsg\":\"成功\"}";
+        String expectedResponse =  "{\"errno\":0,\"data\":null,\"errmsg\":\"成功\"}";
 
         JSONAssert.assertEquals(expectedResponse, responseString, true);
     }
@@ -60,9 +60,9 @@ public class GoodsControllerIntegrationTest {
                 .andExpect(content().contentType("application/json;charset=UTF-8"))
                 .andReturn().getResponse().getContentAsString();
 
-        String expectedResponse = "{\"errno\":0,\"data\":{\"id\":1,\"goodsSn\":\"11111\",\"name\":\"红米4X\",\"categoryId\":11,\"brandId\":12,\"brief\":\"红米4X是个好用便宜的手机\",\"specList\":[{\"specName\":\"颜色\",\"specItemList\":[{\"id\":\"1\",\"content\":\"香槟金\"},{\"id\":\"2\",\"content\":\"樱花粉\"},{\"id\":\"3\",\"content\":\"磨砂黑\"}]},{\"specName\":\"内存\",\"specItemList\":[{\"id\":\"1\",\"content\":\"2G\"},{\"id\":\"2\",\"content\":\"3G\"}]},{\"specName\":\"机身存储\",\"specItemList\":[{\"id\":\"1\",\"content\":\"16G\"},{\"id\":\"2\",\"content\":\"32G\"}]}],\"productList\":[{\"id\":null,\"productSn\":\"1-1-1\",\"desc\":null,\"goodsId\":1,\"counterPrice\":110,\"retailPrice\":115,\"stock\":null,\"weight\":10,\"beOnSale\":null},{\"id\":null,\"productSn\":\"1-1-2\",\"desc\":null,\"goodsId\":1,\"counterPrice\":120,\"retailPrice\":125,\"stock\":null,\"weight\":10,\"beOnSale\":null},{\"id\":null,\"productSn\":\"1-2-1\",\"desc\":null,\"goodsId\":1,\"counterPrice\":130,\"retailPrice\":135,\"stock\":null,\"weight\":10,\"beOnSale\":null},{\"id\":null,\"productSn\":\"1-2-2\",\"desc\":null,\"goodsId\":1,\"counterPrice\":140,\"retailPrice\":145,\"stock\":null,\"weight\":10,\"beOnSale\":null},{\"id\":null,\"productSn\":\"2-1-1\",\"desc\":null,\"goodsId\":1,\"counterPrice\":110,\"retailPrice\":115,\"stock\":null,\"weight\":10,\"beOnSale\":null},{\"id\":null,\"productSn\":\"2-1-2\",\"desc\":null,\"goodsId\":1,\"counterPrice\":120,\"retailPrice\":125,\"stock\":null,\"weight\":10,\"beOnSale\":null},{\"id\":null,\"productSn\":\"2-2-1\",\"desc\":null,\"goodsId\":1,\"counterPrice\":130,\"retailPrice\":135,\"stock\":null,\"weight\":10,\"beOnSale\":null},{\"id\":null,\"productSn\":\"2-2-2\",\"desc\":null,\"goodsId\":1,\"counterPrice\":140,\"retailPrice\":145,\"stock\":null,\"weight\":10,\"beOnSale\":null},{\"id\":null,\"productSn\":\"3-1-1\",\"desc\":null,\"goodsId\":1,\"counterPrice\":110,\"retailPrice\":115,\"stock\":null,\"weight\":10,\"beOnSale\":null},{\"id\":null,\"productSn\":\"3-1-2\",\"desc\":null,\"goodsId\":1,\"counterPrice\":120,\"retailPrice\":125,\"stock\":null,\"weight\":10,\"beOnSale\":null},{\"id\":null,\"productSn\":\"3-2-1\",\"desc\":null,\"goodsId\":1,\"counterPrice\":130,\"retailPrice\":135,\"stock\":null,\"weight\":10,\"beOnSale\":null},{\"id\":null,\"productSn\":\"3-2-2\",\"desc\":null,\"goodsId\":1,\"counterPrice\":140,\"retailPrice\":145,\"stock\":null,\"weight\":10,\"beOnSale\":null}],\"picUrl\":null,\"unit\":\"台\",\"beOnSale\":null,\"addTime\":null,\"updateTime\":null,\"modiUser\":null},\"errmsg\":\"成功\"}";
+        String expectedResponse = "{\"errno\":0,\"errmsg\":\"成功\"}";
 
-        JSONAssert.assertEquals(expectedResponse, responseString, true);
+        JSONAssert.assertEquals(expectedResponse, responseString, false);
     }
 
     @Test
@@ -76,7 +76,7 @@ public class GoodsControllerIntegrationTest {
                 .andExpect(content().contentType("application/json;charset=UTF-8"))
                 .andReturn().getResponse().getContentAsString();
 
-        String expectedResponse = "{\"errno\":503,\"errmsg\":\"商品名称不能为空;\",\"data\":null}";
+        String expectedResponse = "{\"errno\":503,\"errmsg\":\"商品名称不能为空;\"}";
 
         JSONAssert.assertEquals(expectedResponse, responseString, true);
     }

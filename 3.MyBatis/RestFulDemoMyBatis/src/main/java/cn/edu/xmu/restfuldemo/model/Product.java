@@ -28,7 +28,6 @@ public class Product {
      */
     public Product(ProductPo productPo) {
         this.productPo = productPo;
-        this.priceStockPo = productPo.getPriceStockPo();
     }
 
     @ApiModelProperty(value = "规格id")
@@ -74,13 +73,13 @@ public class Product {
         return productPo.getWeight();
     }
 
-    public void setBeOnSale(Boolean beOnSale) {
-        productPo.setBeOnSale(beOnSale);
+    public void setStatus(Goods.Status state) {
+        productPo.setState(state.getCode());
     }
 
-    @ApiModelProperty(value ="是否上架")
-    public Boolean getBeOnSale() {
-        return productPo.getBeOnSale();
+    @ApiModelProperty(value ="规格状态")
+    public Goods.Status getState() {
+        return Goods.Status.getStatusByCode(productPo.getState());
     }
 
     public void setWeight(Integer weight) {

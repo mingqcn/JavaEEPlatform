@@ -1,6 +1,7 @@
 package cn.edu.xmu.restfuldemo.mapper;
 
 import cn.edu.xmu.restfuldemo.model.GoodsPo;
+import cn.edu.xmu.restfuldemo.model.PriceStockPo;
 import cn.edu.xmu.restfuldemo.model.ProductPo;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -17,6 +18,14 @@ public interface GoodsMapper {
       * @return  GoodsPo对象列表
       */
      List<GoodsPo> findGoods(GoodsPo goodsPo);
+
+     /**
+      * 用GoodsPo对象找，带Product对象返回
+      * @param goodsPo 条件对象，所有条件为AND，仅有索引的值可以作为条件
+      * @return  GoodsPo对象列表
+      */
+     List<GoodsPo> findGoodsWithProduct(GoodsPo goodsPo);
+
      /**
       * 用ProductPo对象找，
       * @param productPo 条件对象，所有条件为AND，仅有索引的值可以作为条件
@@ -66,4 +75,10 @@ public interface GoodsMapper {
       */
      int deleteProduct(Integer id);
 
+     /**
+      * 获得Product的当前浮动价格和库存
+      * @param id product id
+      * @return 当前浮动价格和库存
+      */
+     List<PriceStockPo> findEffectPrice(Integer id);
 }

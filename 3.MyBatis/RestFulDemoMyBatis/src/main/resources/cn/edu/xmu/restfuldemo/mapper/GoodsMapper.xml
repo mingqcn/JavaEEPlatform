@@ -11,11 +11,10 @@
         spec_list,
         pic_url,
         unit,
-        be_onsale,
+        state,
         add_time,
         update_time,
-        modi_user,
-        be_deleted
+        modi_user
     </sql>
 
     <sql id="Goods_Insert_List">
@@ -27,21 +26,8 @@
         spec_list,
         pic_url,
         unit,
-        be_onsale,
-        add_time,
-        be_deleted
-    </sql>
-
-    <sql id="Product_Column_List">
-        id,
-        goods_id,
-        product_sn,
-        name,
-        original_price,
-        stock,
-        weight,
-        add_time,
-        update_time
+        state,
+        add_time
     </sql>
 
     <sql id="Product_Insert_List">
@@ -51,58 +37,113 @@
         original_price,
         stock,
         weight,
-        add_time
+        add_time,
+        state
     </sql>
 
-    <resultMap type="ProductPo" id="ProductPriceResultMap" autoMapping="true">
+    <resultMap type="GoodsPo" id="GoodsProductResultMap" autoMapping="true">
         <id property="id" column="id"/>
-        <association property="priceStockPo" javaType="cn.edu.xmu.restfuldemo.model.PriceStockPo" autoMapping="true">
-            <id property="id" column="price_id"/>
-        </association>
+        <collection property="productList" ofType="cn.edu.xmu.restfuldemo.model.ProductPo" autoMapping="true">
+            <id property="id" column="product_id"/>
+            <result property="name" column="product_name"/>
+            <result property="state" column="product_state"/>
+            <result property="add_time" column="product_add_time"/>
+            <result property="update_time" column="product_update_time"/>
+        </collection>
     </resultMap>
 
     <select id="findGoods" parameterType="GoodsPo" resultType="GoodsPo">
         SELECT
         <include refid="Goods_Column_List"/>
         FROM oomall_goods
-        <trim prefix="WHERE" prefixOverrides="and">
-            <if test="id!=null">and id = #{id} </if>
-            <if test="goodsSn!=null and goodsSn!=''">and goods_sn = #{goodsSn} </if>
-            <if test="name!=null and name!=''">and name = #{name} </if>
-            <if test="categoryId!=null">and category_id = #{categoryId} </if>
-            <if test="brandId!=null">and brand_id = #{brandId} </if>
-            <if test="beOnsale!=null">and be_onsale = #{beOnsale} </if>
-            <if test="beDeleted!=null">and be_deleted = #{beDeleted} </if>
-        </trim>
+        WHERE
+        state != 2
+        <if test="id!=null">and id = #{id} </if>
+        <if test="goodsSn!=null and goodsSn!=''">and goods_sn = #{goodsSn} </if>
+        <if test="name!=null and name!=''">and name = #{name} </if>
+        <if test="categoryId!=null">and category_id = #{categoryId} </if>
+        <if test="brandId!=null">and brand_id = #{brandId} </if>
+        <if test="state!=null">and state = #{state} </if>
     </select>
 
-    <select id="findProductByObj" parameterType="ProductPo" resultType="ProductPo">
+    <select id="findGoodsWithProduct" parameterType="GoodsPo" resultMap="GoodsProductResultMap">
         SELECT
-        <include refid="Product_Column_List"/>
-        s.id as price_id
-        product_id,
-        price,
-        quantity,
-        begin_time,
-        end_time
-        FROM oomall_product p
-        LEFT JOIN oomall_price_stock s ON p.id = s.product_id
+        g.id as id,
+        goods_sn,
+        g.name as name,
+        category_id,
+        brand_id,
+        brief,
+        spec_list,
+        pic_url,
+        unit,
+        g.state as state,
+        add_time,
+        update_time,
+        modi_user,
+        p.id as product_id,
+        product_sn,
+        p.name as product_name,
+        original_price,
+        stock,
+        weight,
+        p.add_time as product_add_time,
+        p.update_time as product_update_time,
+        p.state as product_state
+        FROM oomall_goods g LEFT JOIN oomall_product p
+        ON g.id = p.goods_id
         WHERE
-        end_time &gt;= now()
-        AND begin_time &lt;= now()
-        <if test="id!=null">AND id = #{id} </if>
+        g.state != 2
+        <if test="id!=null">and id = #{id} </if>
+        <if test="goodsSn!=null and goodsSn!=''">and goods_sn = #{goodsSn} </if>
+        <if test="name!=null and name!=''">and g.name = #{name} </if>
+        <if test="categoryId!=null">and category_id = #{categoryId} </if>
+        <if test="brandId!=null">and brand_id = #{brandId} </if>
+        <if test="state!=null">and g.state = #{state} </if>
+    </select>
+
+    <select id="findProduct" parameterType="ProductPo" resultType="ProductPo">
+        SELECT
+        id,
+        goods_id,
+        product_sn,
+        name,
+        original_price,
+        stock,
+        weight,
+        add_time,
+        update_time,
+        state
+        FROM oomall_product
+        WHERE
+        state != 2
+        <if test="id!=null">AND p.id = #{id} </if>
         <if test="productSn!=null and productSn!=''">AND product_sn = #{productSn} </if>
         <if test="goodsId!=null and goodsId!=''">AND goods_id = #{goodsId} </if>
+        <if test="state!=null and state!=''">AND state = #{state} </if>
+    </select>
+
+    <select id="findEffectPrice" parameterType="Integer" resultType="PriceStockPo">
+    SELECT
+    id,
+    price,
+    quantity,
+    begin_time,
+    end_time
+    FROM oomall_price_stock
+    WHERE product_id =#{id}
+    AND end_time &gt;= now()
+    AND begin_time &lt;= now()
     </select>
 
     <insert id="createProduct" parameterType="ProductPo" keyProperty="id" useGeneratedKeys="true">
         INSERT INTO oomall_product(<include refid="Product_Insert_List"/>)
-        VALUES(#{goodsId},#{productSn},#{name},#{originalPrice}, #{stock}, #{weight}, CURRENT_TIMESTAMP)
+        VALUES(#{goodsId},#{productSn},#{name},#{originalPrice}, #{stock}, #{weight}, CURRENT_TIMESTAMP, 0)
     </insert>
 
     <insert id="createGoods" parameterType="GoodsPo" keyProperty="id" useGeneratedKeys="true">
         INSERT INTO oomall_goods(<include refid="Goods_Insert_List"/>)
-        VALUES(#{goodsSn},#{name},#{categoryId},#{brandId}, #{brief}, #{specList}, #{picUrl}, #{unit}, false, CURRENT_TIMESTAMP, false)
+        VALUES(#{goodsSn},#{name},#{categoryId},#{brandId}, #{brief},#{specList},#{picUrl},#{unit},0,CURRENT_TIMESTAMP)
     </insert>
 
     <update id="updateGoods" parameterType="GoodsPo">
@@ -115,7 +156,7 @@
             <if test="specList!=null and specList!=''">spec_list = #{specList}, </if>
             <if test="picUrl!=null and picUrl!=''">pic_url = #{picUrl}, </if>
             <if test="unit!=null and unit!=''">unit = #{unit}, </if>
-            <if test="beOnsale!=null">be_onsale = #{beOnsale}, </if>
+            <if test="state!=null">state = #{state}, </if>
             update_time = CURRENT_TIME,
             modi_user = #{modiUser}
         </set>
@@ -124,19 +165,19 @@
 
     <update id="deleteGoods" parameterType="Integer">
         UPDATE oomall_goods
-        SET be_deleted = true
+        SET state = 2
         WHERE id = #{id}
     </update>
 
     <update id="deleteProductByGoodsId" parameterType="Integer">
         UPDATE oomall_product
-        SET be_deleted = true
+        SET state = 2
         WHERE goods_id = #{id}
     </update>
 
     <update id="deleteProduct" parameterType="Integer">
         UPDATE oomall_product
-        SET be_deleted = true
+        SET state = 2
         WHERE id = #{id}
     </update>
 </mapper>

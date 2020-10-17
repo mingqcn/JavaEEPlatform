@@ -1,14 +1,17 @@
 package cn.edu.xmu.restfuldemo.controller;
 
+import cn.edu.xmu.restfuldemo.controller.vo.GoodsRetVo;
 import cn.edu.xmu.restfuldemo.controller.vo.GoodsVo;
 import cn.edu.xmu.restfuldemo.model.Goods;
+import cn.edu.xmu.restfuldemo.model.VoObject;
 import cn.edu.xmu.restfuldemo.util.ResponseCode;
 import cn.edu.xmu.restfuldemo.util.ReturnObject;
 import io.swagger.annotations.*;
-import org.apache.juli.logging.Log;
-import org.apache.juli.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import cn.edu.xmu.restfuldemo.service.GoodsService;
@@ -16,6 +19,9 @@ import cn.edu.xmu.restfuldemo.util.ResponseUtil;
 
 import javax.servlet.http.HttpServletResponse;
 
+import java.util.List;
+
+import static cn.edu.xmu.restfuldemo.util.Common.*;
 /**
  * 商品控制器
  * @author Ming Qiu
@@ -25,7 +31,7 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping(value = "/goods", produces = "application/json;charset=UTF-8")
 public class GoodsController {
 
-    private final Log logger = LogFactory.getLog(GoodsController.class);
+    private final Logger logger = LoggerFactory.getLogger(GoodsController.class);
 
     @Autowired
     private GoodsService goodsService;
@@ -41,12 +47,18 @@ public class GoodsController {
     })
     @GetMapping("{id}")
     public Object getGoodsById(@PathVariable("id") Integer id) {
-        ReturnObject<Goods> returnObject =  goodsService.findById(id);
-
-        if (returnObject.getErrno().equals(ResponseCode.RESOURCE_ID_NOTEXIST)){
-            httpServletResponse.setStatus(HttpStatus.NOT_FOUND.value());
+        ReturnObject<VoObject> returnObject =  goodsService.findById(id);
+        ResponseCode code = returnObject.getCode();
+        switch (code){
+            case RESOURCE_ID_NOTEXIST:
+                httpServletResponse.setStatus(HttpStatus.NOT_FOUND.value());
+                return ResponseUtil.fail(returnObject.getCode());
+            case OK:
+                GoodsRetVo goodsRetVo = (GoodsRetVo) returnObject.getData().createVo();
+                return ResponseUtil.ok(goodsRetVo);
+            default:
+                return ResponseUtil.fail(code);
         }
-        return returnObject;
     }
 
     @ApiOperation(value = "用商品名称搜索",  produces="application/json")
@@ -57,7 +69,8 @@ public class GoodsController {
     })
     @GetMapping("search")
     public Object searchGoodsByName(@RequestParam String name) {
-        return goodsService.searchByName(name);
+        ReturnObject<VoObject> returnObject = goodsService.searchByName(name);
+        return getRetObject(returnObject);
     }
 
     @ApiOperation(value = "新建商品",  produces="application/json")
@@ -66,9 +79,15 @@ public class GoodsController {
     @ApiResponses({
     })
     @PostMapping("")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Object createGood(@Validated @RequestBody GoodsVo goodsVo){
-        return goodsService.createGoods(goodsVo);
+    public Object createGood(@Validated @RequestBody GoodsVo goodsVo, BindingResult bindingResult){
+
+        Object returnObject = processFieldErrors(bindingResult, httpServletResponse);
+        if (null != returnObject){
+            return returnObject;
+        }
+        ReturnObject<VoObject> returnObject1 = goodsService.createGoods(goodsVo);
+        httpServletResponse.setStatus(HttpStatus.CREATED.value());
+        return getRetObject(returnObject1);
     }
 
     @ApiOperation(value = "修改商品",  produces="application/json")
@@ -81,10 +100,7 @@ public class GoodsController {
     public Object modiGood(@PathVariable Integer id, @RequestBody GoodsVo goodsVo){
 
         ReturnObject<Object> returnObject = goodsService.modifyGoods(id, goodsVo, 1);
-        if (returnObject.getErrno().equals(ResponseCode.RESOURCE_ID_NOTEXIST)){
-            httpServletResponse.setStatus(HttpStatus.NOT_FOUND.value());
-        }
-        return returnObject;
+        return getNullRetObj(returnObject, httpServletResponse);
     }
 
     @ApiOperation(value = "删除商品",  produces="application/json")
@@ -96,10 +112,7 @@ public class GoodsController {
     @DeleteMapping("{id}")
     public Object delGoods(@PathVariable("id") Integer id) {
         ReturnObject<Object> returnObject = goodsService.delGoods(id);
-        if (returnObject.getErrno().equals(ResponseCode.RESOURCE_ID_NOTEXIST)){
-            httpServletResponse.setStatus(HttpStatus.NOT_FOUND.value());
-        }
-        return returnObject;
+        return getNullRetObj(returnObject, httpServletResponse);
     }
 
 }

@@ -30,7 +30,7 @@ public class GoodsPo {
 
     private String unit;
 
-    private Boolean beOnsale;
+    private Integer state;
 
     private String specList;
 
@@ -40,5 +40,5 @@ public class GoodsPo {
 
     private Integer modiUser;
 
-    private Boolean beDeleted;
+    private List<ProductPo> productList;
 }
