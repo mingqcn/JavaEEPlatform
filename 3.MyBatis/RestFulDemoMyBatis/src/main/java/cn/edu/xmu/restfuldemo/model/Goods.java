@@ -1,13 +1,10 @@
 package cn.edu.xmu.restfuldemo.model;
 
-import io.swagger.annotations.ApiModel;
-
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@ApiModel(description = "商品")
 public class Goods implements VoObject {
     /**
      * 商品状态

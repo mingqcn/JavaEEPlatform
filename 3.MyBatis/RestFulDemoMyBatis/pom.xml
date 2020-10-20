@@ -79,8 +79,8 @@
 
         <dependency>
             <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>1.1.22</version>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.2.1</version>
         </dependency>
 
         <dependency>

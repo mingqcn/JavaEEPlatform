@@ -23,8 +23,7 @@ spring:
     druid:
       #初始化时建立物理连接的个数
       initial-size: 3
-       neophyte
-        最小连接池数量
+      #最小连接池数量
       min-idle: 3
       #最大连接池数量
       max-active: 10
@@ -34,6 +33,9 @@ spring:
       stat-view-servlet:
         login-username: admin
         login-password: 123456
+        enabled: true
+        url-pattern: /druid/*
+
       filter:
         stat:
           #是否开启慢sql查询监控
