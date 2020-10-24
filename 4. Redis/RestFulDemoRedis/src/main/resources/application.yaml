@@ -14,7 +14,7 @@ spring:
         url: http://localhost:8081
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/oomall_demo?serverTimezone=GMT%2B8
+    url: jdbc:mysql://172.16.3.5:3306/oomall_demo?serverTimezone=GMT%2B8
     username: demouser
     password: 123456
     type: com.alibaba.druid.pool.DruidDataSource
@@ -48,7 +48,7 @@ spring:
     # Redis数据库索引（默认为0）
     database: 0
     # Redis服务器地址
-    host: localhost
+    host: 172.16.1.66
     # Redis服务器连接端口
     port: 6379
     # Redis服务器连接密码
