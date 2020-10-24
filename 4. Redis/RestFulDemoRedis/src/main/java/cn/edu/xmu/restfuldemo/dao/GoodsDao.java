@@ -32,9 +32,6 @@ public class GoodsDao {
     @Value("${restfuldemo.goods.expiretime}")
     private long goodsTimeout;
 
-    @Value("${restfuldemo.product.stock.expiretime}")
-    private long stockTimeout;
-
     /**
      * 用GoodsPo对象找Goods对象
      * @param goodsPo 条件对象，所有条件为AND，仅有索引的值可以作为条件

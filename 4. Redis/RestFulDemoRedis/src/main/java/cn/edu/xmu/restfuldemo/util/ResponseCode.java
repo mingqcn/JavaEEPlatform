@@ -31,6 +31,8 @@ public enum ResponseCode {
     ADVERTISEMENT_OUTLIMIT(603,"达到时段广告上限"),
     TIMESEG_CONFLICT(604,"时段冲突"),
     SHAREACT_CONFLICT(605,"分享活动时段冲突"),
+    ORDERITEM_NOTSHARED(606,"订单明细无分享记录"),
+
     /***************************************************
      *    权限模块错误码
      **************************************************/
