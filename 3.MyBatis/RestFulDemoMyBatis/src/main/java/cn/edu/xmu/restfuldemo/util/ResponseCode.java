@@ -17,7 +17,8 @@ public enum ResponseCode {
     //--------------------------------------------
     FIELD_NOTVALID(503,"字段不合法"),
     //所有路径带id的API都可能返回此错误
-    RESOURCE_ID_OUTSCOPE(504,"操作的资源id不是自己的对象"),
+    RESOURCE_ID_NOTEXIST(504,"操作的资源id不存在"),
+    RESOURCE_ID_OUTSCOPE(505,"操作的资源id不是自己的对象"),
     //--------------------------------------------
 
 

@@ -51,7 +51,7 @@ mybatis:
   mapper-locations: classpath:cn.edu.xmu.restfuldemo.mapper/*.xml
   #自动将SQL中查出来的带下划线的字段，转换为驼峰标志，再去匹配类中的属性
   configuration:
-  #输出产生的SQL
+    #输出产生的SQL
     #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     map-underscore-to-camel-case: true
 
