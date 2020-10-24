@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.xmu.restfuldemo.mapper.GoodsMapper">
+    <sql id="Goods_Column_List">
+        id,
+        goods_sn,
+        name,
+        category_id,
+        brand_id,
+        brief,
+        spec_list,
+        pic_url,
+        unit,
+        state,
+        add_time,
+        update_time,
+        modi_user
+    </sql>
+
+    <sql id="Goods_Insert_List">
+        goods_sn,
+        name,
+        category_id,
+        brand_id,
+        brief,
+        spec_list,
+        pic_url,
+        unit,
+        state,
+        add_time
+    </sql>
+
+    <sql id="Product_Insert_List">
+        goods_id,
+        product_sn,
+        name,
+        original_price,
+        stock,
+        weight,
+        add_time,
+        state
+    </sql>
+
+    <resultMap type="GoodsPo" id="GoodsProductResultMap" autoMapping="true">
+        <id property="id" column="id"/>
+        <collection property="productList" ofType="cn.edu.xmu.restfuldemo.model.ProductPo" autoMapping="true">
+            <id property="id" column="product_id"/>
+            <result property="name" column="product_name"/>
+            <result property="state" column="product_state"/>
+            <result property="addTime" column="product_add_time"/>
+            <result property="updateTime" column="product_update_time"/>
+        </collection>
+    </resultMap>
+
+    <select id="findGoods" parameterType="GoodsPo" resultType="GoodsPo">
+        SELECT
+        <include refid="Goods_Column_List"/>
+        FROM oomall_goods
+        WHERE
+        state != 2
+        <if test="id!=null">and id = #{id} </if>
+        <if test="goodsSn!=null and goodsSn!=''">and goods_sn = #{goodsSn} </if>
+        <if test="name!=null and name!=''">and name = #{name} </if>
+        <if test="categoryId!=null">and category_id = #{categoryId} </if>
+        <if test="brandId!=null">and brand_id = #{brandId} </if>
+        <if test="state!=null">and state = #{state} </if>
+    </select>
+
+    <select id="findGoodsWithProduct" parameterType="GoodsPo" resultMap="GoodsProductResultMap">
+        SELECT
+        g.id as id,
+        goods_sn,
+        g.name as name,
+        category_id,
+        brand_id,
+        brief,
+        spec_list,
+        pic_url,
+        unit,
+        g.state as state,
+        g.add_time as add_time,
+        g.update_time as update_time,
+        modi_user,
+        p.id as product_id,
+        product_sn,
+        p.name as product_name,
+        original_price,
+        stock,
+        weight,
+        p.add_time as product_add_time,
+        p.update_time as product_update_time,
+        p.state as product_state
+        FROM oomall_goods g LEFT JOIN oomall_product p
+        ON g.id = p.goods_id
+        WHERE
+        g.state != 2
+        <if test="id!=null">and g.id = #{id} </if>
+        <if test="goodsSn!=null and goodsSn!=''">and goods_sn = #{goodsSn} </if>
+        <if test="name!=null and name!=''">and g.name = #{name} </if>
+        <if test="categoryId!=null">and category_id = #{categoryId} </if>
+        <if test="brandId!=null">and brand_id = #{brandId} </if>
+        <if test="state!=null">and g.state = #{state} </if>
+    </select>
+
+    <select id="findProduct" parameterType="ProductPo" resultType="ProductPo">
+        SELECT
+        id,
+        goods_id,
+        product_sn,
+        name,
+        original_price,
+        stock,
+        weight,
+        add_time,
+        update_time,
+        state
+        FROM oomall_product
+        WHERE
+        state != 2
+        <if test="id!=null">AND p.id = #{id} </if>
+        <if test="productSn!=null and productSn!=''">AND product_sn = #{productSn} </if>
+        <if test="goodsId!=null and goodsId!=''">AND goods_id = #{goodsId} </if>
+        <if test="state!=null and state!=''">AND state = #{state} </if>
+    </select>
+
+    <select id="findEffectPrice" parameterType="Integer" resultType="PriceStockPo">
+    SELECT
+    id,
+    price,
+    quantity,
+    begin_time,
+    end_time
+    FROM oomall_price_stock
+    WHERE product_id =#{id}
+    AND end_time &gt;= now()
+    AND begin_time &lt;= now()
+    </select>
+
+    <insert id="createProduct" parameterType="ProductPo" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO oomall_product(<include refid="Product_Insert_List"/>)
+        VALUES(#{goodsId},#{productSn},#{name},#{originalPrice}, #{stock}, #{weight}, CURRENT_TIMESTAMP, 0)
+    </insert>
+
+    <insert id="createGoods" parameterType="GoodsPo" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO oomall_goods(<include refid="Goods_Insert_List"/>)
+        VALUES(#{goodsSn},#{name},#{categoryId},#{brandId}, #{brief},#{specList},#{picUrl},#{unit},0,CURRENT_TIMESTAMP)
+    </insert>
+
+    <update id="updateGoods" parameterType="GoodsPo">
+        UPDATE oomall_goods
+        <set>
+            <if test="name!=null and name!=''">name = #{name}, </if>
+            <if test="categoryId!=null">category_id = #{categoryId}, </if>
+            <if test="brandId!=null">brand_id = #{brandId}, </if>
+            <if test="brief!=null and brief!=''">brief = #{brief}, </if>
+            <if test="specList!=null and specList!=''">spec_list = #{specList}, </if>
+            <if test="picUrl!=null and picUrl!=''">pic_url = #{picUrl}, </if>
+            <if test="unit!=null and unit!=''">unit = #{unit}, </if>
+            <if test="state!=null">state = #{state}, </if>
+            update_time = CURRENT_TIME,
+            modi_user = #{modiUser}
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <update id="deleteGoods" parameterType="Integer">
+        UPDATE oomall_goods
+        SET state = 2
+        WHERE id = #{id}
+    </update>
+
+    <update id="deleteProductByGoodsId" parameterType="Integer">
+        UPDATE oomall_product
+        SET state = 2
+        WHERE goods_id = #{id}
+    </update>
+
+    <update id="deleteProduct" parameterType="Integer">
+        UPDATE oomall_product
+        SET state = 2
+        WHERE id = #{id}
+    </update>
+</mapper>
+

@@ -1,0 +1,86 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+server:
+  port: 8080
+
+spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:8081
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/oomall_demo?serverTimezone=GMT%2B8
+    username: demouser
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    schema: classpath:schema.sql
+    data: classpath:data.sql
+    druid:
+      #初始化时建立物理连接的个数
+      initial-size: 3
+      #最小连接池数量
+      min-idle: 3
+      #最大连接池数量
+      max-active: 10
+      #获取连接时最大等待时间
+      max-wait: 60000
+      #配置监控页面访问登录名及密码
+      stat-view-servlet:
+        login-username: admin
+        login-password: 123456
+        enabled: true
+        url-pattern: /druid/*
+
+      filter:
+        stat:
+          #是否开启慢sql查询监控
+          log-slow-sql: true
+          #慢SQL执行时间
+          slow-sql-millis: 100
+      validation-query: select 1
+
+  redis:
+    # Redis数据库索引（默认为0）
+    database: 0
+    # Redis服务器地址
+    host: localhost
+    # Redis服务器连接端口
+    port: 6379
+    # Redis服务器连接密码
+    password: 123456
+    #连接池最大连接数（使用负值表示没有限制）
+    lettuce:
+      pool:
+        max-active: 8
+        # 连接池中的最大空闲连接
+        max-idle: 8
+        # 连接池中的最小空闲连接
+        min-idle: 0
+        #连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: -1
+    # 连接超时时间（毫秒）
+    timeout: 300
+
+mybatis:
+  #domain对象的包
+  type-aliases-package: cn.edu.xmu.restfuldemo.model
+  #mapper.xml所在的位置
+  mapper-locations: classpath:cn.edu.xmu.restfuldemo.mapper/*.xml
+  #自动将SQL中查出来的带下划线的字段，转换为驼峰标志，再去匹配类中的属性
+  configuration:
+    #输出产生的SQL
+    #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+
+restfuldemo:
+  goods:
+    # Goods对象在Redis中失效秒数
+    expiretime: 600
+
+
+
