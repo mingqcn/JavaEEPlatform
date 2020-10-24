@@ -18,6 +18,7 @@ spring:
     username: demouser
     password: 123456
     type: com.alibaba.druid.pool.DruidDataSource
+    initialization-mode: always
     schema: classpath:schema.sql
     data: classpath:data.sql
     druid:
@@ -43,6 +44,7 @@ spring:
           #慢SQL执行时间
           slow-sql-millis: 100
       validation-query: select 1
+
 
   redis:
     # Redis数据库索引（默认为0）
