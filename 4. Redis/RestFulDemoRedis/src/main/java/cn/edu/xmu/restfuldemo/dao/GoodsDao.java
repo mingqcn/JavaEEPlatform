@@ -42,9 +42,12 @@ public class GoodsDao {
         logger.info("findGoods: goodsPo =" + goodsPo+" withProduct = "+withProduct);
 
         List<Goods> retGoods = null;
+        String key = null;
         if (null != goodsPo.getId()){
-            Goods goods = (Goods) redisUtil.get("g_"+goodsPo.getId());
+            key = "g_"+goodsPo.getId();
+            Goods goods = (Goods) redisUtil.get(key);
             if (null != goods){
+                logger.info("findGoods: hit redis cache, key = "+key);
                 retGoods = new ArrayList<>(1);
                 retGoods.add(goods);
                 return new ReturnObject<>(retGoods);
@@ -77,7 +80,8 @@ public class GoodsDao {
         }
 
         if (null != goodsPo.getId()){
-            redisUtil.set("g_"+goodsPo.getId(), retGoods.get(0), goodsTimeout);
+            logger.info("findGoods: put into redis cache, key = "+key);
+            redisUtil.set(key, retGoods.get(0), goodsTimeout);
         }
 
         logger.info("findGoods: retGoods = "+retGoods +", withProduct ="+withProduct);
