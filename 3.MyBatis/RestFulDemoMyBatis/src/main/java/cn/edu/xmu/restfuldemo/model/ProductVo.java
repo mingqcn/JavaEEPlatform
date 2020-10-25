@@ -45,7 +45,7 @@ public class ProductVo {
         product.setWeight(this.weight);
         product.setName(this.name);
         product.setStock(0);
-        product.setStatus(Goods.Status.UNPUBLISHED);
+        product.setState(Goods.Status.UNPUBLISHED);
         return product;
     }
 }
