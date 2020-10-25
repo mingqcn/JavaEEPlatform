@@ -78,7 +78,7 @@ public class Product implements Serializable {
         return productPo.getWeight();
     }
 
-    public void setStatus(Goods.Status state) {
+    public void setState(Goods.Status state) {
         productPo.setState(state.getCode());
     }
 
