@@ -43,7 +43,7 @@ public class GoodsDao {
 
         List<Goods> retGoods = null;
         String key = null;
-        if (null != goodsPo.getId()){
+        if (null != goodsPo.getId() && withProduct){
             key = "g_"+goodsPo.getId();
             Goods goods = (Goods) redisUtil.get(key);
             if (null != goods){
@@ -79,9 +79,13 @@ public class GoodsDao {
             retGoods.add(item);
         }
 
-        if (null != goodsPo.getId()){
+        if (null != goodsPo.getId() && withProduct){
             logger.info("findGoods: put into redis cache, key = "+key);
-            redisUtil.set(key, retGoods.get(0), goodsTimeout);
+            if (retGoods.size() != 0) {
+                redisUtil.set(key, retGoods.get(0), goodsTimeout);
+            }else{
+                redisUtil.set(key, null, goodsTimeout);
+            }
         }
 
         logger.info("findGoods: retGoods = "+retGoods +", withProduct ="+withProduct);
