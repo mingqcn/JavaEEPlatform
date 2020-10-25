@@ -66,7 +66,7 @@ spring:
         #连接池最大阻塞等待时间（使用负值表示没有限制）
         max-wait: -1
     # 连接超时时间（毫秒）
-    timeout: 300
+    timeout: 5000
 
 mybatis:
   #domain对象的包
