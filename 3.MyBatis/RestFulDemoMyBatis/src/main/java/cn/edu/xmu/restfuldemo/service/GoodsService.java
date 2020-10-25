@@ -33,8 +33,8 @@ public class GoodsService {
         GoodsPo queryObj = new GoodsPo();
         queryObj.setId(id);
         ReturnObject<VoObject> retGoods = null;
-        //ReturnObject<List<Goods>> returnObject = goodsDao.findGoods(queryObj, true);
-        ReturnObject<List<Goods>> returnObject = goodsDao.findGoodsWithProduct(queryObj);
+        ReturnObject<List<Goods>> returnObject = goodsDao.findGoods(queryObj, true);
+        //ReturnObject<List<Goods>> returnObject = goodsDao.findGoodsWithProduct(queryObj);
         if (returnObject.getCode().equals(ResponseCode.OK)) {
             if (returnObject.getData().size() == 1) {
                 retGoods = new ReturnObject<>(returnObject.getData().get(0));
