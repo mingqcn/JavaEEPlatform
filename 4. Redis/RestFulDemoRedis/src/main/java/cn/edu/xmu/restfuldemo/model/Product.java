@@ -1,5 +1,6 @@
 package cn.edu.xmu.restfuldemo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -62,6 +63,7 @@ public class Product implements Serializable {
         return productPo.getName();
     }
 
+    @JsonIgnore
     public Integer getCounterPrice() {
         if (this.priceStockPo != null) {
             return priceStockPo.getPrice();
