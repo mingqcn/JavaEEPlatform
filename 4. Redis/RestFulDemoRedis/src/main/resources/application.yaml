@@ -6,6 +6,9 @@ management:
 
 server:
   port: 8080
+  tomcat:
+    threads:
+      max: 1000
 
 spring:
   boot:
