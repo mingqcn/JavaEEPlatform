@@ -32,7 +32,9 @@ public enum ResponseCode {
     TIMESEG_CONFLICT(604,"时段冲突"),
     SHAREACT_CONFLICT(605,"分享活动时段冲突"),
     ORDERITEM_NOTSHARED(606,"订单明细无分享记录"),
-
+    FLASHSALE_OUTLIMIT(607,"达到时段秒杀上限"),
+    ADVERTISEMENT_STATENOTALLOW(608,"广告状态禁止"),
+    AFTERSALE_STATENOTALLOW(609,"售后单状态禁止"),
     /***************************************************
      *    权限模块错误码
      **************************************************/
@@ -55,12 +57,25 @@ public enum ResponseCode {
     /***************************************************
      *    订单模块错误码
      **************************************************/
-
-
+    ORDER_STATENOTALLOW(801,"订单状态禁止"),
+    FREIGHTNAME_SAME(802,"运费模板名重复"),
+    REGION_SAME(803,"运费模板中该地区已经定义"),
+    REFUND_MORE(804,"退款金额超过支付金额"),
     /***************************************************
      *    商品模块错误码
      **************************************************/
-    PRODUCT_NOTENOUGH(900,"商品规格库存不够");
+    SKU_NOTENOUGH(900,"商品规格库存不够"),
+    SKUSN_SAME(901,"商品规格重复"),
+    SKUPRICE_CONFLICT(902,"商品浮动价格时间冲突"),
+    USER_NOTBUY(903,"用户没有购买此商品"),
+    COUPONACT_STATENOTALLOW(904,"优惠活动状态禁止"),
+    COUPON_STATENOTALLOW(905,"优惠卷状态禁止"),
+    PRESALE_STATENOTALLOW(906,"预售活动状态禁止"),
+    GROUPON_STATENOTALLOW(907,"团购活动状态禁止"),
+    USER_HASSHOP(908,"用户已经有店铺"),
+    COUPON_NOTBEGIN(909,"未到优惠卷领取时间"),
+    COUPON_FINISH(910,"优惠卷领罄"),
+    COUPON_END(911,"优惠卷活动终止");
 
     private int code;
     private String message;
