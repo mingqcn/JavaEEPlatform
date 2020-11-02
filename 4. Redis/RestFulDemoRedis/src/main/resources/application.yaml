@@ -47,6 +47,7 @@ spring:
           #慢SQL执行时间
           slow-sql-millis: 100
       validation-query: select 1
+    sql-script-encoding: UTF-8
 
 
   redis:
