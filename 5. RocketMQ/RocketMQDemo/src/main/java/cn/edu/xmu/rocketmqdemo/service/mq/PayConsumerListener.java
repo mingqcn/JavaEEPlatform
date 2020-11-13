@@ -22,7 +22,7 @@ public class PayConsumerListener implements RocketMQListener<String> {
     private static final Logger logger = LoggerFactory.getLogger(PayConsumerListener.class);
     @Override
     public void onMessage(String message) {
-        Integer payId = JacksonUtil.toObj(message, Integer.class);
-        logger.info("onMessage: got message payId =" + payId +" time = "+ LocalDateTime.now());
+        Integer orderId = JacksonUtil.toObj(message, Integer.class);
+        logger.info("onMessage: got message orderId =" + orderId +" time = "+ LocalDateTime.now());
     }
 }

@@ -73,6 +73,12 @@
             <artifactId>jackson-datatype-jdk8</artifactId>
             <version>2.11.1</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>1.9</version>
+        </dependency>
     </dependencies>
 
     <build>

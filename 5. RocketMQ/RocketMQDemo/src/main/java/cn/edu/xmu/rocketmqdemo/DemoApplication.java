@@ -26,5 +26,8 @@ public class DemoApplication implements CommandLineRunner {
 		log.setPrivId(Long.valueOf(2));
 		log.setGmtCreate(LocalDateTime.now());
 		rocketMQService.sendLogMessage(log);
+
+		Long orderId = Long.valueOf(3);
+		rocketMQService.sendOrderPayMessage(orderId);
 	}
 }

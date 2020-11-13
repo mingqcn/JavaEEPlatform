@@ -42,37 +42,17 @@ public class RocketMQService {
     @Value("${rocketmqdemo.order-pay-topic.timeout}")
     private long timeout;
 
-    @Value("${rocketmqdemo.order-stock-topic.consumer-num}")
-    private int consumerNum;
-
-
     public void sendLogMessage(Log log){
 
         String json = JacksonUtil.toJson(log);
-        Message message = MessageBuilder.withPayload(json).setHeader(MessageHeaders.CONTENT_TYPE, MimeTypeUtils.APPLICATION_JSON_VALUE).build();
+        Message message = MessageBuilder.withPayload(json).build();
         logger.info("sendLogMessage: message = " + message);
         rocketMQTemplate.sendOneWay("log-topic:1", message);
     }
 
-    public void sendOrderStockMessage(List<OrderStockEvent> events){
-
-        String topic = "order-stock-topic:";
-        String topicWithTag = (consumerNum <= 0)? topic + "0": topic + new Random().nextInt(consumerNum);
-        List<Message> msgs = new ArrayList<>(events.size());
-        for (int i =0; i < events.size(); i++) {
-            String json = JacksonUtil.toJson(events.get(i));
-            Message msg = MessageBuilder.withPayload(json).setHeader(RocketMQHeaders.TRANSACTION_ID, "KEY_" + i).build();
-            msgs.add(msg); 
-        }
-
-        String key = LocalDateTime.now().toString();
-        SendResult result = rocketMQTemplate.syncSendOrderly(topicWithTag, msgs, key);
-        logger.info("sendOrderStockMessage: onSuccess result = " + result);
-    }
-
-    public void sendOrderPayMessage(Long payId){
-        logger.info("sendOrderPayMessage: send message time =" +LocalDateTime.now());
-        rocketMQTemplate.asyncSend("order-pay-topic", MessageBuilder.withPayload(payId.toString()).build(), new SendCallback() {
+    public void sendOrderPayMessage(Long orderId){
+        logger.info("sendOrderPayMessage: send message orderId = "+orderId+" delay ="+delayLevel+" time =" +LocalDateTime.now());
+        rocketMQTemplate.asyncSend("order-pay-topic", MessageBuilder.withPayload(orderId.toString()).build(), new SendCallback() {
             @Override
             public void onSuccess(SendResult sendResult) {
                 logger.info("sendOrderPayMessage: onSuccess result = "+ sendResult+" time ="+LocalDateTime.now());

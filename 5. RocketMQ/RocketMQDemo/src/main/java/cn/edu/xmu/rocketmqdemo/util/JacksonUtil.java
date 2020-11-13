@@ -213,8 +213,7 @@ public class JacksonUtil {
         ObjectMapper mapper = new ObjectMapper().registerModule(new Jdk8Module())
                 .registerModule(new JavaTimeModule());
         try {
-            return mapper.readValue(data, new TypeReference<T>() {
-            });
+            return mapper.readValue(data, clazz);
         } catch (IOException e) {
             logger.error(e.getMessage(), e);
         }

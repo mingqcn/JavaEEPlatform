@@ -2,6 +2,7 @@ package cn.edu.xmu.rocketmqdemo.service.mq;
 
 import cn.edu.xmu.rocketmqdemo.model.Log;
 import cn.edu.xmu.rocketmqdemo.util.JacksonUtil;
+import org.apache.commons.text.StringEscapeUtils;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.common.UtilAll;
 import org.apache.rocketmq.common.consumer.ConsumeFromWhere;
