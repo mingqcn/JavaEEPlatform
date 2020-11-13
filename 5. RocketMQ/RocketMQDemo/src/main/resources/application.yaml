@@ -1,0 +1,40 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+server:
+  port: 8080
+  tomcat:
+    threads:
+      max: 1000
+
+
+# 配置rocketmq
+rocketmq:
+  # 指定namesrv地址
+  name-server: 192.168.31.241:9876
+  producer:
+    #生产者group名称
+    group: producer_group
+    #一次发送多少数量消息
+    max-message-size: 4096
+    #发送消息超时时间,默认3000
+    send-message-timeout: 3000
+    #发送消息失败重试次数，默认2
+    retry-times-when-send-async-failed: 2
+
+
+rocketmqdemo:
+  order-pay-topic:
+    # 固定的延时等级 "1s 5s 10s 30s 1m 2m 3m 4m 5m 6m 7m 8m 9m 10m 20m 30m 1h 2h"
+    delay-level: 3
+    #超时时间（秒）
+    timeout: 10
+  order-stock-topic:
+    #消费者个数
+    consumer-num: 4
+
+
+
