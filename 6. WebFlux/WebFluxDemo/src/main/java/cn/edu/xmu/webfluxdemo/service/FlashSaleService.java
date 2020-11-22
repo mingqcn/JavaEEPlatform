@@ -17,8 +17,8 @@ public class FlashSaleService {
 
     @Autowired
     private ReactiveRedisTemplate<String, Serializable> reactiveRedisTemplate;
-    public Flux<Serializable> getFlashSale(Long segId){
-        return reactiveRedisTemplate.opsForSet().members("1");
+    public Flux<FlashSaleItem> getFlashSale(Long segId){
+        return reactiveRedisTemplate.opsForSet().members("1").map(x-> (FlashSaleItem) x);
     }
 
 }

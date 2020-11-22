@@ -24,10 +24,6 @@ public class FlashSaleController {
 
     @GetMapping(path = "timesegments/{id}/flashsales")
     public Flux<FlashSaleItemRetVo> getFlashSale(@PathVariable Long id) {
-        return flashSaleService.getFlashSale(id).map(x -> {
-            logger.debug(" x =" + x);
-            FlashSaleItem y = (FlashSaleItem) x;
-            logger.debug(" y =" + y);
-            return (FlashSaleItemRetVo) y.createVo();});
+        return flashSaleService.getFlashSale(id).map(x -> (FlashSaleItemRetVo) x.createVo());
     }
 }
