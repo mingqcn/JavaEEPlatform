@@ -8,19 +8,15 @@ server:
   port: 8082
 
 spring:
-  boot:
-    admin:
-      client:
-        url: http://localhost:8081
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://172.16.3.5:3306/oomall_demo?serverTimezone=GMT%2B8
+    url: jdbc:mysql://localhost:3306/oomall_demo?serverTimezone=GMT%2B8
     username: demouser
     password: 123456
     type: com.alibaba.druid.pool.DruidDataSource
     initialization-mode: always
     schema: classpath:schema.sql
-    data: classpath:data.sql
+    data: classpath:testdata.sql
     druid:
       #初始化时建立物理连接的个数
       initial-size: 3
@@ -30,13 +26,6 @@ spring:
       max-active: 100
       #获取连接时最大等待时间
       max-wait: 60000
-      #配置监控页面访问登录名及密码
-      stat-view-servlet:
-        login-username: admin
-        login-password: 123456
-        enabled: true
-        url-pattern: /druid/*
-
       filter:
         stat:
           #是否开启慢sql查询监控
@@ -45,12 +34,19 @@ spring:
           slow-sql-millis: 100
       validation-query: select 1
     sql-script-encoding: UTF-8
+  redis:
+    # Redis服务器地址
+    host: 192.168.31.241
+    # Redis服务器连接端口
+    port: 6379
+    # Redis服务器连接密码
+    password: 123456
 
 mybatis:
   #domain对象的包
-  type-aliases-package: cn.edu.xmu.restfuldemo.model
+  type-aliases-package: cn.edu.xmu.webfluxdemo.model
   #mapper.xml所在的位置
-  mapper-locations: classpath:cn.edu.xmu.restfuldemo.mapper/*.xml
+  mapper-locations: classpath:cn.edu.xmu.webfluxdemo.mapper/*.xml
   #自动将SQL中查出来的带下划线的字段，转换为驼峰标志，再去匹配类中的属性
   configuration:
     #输出产生的SQL

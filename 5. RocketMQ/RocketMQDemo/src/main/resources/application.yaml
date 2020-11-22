@@ -32,9 +32,6 @@ rocketmqdemo:
     delay-level: 3
     #超时时间（秒）
     timeout: 10
-  order-stock-topic:
-    #消费者个数
-    consumer-num: 4
 
 
 
