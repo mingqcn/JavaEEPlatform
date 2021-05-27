@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
  * @author: Ming Qiu
  * @date: Created in 17:01 2020/7/31
  **/
-@Component
+@Component("boss_Setter")
 public class Boss_Setter {
 
     private Car car;
