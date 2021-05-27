@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--    工程的根标签-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!--    模型版本需要设置为 4.0。-->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--    工程组的标识。它在一个组织或者项目中通常是唯一的-->
+    <groupId>xmu.demo</groupId>
+
+    <!--    工程的标识。它通常是工程的名称。-->
+    <artifactId>ServletDemo</artifactId>
+
+    <!--    工程的版本号。在 artifact 的仓库中，它用来区分不同的版本。-->
+    <version>1.0-SNAPSHOT</version>
+
+    <!--    打包的格式-->
+    <packaging>war</packaging>
+
+    <!--    定义属性，用在后面的定义中-->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <!--    定义依赖关系-->
+    <dependencies>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>3.0-alpha-1</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <!--    定义构建的方法-->
+    <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <port>8080</port>
+                    <path>/</path>
+                    <server>tomcat7</server>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+</project>
