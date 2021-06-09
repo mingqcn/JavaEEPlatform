@@ -13,5 +13,5 @@ server:
       max: 200
       #最小工作线程数
       min-spare: 100
-    #tomcat最大连接数
+
     max-connections: 300
