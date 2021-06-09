@@ -7,11 +7,9 @@ server:
   port: 8080
   tomcat:
     #阻塞队列的长度
-    accept-count: 100
+    accept-count: 10
     threads:
       #最大工作线程数
       max: 200
       #最小工作线程数
       min-spare: 100
-
-    max-connections: 300
