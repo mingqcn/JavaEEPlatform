@@ -17,6 +17,6 @@ public class TestNettyController {
 
     @GetMapping("{latency}")
     public Mono<Object> sleepthread(@PathVariable long latency){
-        return Mono.just(ResponseUtil.ok()).delayElement(Duration.ofMillis(latency));
+        return Mono.just(ResponseUtil.ok()).delayElement(Duration.ofSeconds(latency));
     }
 }

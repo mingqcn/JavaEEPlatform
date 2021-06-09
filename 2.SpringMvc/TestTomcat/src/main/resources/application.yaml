@@ -15,5 +15,3 @@ server:
       min-spare: 100
     #tomcat最大连接数
     max-connections: 300
-    #连接等待时间
-    connection-timeout: 50ms
