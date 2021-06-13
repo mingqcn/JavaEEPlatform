@@ -13,6 +13,6 @@ server:
   tomcat:
     threads:
       #最大工作线程数
-      max: 300
+      max: 200
       #最小工作线程数
       min-spare: 100
