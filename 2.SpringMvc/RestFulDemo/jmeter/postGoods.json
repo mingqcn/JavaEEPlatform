@@ -1,5 +1,4 @@
-{
-  "name":"${name}”,
+{"name":"${name}",
   "brief":"${brief}",
   "unit":"${unit}",
   "categoryId":11,
