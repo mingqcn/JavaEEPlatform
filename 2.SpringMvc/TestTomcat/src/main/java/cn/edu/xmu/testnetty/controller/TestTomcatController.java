@@ -18,7 +18,7 @@ public class TestTomcatController {
     @GetMapping("{latency}")
     public Object sleepthread(@PathVariable long latency){
         try {
-            TimeUnit.MILLISECONDS.sleep(latency);
+            TimeUnit.SECONDS.sleep(latency);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

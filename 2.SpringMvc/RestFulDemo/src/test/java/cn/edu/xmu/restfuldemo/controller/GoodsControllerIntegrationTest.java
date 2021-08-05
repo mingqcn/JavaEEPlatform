@@ -76,7 +76,7 @@ public class GoodsControllerIntegrationTest {
                 .andExpect(content().contentType("application/json;charset=UTF-8"))
                 .andReturn().getResponse().getContentAsString();
 
-        String expectedResponse = "{\"errno\":503,\"errmsg\":\"商品名称不能为空;\",\"data\":null}";
+        String expectedResponse = "{\"errno\":0,\"errmsg\":\"商品名称不能为空\",\"data\":null}";
 
         JSONAssert.assertEquals(expectedResponse, responseString, true);
     }
