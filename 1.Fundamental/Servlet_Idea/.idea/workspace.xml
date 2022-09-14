@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Servlet:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e7402d54-dd73-4bfd-a9b6-517c2f9cfca6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/consumer/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/consumer/src/main/java/cn/edu/xmu/rocketmqdemo/ConsumerApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/consumer/src/main/java/cn/edu/xmu/rocketmqdemo/config/LoadBalanceConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/consumer/src/main/java/cn/edu/xmu/rocketmqdemo/config/OpenFeignConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/consumer/src/main/java/cn/edu/xmu/rocketmqdemo/config/RocketMQConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/consumer/src/main/java/cn/edu/xmu/rocketmqdemo/microservice/GoodsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/consumer/src/main/java/cn/edu/xmu/rocketmqdemo/model/Goods.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/consumer/src/main/java/cn/edu/xmu/rocketmqdemo/model/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/consumer/src/main/java/cn/edu/xmu/rocketmqdemo/model/SpecItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/consumer/src/main/java/cn/edu/xmu/rocketmqdemo/model/Specification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/consumer/src/main/java/cn/edu/xmu/rocketmqdemo/service/PayConsumerListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/consumer/src/main/java/cn/edu/xmu/rocketmqdemo/util/JacksonUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/consumer/src/main/resources/application.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/consumer/src/main/resources/logback.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/goodsservice/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/goodsservice/src/main/java/cn/edu/xmu/rocketmqdemo/GoodsApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/goodsservice/src/main/java/cn/edu/xmu/rocketmqdemo/config/CorsConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/goodsservice/src/main/java/cn/edu/xmu/rocketmqdemo/controller/GoodsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/goodsservice/src/main/java/cn/edu/xmu/rocketmqdemo/model/Goods.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/goodsservice/src/main/java/cn/edu/xmu/rocketmqdemo/model/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/goodsservice/src/main/java/cn/edu/xmu/rocketmqdemo/model/SpecItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/goodsservice/src/main/java/cn/edu/xmu/rocketmqdemo/model/Specification.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/goodsservice/src/main/java/cn/edu/xmu/rocketmqdemo/service/GoodsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/goodsservice/src/main/java/cn/edu/xmu/rocketmqdemo/util/JacksonUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/goodsservice/src/main/java/cn/edu/xmu/rocketmqdemo/util/ResponseCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/goodsservice/src/main/java/cn/edu/xmu/rocketmqdemo/util/ResponseUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/goodsservice/src/main/java/cn/edu/xmu/rocketmqdemo/util/ReturnObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/goodsservice/src/main/resources/application.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/goodsservice/src/main/resources/logback.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/producer/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/producer/src/main/java/cn/edu/xmu/rocketmqdemo/ProducerApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/producer/src/main/java/cn/edu/xmu/rocketmqdemo/config/RocketMQConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/producer/src/main/java/cn/edu/xmu/rocketmqdemo/model/OrderStockEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/producer/src/main/java/cn/edu/xmu/rocketmqdemo/service/RocketMQService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/producer/src/main/java/cn/edu/xmu/rocketmqdemo/util/JacksonUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/producer/src/main/resources/application.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../6. OpenFeign/RocketMQ_Openfeign/producer/src/main/resources/logback.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.SpringFrameWork/Servlet_Idea/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.SpringFrameWork/Servlet_Idea/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.SpringFrameWork/Servlet_Idea/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.SpringFrameWork/Servlet_Idea/Servlet_idea.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Servlet_idea.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.SpringFrameWork/Servlet_Idea/src/main/java/xmu/servlet/WelcomeGetServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xmu/servlet/WelcomeGetServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.SpringFrameWork/Servlet_Idea/src/main/java/xmu/servlet/WelcomePostServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xmu/servlet/WelcomePostServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.SpringFrameWork/Servlet_Idea/src/main/java/xmu/servlet/WelcomeServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/xmu/servlet/WelcomeServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.SpringFrameWork/Servlet_Idea/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.SpringFrameWork/Servlet_Idea/src/main/webapp/get.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/get.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.SpringFrameWork/Servlet_Idea/src/main/webapp/post.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/post.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.SpringFrameWork/Servlet_Maven/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Servlet_Maven/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.SpringFrameWork/Servlet_Maven/src/main/java/xmu/demo/servlet/WelcomeGetServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Servlet_Maven/src/main/java/xmu/demo/servlet/WelcomeGetServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.SpringFrameWork/Servlet_Maven/src/main/java/xmu/demo/servlet/WelcomePostServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Servlet_Maven/src/main/java/xmu/demo/servlet/WelcomePostServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.SpringFrameWork/Servlet_Maven/src/main/java/xmu/demo/servlet/WelcomeServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Servlet_Maven/src/main/java/xmu/demo/servlet/WelcomeServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.SpringFrameWork/Servlet_Maven/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Servlet_Maven/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.SpringFrameWork/Servlet_Maven/src/main/webapp/get.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Servlet_Maven/src/main/webapp/get.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../1.SpringFrameWork/Servlet_Maven/src/main/webapp/post.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Servlet_Maven/src/main/webapp/post.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/DemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/DemoApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/config/CorsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/config/Swagger2Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/config/Swagger2Configuration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/controller/BindingResultGoodsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/controller/BindingResultGoodsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/controller/CodeValidGoodsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/controller/CodeValidGoodsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/controller/ControllerExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/controller/ControllerExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/controller/GoodsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/controller/GoodsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/controller/vo/GoodsVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/controller/vo/GoodsVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/controller/vo/ProductVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/controller/vo/ProductVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/model/Goods.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/model/Goods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/model/SpecItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/model/SpecItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/model/Specification.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/model/Specification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/service/GoodsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/service/GoodsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/util/JacksonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/util/JacksonUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/util/ResponseCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/util/ResponseCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/util/ResponseUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/util/ResponseUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/util/ReturnObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/java/cn/edu/xmu/restfuldemo/util/ReturnObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/main/resources/logback.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/test/java/cn/edu/xmu/restfuldemo/DemoApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/test/java/cn/edu/xmu/restfuldemo/DemoApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/test/java/cn/edu/xmu/restfuldemo/controller/BindingResultGoodsControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/test/java/cn/edu/xmu/restfuldemo/controller/BindingResultGoodsControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/test/java/cn/edu/xmu/restfuldemo/controller/CodeValidGoodsControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/test/java/cn/edu/xmu/restfuldemo/controller/CodeValidGoodsControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/test/java/cn/edu/xmu/restfuldemo/controller/GoodsControllerIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/test/java/cn/edu/xmu/restfuldemo/controller/GoodsControllerIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/test/java/cn/edu/xmu/restfuldemo/controller/GoodsControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/test/java/cn/edu/xmu/restfuldemo/controller/GoodsControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/test/java/cn/edu/xmu/restfuldemo/controller/vo/GoodsVoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/test/java/cn/edu/xmu/restfuldemo/controller/vo/GoodsVoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/test/java/cn/edu/xmu/restfuldemo/service/GoodsServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/test/java/cn/edu/xmu/restfuldemo/service/GoodsServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/test/java/cn/edu/xmu/restfuldemo/util/GoodsFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/test/java/cn/edu/xmu/restfuldemo/util/GoodsFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/test/java/cn/edu/xmu/restfuldemo/util/JacksonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../2.SpringMvc/RestFulDemo/src/test/java/cn/edu/xmu/restfuldemo/util/JacksonUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/DemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/DemoApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/config/CorsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/config/Swagger2Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/config/Swagger2Configuration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/controller/GoodsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/controller/GoodsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/dao/GoodsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/dao/GoodsDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/mapper/GoodsMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/mapper/GoodsMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/model/Goods.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/model/Goods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/model/GoodsPo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/model/GoodsPo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/model/GoodsRetVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/model/GoodsRetVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/model/GoodsVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/model/GoodsVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/model/PriceStockPo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/model/PriceStockPo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/model/ProductPo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/model/ProductPo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/model/ProductRetVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/model/ProductRetVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/model/ProductVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/model/ProductVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/model/VoObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/model/VoObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/service/GoodsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/service/GoodsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/util/Common.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/util/Common.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/util/JacksonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/util/JacksonUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/util/ResponseCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/util/ResponseCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/util/ResponseUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/util/ResponseUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/util/ReturnObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/java/cn/edu/xmu/restfuldemo/util/ReturnObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/resources/cn/edu/xmu/restfuldemo/mapper/GoodsMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/resources/cn/edu/xmu/restfuldemo/mapper/GoodsMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/main/resources/logback.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/test/java/cn/edu/xmu/restfuldemo/DemoApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/test/java/cn/edu/xmu/restfuldemo/DemoApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/test/java/cn/edu/xmu/restfuldemo/GoodsControllerIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/test/java/cn/edu/xmu/restfuldemo/GoodsControllerIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/test/java/cn/edu/xmu/restfuldemo/util/GoodsFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../3.MyBatis/RestFulDemoMyBatis/src/test/java/cn/edu/xmu/restfuldemo/util/GoodsFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/DemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/DemoApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/config/CorsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/config/RedisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/config/RedisConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/config/Swagger2Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/config/Swagger2Configuration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/controller/GoodsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/controller/GoodsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/dao/GoodsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/dao/GoodsDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/mapper/GoodsMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/mapper/GoodsMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/Goods.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/Goods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/GoodsPo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/GoodsPo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/GoodsRetVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/GoodsRetVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/GoodsVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/GoodsVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/PriceStockPo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/PriceStockPo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/ProductPo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/ProductPo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/ProductRetVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/ProductRetVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/ProductVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/ProductVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/VoObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/VoObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/service/GoodsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/service/GoodsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/util/Common.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/util/Common.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/util/JacksonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/util/JacksonUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/util/RedisUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/util/RedisUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/util/ResponseCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/util/ResponseCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/util/ResponseUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/util/ResponseUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/util/ReturnObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/util/ReturnObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/resources/cn/edu/xmu/restfuldemo/mapper/GoodsMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/resources/cn/edu/xmu/restfuldemo/mapper/GoodsMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/main/resources/logback.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/test/java/cn/edu/xmu/restfuldemo/DemoApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/test/java/cn/edu/xmu/restfuldemo/DemoApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/test/java/cn/edu/xmu/restfuldemo/GoodsControllerIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/test/java/cn/edu/xmu/restfuldemo/GoodsControllerIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/test/java/cn/edu/xmu/restfuldemo/util/GoodsFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../4.Redis/RestFulDemoRedis/src/test/java/cn/edu/xmu/restfuldemo/util/GoodsFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/TestNetty/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/TestNetty/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/TestNetty/src/main/java/cn/edu/xmu/testnetty/TestNettyApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/TestNetty/src/main/java/cn/edu/xmu/testnetty/TestNettyApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/TestNetty/src/main/java/cn/edu/xmu/testnetty/controller/TestNettyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/TestNetty/src/main/java/cn/edu/xmu/testnetty/controller/TestNettyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/TestNetty/src/main/java/cn/edu/xmu/testnetty/util/JacksonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/TestNetty/src/main/java/cn/edu/xmu/testnetty/util/JacksonUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/TestNetty/src/main/java/cn/edu/xmu/testnetty/util/ResponseCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/TestNetty/src/main/java/cn/edu/xmu/testnetty/util/ResponseCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/TestNetty/src/main/java/cn/edu/xmu/testnetty/util/ResponseUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/TestNetty/src/main/java/cn/edu/xmu/testnetty/util/ResponseUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/TestNetty/src/main/java/cn/edu/xmu/testnetty/util/ReturnObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/TestNetty/src/main/java/cn/edu/xmu/testnetty/util/ReturnObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/TestNetty/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/TestNetty/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/WebFluxDemo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/WebFluxDemo/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/DemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/DemoApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/config/CorsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/config/RedisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/config/RedisConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/controller/FlashSaleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/controller/FlashSaleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/mapper/FlashSaleItemPoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/mapper/FlashSaleItemPoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/mapper/GoodsSkuPoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/mapper/GoodsSkuPoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/model/bo/FlashSaleItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/model/bo/FlashSaleItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/model/bo/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/model/bo/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/model/po/FlashSaleItemPo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/model/po/FlashSaleItemPo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/model/po/FlashSaleItemPoExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/model/po/FlashSaleItemPoExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/model/po/GoodsSkuPo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/model/po/GoodsSkuPo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/model/po/GoodsSkuPoExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/model/po/GoodsSkuPoExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/model/vo/FlashSaleItemRetVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/model/vo/FlashSaleItemRetVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/model/vo/ProductRetVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/model/vo/ProductRetVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/model/vo/VoObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/model/vo/VoObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/service/FlashSaleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/WebFluxDemo/src/main/java/cn/edu/xmu/webfluxdemo/service/FlashSaleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/WebFluxDemo/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/WebFluxDemo/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/WebFluxDemo/src/main/resources/cn/edu/xmu/webfluxdemo/mapper/FlashSaleItemPoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/WebFluxDemo/src/main/resources/cn/edu/xmu/webfluxdemo/mapper/FlashSaleItemPoMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/WebFluxDemo/src/main/resources/cn/edu/xmu/webfluxdemo/mapper/GoodsSkuPoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/WebFluxDemo/src/main/resources/cn/edu/xmu/webfluxdemo/mapper/GoodsSkuPoMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/WebFluxDemo/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/WebFluxDemo/src/main/resources/logback.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/WebFluxDemo/src/main/resources/mybatis-generator-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/WebFluxDemo/src/main/resources/mybatis-generator-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/WebFluxDemo/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/WebFluxDemo/src/main/resources/schema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/WebFluxDemo/src/main/resources/testdata.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/WebFluxDemo/src/main/resources/testdata.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../6.WebFlux/WebFluxDemo/src/test/java/cn/edu/xmu/webfluxdemo/controller/FlashSaleControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../7.WebFlux/WebFluxDemo/src/test/java/cn/edu/xmu/webfluxdemo/controller/FlashSaleControllerTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="115" />
+    <option name="y" value="460" />
+    <option name="width" value="1935" />
+    <option name="height" value="1040" />
+  </component>
+  <component name="ProjectId" id="2EQtEk725AfCqfbSfiEsuiDJ5eh" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Servlet" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Servlet" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Servlet" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Servlet" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Servlet" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Servlet" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="production" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Servlet" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Servlet" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="production" type="462c0819:PsiDirectoryNode" />
+              <item name="Servlet" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Servlet" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Servlet" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="production" type="462c0819:PsiDirectoryNode" />
+              <item name="Servlet" type="462c0819:PsiDirectoryNode" />
+              <item name="xmu" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Servlet" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Servlet" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="production" type="462c0819:PsiDirectoryNode" />
+              <item name="Servlet" type="462c0819:PsiDirectoryNode" />
+              <item name="xmu" type="462c0819:PsiDirectoryNode" />
+              <item name="demo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Servlet" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Servlet" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Servlet" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Servlet" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="demo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Servlet" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Servlet" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Servlet" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Servlet" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Course/JavaEE/2021/project/JavaEEPlatform/1.Fundamental/Servlet_Idea&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="local" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.46" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/Servlet_war_exploded/" />
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="Servlet:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/Servlet_war_exploded" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_Servlet" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="50809" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="Servlet:war exploded" />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e7402d54-dd73-4bfd-a9b6-517c2f9cfca6" name="Default Changelist" comment="" />
+      <created>1569315048762</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1569315048762</updated>
+      <workItem from="1569315052471" duration="334000" />
+      <workItem from="1569315513832" duration="961000" />
+      <workItem from="1662539527049" duration="676000" />
+      <workItem from="1663031106642" duration="236000" />
+      <workItem from="1663128169751" duration="17000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1295000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2533512" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Web" order="2" side_tool="true" />
+      <window_info id="Designer" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Application Servers" weight="0.32956153" />
+      <window_info anchor="bottom" id="Messages" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32956153" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Java Enterprise" order="12" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="Maven" order="4" />
+      <window_info anchor="right" id="Palette&#9;" order="5" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Servlet.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/xmu/demo/Welcome.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>Servlet:war exploded</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Web</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Servlet</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>12</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
