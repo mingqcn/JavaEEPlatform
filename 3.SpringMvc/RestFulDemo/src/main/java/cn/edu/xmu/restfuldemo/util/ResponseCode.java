@@ -1,4 +1,4 @@
-package cn.edu.xmu.restfuldemo.util;
+package cn.edu.xmu.rocketmqdemo.util;
 
 /**
  * 返回的错误码

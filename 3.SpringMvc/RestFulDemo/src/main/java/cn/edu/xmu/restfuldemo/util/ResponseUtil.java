@@ -1,4 +1,4 @@
-package cn.edu.xmu.restfuldemo.util;
+package cn.edu.xmu.rocketmqdemo.util;
 
 import java.util.HashMap;
 import java.util.Map;

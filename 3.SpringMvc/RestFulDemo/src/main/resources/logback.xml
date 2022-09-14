@@ -26,7 +26,7 @@
     </appender>
 
     <!-- 日志输出级别 -->
-    <logger name="cn.edu.xmu.restfuldemo" level = "INFO"/>
+    <logger name="cn.edu.xmu.rocketmqdemo" level = "INFO"/>
     <root level="ERROR">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="FILE" />
