@@ -8,19 +8,19 @@
         <servlet>
             <servlet-name>Welcome</servlet-name>
             <!--包名+类型-->
-            <servlet-class>xmu.servlet.WelcomeServlet</servlet-class>
+            <servlet-class>cn.edu.xmu.servlet.WelcomeServlet</servlet-class>
         </servlet>
 
         <servlet>
             <servlet-name>WelcomeGet</servlet-name>
             <!--包名+类型-->
-            <servlet-class>xmu.servlet.WelcomeGetServlet</servlet-class>
+            <servlet-class>cn.edu.xmu.servlet.WelcomeGetServlet</servlet-class>
         </servlet>
 
         <servlet>
             <servlet-name>WelcomePost</servlet-name>
             <!--包名+类型-->
-            <servlet-class>xmu.servlet.WelcomePostServlet</servlet-class>
+            <servlet-class>cn.edu.xmu.servlet.WelcomePostServlet</servlet-class>
         </servlet>
 
     <servlet-mapping>

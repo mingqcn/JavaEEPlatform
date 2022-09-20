@@ -1,4 +1,4 @@
-package xmu.servlet;
+package cn.edu.xmu.servlet;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -7,15 +7,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class WelcomePostServlet extends HttpServlet {
+public class WelcomeServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=UTF-8");
-        req.setCharacterEncoding("utf-8");
-        resp.setCharacterEncoding("utf-8");
-        String firstName = req.getParameter("firstname");
-        String bornPlace = req.getParameter("bornplace");
 
         PrintWriter out = resp.getWriter();
         out.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
@@ -23,13 +19,11 @@ public class WelcomePostServlet extends HttpServlet {
         out.println("<html xmlns=\"http://www.w3.org/1999/xhtml\">");
 
         out.println("<head>");
-        out.println("<title>处理get提交的数据</title>");
+        out.println("<title>Servlet例子</title>");
         out.println("</head>");
 
         out.println("<body>");
-        out.println("<h1>欢迎使用Servlet</h1><br/>");
-        out.println("提交的姓名是："+firstName);
-        out.println("<br/>提交的籍贯是："+bornPlace);
+        out.println("欢迎使用Servlet");
         out.println("</body>");
 
         out.println("</html>");

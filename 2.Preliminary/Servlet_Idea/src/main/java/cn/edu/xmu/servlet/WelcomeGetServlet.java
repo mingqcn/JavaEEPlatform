@@ -1,4 +1,4 @@
-package xmu.servlet;
+package cn.edu.xmu.servlet;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
