@@ -1,4 +1,4 @@
-package xmu.demo.servlet;
+package cn.edu.xmu.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
