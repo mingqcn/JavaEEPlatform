@@ -1,4 +1,4 @@
-//School of Informatics Xiamen University, GPL-3.0 license
+// JavaEEPlatform by School of Informatics Xiamen University, GPL-3.0 license
 package cn.edu.xmu.javaee.autowiredemo.autowiredbean;
 
 /**

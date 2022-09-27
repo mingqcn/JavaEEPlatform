@@ -1,11 +1,10 @@
-package cn.edu.xmu.javaee.beanlifecycle;
+package cn.edu.xmu.javaee.beanlifecycle.bean;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
-import org.springframework.beans.PropertyValues;
 import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessor;
 import org.springframework.stereotype.Component;
-
-import java.beans.PropertyDescriptor;
 
 /**
  * @author: Ming Qiu
@@ -14,11 +13,13 @@ import java.beans.PropertyDescriptor;
 @Component
 public class MyInstantiationAwareBeanPostProcessor implements InstantiationAwareBeanPostProcessor {
 
+    private Logger log = LoggerFactory.getLogger(MyInstantiationAwareBeanPostProcessor.class);
+
     //在Bean对象实例化前调用
     @Override
     public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
         //仅对容器中的person bean处理
-        System.out.println("InstantiationAwareBeanPostProcessorAdapter.postProcessBeforeInstantiation invoke, name = " + beanName);
+        log.info("InstantiationAwareBeanPostProcessorAdapter.postProcessBeforeInstantiation invoke, name = " + beanName);
         return null;
     }
 
@@ -26,7 +27,7 @@ public class MyInstantiationAwareBeanPostProcessor implements InstantiationAware
     @Override
     public boolean postProcessAfterInstantiation(Object bean, String beanName) throws BeansException {
         //仅对容器中的person bean处理
-        System.out.println("InstantiationAwareBeanPostProcessorAdapter.postProcessAfterInstantiation invoke, name = " + beanName);
+        log.info("InstantiationAwareBeanPostProcessorAdapter.postProcessAfterInstantiation invoke, name = " + beanName);
         return true;
     }
 

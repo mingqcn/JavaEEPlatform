@@ -1,3 +1,4 @@
+// JavaEEPlatform by School of Informatics Xiamen University, GPL-3.0 license
 package cn.edu.xmu.javaee.beanlifecycle;
 
 import org.springframework.boot.SpringApplication;
@@ -11,9 +12,6 @@ public class BeanLifeCycleApplication {
 		SpringApplication.run(BeanLifeCycleApplication.class, args);
 	}
 
-	@Bean(initMethod = "myPostConstruct", destroyMethod = "myPreDestory")
-	public Boss boss(){
-		return new Boss();
-	}
+
 
 }
