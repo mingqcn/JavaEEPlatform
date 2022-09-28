@@ -5,4 +5,4 @@ ARG JAR_FILE
 ADD ${JAR_FILE} /app/app.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar"]
-CMD["app.jar"]
+CMD ["app.jar"]
