@@ -103,7 +103,7 @@
 					<repository>javaee/${project.name}</repository>
 					<tag>${project.version}</tag>
 					<buildArgs>
-						<JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+						<JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
 					</buildArgs>
 				</configuration>
 			</plugin>
