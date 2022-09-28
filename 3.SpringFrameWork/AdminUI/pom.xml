@@ -73,7 +73,7 @@
 				<executions>
 					<execution>
 						<id>build-image</id>
-						<phase>package</phase>
+						<phase>pre-integration-test</phase>
 						<goals>
 							<goal>build</goal>
 						</goals>
