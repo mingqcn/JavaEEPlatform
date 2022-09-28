@@ -100,7 +100,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<repository>javaee/${project.name}</repository>
+					<repository>xmu-javaee/${project.name}</repository>
 					<tag>${project.version}</tag>
 					<buildArgs>
 						<JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
