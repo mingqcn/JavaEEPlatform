@@ -4,5 +4,5 @@ WORKDIR /app
 ARG JAR_FILE
 ADD ${JAR_FILE} /app/app.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
-CMD ["--spring.boot.admin.client.url=http://localhost:8081"]
+ENTRYPOINT ["java", "-jar", "app.jar", "--spring.boot.admin.client.url="]
+CMD ["http://localhost:8081"]
