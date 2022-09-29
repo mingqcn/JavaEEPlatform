@@ -5,4 +5,4 @@ ARG JAR_FILE
 ADD ${JAR_FILE} /app/app.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
-CMD ["--spring.boot.admin.client.instance.service-base-url=http://autowiredemo:8080"]
+CMD ["--spring.boot.admin.client.instance.service-base-url=http://autowiredemo:8080 --spring.boot.admin.client.url=http://adminui:8081"]
