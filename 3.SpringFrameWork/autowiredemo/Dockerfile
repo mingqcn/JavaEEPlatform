@@ -4,5 +4,5 @@ WORKDIR /app
 ARG JAR_FILE
 ADD ${JAR_FILE} /app/app.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar", "--spring.boot.admin.client.instance.service-base-url="]
-CMD ["http://localhost:8080"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
+CMD ["--spring.boot.admin.client.instance.service-base-url=http://autowiredemo:8080"]
