@@ -101,8 +101,7 @@
 						<configuration>
 							<executable>docker</executable>
 							<arguments>
-								<argument>image</argument>
-								<argument>rm</argument>
+								<argument>rmi</argument>
 								<argument>xmu-javaee/${project.name}:${project.version}</argument>
 							</arguments>
 						</configuration>

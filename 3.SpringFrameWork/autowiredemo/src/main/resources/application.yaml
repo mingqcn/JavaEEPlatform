@@ -12,3 +12,6 @@ spring:
           service-base-url: http://localhost:8080
 server:
   port: 8080
+company:
+  boss:
+    drive: haval
