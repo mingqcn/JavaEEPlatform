@@ -3,7 +3,7 @@
 # remove the specific docker image
 
 check_results=`docker images -q $1 | awk '{print $1}'`
-echo $check_results
+echo "$check_results"
 for imageID in $check_results
 do
   echo "clean image ${imageID}"
