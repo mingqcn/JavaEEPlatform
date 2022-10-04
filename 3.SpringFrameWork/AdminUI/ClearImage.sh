@@ -4,7 +4,7 @@
 
 echo "clean image"
 cmd='docker images -q $1'
-if [ -n cmd ];then
+if [ cmd ];then
   docker rmi $(docker images -q $1)
 fi
 
