@@ -3,8 +3,7 @@
 # remove the specific docker image
 
 echo "clean image"
-
-for imageID in ‘docker images -q $1 | awk 'print $1'’
+for imageID in $('docker images -q $1 | awk '{print $1}'')
 do
   echo "clean image ${imageID}"
   docker rmi imageID
