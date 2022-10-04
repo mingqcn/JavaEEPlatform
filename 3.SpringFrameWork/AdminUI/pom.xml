@@ -56,9 +56,9 @@
 							<goal>exec</goal>
 						</goals>
 						<configuration>
-							<executable>docker</executable>
+							<executable>sh</executable>
 							<arguments>
-								<argument>rmi</argument>
+								<argument>clear_image.sh</argument>
 								<argument>xmu-javaee/${project.name}:${project.version}</argument>
 							</arguments>
 						</configuration>
