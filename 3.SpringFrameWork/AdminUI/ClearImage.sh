@@ -3,7 +3,7 @@
 # remove the specific docker image
 
 echo "clean image"
-if [-n docker images -q $1];then
+if [ -n "docker images -q $1" ];then
   docker rmi $(docker images -q $1)
 fi
 
