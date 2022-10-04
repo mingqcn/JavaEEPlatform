@@ -3,7 +3,8 @@
 # remove the specific docker image
 
 echo "clean image"
-for imageID in 'docker images -q $1'
+cmd='docker images -q $1 '
+for imageID in $cmd
 do
   echo "clean image ${imageID}"
   docker rmi imageID
