@@ -4,6 +4,7 @@
 
 docker_name=$1
 check_results=`docker images -q $docker_name | awk '{print $1}'`
+echo $check_results
 for imageID in $check_results
 do
   echo "clean image ${imageID}"
