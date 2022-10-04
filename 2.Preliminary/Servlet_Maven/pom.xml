@@ -8,7 +8,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!--    工程组的标识。它在一个组织或者项目中通常是唯一的-->
-    <groupId>xmu.demo</groupId>
+    <groupId>cn.edu.xmu.javaee</groupId>
 
     <!--    工程的标识。它通常是工程的名称。-->
     <artifactId>Servlet_Maven</artifactId>

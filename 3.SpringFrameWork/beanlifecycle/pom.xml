@@ -8,7 +8,7 @@
 		<version>2.7.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>cn.edu.xmu</groupId>
+	<groupId>cn.edu.xmu.javaee</groupId>
 	<artifactId>beanlifecycle</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>beanlifecycle</name>
