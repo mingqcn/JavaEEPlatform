@@ -1,16 +1,16 @@
 // JavaEEPlatform by School of Informatics Xiamen University, GPL-3.0 license
-package cn.edu.xmu.javaee.autowiredemo.cirualbean.constructor;
+package cn.edu.xmu.javaee.autowiredemo.cirularbean.constructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CircualA {
+public class CircularC {
 
-    private CircualB b;
+    private CircularA a;
 
     @Autowired
-    public CircualA(CircualB b) {
-        this.b = b;
+    public CircularC(CircularA a) {
+        this.a = a;
     }
 }

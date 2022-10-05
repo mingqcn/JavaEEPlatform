@@ -4,7 +4,7 @@ package cn.edu.xmu.javaee.autowiredemo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(scanBasePackages = {"cn.edu.xmu.javaee.autowiredemo.config", "cn.edu.xmu.javaee.autowiredemo.autowiredbean","cn.edu.xmu.javaee.autowiredemo.cirualbean.set"})
+@SpringBootApplication(scanBasePackages = {"cn.edu.xmu.javaee.autowiredemo.config", "cn.edu.xmu.javaee.autowiredemo.autowiredbean", "cn.edu.xmu.javaee.autowiredemo.cirularbean.set"})
 public class AutowiredemoApplication {
 
     public static void main(String[] args) {
