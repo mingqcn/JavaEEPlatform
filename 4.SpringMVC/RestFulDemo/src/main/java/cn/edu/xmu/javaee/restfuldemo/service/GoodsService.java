@@ -1,15 +1,10 @@
 package cn.edu.xmu.javaee.restfuldemo.service;
 
-import cn.edu.xmu.javaee.restfuldemo.controller.vo.GoodsVo;
-import cn.edu.xmu.javaee.restfuldemo.controller.vo.ProductVo;
-import cn.edu.xmu.javaee.restfuldemo.model.Product;
-import cn.edu.xmu.javaee.restfuldemo.model.SpecItem;
-import cn.edu.xmu.javaee.restfuldemo.model.Specification;
-import cn.edu.xmu.javaee.restfuldemo.model.Goods;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import cn.edu.xmu.javaee.restfuldemo.service.bo.*;
 
 @Service
 public class GoodsService {
@@ -38,23 +33,12 @@ public class GoodsService {
 
     /**
      * 新增商品
-     * @param goodsVo 新商品信息
+     * @param goods 新商品信息
      * @return 新商品
      */
-    public Goods createGoods(GoodsVo goodsVo) {
-        Goods goods = goodsVo.createGoods();
+    public Goods createGoods(Goods goods) {
         goods.setId(1);
         goods.setGoodsSn("11111");
-        if (goodsVo.getProductList() != null) {
-            List<Product> productList = new ArrayList<>(goodsVo.getProductList().size());
-
-            for (ProductVo productVo : goodsVo.getProductList()) {
-                Product product = productVo.createProduct();
-                product.setGoodsId(goods.getId());
-                productList.add(product);
-            }
-            goods.setProductList(productList);
-        }
         return goods;
     }
 
@@ -65,7 +49,7 @@ public class GoodsService {
      * @param goods 修改商品信息
      * @return 修改后是否成功
      */
-    public boolean modifyGoods(Integer id, GoodsVo goods) {
+    public boolean modifyGoods(Integer id, Goods goods) {
         return true;
     }
 

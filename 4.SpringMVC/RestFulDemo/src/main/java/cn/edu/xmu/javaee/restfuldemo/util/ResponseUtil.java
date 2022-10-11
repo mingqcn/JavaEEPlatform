@@ -39,15 +39,15 @@ import java.util.Map;
 public class ResponseUtil {
     public static Object ok() {
         Map<String, Object> obj = new HashMap<String, Object>();
-        obj.put("errno", ResponseCode.OK);
-        obj.put("errmsg", ResponseCode.OK_MSG);
+        obj.put("errno", ResponseNo.OK);
+        obj.put("errmsg", ResponseNo.OK_MSG);
         return obj;
     }
 
     public static Object ok(Object data) {
         Map<String, Object> obj = new HashMap<String, Object>();
-        obj.put("errno", ResponseCode.OK);
-        obj.put("errmsg", ResponseCode.OK_MSG);
+        obj.put("errno", ResponseNo.OK);
+        obj.put("errmsg", ResponseNo.OK_MSG);
         obj.put("data", data);
         return obj;
     }

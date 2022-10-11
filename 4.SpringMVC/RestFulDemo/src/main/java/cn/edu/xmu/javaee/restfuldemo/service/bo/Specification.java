@@ -1,4 +1,4 @@
-package cn.edu.xmu.javaee.restfuldemo.model;
+package cn.edu.xmu.javaee.restfuldemo.service.bo;
 
 import lombok.Data;
 

@@ -1,11 +1,8 @@
 package cn.edu.xmu.javaee.restfuldemo.controller.vo;
 
-import cn.edu.xmu.javaee.restfuldemo.model.Product;
+import cn.edu.xmu.javaee.restfuldemo.service.bo.Product;
 import lombok.Data;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 /**
  * 商品规格视图对象
@@ -15,24 +12,20 @@ import javax.validation.constraints.NotNull;
 public class ProductVo {
 
 
-    @NotBlank
-    @NotNull
     private String productSn;
 
-    @NotBlank
-    @NotNull
     private String desc;
 
 
-    @Min(0)
+
     private Integer counterPrice;
 
 
-    @Min(0)
+
     private Integer retailPrice;
 
 
-    @Min(0)
+
     private Integer weight;
 
     /**

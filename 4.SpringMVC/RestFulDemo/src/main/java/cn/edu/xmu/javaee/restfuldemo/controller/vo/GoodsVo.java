@@ -1,10 +1,9 @@
 package cn.edu.xmu.javaee.restfuldemo.controller.vo;
 
-import cn.edu.xmu.javaee.restfuldemo.model.Goods;
-import cn.edu.xmu.javaee.restfuldemo.model.Specification;
+import cn.edu.xmu.javaee.restfuldemo.service.bo.Goods;
+import cn.edu.xmu.javaee.restfuldemo.service.bo.Specification;
 import lombok.Data;
 
-import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 /**
@@ -14,7 +13,6 @@ import java.util.List;
 @Data
 public class GoodsVo {
 
-    @NotBlank(message="商品名称不能为空")
     private String name;
 
     private String brief;

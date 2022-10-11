@@ -1,8 +1,8 @@
 package cn.edu.xmu.javaee.restfuldemo.controller;
 
 import cn.edu.xmu.javaee.restfuldemo.controller.vo.GoodsVo;
-import cn.edu.xmu.javaee.restfuldemo.model.Goods;
 import cn.edu.xmu.javaee.restfuldemo.service.GoodsService;
+import cn.edu.xmu.javaee.restfuldemo.service.bo.Goods;
 import cn.edu.xmu.javaee.restfuldemo.util.ResponseUtil;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
@@ -20,8 +20,12 @@ public class GoodsController {
 
     private final Log logger = LogFactory.getLog(GoodsController.class);
 
-    @Autowired
     private GoodsService goodsService;
+
+    @Autowired
+    public GoodsController(GoodsService goodsService) {
+        this.goodsService = goodsService;
+    }
 
     @GetMapping("{id}")
     public Object getGoodsById(@PathVariable("id") Integer id) {
@@ -30,7 +34,7 @@ public class GoodsController {
         return ResponseUtil.ok(goods);
     }
 
-    @GetMapping("search")
+    @GetMapping("")
     public Object searchGoodsByName(@RequestParam String name) {
 
         Goods goods = goodsService.searchByName(name);
@@ -40,13 +44,15 @@ public class GoodsController {
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     public Object createGood(@RequestBody GoodsVo goodsVo){
-        Goods new_goods = goodsService.createGoods(goodsVo);
+        Goods goods = goodsVo.createGoods();
+        Goods new_goods = goodsService.createGoods(goods);
         return ResponseUtil.ok(new_goods);
     }
 
     @PutMapping("{id}")
     public Object modiGood(@PathVariable Integer id, @RequestBody GoodsVo goodsVo){
-        goodsService.modifyGoods(id, goodsVo);
+        Goods goods = goodsVo.createGoods();
+        goodsService.modifyGoods(id, goods);
         return ResponseUtil.ok();
     }
 
