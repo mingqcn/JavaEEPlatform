@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CorsConfig.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">restfuldemo</a> &gt; <a href="index.source.html" class="el_package">cn.edu.xmu.javaee.restfuldemo.config</a> &gt; <span class="el_source">CorsConfig.java</span></div><h1>CorsConfig.java</h1><pre class="source lang-java linenums">package cn.edu.xmu.javaee.restfuldemo.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+
+/**
+ * 跨域访问配置
+ * @author Ming Qiu
+ */
+@Configuration
+<span class="fc" id="L13">public class CorsConfig implements WebMvcConfigurer {</span>
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+
+        /**addMapping：配置可以被跨域的路径，可以任意配置，可以具体到直接请求路径。
+         allowedMethods：允许所有的请求方法访问该跨域资源服务器，如：POST、GET、PUT、DELETE等。
+         allowedOrigins：允许所有的请求域名访问我们的跨域资源，可以固定单条或者多条内容，如：“http://www.aaa.com”，只有该域名可以访问我们的跨域资源。
+         allowedHeaders：允许所有的请求header访问，可以自定义设置任意请求头信息。
+         **/
+<span class="fc" id="L22">        registry.addMapping(&quot;/**&quot;)</span>
+<span class="fc" id="L23">                .allowedOrigins(&quot;*&quot;)</span>
+<span class="fc" id="L24">                .allowedHeaders(&quot;*&quot;)</span>
+<span class="fc" id="L25">                .allowedMethods(&quot;GET&quot;, &quot;POST&quot;, &quot;DELETE&quot;, &quot;PUT&quot;, &quot;OPTIONS&quot;, &quot;HEAD&quot;)</span>
+<span class="fc" id="L26">                .maxAge(3600);</span>
+<span class="fc" id="L27">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

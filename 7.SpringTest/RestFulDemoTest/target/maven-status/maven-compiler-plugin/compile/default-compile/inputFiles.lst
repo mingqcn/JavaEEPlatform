@@ -1,0 +1,17 @@
+D:\Course\JavaEE\2022\projects\JavaEEPlatform2\3.SpringFrameWork\RestFulDemo\src\main\java\cn\edu\xmu\javaee\restfuldemo\controller\BindingResultGoodsController.java
+D:\Course\JavaEE\2022\projects\JavaEEPlatform2\3.SpringFrameWork\RestFulDemo\src\main\java\cn\edu\xmu\javaee\restfuldemo\model\Goods.java
+D:\Course\JavaEE\2022\projects\JavaEEPlatform2\3.SpringFrameWork\RestFulDemo\src\main\java\cn\edu\xmu\javaee\restfuldemo\controller\CodeValidGoodsController.java
+D:\Course\JavaEE\2022\projects\JavaEEPlatform2\3.SpringFrameWork\RestFulDemo\src\main\java\cn\edu\xmu\javaee\restfuldemo\DemoApplication.java
+D:\Course\JavaEE\2022\projects\JavaEEPlatform2\3.SpringFrameWork\RestFulDemo\src\main\java\cn\edu\xmu\javaee\restfuldemo\service\GoodsService.java
+D:\Course\JavaEE\2022\projects\JavaEEPlatform2\3.SpringFrameWork\RestFulDemo\src\main\java\cn\edu\xmu\javaee\restfuldemo\config\CorsConfig.java
+D:\Course\JavaEE\2022\projects\JavaEEPlatform2\3.SpringFrameWork\RestFulDemo\src\main\java\cn\edu\xmu\javaee\restfuldemo\util\ReturnObject.java
+D:\Course\JavaEE\2022\projects\JavaEEPlatform2\3.SpringFrameWork\RestFulDemo\src\main\java\cn\edu\xmu\javaee\restfuldemo\controller\ControllerExceptionHandler.java
+D:\Course\JavaEE\2022\projects\JavaEEPlatform2\3.SpringFrameWork\RestFulDemo\src\main\java\cn\edu\xmu\javaee\restfuldemo\controller\vo\ProductVo.java
+D:\Course\JavaEE\2022\projects\JavaEEPlatform2\3.SpringFrameWork\RestFulDemo\src\main\java\cn\edu\xmu\javaee\restfuldemo\util\ResponseUtil.java
+D:\Course\JavaEE\2022\projects\JavaEEPlatform2\3.SpringFrameWork\RestFulDemo\src\main\java\cn\edu\xmu\javaee\restfuldemo\model\SpecItem.java
+D:\Course\JavaEE\2022\projects\JavaEEPlatform2\3.SpringFrameWork\RestFulDemo\src\main\java\cn\edu\xmu\javaee\restfuldemo\model\Specification.java
+D:\Course\JavaEE\2022\projects\JavaEEPlatform2\3.SpringFrameWork\RestFulDemo\src\main\java\cn\edu\xmu\javaee\restfuldemo\util\JacksonUtil.java
+D:\Course\JavaEE\2022\projects\JavaEEPlatform2\3.SpringFrameWork\RestFulDemo\src\main\java\cn\edu\xmu\javaee\restfuldemo\controller\GoodsController.java
+D:\Course\JavaEE\2022\projects\JavaEEPlatform2\3.SpringFrameWork\RestFulDemo\src\main\java\cn\edu\xmu\javaee\restfuldemo\util\ResponseCode.java
+D:\Course\JavaEE\2022\projects\JavaEEPlatform2\3.SpringFrameWork\RestFulDemo\src\main\java\cn\edu\xmu\javaee\restfuldemo\controller\vo\GoodsVo.java
+D:\Course\JavaEE\2022\projects\JavaEEPlatform2\3.SpringFrameWork\RestFulDemo\src\main\java\cn\edu\xmu\javaee\restfuldemo\model\Product.java

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JacksonUtil.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">restfuldemo</a> &gt; <a href="index.source.html" class="el_package">cn.edu.xmu.javaee.restfuldemo.util</a> &gt; <span class="el_source">JacksonUtil.java</span></div><h1>JacksonUtil.java</h1><pre class="source lang-java linenums">package cn.edu.xmu.javaee.restfuldemo.util;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+
+<span class="nc" id="L16">public class JacksonUtil {</span>
+
+<span class="nc" id="L18">    private static final Log logger = LogFactory.getLog(JacksonUtil.class);</span>
+
+    public static String parseString(String body, String field) {
+<span class="nc" id="L21">        ObjectMapper mapper = new ObjectMapper().registerModule(new Jdk8Module())</span>
+<span class="nc" id="L22">                .registerModule(new JavaTimeModule());;</span>
+        JsonNode node;
+        try {
+<span class="nc" id="L25">            node = mapper.readTree(body);</span>
+<span class="nc" id="L26">            JsonNode leaf = node.get(field);</span>
+<span class="nc bnc" id="L27" title="All 2 branches missed.">            if (leaf != null) {</span>
+<span class="nc" id="L28">                return leaf.asText();</span>
+            }
+<span class="nc" id="L30">        } catch (IOException e) {</span>
+<span class="nc" id="L31">            logger.error(e.getMessage(), e);</span>
+<span class="nc" id="L32">        }</span>
+<span class="nc" id="L33">        return null;</span>
+    }
+
+
+    public static List&lt;String&gt; parseStringList(String body, String field) {
+<span class="nc" id="L38">        ObjectMapper mapper = new ObjectMapper().registerModule(new Jdk8Module())</span>
+<span class="nc" id="L39">                .registerModule(new JavaTimeModule());;</span>
+        JsonNode node;
+        try {
+<span class="nc" id="L42">            node = mapper.readTree(body);</span>
+<span class="nc" id="L43">            JsonNode leaf = node.get(field);</span>
+
+<span class="nc bnc" id="L45" title="All 2 branches missed.">            if (leaf != null) {</span>
+<span class="nc" id="L46">                return mapper.convertValue(leaf, new TypeReference&lt;List&lt;String&gt;&gt;() {</span>
+                });
+            }
+<span class="nc" id="L49">        } catch (IOException e) {</span>
+<span class="nc" id="L50">            logger.error(e.getMessage(), e);</span>
+<span class="nc" id="L51">        }</span>
+<span class="nc" id="L52">        return null;</span>
+    }
+
+    public static &lt;T&gt; List&lt;T&gt; parseObjectList(String body, String field, Class&lt;T&gt; clazz ) {
+<span class="nc" id="L56">        ObjectMapper mapper = new ObjectMapper().registerModule(new Jdk8Module())</span>
+<span class="nc" id="L57">                .registerModule(new JavaTimeModule());;</span>
+        JsonNode node;
+        try {
+<span class="nc" id="L60">            node = mapper.readTree(body);</span>
+<span class="nc" id="L61">            JsonNode leaf = node.get(field);</span>
+
+<span class="nc bnc" id="L63" title="All 2 branches missed.">            if (leaf != null) {</span>
+<span class="nc" id="L64">                return mapper.convertValue(leaf, new TypeReference&lt;List&lt;T&gt;&gt;() {</span>
+                });
+            }
+<span class="nc" id="L67">        } catch (IOException e) {</span>
+<span class="nc" id="L68">            logger.error(e.getMessage(), e);</span>
+<span class="nc" id="L69">        }</span>
+<span class="nc" id="L70">        return null;</span>
+    }
+
+
+    public static Integer parseInteger(String body, String field) {
+<span class="nc" id="L75">        ObjectMapper mapper = new ObjectMapper().registerModule(new Jdk8Module())</span>
+<span class="nc" id="L76">                .registerModule(new JavaTimeModule());;</span>
+        JsonNode node;
+        try {
+<span class="nc" id="L79">            node = mapper.readTree(body);</span>
+<span class="nc" id="L80">            JsonNode leaf = node.get(field);</span>
+<span class="nc bnc" id="L81" title="All 2 branches missed.">            if (leaf != null) {</span>
+<span class="nc" id="L82">                return leaf.asInt();</span>
+            }
+<span class="nc" id="L84">        } catch (IOException e) {</span>
+<span class="nc" id="L85">            logger.error(e.getMessage(), e);</span>
+<span class="nc" id="L86">        }</span>
+<span class="nc" id="L87">        return null;</span>
+    }
+
+    public static List&lt;Integer&gt; parseIntegerList(String body, String field) {
+<span class="nc" id="L91">        ObjectMapper mapper = new ObjectMapper().registerModule(new Jdk8Module())</span>
+<span class="nc" id="L92">                .registerModule(new JavaTimeModule());;</span>
+        JsonNode node;
+        try {
+<span class="nc" id="L95">            node = mapper.readTree(body);</span>
+<span class="nc" id="L96">            JsonNode leaf = node.get(field);</span>
+
+<span class="nc bnc" id="L98" title="All 2 branches missed.">            if (leaf != null) {</span>
+<span class="nc" id="L99">                return mapper.convertValue(leaf, new TypeReference&lt;List&lt;Integer&gt;&gt;() {</span>
+                });
+            }
+<span class="nc" id="L102">        } catch (IOException e) {</span>
+<span class="nc" id="L103">            logger.error(e.getMessage(), e);</span>
+<span class="nc" id="L104">        }</span>
+<span class="nc" id="L105">        return null;</span>
+    }
+
+
+    public static Boolean parseBoolean(String body, String field) {
+<span class="nc" id="L110">        ObjectMapper mapper = new ObjectMapper().registerModule(new Jdk8Module())</span>
+<span class="nc" id="L111">                .registerModule(new JavaTimeModule());;</span>
+        JsonNode node;
+        try {
+<span class="nc" id="L114">            node = mapper.readTree(body);</span>
+<span class="nc" id="L115">            JsonNode leaf = node.get(field);</span>
+<span class="nc bnc" id="L116" title="All 2 branches missed.">            if (leaf != null) {</span>
+<span class="nc" id="L117">                return leaf.asBoolean();</span>
+            }
+<span class="nc" id="L119">        } catch (IOException e) {</span>
+<span class="nc" id="L120">            logger.error(e.getMessage(), e);</span>
+<span class="nc" id="L121">        }</span>
+<span class="nc" id="L122">        return null;</span>
+    }
+
+    public static Short parseShort(String body, String field) {
+<span class="nc" id="L126">        ObjectMapper mapper = new ObjectMapper().registerModule(new Jdk8Module())</span>
+<span class="nc" id="L127">                .registerModule(new JavaTimeModule());;</span>
+        JsonNode node;
+        try {
+<span class="nc" id="L130">            node = mapper.readTree(body);</span>
+<span class="nc" id="L131">            JsonNode leaf = node.get(field);</span>
+<span class="nc bnc" id="L132" title="All 2 branches missed.">            if (leaf != null) {</span>
+<span class="nc" id="L133">                Integer value = leaf.asInt();</span>
+<span class="nc" id="L134">                return value.shortValue();</span>
+            }
+<span class="nc" id="L136">        } catch (IOException e) {</span>
+<span class="nc" id="L137">            logger.error(e.getMessage(), e);</span>
+<span class="nc" id="L138">        }</span>
+<span class="nc" id="L139">        return null;</span>
+    }
+
+    public static Byte parseByte(String body, String field) {
+<span class="nc" id="L143">        ObjectMapper mapper = new ObjectMapper().registerModule(new Jdk8Module())</span>
+<span class="nc" id="L144">                .registerModule(new JavaTimeModule());;</span>
+        JsonNode node;
+        try {
+<span class="nc" id="L147">            node = mapper.readTree(body);</span>
+<span class="nc" id="L148">            JsonNode leaf = node.get(field);</span>
+<span class="nc bnc" id="L149" title="All 2 branches missed.">            if (leaf != null) {</span>
+<span class="nc" id="L150">                Integer value = leaf.asInt();</span>
+<span class="nc" id="L151">                return value.byteValue();</span>
+            }
+<span class="nc" id="L153">        } catch (IOException e) {</span>
+<span class="nc" id="L154">            logger.error(e.getMessage(), e);</span>
+<span class="nc" id="L155">        }</span>
+<span class="nc" id="L156">        return null;</span>
+    }
+
+    public static &lt;T&gt; T parseObject(String body, String field, Class&lt;T&gt; clazz) {
+<span class="nc" id="L160">        ObjectMapper mapper = new ObjectMapper().registerModule(new Jdk8Module())</span>
+<span class="nc" id="L161">                .registerModule(new JavaTimeModule());;</span>
+        JsonNode node;
+        try {
+<span class="nc" id="L164">            node = mapper.readTree(body);</span>
+<span class="nc" id="L165">            node = node.get(field);</span>
+<span class="nc" id="L166">            return mapper.treeToValue(node, clazz);</span>
+<span class="nc" id="L167">        } catch (IOException e) {</span>
+<span class="nc" id="L168">            logger.error(e.getMessage(), e);</span>
+        }
+<span class="nc" id="L170">        return null;</span>
+    }
+
+    public static Object toNode(String json) {
+<span class="nc bnc" id="L174" title="All 2 branches missed.">        if (json == null) {</span>
+<span class="nc" id="L175">            return null;</span>
+        }
+<span class="nc" id="L177">        ObjectMapper mapper = new ObjectMapper().registerModule(new Jdk8Module())</span>
+<span class="nc" id="L178">                .registerModule(new JavaTimeModule());;</span>
+        try {
+
+<span class="nc" id="L181">            return mapper.readTree(json);</span>
+<span class="nc" id="L182">        } catch (IOException e) {</span>
+<span class="nc" id="L183">            logger.error(e.getMessage(), e);</span>
+        }
+
+<span class="nc" id="L186">        return null;</span>
+    }
+
+    public static Map&lt;String, String&gt; toMap(String data) {
+<span class="nc" id="L190">        ObjectMapper mapper = new ObjectMapper().registerModule(new Jdk8Module())</span>
+<span class="nc" id="L191">                .registerModule(new JavaTimeModule());;</span>
+        try {
+<span class="nc" id="L193">            return mapper.readValue(data, new TypeReference&lt;Map&lt;String, String&gt;&gt;() {</span>
+            });
+<span class="nc" id="L195">        } catch (IOException e) {</span>
+<span class="nc" id="L196">            logger.error(e.getMessage(), e);</span>
+        }
+<span class="nc" id="L198">        return null;</span>
+    }
+
+    public static String toJson(Object data) {
+<span class="nc" id="L202">        ObjectMapper mapper = new ObjectMapper().registerModule(new Jdk8Module())</span>
+<span class="nc" id="L203">                .registerModule(new JavaTimeModule());;</span>
+        try {
+<span class="nc" id="L205">            return mapper.writeValueAsString(data);</span>
+<span class="nc" id="L206">        } catch (JsonProcessingException e) {</span>
+<span class="nc" id="L207">            e.printStackTrace();</span>
+        }
+<span class="nc" id="L209">        return null;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

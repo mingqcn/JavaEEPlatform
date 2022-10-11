@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BindingResultGoodsController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">restfuldemo</a> &gt; <a href="index.source.html" class="el_package">cn.edu.xmu.javaee.restfuldemo.controller</a> &gt; <span class="el_source">BindingResultGoodsController.java</span></div><h1>BindingResultGoodsController.java</h1><pre class="source lang-java linenums">package cn.edu.xmu.javaee.restfuldemo.controller;
+
+import cn.edu.xmu.javaee.restfuldemo.controller.vo.GoodsVo;
+import cn.edu.xmu.javaee.restfuldemo.model.Goods;
+import cn.edu.xmu.javaee.restfuldemo.service.GoodsService;
+import cn.edu.xmu.javaee.restfuldemo.util.ResponseCode;
+import cn.edu.xmu.javaee.restfuldemo.util.ResponseUtil;
+import cn.edu.xmu.javaee.restfuldemo.util.ReturnObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * 采用BindingError的商品控制器
+ * @author Ming Qiu
+ */
+@RestController /*Restful的Controller对象*/
+@RequestMapping(value = &quot;/bindingresult/goods&quot;, produces = &quot;application/json;charset=UTF-8&quot;)
+<span class="fc" id="L24">public class BindingResultGoodsController {</span>
+
+<span class="fc" id="L26">    private final Logger logger = LoggerFactory.getLogger(BindingResultGoodsController.class);</span>
+
+    @Autowired
+    private GoodsService goodsService;
+
+    @Autowired
+    private HttpServletResponse httpServletResponse;
+
+    @PostMapping(&quot;&quot;)
+    public Object createGood(@Validated @RequestBody GoodsVo goodsVo, BindingResult bindingResult){
+<span class="fc" id="L36">        httpServletResponse.setContentType(&quot;application/json;charset=UTF-8&quot;);</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        if (bindingResult.hasErrors()){</span>
+<span class="fc" id="L38">            logger.info(&quot;商品名称不能为空&quot;);</span>
+<span class="fc" id="L39">            httpServletResponse.setStatus(HttpServletResponse.SC_BAD_REQUEST);</span>
+<span class="fc" id="L40">            ReturnObject retObj = new ReturnObject();</span>
+<span class="fc" id="L41">            retObj.setErrmsg(&quot;商品名称不能为空&quot;);</span>
+<span class="fc" id="L42">            retObj.setErrno(ResponseCode.OK);</span>
+<span class="fc" id="L43">            return retObj;</span>
+        }
+
+<span class="fc" id="L46">        Goods new_goods = goodsService.createGoods(goodsVo);</span>
+<span class="fc" id="L47">        httpServletResponse.setStatus(HttpServletResponse.SC_CREATED);</span>
+<span class="fc" id="L48">        return ResponseUtil.ok(new_goods);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
