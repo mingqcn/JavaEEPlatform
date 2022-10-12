@@ -1,4 +1,5 @@
-package cn.edu.xmu.javaee.restfuldemo.util;
+//School of Informatics Xiamen University, GPL-3.0 license
+package cn.edu.xmu.javaee.goodsdemo.util;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,25 +40,41 @@ import java.util.Map;
 public class ResponseUtil {
     public static Object ok() {
         Map<String, Object> obj = new HashMap<String, Object>();
-        obj.put("errno", ReturnNo.OK);
-        obj.put("errmsg", ReturnNo.OK_MSG);
+        obj.put("errno", ReturnNo.OK.getCode());
+        obj.put("errmsg", ReturnNo.OK.getMessage());
         return obj;
     }
 
     public static Object ok(Object data) {
         Map<String, Object> obj = new HashMap<String, Object>();
-        obj.put("errno", ReturnNo.OK);
-        obj.put("errmsg", ReturnNo.OK_MSG);
+        obj.put("errno", ReturnNo.OK.getCode());
+        obj.put("errmsg", ReturnNo.OK.getMessage());
         obj.put("data", data);
         return obj;
     }
 
-    public static Object fail(int errno, String errmsg) {
+    public static Object fail(ReturnNo code) {
         Map<String, Object> obj = new HashMap<String, Object>();
-        obj.put("errno", errno);
+        obj.put("errno", code.getCode());
+        obj.put("errmsg", code.getMessage());
+        return obj;
+    }
+
+    public static Object fail(ReturnNo code, String errmsg) {
+        Map<String, Object> obj = new HashMap<String, Object>();
+        obj.put("errno", code.getCode());
         obj.put("errmsg", errmsg);
         return obj;
     }
 
+    public static Object fail(ReturnNo code, String errmsg, Object data) {
+        Map<String, Object> obj = new HashMap<String, Object>();
+        obj.put("errno", code.getCode());
+        obj.put("errmsg", errmsg);
+        obj.put("data", data);
+        return obj;
+    }
+
 }
+
 

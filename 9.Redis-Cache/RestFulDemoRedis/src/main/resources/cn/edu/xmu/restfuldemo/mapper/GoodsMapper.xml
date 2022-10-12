@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.edu.xmu.rocketmqdemo.mapper.GoodsMapper">
+<mapper namespace="manual.mapper.cn.edu.xmu.javaee.goodsdemo.GoodsMapper">
     <sql id="Goods_Column_List">
         id,
         goods_sn,
@@ -43,7 +43,7 @@
 
     <resultMap type="GoodsPo" id="GoodsProductResultMap" autoMapping="true">
         <id property="id" column="id"/>
-        <collection property="productList" ofType="cn.edu.xmu.rocketmqdemo.model.ProductPo" autoMapping="true">
+        <collection property="productList" ofType="cn.edu.xmu.goodsdemo.model.po.ProductPo" autoMapping="true">
             <id property="id" column="product_id"/>
             <result property="name" column="product_name"/>
             <result property="state" column="product_state"/>
