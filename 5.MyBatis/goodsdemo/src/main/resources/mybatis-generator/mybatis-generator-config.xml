@@ -88,7 +88,7 @@
                 3，XMLMAPPER：会生成Mapper接口，接口完全依赖XML；
             注意，如果context是MyBatis3Simple：只支持ANNOTATEDMAPPER和XMLMAPPER
         -->
-        <javaClientGenerator type="XMLMAPPER"
+        <javaClientGenerator type="ANNOTATEDMAPPER"
                              targetPackage="cn.edu.xmu.javaee.goodsdemo.mapper.generator" targetProject="src/main/java">
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>

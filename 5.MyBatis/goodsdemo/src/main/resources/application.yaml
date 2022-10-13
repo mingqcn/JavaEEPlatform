@@ -45,7 +45,7 @@ mybatis:
   #domain对象的包
   type-aliases-package: cn.edu.xmu.javaee.goodsdemo.mapper.po
   #mapper.xml所在的位置
-  mapper-locations: classpath:cn.edu.xmu.javaee.goodsdemo.mapper/*/*.xml
+  #mapper-locations: classpath:cn.edu.xmu.javaee.goodsdemo.mapper/*/*.xml
   #自动将SQL中查出来的带下划线的字段，转换为驼峰标志，再去匹配类中的属性
   configuration:
     #输出产生的SQL

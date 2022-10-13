@@ -27,7 +27,7 @@ import static cn.edu.xmu.javaee.goodsdemo.util.Common.returnWithStatus;
  * @author Ming Qiu
  */
 @RestController /*Restful的Controller对象*/
-@RequestMapping(value = "/goods", produces = "application/json;charset=UTF-8")
+@RequestMapping(value = "/products", produces = "application/json;charset=UTF-8")
 public class ProductController {
 
     private final Logger logger = LoggerFactory.getLogger(ProductController.class);
