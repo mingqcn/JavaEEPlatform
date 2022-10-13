@@ -79,10 +79,10 @@ public class ProductController {
     public Object createProduct(@RequestBody ProductVo productVo){
         Object retObj = null;
         try{
-            Product product = productVo.getBo();
+            Product product = productVo.createBo();
             User user = new User(Long.valueOf(1), "admin1");
             Product retProduct = productService.createProduct(product, user);
-            ProductRetVo vo = new ProductRetVo(retProduct);
+            ProductVo vo = new ProductVo(retProduct);
             retObj = new ResponseEntity(
                     ResponseUtil.ok(vo),
                     HttpStatus.CREATED);
@@ -98,7 +98,7 @@ public class ProductController {
         Object retObj = null;
         try{
             User user = new User(Long.valueOf(2), "admin2");
-            Product product = productVo.getBo();
+            Product product = productVo.createBo();
             product.setId(id);
             productService.modifyProduct(product, user);
             retObj = ResponseUtil.ok();

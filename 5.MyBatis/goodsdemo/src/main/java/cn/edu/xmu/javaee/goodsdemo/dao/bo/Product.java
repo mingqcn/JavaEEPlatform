@@ -56,12 +56,17 @@ public class Product {
         skuSn = po.getSkuSn();
         name = po.getName();
         originalPrice = po.getOriginalPrice();
+        originPlace = po.getOriginPlace();
         weight = po.getWeight();
         imageUrl = po.getImageUrl();
         barcode = po.getBarcode();
         unit = po.getUnit();
-        creator = new User(po.getCreatorId(), po.getName());
-        modifier = new User(po.getModifierId(),po.getModifierName());
+        if (null != po.getCreatorId()) {
+            creator = new User(po.getCreatorId(), po.getName());
+        }
+        if (null != po.getModifierId()) {
+            modifier = new User(po.getModifierId(), po.getModifierName());
+        }
         gmtCreate = po.getGmtCreate();
         gmtModified = po.getGmtModified();
     }

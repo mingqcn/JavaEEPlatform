@@ -57,6 +57,10 @@ public class ProductRetVo {
         this.name = product.getName();
         this.unit = product.getUnit();
         this.originalPrice = product.getOriginalPrice();
+        this.barcode = product.getBarcode();
+        this.imageUrl = product.getImageUrl();
+        this.weight = product.getWeight();
+        this.originPlace = product.getOriginPlace();
         this.gmtCreate = product.getGmtCreate();
         this.gmtModified = product.getGmtModified();
         if (product.getOtherProduct().size() > 0) {

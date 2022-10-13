@@ -42,7 +42,7 @@ public class ProductDao {
      * @param name
      * @return  Goods对象列表，带关联的Product返回
      */
-    public List<Product> findProductByName(String name) throws DataAccessException {
+    public List<Product> findProductByName(String name) throws BusinessException {
         List<Product> productList = new ArrayList<>();
         ProductPoExample example = new ProductPoExample();
         ProductPoExample.Criteria criteria = example.createCriteria();
@@ -68,10 +68,13 @@ public class ProductDao {
      * @param  productId
      * @return  Goods对象列表，带关联的Product返回
      */
-    public Product findProductByID(Long productId) throws DataAccessException {
+    public Product findProductByID(Long productId) throws BusinessException {
         Product product = null;
         try{
             ProductPo productPo = productPoMapper.selectByPrimaryKey(productId);
+            if (null == productPo){
+                throw new BusinessException(ReturnNo.RESOURCE_ID_NOTEXIST, "产品id不存在");
+            }
             product = getProductWithOnSale(productPo);
             logger.info("findProductByID: product =" + product);
         }
@@ -114,7 +117,7 @@ public class ProductDao {
 
     /**
      * 创建Goods对象
-     * @param goods 传入的Goods对象
+     * @param product 传入的Goods对象
      * @return 返回对象ReturnObj
      */
     public Product createProduct(Product product, User user) throws BusinessException{
@@ -146,7 +149,7 @@ public class ProductDao {
             po.setGmtModified(LocalDateTime.now());
             po.setModifierId(user.getId());
             po.setModifierName(user.getName());
-            int ret = productPoMapper.updateByPrimaryKey(po);
+            int ret = productPoMapper.updateByPrimaryKeySelective(po);
             if (ret == 0 ){
                 throw new BusinessException(ReturnNo.RESOURCE_ID_NOTEXIST);
             }
