@@ -63,11 +63,9 @@
 
 
     <!-- 日志输出级别 -->
-    <logger name="cn.edu.xmu.javaee" level = "ERROR">
-        <appender-ref ref="STDOUT" />
-        <appender-ref ref="FILE" />
-    </logger>
-    <root level="INFO">
+    <logger name="cn.edu.xmu.javaee" level="DEBUG"/>
+
+    <root level="ERROR">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="FILE" />
     </root>

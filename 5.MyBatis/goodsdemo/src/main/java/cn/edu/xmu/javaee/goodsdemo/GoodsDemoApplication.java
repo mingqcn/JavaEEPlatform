@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("cn.edu.xmu.javaee.goodsdemo.mapper.generator")
+@MapperScan("cn.edu.xmu.javaee.goodsdemo.mapper")
 public class GoodsDemoApplication {
 
 	public static void main(String[] args) {

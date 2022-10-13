@@ -32,7 +32,9 @@ public class ProductService {
      * @param id 商品id
      * @return 商品对象
      */
+    @Transactional(rollbackFor = {BusinessException.class})
     public Product findProductById(Long id) throws BusinessException {
+        logger.debug("findProductById: id = {}", id);
         return productDao.findProductByID(id);
     }
 
@@ -42,6 +44,7 @@ public class ProductService {
      * @param name 商品名称
      * @return 商品对象
      */
+    @Transactional(rollbackFor = {BusinessException.class})
     public List<Product> findProductByName(String name) throws BusinessException{
         return productDao.findProductByName(name);
     }
@@ -51,7 +54,7 @@ public class ProductService {
      * @param product 新商品信息
      * @return 新商品
      */
-    @Transactional
+    @Transactional(rollbackFor = {BusinessException.class})
     public Product createProduct(Product product, User user) throws BusinessException{
         return productDao.createProduct(product, user);
     }
@@ -61,7 +64,7 @@ public class ProductService {
      * 修改商品
      * @param product 修改商品信息
      */
-    @Transactional
+    @Transactional(rollbackFor = {BusinessException.class})
     public void modifyProduct(Product product, User user) throws BusinessException{
         productDao.modiProduct(product, user);
     }
@@ -70,7 +73,7 @@ public class ProductService {
      * @param id 商品id
      * @return 删除是否成功
      */
-    @Transactional
+    @Transactional(rollbackFor = {BusinessException.class})
     public void deleteProduct(Long id) throws BusinessException {
         productDao.deleteProduct(id);
     }

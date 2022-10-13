@@ -42,6 +42,7 @@ public class ProductController {
 
     @GetMapping("{id}")
     public Object getProductById(@PathVariable("id") Long id) {
+        logger.debug("getProductById: id = {} " ,id);
         Object retObj = null;
         try {
             Product product = productService.findProductById(id);
