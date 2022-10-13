@@ -36,10 +36,11 @@ public class ProductControllerTest {
         assert this.mockMvc != null;
         this.mockMvc.perform(MockMvcRequestBuilders.get(PRODUCTID,1550))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.errno", is(ReturnNo.OK)))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.data.list[?(@.id=='1550')].name", is("欢乐家久宝桃罐头")))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.data.list[?(@.id=='1550')].price", is("53295")))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.data.list[?(@.id=='1550')].quantity", is("2000")))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.errno", is(ReturnNo.OK.getCode())))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data.name", is("欢乐家久宝桃罐头")))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data.price", is(53295)))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data.quantity", is(2000)))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data.otherProduct[?(@.id== '%d' )].name", 2079).value("瓜果刨"))
                 .andDo(MockMvcResultHandlers.print());
 
     }
