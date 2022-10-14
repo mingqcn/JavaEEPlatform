@@ -2,8 +2,8 @@
 package cn.edu.xmu.javaee.goodsdemo.dao;
 
 import cn.edu.xmu.javaee.goodsdemo.mapper.generator.OnSalePoMapper;
-import cn.edu.xmu.javaee.goodsdemo.mapper.po.OnSalePo;
-import cn.edu.xmu.javaee.goodsdemo.mapper.po.OnSalePoExample;
+import cn.edu.xmu.javaee.goodsdemo.mapper.generator.po.OnSalePo;
+import cn.edu.xmu.javaee.goodsdemo.mapper.generator.po.OnSalePoExample;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

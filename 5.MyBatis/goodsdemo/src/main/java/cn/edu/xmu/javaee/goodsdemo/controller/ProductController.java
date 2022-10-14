@@ -41,11 +41,16 @@ public class ProductController {
     }
 
     @GetMapping("{id}")
-    public Object getProductById(@PathVariable("id") Long id) {
+    public Object getProductById(@PathVariable("id") Long id, @RequestParam(required = false, defaultValue = "auto") String type) {
         logger.debug("getProductById: id = {} " ,id);
         Object retObj = null;
+        Product product = null;
         try {
-            Product product = productService.findProductById(id);
+            if (null != type && "manual" == type){
+                product = productService.findProductById_manual(id);
+            } else {
+                product = productService.findProductById(id);
+            }
             ProductRetVo productRetVo = new ProductRetVo(product);
             retObj = ResponseUtil.ok(productRetVo);
         }
@@ -58,15 +63,24 @@ public class ProductController {
 
 
     @GetMapping("")
-    public Object searchProductByName(@RequestParam String name) {
+    public Object searchProductByName(@RequestParam String name, @RequestParam(required = false, defaultValue = "auto") String type) {
         Object retObj = null;
         try{
-            List<Product> productList = productService.findProductByName(name);
-            List<ProductRetVo> data = new ArrayList<>(productList.size());
-            for (Product bo : productList){
-                data.add(new ProductRetVo(bo));
+            List<Product> productList = null;
+            if (null != type && "manual" == type){
+                productList = productService.findProductByName_manual(name);
+            } else {
+                productList = productService.findProductByName(name);
             }
-            retObj = ResponseUtil.ok(data);
+            if (null != productList) {
+                List<ProductRetVo> data = new ArrayList<>(productList.size());
+                for (Product bo : productList) {
+                    data.add(new ProductRetVo(bo));
+                }
+                retObj = ResponseUtil.ok(data);
+            } else {
+                retObj = ResponseUtil.ok();
+            }
         }
         catch (BusinessException e){
             retObj = returnWithStatus(null, e);

@@ -1,9 +1,9 @@
 package cn.edu.xmu.javaee.goodsdemo.mapper.generator;
 
-import cn.edu.xmu.javaee.goodsdemo.mapper.po.ProductPo;
-import cn.edu.xmu.javaee.goodsdemo.mapper.po.ProductPoExample.Criteria;
-import cn.edu.xmu.javaee.goodsdemo.mapper.po.ProductPoExample.Criterion;
-import cn.edu.xmu.javaee.goodsdemo.mapper.po.ProductPoExample;
+import cn.edu.xmu.javaee.goodsdemo.mapper.generator.po.ProductPo;
+import cn.edu.xmu.javaee.goodsdemo.mapper.generator.po.ProductPoExample.Criteria;
+import cn.edu.xmu.javaee.goodsdemo.mapper.generator.po.ProductPoExample.Criterion;
+import cn.edu.xmu.javaee.goodsdemo.mapper.generator.po.ProductPoExample;
 import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.jdbc.SQL;

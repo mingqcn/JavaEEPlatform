@@ -77,4 +77,22 @@ public class ProductService {
     public void deleteProduct(Long id) throws BusinessException {
         productDao.deleteProduct(id);
     }
+
+    @Transactional(rollbackFor = {BusinessException.class})
+    public Product findProductById_manual(Long id) throws BusinessException {
+        logger.debug("findProductById_manual: id = {}", id);
+        return productDao.findProductByID_manual(id);
+    }
+
+    /**
+     * 用商品名称搜索商品
+     *
+     * @param name 商品名称
+     * @return 商品对象
+     */
+    @Transactional(rollbackFor = {BusinessException.class})
+    public List<Product> findProductByName_manual(String name) throws BusinessException{
+        return productDao.findProductByName_manual(name);
+    }
+
 }

@@ -1,9 +1,13 @@
 package cn.edu.xmu.javaee.goodsdemo.dao.bo;
 
-import cn.edu.xmu.javaee.goodsdemo.mapper.po.OnSalePo;
-import cn.edu.xmu.javaee.goodsdemo.mapper.po.ProductPo;
+import cn.edu.xmu.javaee.goodsdemo.mapper.generator.OnSalePoSqlProvider;
+import cn.edu.xmu.javaee.goodsdemo.mapper.generator.po.OnSalePo;
+import cn.edu.xmu.javaee.goodsdemo.mapper.generator.po.ProductPo;
+import cn.edu.xmu.javaee.goodsdemo.mapper.manual.po.ProductAllPo;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -16,6 +20,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 public class Product {
+
+    private Logger logger = LoggerFactory.getLogger(Product.class);
 
     /**
      * 代理对象
@@ -71,7 +77,40 @@ public class Product {
         gmtModified = po.getGmtModified();
     }
 
-    public ProductPo getPo(){
+    public Product(ProductAllPo po){
+        assert null!=po;
+        id = po.getId();
+        skuSn = po.getSkuSn();
+        name = po.getName();
+        originalPrice = po.getOriginalPrice();
+        originPlace = po.getOriginPlace();
+        weight = po.getWeight();
+        imageUrl = po.getImageUrl();
+        barcode = po.getBarcode();
+        unit = po.getUnit();
+        if (null != po.getCreatorId()) {
+            creator = new User(po.getCreatorId(), po.getName());
+        }
+        if (null != po.getModifierId()) {
+            modifier = new User(po.getModifierId(), po.getModifierName());
+        }
+        gmtCreate = po.getGmtCreate();
+        gmtModified = po.getGmtModified();
+
+        for (ProductPo productPo : po.getOtherProduct()){
+            if (productPo.getId().equals(this.id)) {
+                continue;
+            }
+            logger.debug("Product Constructor - ProductAllPo id = {},  add other productid = {}", this.id, productPo.getId() );
+            this.otherProduct.add(new Product(productPo));
+        }
+
+        for (OnSalePo onSalePo : po.getOnSaleList()){
+            this.onSaleList.add(new OnSale(onSalePo));
+        }
+    }
+
+    public ProductPo createPo(){
         ProductPo productPo = new ProductPo();
         productPo.setId(id);
         productPo.setSkuSn(skuSn);
