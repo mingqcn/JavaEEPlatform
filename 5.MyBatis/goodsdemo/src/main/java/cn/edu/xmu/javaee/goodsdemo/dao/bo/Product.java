@@ -97,17 +97,9 @@ public class Product {
         gmtCreate = po.getGmtCreate();
         gmtModified = po.getGmtModified();
 
-        for (ProductPo productPo : po.getOtherProduct()){
-            if (productPo.getId().equals(this.id)) {
-                continue;
-            }
-            logger.debug("Product Constructor - ProductAllPo id = {},  add other productid = {}", this.id, productPo.getId() );
-            this.otherProduct.add(new Product(productPo));
-        }
+        this.addOtherProduct(po.getOtherProduct());
+        this.addOnSale(po.getOnSaleList());
 
-        for (OnSalePo onSalePo : po.getOnSaleList()){
-            this.onSaleList.add(new OnSale(onSalePo));
-        }
     }
 
     public ProductPo createPo(){
@@ -121,5 +113,21 @@ public class Product {
         productPo.setBarcode(barcode);
         productPo.setUnit(unit);
         return productPo;
+    }
+
+    public void addOtherProduct(List<ProductPo> poList){
+        for (ProductPo productPo : poList){
+            if (productPo.getId().equals(this.id)) {
+                continue;
+            }
+            logger.debug("addOtherProduct - id = {},  add other productid = {}", this.id, productPo.getId() );
+            this.otherProduct.add(new Product(productPo));
+        }
+    }
+
+    public void addOnSale(List<OnSalePo> poList){
+        for (OnSalePo onSalePo : poList){
+            this.onSaleList.add(new OnSale(onSalePo));
+        }
     }
 }

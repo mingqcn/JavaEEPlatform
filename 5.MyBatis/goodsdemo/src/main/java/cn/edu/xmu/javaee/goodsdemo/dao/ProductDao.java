@@ -49,7 +49,7 @@ public class ProductDao {
      * @param name
      * @return  Goods对象列表，带关联的Product返回
      */
-    public List<Product> findProductByName(String name) throws BusinessException {
+    public List<Product> retrieveProductByName(String name, boolean all) throws BusinessException {
         List<Product> productList = new ArrayList<>();
         ProductPoExample example = new ProductPoExample();
         ProductPoExample.Criteria criteria = example.createCriteria();
@@ -57,10 +57,15 @@ public class ProductDao {
         try{
             List<ProductPo> productPoList = productPoMapper.selectByExample(example);
             for (ProductPo po : productPoList){
-                Product product = getProductWithOnSale(po);
+                Product product = null;
+                if (all) {
+                    product = this.retrieveFullProduct(po);
+                } else {
+                    product = new Product(po);
+                }
                 productList.add(product);
             }
-            logger.debug("findProductByName: productList = {}", productList);
+            logger.debug("retrieveProductByName: productList = {}", productList);
         }
         catch(DataAccessException e){
             logger.error(e.getMessage());
@@ -75,15 +80,20 @@ public class ProductDao {
      * @param  productId
      * @return  Goods对象列表，带关联的Product返回
      */
-    public Product findProductByID(Long productId) throws BusinessException {
+    public Product retrieveProductByID(Long productId, boolean all) throws BusinessException {
         Product product = null;
         try{
             ProductPo productPo = productPoMapper.selectByPrimaryKey(productId);
             if (null == productPo){
                 throw new BusinessException(ReturnNo.RESOURCE_ID_NOTEXIST, "产品id不存在");
             }
-            product = getProductWithOnSale(productPo);
-            logger.debug("findProductByID: product = {}",  product);
+            if (all) {
+                product = this.retrieveFullProduct(productPo);
+            } else {
+                product = new Product(productPo);
+            }
+
+            logger.debug("retrieveProductByID: product = {}",  product);
         }
         catch(DataAccessException e){
             logger.error(e.getMessage());
@@ -92,27 +102,20 @@ public class ProductDao {
         return product;
     }
 
-    private Product getProductWithOnSale(ProductPo productPo) throws DataAccessException{
+
+    private Product retrieveFullProduct(ProductPo productPo) throws DataAccessException{
         assert productPo != null;
         Product product =  new Product(productPo);
+        List<OnSalePo> latestOnSalePo = onSaleDao.getLatestOnSale(productPo.getId());
+        product.addOnSale(latestOnSalePo);
 
-        OnSalePo latestOnSalePo = onSaleDao.getLatestOnSale(productPo.getId());
-        if (null != latestOnSalePo){
-            OnSale onsale = new OnSale(latestOnSalePo);
-            product.getOnSaleList().add(onsale);
-        }
-
-        List<ProductPo> otherPo = getOtherProduct(productPo);
-        for (ProductPo po : otherPo){
-            if (po.getId() != productPo.getId()) {
-                product.getOtherProduct().add(new Product(po));
-            }
-        }
+        List<ProductPo> otherProductPo = retrieveOtherProduct(productPo);
+        product.addOtherProduct(otherProductPo);
 
         return product;
     }
 
-    private List<ProductPo> getOtherProduct(ProductPo productPo) throws DataAccessException{
+    private List<ProductPo> retrieveOtherProduct(ProductPo productPo) throws DataAccessException{
         assert productPo != null;
 
         ProductPoExample example = new ProductPoExample();
@@ -120,7 +123,6 @@ public class ProductDao {
         criteria.andGoodsIdEqualTo(productPo.getGoodsId());
         criteria.andIdNotEqualTo(productPo.getId());
         List<ProductPo> productPoList = productPoMapper.selectByExample(example);
-
         return productPoList;
     }
 

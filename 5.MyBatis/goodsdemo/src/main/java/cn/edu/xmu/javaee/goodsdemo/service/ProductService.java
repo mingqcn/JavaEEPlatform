@@ -4,7 +4,6 @@ import cn.edu.xmu.javaee.goodsdemo.dao.ProductDao;
 import cn.edu.xmu.javaee.goodsdemo.dao.bo.Product;
 import cn.edu.xmu.javaee.goodsdemo.dao.bo.User;
 import cn.edu.xmu.javaee.goodsdemo.util.BusinessException;
-import cn.edu.xmu.javaee.goodsdemo.util.ReturnNo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +32,9 @@ public class ProductService {
      * @return 商品对象
      */
     @Transactional(rollbackFor = {BusinessException.class})
-    public Product findProductById(Long id) throws BusinessException {
-        logger.debug("findProductById: id = {}", id);
-        return productDao.findProductByID(id);
+    public Product retrieveProductByID(Long id, boolean all) throws BusinessException {
+        logger.debug("findProductById: id = {}, all = {}", id, all);
+        return productDao.retrieveProductByID(id, all);
     }
 
     /**
@@ -45,8 +44,8 @@ public class ProductService {
      * @return 商品对象
      */
     @Transactional(rollbackFor = {BusinessException.class})
-    public List<Product> findProductByName(String name) throws BusinessException{
-        return productDao.findProductByName(name);
+    public List<Product> retrieveProductByName(String name, boolean all) throws BusinessException{
+        return productDao.retrieveProductByName(name, all);
     }
 
     /**

@@ -27,7 +27,7 @@ import static cn.edu.xmu.javaee.goodsdemo.util.Common.returnWithStatus;
  * @author Ming Qiu
  */
 @RestController /*Restful的Controller对象*/
-@RequestMapping(value = "/products", produces = "application/json;charset=UTF-8")
+@RequestMapping(value = "/customer/products", produces = "application/json;charset=UTF-8")
 public class ProductController {
 
     private final Logger logger = LoggerFactory.getLogger(ProductController.class);
@@ -49,7 +49,7 @@ public class ProductController {
             if (null != type && "manual" == type){
                 product = productService.findProductById_manual(id);
             } else {
-                product = productService.findProductById(id);
+                product = productService.retrieveProductByID(id, true);
             }
             ProductRetVo productRetVo = new ProductRetVo(product);
             retObj = ResponseUtil.ok(productRetVo);
@@ -70,7 +70,7 @@ public class ProductController {
             if (null != type && "manual" == type){
                 productList = productService.findProductByName_manual(name);
             } else {
-                productList = productService.findProductByName(name);
+                productList = productService.retrieveProductByName(name, true);
             }
             if (null != productList) {
                 List<ProductRetVo> data = new ArrayList<>(productList.size());
@@ -87,54 +87,4 @@ public class ProductController {
         }
         return  retObj;
     }
-
-
-    @PostMapping("")
-    public Object createProduct(@RequestBody ProductVo productVo){
-        Object retObj = null;
-        try{
-            Product product = productVo.createBo();
-            User user = new User(Long.valueOf(1), "admin1");
-            Product retProduct = productService.createProduct(product, user);
-            ProductVo vo = new ProductVo(retProduct);
-            retObj = new ResponseEntity(
-                    ResponseUtil.ok(vo),
-                    HttpStatus.CREATED);
-        }
-        catch (BusinessException e){
-            retObj = returnWithStatus(null, e);
-        }
-        return  retObj;
-    }
-
-    @PutMapping("{id}")
-    public Object modiProduct(@PathVariable Long id, @RequestBody ProductVo productVo){
-        Object retObj = null;
-        try{
-            User user = new User(Long.valueOf(2), "admin2");
-            Product product = productVo.createBo();
-            product.setId(id);
-            productService.modifyProduct(product, user);
-            retObj = ResponseUtil.ok();
-        }
-        catch (BusinessException e){
-            retObj = returnWithStatus(null, e);
-        }
-        return  retObj;
-
-    }
-
-    @DeleteMapping("{id}")
-    public Object delProduct(@PathVariable("id") Long id) {
-        Object retObj = null;
-        try{
-            productService.deleteProduct(id);
-            retObj = ResponseUtil.ok();
-        }
-        catch (BusinessException e){
-            retObj = returnWithStatus(null, e);
-        }
-        return  retObj;
-    }
-
 }
