@@ -3,8 +3,6 @@ MAINTAINER mingqiu mingqiu@xmu.edu.cn
 WORKDIR /app
 ARG JAR_FILE
 ADD ${JAR_FILE} /app/app.jar
-ARG CONF_DIR
-ADD ${CONF_DIR} /etc/mysql/conf.d
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
 CMD ["--spring.datasource.url=jdbc:mysql://mysql:3306/oomall_demo?serverTimezone=Asia/Shanghai","--spring.datasource.username=demouser", "--spring.datasource.password=123456"]
