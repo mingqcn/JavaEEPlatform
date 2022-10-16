@@ -39,7 +39,10 @@ spring:
       validation-query: select 1
   jackson:
     time-zone: GMT+8
-
+  sql:
+    init:
+      mode: always
+      data-locations: data.sql
 
 mybatis:
   #domain对象的包
