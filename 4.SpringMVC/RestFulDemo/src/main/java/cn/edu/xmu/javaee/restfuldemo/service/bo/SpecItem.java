@@ -8,7 +8,6 @@ import lombok.Data;
  * @author Ming Qiu
  **/
 @Data
-
 public class SpecItem {
 
     private String id;

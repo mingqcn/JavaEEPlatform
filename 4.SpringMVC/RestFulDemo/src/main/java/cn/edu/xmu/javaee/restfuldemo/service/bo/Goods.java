@@ -1,12 +1,11 @@
 package cn.edu.xmu.javaee.restfuldemo.service.bo;
 
-import lombok.*;
+import lombok.Data;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
 public class Goods {
-
 
     private Integer id;
 

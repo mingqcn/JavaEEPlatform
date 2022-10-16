@@ -2,7 +2,6 @@ package cn.edu.xmu.javaee.restfuldemo.service.bo;
 
 import lombok.Data;
 
-
 import java.util.List;
 
 /**
