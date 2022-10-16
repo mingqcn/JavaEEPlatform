@@ -43,6 +43,7 @@ spring:
     init:
       mode: always
       data-locations: data.sql
+      encoding: UTF-8
 
 mybatis:
   #domain对象的包
