@@ -5,14 +5,19 @@ management:
         include: "*"
 
 server:
+  #服务端口号
   port: 8080
 
 spring:
   datasource:
+    #JDBC驱动
     driver-class-name: com.mysql.cj.jdbc.Driver
+    #数据库服务器url
     url: jdbc:mysql://mysql:3306/oomall_demo?serverTimezone=Asia/Shanghai
+    #数据库服务器用户名和密码
     username: demouser
     password: 123456
+    #数据库连接池
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       #初始化时建立物理连接的个数
@@ -38,6 +43,7 @@ spring:
           slow-sql-millis: 100
       validation-query: select 1
   jackson:
+    #JSON的时间数据的时区
     time-zone: GMT+8
 
 mybatis:
