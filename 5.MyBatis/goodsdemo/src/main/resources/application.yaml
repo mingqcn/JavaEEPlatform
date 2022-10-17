@@ -55,5 +55,6 @@ mybatis:
   configuration:
     #输出产生的SQL
     #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #字段名和对象属性用驼峰映射
     map-underscore-to-camel-case: true
 
