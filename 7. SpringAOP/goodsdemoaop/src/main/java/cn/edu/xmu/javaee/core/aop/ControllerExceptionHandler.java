@@ -1,0 +1,48 @@
+//School of Informatics Xiamen University, GPL-3.0 license
+package cn.edu.xmu.javaee.core.aop;
+
+import cn.edu.xmu.javaee.core.util.BusinessException;
+import cn.edu.xmu.javaee.core.util.ReturnNo;
+import cn.edu.xmu.javaee.core.util.ReturnObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.*;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * 处理控制器错误
+ * @author Ming Qiu
+ **/
+//@RestControllerAdvice(basePackages = {"cn.edu.xmu.javaee"})
+public class ControllerExceptionHandler {
+
+    private final Logger logger = LoggerFactory.getLogger(ControllerExceptionHandler.class);
+
+    //@ExceptionHandler(value = MethodArgumentNotValidException.class)
+    public ReturnObject methodArgumentNotValid(MethodArgumentNotValidException exception, HttpServletResponse response){
+
+        StringBuffer msg = new StringBuffer();
+        //解析原错误信息，封装后返回，此处返回非法的字段名称，原始值，错误信息
+        for (FieldError error : exception.getBindingResult().getFieldErrors()) {
+            msg.append(error.getDefaultMessage());
+            msg.append(";");
+        }
+        logger.info("methodArgumentNotValid: msg = {}", msg.toString());
+        response.setContentType("application/json;charset=UTF-8");
+        return new ReturnObject(ReturnNo.FIELD_NOTVALID, msg.toString());
+    }
+
+    //@ExceptionHandler(value = BusinessException.class)
+    public ReturnObject businessExpHandler(BusinessException exception, HttpServletResponse response){
+
+        logger.info("businessExpHandler: no = {}, message =  {}", exception.getErrno(), exception.getMessage());
+        response.setContentType("application/json;charset=UTF-8");
+        if (null !=exception) {
+            return new ReturnObject(exception.getErrno(), exception.getMessage());
+        } else {
+            return new ReturnObject();
+        }
+    }
+}
