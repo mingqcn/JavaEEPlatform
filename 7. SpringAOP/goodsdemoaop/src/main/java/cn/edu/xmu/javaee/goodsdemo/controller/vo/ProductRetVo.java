@@ -3,8 +3,13 @@ package cn.edu.xmu.javaee.goodsdemo.controller.vo;
 
 import cn.edu.xmu.javaee.goodsdemo.dao.bo.OnSale;
 import cn.edu.xmu.javaee.goodsdemo.dao.bo.Product;
+import com.alibaba.druid.filter.AutoLoad;
+import com.alibaba.druid.sql.ast.statement.SQLForeignKeyImpl;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -16,6 +21,7 @@ import java.util.List;
  **/
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@NoArgsConstructor
 public class ProductRetVo {
 
     private Long id;
@@ -46,35 +52,36 @@ public class ProductRetVo {
 
     private List<ProductRetVo> otherProduct;
 
+    @JsonIgnore
+    private List<OnSale> onSaleList;
+
+    public Long getPrice() {
+        OnSale valid = this.findValidOnSale();
+        if (null != valid) {
+            return valid.getPrice();
+        } else {
+            return null;
+        }
+    }
+
+    public Integer getQuantity() {
+        OnSale valid = this.findValidOnSale();
+        if (null != valid) {
+            return valid.getQuantity();
+        } else {
+            return null;
+        }
+    }
 
     /**
-     * 构造函数，由Goods对象创建Vo
-     * @param product goods对象
+     * 获得当前有效的销售对象
+     * @return
      */
-    public ProductRetVo(Product product) {
-        this.id = product.getId();
-        this.skuSn = product.getSkuSn();
-        this.name = product.getName();
-        this.unit = product.getUnit();
-        this.originalPrice = product.getOriginalPrice();
-        this.barcode = product.getBarcode();
-        this.imageUrl = product.getImageUrl();
-        this.weight = product.getWeight();
-        this.originPlace = product.getOriginPlace();
-        this.gmtCreate = product.getGmtCreate();
-        this.gmtModified = product.getGmtModified();
-        if (product.getOtherProduct().size() > 0) {
-            List<ProductRetVo> productList = new ArrayList<>(product.getOtherProduct().size());
-            for (Product bo : product.getOtherProduct()) {
-                ProductRetVo productVo = new ProductRetVo(bo);
-                productList.add(productVo);
-            }
-            this.otherProduct = productList;
-        }
-        if (product.getOnSaleList().size()> 0){
-            OnSale onSale = product.getOnSaleList().get(0);
-            this.price = onSale.getPrice();
-            this.quantity = onSale.getQuantity();
+    private OnSale findValidOnSale(){
+        if ((null != this.onSaleList) && (onSaleList.size()) > 0) {
+            return this.onSaleList.get(0);
+        } else {
+            return null;
         }
     }
 }

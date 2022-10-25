@@ -10,6 +10,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.FieldError;
@@ -27,8 +28,15 @@ public class ResponseAspect {
 
     private final Logger logger = LoggerFactory.getLogger(ResponseAspect.class);
 
+    @Value("${goodsdemo.result-page-size.max}")
+    private int max_page_size;
+
+    @Value("${goodsdemo.result-page-size.default}")
+    private int default_page_size;
+
     /**
      * 所有返回值为ReturnObject的Controller
+     *
      * @param jp
      * @return
      * @throws Throwable
@@ -45,18 +53,18 @@ public class ResponseAspect {
         String[] paramNames = ms.getParameterNames();
         Object[] args = jp.getArgs();
 
-        putDefaultPage(request, paramNames, args);
+        checkPageLimit(request, paramNames, args);
 
         try {
-            Object obj  = jp.proceed();
+            Object obj = jp.proceed();
             retVal = (ReturnObject) obj;
-        }catch(BusinessException exception){
-            logger.info("doAround: BusinessException， errno = {}", exception.getErrno());
+        } catch (BusinessException exception) {
+            logger.debug("doAround: BusinessException， errno = {}", exception.getErrno());
             retVal = new ReturnObject(exception.getErrno(), exception.getMessage());
         }
 
         code = retVal.getCode();
-        logger.info("doAround: jp = {}, code = {}", jp.getSignature().getName(), code);
+        logger.debug("doAround: jp = {}, code = {}", jp.getSignature().getName(), code);
         changeHttpStatus(code, response);
 
         return retVal;
@@ -64,6 +72,7 @@ public class ResponseAspect {
 
     /**
      * 根据code，修改reponse的HTTP Status code
+     *
      * @param code
      * @param response
      */
@@ -111,30 +120,36 @@ public class ResponseAspect {
 
     /**
      * 设置默认的page = 1和pageSize = 10
+     * 防止客户端发过来pagesize过大的请求
+     *
      * @param request
      * @param paramNames
      * @param args
      */
-    private void putDefaultPage(HttpServletRequest request, String[] paramNames, Object[] args) {
-        Integer page=1,pageSize=10;
-        if(request !=null){
-            String pageString= request.getParameter("page");
-            String pageSizeString= request.getParameter("pageSize");
-            if (pageString!=null&&(!pageString.isEmpty())&&pageString.matches("\\d+")) {
-                page=Integer.valueOf(pageString);
-                if(page<=0) {page=1;}
+    private void checkPageLimit(HttpServletRequest request, String[] paramNames, Object[] args) {
+        Integer page = 1, pageSize = default_page_size;
+        if (request != null) {
+            String pageString = request.getParameter("page");
+            String pageSizeString = request.getParameter("pageSize");
+            if (pageString != null && (!pageString.isEmpty()) && pageString.matches("\\d+")) {
+                page = Integer.valueOf(pageString);
+                if (page <= 0) {
+                    page = 1;
+                }
             }
-            if (pageSizeString!=null&&pageSizeString.matches("\\d+")) {
-                pageSize=Integer.valueOf(pageSizeString);
-                if(pageSize<=0||pageSize>500) {pageSize=10;}
+            if (pageSizeString != null && pageSizeString.matches("\\d+")) {
+                pageSize = Integer.valueOf(pageSizeString);
+                if (pageSize <= 0 || pageSize > max_page_size) {
+                    pageSize = default_page_size;
+                }
             }
         }
 
         for (int i = 0; i < paramNames.length; i++) {
-            if (paramNames[i].equals("page")&& (args[i] == null)) {
+            if (paramNames[i].equals("page") && (args[i] == null)) {
                 args[i] = page;
             }
-            if (paramNames[i].equals("pageSize")&&(args[i] == null)) {
+            if (paramNames[i].equals("pageSize") && (args[i] == null)) {
                 args[i] = pageSize;
             }
         }

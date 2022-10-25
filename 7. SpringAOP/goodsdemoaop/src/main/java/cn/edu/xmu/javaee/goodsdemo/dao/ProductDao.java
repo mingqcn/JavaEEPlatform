@@ -1,17 +1,22 @@
 //School of Informatics Xiamen University, GPL-3.0 license
 package cn.edu.xmu.javaee.goodsdemo.dao;
 
+import cn.edu.xmu.javaee.core.util.JacksonUtil;
+import cn.edu.xmu.javaee.goodsdemo.controller.vo.UserVo;
+import cn.edu.xmu.javaee.goodsdemo.dao.bo.OnSale;
 import cn.edu.xmu.javaee.goodsdemo.dao.bo.Product;
-import cn.edu.xmu.javaee.goodsdemo.dao.bo.User;
 import cn.edu.xmu.javaee.goodsdemo.mapper.generator.ProductPoMapper;
 import cn.edu.xmu.javaee.goodsdemo.mapper.generator.po.OnSalePo;
 import cn.edu.xmu.javaee.goodsdemo.mapper.generator.po.ProductPo;
 import cn.edu.xmu.javaee.goodsdemo.mapper.generator.po.ProductPoExample;
 import cn.edu.xmu.javaee.goodsdemo.mapper.manual.ProductAllMapper;
 import cn.edu.xmu.javaee.goodsdemo.mapper.manual.po.ProductAllPo;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
@@ -22,11 +27,17 @@ import java.util.List;
 import cn.edu.xmu.javaee.core.util.BusinessException;
 import cn.edu.xmu.javaee.core.util.ReturnNo;
 
+import static cn.edu.xmu.javaee.core.util.Common.cloneObj;
+import static cn.edu.xmu.javaee.core.util.Common.createListObj;
+
 /**
  * @author Ming Qiu
  **/
 @Repository
 public class ProductDao {
+
+    @Value("${goodsdemo.product.max-related-product}")
+    private int max_related_product;
 
     private Logger logger = LoggerFactory.getLogger(ProductDao.class);
 
@@ -48,11 +59,12 @@ public class ProductDao {
      * @param name
      * @return  Goods对象列表，带关联的Product返回
      */
-    public List<Product> retrieveProductByName(String name, boolean all) throws BusinessException {
+    public PageInfo<Product> retrieveProductByName(String name, boolean all, int page, int pageSize) throws BusinessException {
         List<Product> productList = new ArrayList<>();
         ProductPoExample example = new ProductPoExample();
         ProductPoExample.Criteria criteria = example.createCriteria();
         criteria.andNameEqualTo(name);
+        PageHelper.startPage(page, pageSize, false);
         try{
             List<ProductPo> productPoList = productPoMapper.selectByExample(example);
             for (ProductPo po : productPoList){
@@ -60,18 +72,18 @@ public class ProductDao {
                 if (all) {
                     product = this.retrieveFullProduct(po);
                 } else {
-                    product = new Product(po);
+                    product = cloneObj(po, Product.class);
                 }
                 productList.add(product);
             }
-            logger.debug("retrieveProductByName: productList = {}", productList);
+            logger.info("retrieveProductByName: productList = {}", productList);
+
         }
         catch(DataAccessException e){
             logger.error(e.getMessage());
             throw new BusinessException(ReturnNo.INTERNAL_SERVER_ERR, "数据库访问错误");
         }
-
-        return productList;
+        return new PageInfo<>(productList);
     }
 
     /**
@@ -89,7 +101,7 @@ public class ProductDao {
             if (all) {
                 product = this.retrieveFullProduct(productPo);
             } else {
-                product = new Product(productPo);
+                product = cloneObj(productPo, Product.class);
             }
 
             logger.debug("retrieveProductByID: product = {}",  product);
@@ -104,25 +116,29 @@ public class ProductDao {
 
     private Product retrieveFullProduct(ProductPo productPo) throws DataAccessException{
         assert productPo != null;
-        Product product =  new Product(productPo);
-        List<OnSalePo> latestOnSalePo = onSaleDao.getLatestOnSale(productPo.getId());
-        product.addOnSale(latestOnSalePo);
+        Product product =  cloneObj(productPo, Product.class);
+        logger.info("retrieveFullProduct: product = {}", product);
+        List<OnSale> latestOnSale = onSaleDao.getLatestOnSale(productPo.getId());
+        logger.info("retrieveFullProduct: latestOnSale = {}", latestOnSale);
 
-        List<ProductPo> otherProductPo = retrieveOtherProduct(productPo);
-        product.addOtherProduct(otherProductPo);
-
+        product.setOnSaleList(latestOnSale);
+        List<Product> otherProduct = retrieveOtherProduct(productPo);
+        logger.info("retrieveFullProduct: otherProduct = {}", otherProduct);
+        product.addOtherProduct(otherProduct);
+        logger.info("retrieveFullProduct: product = {}", product);
         return product;
     }
 
-    private List<ProductPo> retrieveOtherProduct(ProductPo productPo) throws DataAccessException{
+    private List<Product> retrieveOtherProduct(ProductPo productPo) throws DataAccessException{
         assert productPo != null;
 
         ProductPoExample example = new ProductPoExample();
+        PageHelper.startPage(1, max_related_product);
         ProductPoExample.Criteria criteria = example.createCriteria();
         criteria.andGoodsIdEqualTo(productPo.getGoodsId());
         criteria.andIdNotEqualTo(productPo.getId());
         List<ProductPo> productPoList = productPoMapper.selectByExample(example);
-        return productPoList;
+        return createListObj(productPoList, Product.class);
     }
 
     /**
@@ -130,16 +146,16 @@ public class ProductDao {
      * @param product 传入的Goods对象
      * @return 返回对象ReturnObj
      */
-    public Product createProduct(Product product, User user) throws BusinessException{
+    public Product createProduct(Product product, UserVo userVo) throws BusinessException{
 
         Product retObj = null;
         try{
-            ProductPo po = product.createPo();
+            ProductPo po = cloneObj(product,ProductPo.class);
             po.setGmtCreate(LocalDateTime.now());
-            po.setCreatorId(user.getId());
-            po.setCreatorName(user.getName());
+            po.setCreatorId(userVo.getId());
+            po.setCreatorName(userVo.getName());
             int ret = productPoMapper.insertSelective(po);
-            retObj = new Product(po);
+            retObj = cloneObj(po,Product.class);
         }
         catch(DataAccessException e){
             logger.error(e.getMessage());
@@ -153,12 +169,12 @@ public class ProductDao {
      * @param product 传入的product对象
      * @return void
      */
-    public void modiProduct(Product product, User user) throws BusinessException{
+    public void modiProduct(Product product, UserVo userVo) throws BusinessException{
         try{
-            ProductPo po = product.createPo();
+            ProductPo po = cloneObj(product,ProductPo.class);
             po.setGmtModified(LocalDateTime.now());
-            po.setModifierId(user.getId());
-            po.setModifierName(user.getName());
+            po.setModifierId(userVo.getId());
+            po.setModifierName(userVo.getName());
             int ret = productPoMapper.updateByPrimaryKeySelective(po);
             if (ret == 0 ){
                 throw new BusinessException(ReturnNo.RESOURCE_ID_NOTEXIST);
@@ -188,25 +204,29 @@ public class ProductDao {
         }
     }
 
-    public List<Product> findProductByName_manual(String name) throws BusinessException {
-        List<Product> productList = new ArrayList<>();
+    public PageInfo<Product> findProductByName_manual(String name, int page, int pageSize) throws BusinessException {
+        List<Product> productList = null;
         ProductPoExample example = new ProductPoExample();
         ProductPoExample.Criteria criteria = example.createCriteria();
         criteria.andNameEqualTo(name);
+        PageHelper.startPage(page, pageSize, false);
         try{
             List<ProductAllPo> productPoList = productAllMapper.getProductWithAll(example);
+            productList = new ArrayList<>(productPoList.size());
             for (ProductAllPo po : productPoList){
-                Product product = new Product(po);
+                Product product = cloneObj(po, Product.class);
+                product.addOtherProduct(createListObj(po.getOtherProduct(), Product.class));
+                product.setOnSaleList(createListObj(po.getOnSaleList(), OnSale.class));
                 productList.add(product);
             }
-            logger.debug("findProductByName_manual: productList = {}", productList);
+            logger.info("findProductByName_manual: productList = {}", productList);
         }
         catch(DataAccessException e){
             logger.error(e.getMessage());
             throw new BusinessException(ReturnNo.INTERNAL_SERVER_ERR, "数据库访问错误");
         }
 
-        return productList;
+        return new PageInfo<>(productList);
     }
 
     /**
@@ -225,8 +245,10 @@ public class ProductDao {
             if (productPoList.size() == 0){
                 throw new BusinessException(ReturnNo.RESOURCE_ID_NOTEXIST, "产品id不存在");
             }
-            product = new Product(productPoList.get(0));
-            logger.debug("findProductByID_manual: product = {}", product);
+            product = cloneObj(productPoList.get(0), Product.class);
+            product.addOtherProduct(createListObj(productPoList.get(0).getOtherProduct(), Product.class));
+            product.setOnSaleList(createListObj(productPoList.get(0).getOnSaleList(), OnSale.class));
+            logger.info("findProductByID_manual: product = {}", product);
         }
         catch(DataAccessException e){
             logger.error(e.getMessage());

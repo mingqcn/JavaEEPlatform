@@ -10,6 +10,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -89,9 +90,9 @@ public class ProductControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.errno", is(ReturnNo.OK.getErrNo())))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.data.length()").value(1))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.data[?(@.id== '%d' )].name", 1559).value("奥利奥缤纷双果味"));
-        //.andDo(MockMvcResultHandlers.print());
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data.list.length()").value(1))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data.list[?(@.id== '%d' )].name", 1559).value("奥利奥缤纷双果味"))
+                .andDo(MockMvcResultHandlers.print());
     }
 
     @Test
@@ -101,7 +102,7 @@ public class ProductControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.errno", is(ReturnNo.OK.getErrNo())))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.data.length()").value(0));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data.list.length()").value(0));
         //.andDo(MockMvcResultHandlers.print());
     }
 
@@ -114,8 +115,8 @@ public class ProductControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.errno", is(ReturnNo.OK.getErrNo())))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.data.length()").value(1))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.data[?(@.id== '%d' )].name", 1605).value("圣峰冰茶牙膏"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data.list.length()").value(1))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data.list[?(@.id== '%d' )].name", 1605).value("圣峰冰茶牙膏"));
         //.andDo(MockMvcResultHandlers.print());
     }
 
@@ -127,7 +128,7 @@ public class ProductControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.errno", is(ReturnNo.OK.getErrNo())))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.data.length()").value(0));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data.list.length()").value(0));
         //.andDo(MockMvcResultHandlers.print());
     }
 }

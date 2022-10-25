@@ -58,3 +58,14 @@ mybatis:
     #字段名和对象属性用驼峰映射
     map-underscore-to-camel-case: true
 
+pagehelper:
+  reasonable: true
+  helper-dialect: mysql
+
+goodsdemo:
+  product:
+    max-related-product: 10
+  result-page-size:
+    default: 10
+    max: 100
+

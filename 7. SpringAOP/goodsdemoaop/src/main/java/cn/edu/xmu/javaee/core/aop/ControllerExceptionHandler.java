@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  * 处理控制器错误
  * @author Ming Qiu
  **/
-@RestControllerAdvice(basePackages = {"cn.edu.xmu.javaee"})
+@RestControllerAdvice(basePackages = {"cn.edu.xmu.javaee.goodsdemo.controller"})
 public class ControllerExceptionHandler {
 
     private final Logger logger = LoggerFactory.getLogger(ControllerExceptionHandler.class);

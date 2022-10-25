@@ -1,6 +1,7 @@
 //School of Informatics Xiamen University, GPL-3.0 license
 package cn.edu.xmu.javaee.goodsdemo.dao;
 
+import cn.edu.xmu.javaee.goodsdemo.dao.bo.OnSale;
 import cn.edu.xmu.javaee.goodsdemo.mapper.generator.OnSalePoMapper;
 import cn.edu.xmu.javaee.goodsdemo.mapper.generator.po.OnSalePo;
 import cn.edu.xmu.javaee.goodsdemo.mapper.generator.po.OnSalePoExample;
@@ -12,6 +13,8 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
+import static cn.edu.xmu.javaee.core.util.Common.createListObj;
 
 @Repository
 public class OnSaleDao {
@@ -30,7 +33,7 @@ public class OnSaleDao {
      * @param productId 货品对象
      * @return 规格对象
      */
-    public List<OnSalePo> getLatestOnSale(Long productId) throws DataAccessException {
+    public List<OnSale> getLatestOnSale(Long productId) throws DataAccessException {
         OnSalePo onSalePo = null;
         OnSalePoExample example = new OnSalePoExample();
         example.setOrderByClause("end_time DESC");
@@ -38,6 +41,6 @@ public class OnSaleDao {
         criteria.andProductIdEqualTo(productId);
         criteria.andBeginTimeLessThanOrEqualTo(LocalDateTime.now());
         List<OnSalePo> onsalePoList = onSalePoMapper.selectByExample(example);
-        return onsalePoList;
+        return createListObj(onsalePoList, OnSale.class);
     }
 }

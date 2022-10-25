@@ -1,16 +1,15 @@
 package cn.edu.xmu.javaee.goodsdemo.service;
 
+import cn.edu.xmu.javaee.goodsdemo.controller.vo.UserVo;
 import cn.edu.xmu.javaee.goodsdemo.dao.ProductDao;
 import cn.edu.xmu.javaee.goodsdemo.dao.bo.Product;
-import cn.edu.xmu.javaee.goodsdemo.dao.bo.User;
 import cn.edu.xmu.javaee.core.util.BusinessException;
+import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 public class ProductService {
@@ -44,8 +43,8 @@ public class ProductService {
      * @return 商品对象
      */
     @Transactional(rollbackFor = {BusinessException.class})
-    public List<Product> retrieveProductByName(String name, boolean all) throws BusinessException{
-        return productDao.retrieveProductByName(name, all);
+    public PageInfo<Product> retrieveProductByName(String name, boolean all, int page, int pageSize) throws BusinessException{
+        return productDao.retrieveProductByName(name, all, page, pageSize);
     }
 
     /**
@@ -54,8 +53,8 @@ public class ProductService {
      * @return 新商品
      */
     @Transactional(rollbackFor = {BusinessException.class})
-    public Product createProduct(Product product, User user) throws BusinessException{
-        return productDao.createProduct(product, user);
+    public Product createProduct(Product product, UserVo userVo) throws BusinessException{
+        return productDao.createProduct(product, userVo);
     }
 
 
@@ -64,8 +63,8 @@ public class ProductService {
      * @param product 修改商品信息
      */
     @Transactional(rollbackFor = {BusinessException.class})
-    public void modifyProduct(Product product, User user) throws BusinessException{
-        productDao.modiProduct(product, user);
+    public void modifyProduct(Product product, UserVo userVo) throws BusinessException{
+        productDao.modiProduct(product, userVo);
     }
 
     /** 删除商品
@@ -90,8 +89,8 @@ public class ProductService {
      * @return 商品对象
      */
     @Transactional(rollbackFor = {BusinessException.class})
-    public List<Product> findProductByName_manual(String name) throws BusinessException{
-        return productDao.findProductByName_manual(name);
+    public PageInfo<Product> findProductByName_manual(String name, int page, int pageSize) throws BusinessException{
+        return productDao.findProductByName_manual(name, page, pageSize);
     }
 
 }

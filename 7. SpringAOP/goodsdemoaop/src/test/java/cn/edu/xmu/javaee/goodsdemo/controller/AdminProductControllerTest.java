@@ -56,8 +56,8 @@ public class AdminProductControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.errno", is(ReturnNo.OK.getErrNo())))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.data.length()").value(1))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.data[?(@.id== '%d' )].name", 1559).value("奥利奥缤纷双果味"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data.list.length()").value(1))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data.list[?(@.id== '%d' )].name", 1559).value("奥利奥缤纷双果味"));
         //.andDo(MockMvcResultHandlers.print());
     }
 
@@ -68,7 +68,7 @@ public class AdminProductControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.errno", is(ReturnNo.OK.getErrNo())))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.data.length()").value(0));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data.list.length()").value(0));
         //.andDo(MockMvcResultHandlers.print());
     }
 
@@ -104,8 +104,8 @@ public class AdminProductControllerTest {
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest())
 //                .andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.errno", is(ReturnNo.FIELD_NOTVALID.getErrNo())))
-                .andDo(MockMvcResultHandlers.print());
+                .andExpect(MockMvcResultMatchers.jsonPath("$.errno", is(ReturnNo.FIELD_NOTVALID.getErrNo())));
+                //.andDo(MockMvcResultHandlers.print());
     }
 
     @Test
@@ -134,8 +134,8 @@ public class AdminProductControllerTest {
         this.mockMvc.perform(MockMvcRequestBuilders.put(PRODUCTID, 158011)
                         .content(body.getBytes("utf-8"))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andExpect(MockMvcResultMatchers.status().isNotFound())
-                .andDo(MockMvcResultHandlers.print());
+                .andExpect(MockMvcResultMatchers.status().isNotFound());
+                //.andDo(MockMvcResultHandlers.print());
     }
 
     @Test

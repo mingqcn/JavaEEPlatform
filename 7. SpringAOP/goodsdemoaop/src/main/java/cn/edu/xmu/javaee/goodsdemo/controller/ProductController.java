@@ -1,10 +1,12 @@
 package cn.edu.xmu.javaee.goodsdemo.controller;
 
-import cn.edu.xmu.javaee.core.util.ReturnNo;
+import cn.edu.xmu.javaee.core.model.PageObj;
+import cn.edu.xmu.javaee.core.util.JacksonUtil;
 import cn.edu.xmu.javaee.core.util.ReturnObject;
 import cn.edu.xmu.javaee.goodsdemo.controller.vo.ProductRetVo;
 import cn.edu.xmu.javaee.goodsdemo.dao.bo.Product;
 import cn.edu.xmu.javaee.goodsdemo.service.ProductService;
+import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static cn.edu.xmu.javaee.core.util.Common.cloneObj;
+import static cn.edu.xmu.javaee.core.util.Common.createListObj;
 
 /**
  * 商品控制器
@@ -32,34 +37,44 @@ public class ProductController {
     }
 
     @GetMapping("{id}")
-    public ReturnObject getProductById(@PathVariable("id") Long id, @RequestParam(required = false, defaultValue = "auto") String type) {
-        logger.debug("getProductById: id = {} " ,id);
+    public ReturnObject findProductById(@PathVariable("id") Long id,
+                                        @RequestParam(required = false, defaultValue = "auto") String type) {
         Product product = null;
         if (null != type && "manual" == type){
             product = productService.findProductById_manual(id);
         } else {
             product = productService.retrieveProductByID(id, true);
         }
-        ProductRetVo productRetVo = new ProductRetVo(product);
-        return new ReturnObject(productRetVo);
+        ProductRetVo productRetVo = cloneObj(product, ProductRetVo.class);
+        productRetVo.setOtherProduct(createListObj(product.getOtherProduct(), ProductRetVo.class));
+        productRetVo.setOnSaleList(product.getOnSaleList());
+        ReturnObject retObj = new ReturnObject(productRetVo);
+        logger.info("findProductById: retObj = {} " , JacksonUtil.toJson(retObj));
+        return retObj;
     }
 
     @GetMapping("")
-    public ReturnObject searchProductByName(@RequestParam String name, @RequestParam(required = false, defaultValue = "auto") String type) {
-        List<Product> productList = null;
+    public ReturnObject searchProductByName(@RequestParam String name,
+                                            @RequestParam(required = false, defaultValue = "auto") String type,
+                                            @RequestParam(required = false,defaultValue = "1") Integer page,
+                                            @RequestParam(required = false,defaultValue = "10") Integer pageSize) {
+        PageInfo<Product> productList = null;
         if (null != type && "manual" == type){
-            productList = productService.findProductByName_manual(name);
+            productList = productService.findProductByName_manual(name, page, pageSize);
         } else {
-            productList = productService.retrieveProductByName(name, true);
+            productList = productService.retrieveProductByName(name, true, page, pageSize);
         }
-        if (null != productList) {
-            List<ProductRetVo> data = new ArrayList<>(productList.size());
-            for (Product bo : productList) {
-                data.add(new ProductRetVo(bo));
-            }
-            return new ReturnObject(data);
-        } else {
-            return  new ReturnObject();
+
+        List<ProductRetVo> voObjs = new ArrayList<>(productList.getList().size());
+        for (Product item : productList.getList()) {
+            ProductRetVo  vo = cloneObj(item, ProductRetVo.class);
+            logger.info("searchProductByName: item = {}", item);
+            vo.setOtherProduct(createListObj(item.getOtherProduct(), ProductRetVo.class));
+            voObjs.add(vo);
+            logger.info("searchProductByName: voObjs = {}", voObjs);
         }
+
+        PageObj<ProductRetVo> data = new PageObj(voObjs, productList.getTotal(), productList.getPageNum(),productList.getPageSize(),productList.getPages());
+        return new ReturnObject(data);
     }
 }

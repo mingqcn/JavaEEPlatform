@@ -18,13 +18,13 @@ public class ReturnObject {
      * 错误号
      */
     @JsonIgnore
-    ReturnNo code = ReturnNo.OK;
+    ReturnNo code;
 
     /**
      * 自定义的错误码
      */
     @JsonProperty(value = "errmsg")
-    String errMsg = ReturnNo.OK.getMessage();
+    String errMsg;
 
     /**
      * 返回值
@@ -36,6 +36,8 @@ public class ReturnObject {
      * 默认构造函数，错误码为OK
      */
     public ReturnObject() {
+        this.code = ReturnNo.OK;
+        this.errMsg = ReturnNo.OK.getMessage();
     }
 
     /**
