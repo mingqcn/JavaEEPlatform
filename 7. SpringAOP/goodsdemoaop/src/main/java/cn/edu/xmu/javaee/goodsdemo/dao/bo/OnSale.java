@@ -1,8 +1,6 @@
 //School of Informatics Xiamen University, GPL-3.0 license
 package cn.edu.xmu.javaee.goodsdemo.dao.bo;
 
-import cn.edu.xmu.javaee.goodsdemo.controller.vo.UserVo;
-import cn.edu.xmu.javaee.goodsdemo.mapper.generator.po.OnSalePo;
 import lombok.Data;
 
 import java.time.LocalDateTime;

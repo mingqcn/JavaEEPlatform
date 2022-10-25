@@ -1,12 +1,10 @@
 //School of Informatics Xiamen University, GPL-3.0 license
 package cn.edu.xmu.javaee.goodsdemo.dao;
 
-import cn.edu.xmu.javaee.core.util.JacksonUtil;
-import cn.edu.xmu.javaee.goodsdemo.controller.vo.UserVo;
+import cn.edu.xmu.javaee.core.model.SimpleUser;
 import cn.edu.xmu.javaee.goodsdemo.dao.bo.OnSale;
 import cn.edu.xmu.javaee.goodsdemo.dao.bo.Product;
 import cn.edu.xmu.javaee.goodsdemo.mapper.generator.ProductPoMapper;
-import cn.edu.xmu.javaee.goodsdemo.mapper.generator.po.OnSalePo;
 import cn.edu.xmu.javaee.goodsdemo.mapper.generator.po.ProductPo;
 import cn.edu.xmu.javaee.goodsdemo.mapper.generator.po.ProductPoExample;
 import cn.edu.xmu.javaee.goodsdemo.mapper.manual.ProductAllMapper;
@@ -27,8 +25,7 @@ import java.util.List;
 import cn.edu.xmu.javaee.core.util.BusinessException;
 import cn.edu.xmu.javaee.core.util.ReturnNo;
 
-import static cn.edu.xmu.javaee.core.util.Common.cloneObj;
-import static cn.edu.xmu.javaee.core.util.Common.createListObj;
+import static cn.edu.xmu.javaee.core.util.Common.*;
 
 /**
  * @author Ming Qiu
@@ -146,14 +143,12 @@ public class ProductDao {
      * @param product 传入的Goods对象
      * @return 返回对象ReturnObj
      */
-    public Product createProduct(Product product, UserVo userVo) throws BusinessException{
+    public Product createProduct(Product product, SimpleUser user) throws BusinessException{
 
         Product retObj = null;
         try{
             ProductPo po = cloneObj(product,ProductPo.class);
-            po.setGmtCreate(LocalDateTime.now());
-            po.setCreatorId(userVo.getId());
-            po.setCreatorName(userVo.getName());
+            putPoCreatedFields(po, user);
             int ret = productPoMapper.insertSelective(po);
             retObj = cloneObj(po,Product.class);
         }
@@ -169,12 +164,10 @@ public class ProductDao {
      * @param product 传入的product对象
      * @return void
      */
-    public void modiProduct(Product product, UserVo userVo) throws BusinessException{
+    public void modiProduct(Product product, SimpleUser user) throws BusinessException{
         try{
             ProductPo po = cloneObj(product,ProductPo.class);
-            po.setGmtModified(LocalDateTime.now());
-            po.setModifierId(userVo.getId());
-            po.setModifierName(userVo.getName());
+            putPoModifiedFields(po, user);
             int ret = productPoMapper.updateByPrimaryKeySelective(po);
             if (ret == 0 ){
                 throw new BusinessException(ReturnNo.RESOURCE_ID_NOTEXIST);
@@ -191,7 +184,7 @@ public class ProductDao {
      * @param id 商品id
      * @return
      */
-    public void deleteProduct(Long id) throws BusinessException{
+    public void deleteProduct(Long id, SimpleUser user) throws BusinessException{
         try{
             int ret = productPoMapper.deleteByPrimaryKey(id);
             if (ret == 0) {

@@ -1,10 +1,13 @@
 //School of Informatics Xiamen University, GPL-3.0 license
 package cn.edu.xmu.javaee.goodsdemo.controller;
 
+import cn.edu.xmu.javaee.core.util.JwtHelper;
 import cn.edu.xmu.javaee.goodsdemo.GoodsDemoAopApplication;
 import cn.edu.xmu.javaee.goodsdemo.controller.vo.ProductVo;
 import cn.edu.xmu.javaee.core.util.JacksonUtil;
 import cn.edu.xmu.javaee.core.util.ReturnNo;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -23,16 +26,29 @@ import static org.hamcrest.CoreMatchers.is;
 @Transactional
 public class AdminProductControllerTest {
 
-    @Autowired
+    private String adminToken;
+
     private MockMvc mockMvc;
 
     private static final String PRODUCTID = "/admin/products/{id}";
     private static final String PRODUCT = "/admin/products";
 
+    @Autowired
+    public AdminProductControllerTest(MockMvc mockMvc) {
+        this.mockMvc = mockMvc;
+    }
+
+    @BeforeEach
+    public void setup(){
+        JwtHelper jwtHelper = new JwtHelper();
+        this.adminToken = jwtHelper.createToken(1L, "13088admin", 0L, 1, 3600);
+    }
+
 
     @Test
     public void getProduct1() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get(PRODUCTID, 1550))
+        this.mockMvc.perform(MockMvcRequestBuilders.get(PRODUCTID, 1550)
+                        .header("authorization", adminToken))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.errno", is(ReturnNo.OK.getErrNo())))
@@ -43,7 +59,8 @@ public class AdminProductControllerTest {
 
     @Test
     public void getProduct2() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get(PRODUCTID, 1550122))
+        this.mockMvc.perform(MockMvcRequestBuilders.get(PRODUCTID, 1550122)
+                        .header("authorization", adminToken))
                 .andExpect(MockMvcResultMatchers.status().isNotFound());
         //.andDo(MockMvcResultHandlers.print());
 
@@ -52,6 +69,7 @@ public class AdminProductControllerTest {
     @Test
     public void searchProductByName1() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get(PRODUCT).contentType("application/json;charset=UTF-8")
+                        .header("authorization", adminToken)
                         .param("name", "奥利奥缤纷双果味"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
@@ -64,6 +82,7 @@ public class AdminProductControllerTest {
     @Test
     public void searchProductByName2() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get(PRODUCT).contentType("application/json;charset=UTF-8")
+                        .header("authorization", adminToken)
                         .param("name", "奥"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
@@ -77,6 +96,7 @@ public class AdminProductControllerTest {
 
         String body = "{\"name\":\"水果糖\",\"originalPrice\":100,\"weight\":807,\"barcode\":\"1234455\",\"unit\":\"盒\",\"originPlace\":\"长沙\"}";
         String ret = this.mockMvc.perform(MockMvcRequestBuilders.post(PRODUCT)
+                        .header("authorization", adminToken)
                         .content(body.getBytes("utf-8"))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(MockMvcResultMatchers.status().isCreated())
@@ -87,12 +107,15 @@ public class AdminProductControllerTest {
 
         ProductVo retObj = JacksonUtil.parseObject(ret, "data", ProductVo.class);
 
-        this.mockMvc.perform(MockMvcRequestBuilders.get(PRODUCTID, retObj.getId()))
+        this.mockMvc.perform(MockMvcRequestBuilders.get(PRODUCTID, retObj.getId())
+                        .header("authorization", adminToken))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.errno", is(ReturnNo.OK.getErrNo())))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.data.name", is("水果糖")));
-        //.andDo(MockMvcResultHandlers.print());
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data.name", is("水果糖")))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data.creator.id", is(1)))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data.creator.name", is("13088admin")))
+                .andDo(MockMvcResultHandlers.print());
     }
 
     @Test
@@ -101,7 +124,8 @@ public class AdminProductControllerTest {
         String body = "{\"name\":\"水果糖\",\"originalPrice\":-1,\"weight\":807,\"barcode\":\"1234455\",\"unit\":\"盒\",\"originPlace\":\"长沙\"}";
         this.mockMvc.perform(MockMvcRequestBuilders.post(PRODUCT)
                         .content(body.getBytes("utf-8"))
-                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE)
+                        .header("authorization", adminToken))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest())
 //                .andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.errno", is(ReturnNo.FIELD_NOTVALID.getErrNo())));
@@ -113,13 +137,15 @@ public class AdminProductControllerTest {
         String body = "{\"name\":\"奶糖\",\"originalPrice\":200}";
         this.mockMvc.perform(MockMvcRequestBuilders.put(PRODUCTID, 1580)
                         .content(body.getBytes("utf-8"))
-                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE)
+                        .header("authorization", adminToken))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.errno", is(ReturnNo.OK.getErrNo())));
                 //.andDo(MockMvcResultHandlers.print());
 
-        this.mockMvc.perform(MockMvcRequestBuilders.get(PRODUCTID, 1580))
+        this.mockMvc.perform(MockMvcRequestBuilders.get(PRODUCTID, 1580)
+                        .header("authorization", adminToken))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.errno", is(ReturnNo.OK.getErrNo())))
@@ -132,6 +158,7 @@ public class AdminProductControllerTest {
     public void modiProduct2() throws Exception {
         String body = "{\"name\":\"奶糖\",\"originalPrice\":200}";
         this.mockMvc.perform(MockMvcRequestBuilders.put(PRODUCTID, 158011)
+                        .header("authorization", adminToken)
                         .content(body.getBytes("utf-8"))
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(MockMvcResultMatchers.status().isNotFound());
@@ -140,20 +167,23 @@ public class AdminProductControllerTest {
 
     @Test
     public void delProduct1() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.delete(PRODUCTID, 1580))
+        this.mockMvc.perform(MockMvcRequestBuilders.delete(PRODUCTID, 1580)
+                        .header("authorization", adminToken))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.errno", is(ReturnNo.OK.getErrNo())));
         //.andDo(MockMvcResultHandlers.print());
 
-        this.mockMvc.perform(MockMvcRequestBuilders.get(PRODUCTID, 1580))
+        this.mockMvc.perform(MockMvcRequestBuilders.get(PRODUCTID, 1580)
+                        .header("authorization", adminToken))
                 .andExpect(MockMvcResultMatchers.status().isNotFound());
         //.andDo(MockMvcResultHandlers.print());
     }
 
     @Test
     public void delProduct2() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.delete(PRODUCTID, 1580112))
+        this.mockMvc.perform(MockMvcRequestBuilders.delete(PRODUCTID, 1580112)
+                        .header("authorization", adminToken))
                 .andExpect(MockMvcResultMatchers.status().isNotFound());
         //.andDo(MockMvcResultHandlers.print());
     }

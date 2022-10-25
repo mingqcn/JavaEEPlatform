@@ -2,6 +2,7 @@
 package cn.edu.xmu.javaee.core.util;
 
 import cn.edu.xmu.javaee.core.model.PageObj;
+import cn.edu.xmu.javaee.core.model.SimpleUser;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -296,12 +297,22 @@ public class Common {
         }
     }
 
-    public static boolean setPoCreatedFields(Object po, long userId, String userName) {
+    /**
+     * 设置所有po对象的creator， gmtCreaTe字段属性
+     *
+     * @param po       po对象
+     * @param user   设置到modifiedBy
+     * @return 如果po对象没有这些属性或类型不对返回false，否则true
+     * @author : Wangzixia 32420182202938
+     * @date： 2021/11/19 00:12
+     * @version: 2.0
+     */
+    public static boolean putPoCreatedFields(Object po, SimpleUser user) {
         Class<?> aClass = po.getClass();
         try {
             Field creatorId = aClass.getDeclaredField("creatorId");
             creatorId.setAccessible(true);
-            creatorId.set(po, userId);
+            creatorId.set(po, user.getId());
 
         } catch (NoSuchFieldException e) {
             logger.info(e.getMessage());
@@ -314,7 +325,7 @@ public class Common {
         try {
             Field creatorName = aClass.getDeclaredField("creatorName");
             creatorName.setAccessible(true);
-            creatorName.set(po, userName);
+            creatorName.set(po, user.getName());
         } catch (NoSuchFieldException e) {
             logger.info(e.getMessage());
             return false;
@@ -337,22 +348,21 @@ public class Common {
     }
 
     /**
-     * 设置所有po对象的modifiedBy, modiName和gmtModify字段属性
+     * 设置所有po对象的modifier, gmtModified字段属性
      *
      * @param po       po对象
-     * @param userId   设置到modifiedBy
-     * @param userName 设置到modiName
+     * @param user   设置到modifiedBy
      * @return 如果po对象没有这些属性或类型不对返回false，否则true
      * @author : Wangzixia 32420182202938
      * @date： 2021/11/19 00:12
      * @version: 2.0
      */
-    public static boolean setPoModifiedFields(Object po, long userId, String userName) {
+    public static boolean putPoModifiedFields(Object po, SimpleUser user) {
         Class<?> aClass = po.getClass();
         try {
             Field modifierId = aClass.getDeclaredField("modifierId");
             modifierId.setAccessible(true);
-            modifierId.set(po, userId);
+            modifierId.set(po, user.getId());
         } catch (NoSuchFieldException e) {
             logger.info(e.getMessage());
             return false;
@@ -364,7 +374,7 @@ public class Common {
         try {
             Field modifierName = aClass.getDeclaredField("modifierName");
             modifierName.setAccessible(true);
-            modifierName.set(po, userName);
+            modifierName.set(po, user.getName());
         } catch (NoSuchFieldException e) {
             logger.info(e.getMessage());
             return false;

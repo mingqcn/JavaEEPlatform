@@ -1,11 +1,14 @@
 package cn.edu.xmu.javaee.goodsdemo.controller;
 
+import cn.edu.xmu.javaee.core.aop.Audit;
+import cn.edu.xmu.javaee.core.aop.LoginName;
+import cn.edu.xmu.javaee.core.aop.LoginUser;
 import cn.edu.xmu.javaee.core.model.PageObj;
 import cn.edu.xmu.javaee.core.util.ReturnNo;
 import cn.edu.xmu.javaee.core.util.ReturnObject;
 import cn.edu.xmu.javaee.goodsdemo.controller.vo.ProductRetVo;
 import cn.edu.xmu.javaee.goodsdemo.controller.vo.ProductVo;
-import cn.edu.xmu.javaee.goodsdemo.controller.vo.UserVo;
+import cn.edu.xmu.javaee.core.model.SimpleUser;
 import cn.edu.xmu.javaee.goodsdemo.dao.bo.Product;
 import cn.edu.xmu.javaee.goodsdemo.service.ProductService;
 import com.github.pagehelper.PageInfo;
@@ -38,15 +41,17 @@ public class AdminProductController {
     }
 
     @GetMapping("{id}")
+    @Audit
     public ReturnObject getProductById(@PathVariable("id") Long id) {
         logger.debug("getProductById: id = {} " ,id);
         Product product = null;
         product = productService.retrieveProductByID(id, false);
-        ProductRetVo productRetVo = cloneObj(product, ProductRetVo.class);
-        return new ReturnObject(productRetVo);
+        ProductVo productVo = cloneObj(product, ProductVo.class);
+        return new ReturnObject(productVo);
     }
 
     @GetMapping("")
+    @Audit
     public ReturnObject searchProductByName(@RequestParam String name,
                                             @RequestParam(required = false,defaultValue = "1") Integer page,
                                             @RequestParam(required = false,defaultValue = "10") Integer pageSize) {
@@ -61,26 +66,30 @@ public class AdminProductController {
 
 
     @PostMapping("")
-    public ReturnObject createProduct(@Validated @RequestBody ProductVo productVo){
+    @Audit
+    public ReturnObject createProduct(@Validated @RequestBody ProductVo productVo, @LoginUser Long userId, @LoginName String userName){
         Product product = cloneObj(productVo, Product.class);
-        UserVo userVo = new UserVo(Long.valueOf(1), "admin1");
-        Product retProduct = productService.createProduct(product, userVo);
+        SimpleUser user = new SimpleUser(userId, userName);
+        Product retProduct = productService.createProduct(product, user);
         ProductVo vo = cloneObj(retProduct, ProductVo.class);
         return new ReturnObject(ReturnNo.CREATED, vo);
     }
 
     @PutMapping("{id}")
-    public ReturnObject modiProduct(@PathVariable Long id, @RequestBody ProductVo productVo){
-        UserVo userVo = new UserVo(Long.valueOf(2), "admin2");
+    @Audit
+    public ReturnObject modiProduct(@PathVariable Long id, @RequestBody ProductVo productVo, @LoginUser Long userId, @LoginName String userName){
+        SimpleUser user = new SimpleUser(userId, userName);
         Product product = cloneObj(productVo, Product.class);
         product.setId(id);
-        productService.modifyProduct(product, userVo);
+        productService.modifyProduct(product, user);
         return new ReturnObject();
     }
 
     @DeleteMapping("{id}")
-    public ReturnObject delProduct(@PathVariable("id") Long id) {
-        productService.deleteProduct(id);
+    @Audit
+    public ReturnObject delProduct(@PathVariable("id") Long id, @LoginUser Long userId, @LoginName String userName) {
+        SimpleUser user = new SimpleUser(userId, userName);
+        productService.deleteProduct(id, user);
         return new ReturnObject();
     }
 

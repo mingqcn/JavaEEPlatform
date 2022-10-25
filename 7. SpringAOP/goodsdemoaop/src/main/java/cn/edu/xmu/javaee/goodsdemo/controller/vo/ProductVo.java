@@ -1,7 +1,7 @@
 //School of Informatics Xiamen University, GPL-3.0 license
 package cn.edu.xmu.javaee.goodsdemo.controller.vo;
 
-import cn.edu.xmu.javaee.goodsdemo.dao.bo.Product;
+import cn.edu.xmu.javaee.core.model.SimpleUser;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -43,8 +43,8 @@ public class ProductVo {
 
     private LocalDateTime gmtModified;
 
-    private UserVo creator;
+    private SimpleUser creator;
 
-    private UserVo modifier;
+    private SimpleUser modifier;
 
 }

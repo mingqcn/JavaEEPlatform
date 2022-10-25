@@ -1,6 +1,6 @@
 package cn.edu.xmu.javaee.goodsdemo.service;
 
-import cn.edu.xmu.javaee.goodsdemo.controller.vo.UserVo;
+import cn.edu.xmu.javaee.core.model.SimpleUser;
 import cn.edu.xmu.javaee.goodsdemo.dao.ProductDao;
 import cn.edu.xmu.javaee.goodsdemo.dao.bo.Product;
 import cn.edu.xmu.javaee.core.util.BusinessException;
@@ -53,7 +53,7 @@ public class ProductService {
      * @return 新商品
      */
     @Transactional(rollbackFor = {BusinessException.class})
-    public Product createProduct(Product product, UserVo userVo) throws BusinessException{
+    public Product createProduct(Product product, SimpleUser userVo) throws BusinessException{
         return productDao.createProduct(product, userVo);
     }
 
@@ -63,7 +63,7 @@ public class ProductService {
      * @param product 修改商品信息
      */
     @Transactional(rollbackFor = {BusinessException.class})
-    public void modifyProduct(Product product, UserVo userVo) throws BusinessException{
+    public void modifyProduct(Product product, SimpleUser userVo) throws BusinessException{
         productDao.modiProduct(product, userVo);
     }
 
@@ -72,8 +72,8 @@ public class ProductService {
      * @return 删除是否成功
      */
     @Transactional(rollbackFor = {BusinessException.class})
-    public void deleteProduct(Long id) throws BusinessException {
-        productDao.deleteProduct(id);
+    public void deleteProduct(Long id, SimpleUser user) throws BusinessException {
+        productDao.deleteProduct(id, user);
     }
 
     @Transactional(rollbackFor = {BusinessException.class})
