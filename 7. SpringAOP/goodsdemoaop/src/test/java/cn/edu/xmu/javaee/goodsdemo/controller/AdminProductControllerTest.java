@@ -81,12 +81,11 @@ public class AdminProductControllerTest {
                         .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(MockMvcResultMatchers.status().isCreated())
                 .andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.errno", is(ReturnNo.OK.getErrNo())))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.errno", is(ReturnNo.CREATED.getErrNo())))
                 //.andDo(MockMvcResultHandlers.print())
                 .andReturn().getResponse().getContentAsString();
 
         ProductVo retObj = JacksonUtil.parseObject(ret, "data", ProductVo.class);
-        System.out.print(retObj);
 
         this.mockMvc.perform(MockMvcRequestBuilders.get(PRODUCTID, retObj.getId()))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -94,6 +93,19 @@ public class AdminProductControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.errno", is(ReturnNo.OK.getErrNo())))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.data.name", is("水果糖")));
         //.andDo(MockMvcResultHandlers.print());
+    }
+
+    @Test
+    public void createProduct2() throws Exception {
+
+        String body = "{\"name\":\"水果糖\",\"originalPrice\":-1,\"weight\":807,\"barcode\":\"1234455\",\"unit\":\"盒\",\"originPlace\":\"长沙\"}";
+        this.mockMvc.perform(MockMvcRequestBuilders.post(PRODUCT)
+                        .content(body.getBytes("utf-8"))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
+//                .andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.errno", is(ReturnNo.FIELD_NOTVALID.getErrNo())))
+                .andDo(MockMvcResultHandlers.print());
     }
 
     @Test

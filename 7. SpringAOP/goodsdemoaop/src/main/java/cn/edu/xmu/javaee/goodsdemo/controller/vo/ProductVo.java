@@ -43,7 +43,6 @@ public class ProductVo {
 
     private String unit;
 
-    @Min(0)
     private String originPlace;
 
     private LocalDateTime gmtCreate;

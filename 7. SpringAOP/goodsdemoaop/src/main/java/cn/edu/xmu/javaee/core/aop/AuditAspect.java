@@ -12,6 +12,7 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -20,7 +21,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
+/**
+ * @auther mingqiu
+ * @date 2020/6/26 下午2:16
+ *      modifiedBy Ming Qiu 2020/11/3 22:59
+ *
+ */
 @Aspect
+@Component
 @Order(1)
 public class AuditAspect {
 

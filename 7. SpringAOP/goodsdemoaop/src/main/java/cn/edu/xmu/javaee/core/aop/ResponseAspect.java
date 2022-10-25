@@ -11,6 +11,7 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -20,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Aspect
+@Component
 @Order(100)
 public class ResponseAspect {
 
@@ -39,6 +41,7 @@ public class ResponseAspect {
         MethodSignature ms = (MethodSignature) jp.getSignature();
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
+
         String[] paramNames = ms.getParameterNames();
         Object[] args = jp.getArgs();
 
@@ -50,15 +53,6 @@ public class ResponseAspect {
         }catch(BusinessException exception){
             logger.info("doAround: BusinessException， errno = {}", exception.getErrno());
             retVal = new ReturnObject(exception.getErrno(), exception.getMessage());
-        }catch (MethodArgumentNotValidException exception){
-            StringBuffer msg = new StringBuffer();
-            //解析原错误信息，封装后返回，此处返回非法的字段名称，原始值，错误信息
-            for (FieldError error : exception.getBindingResult().getFieldErrors()) {
-                msg.append(error.getDefaultMessage());
-                msg.append(";");
-            }
-            logger.info("doAround: MethodArgumentNotValidException， msg = {}", msg.toString());
-            retVal = new ReturnObject(ReturnNo.FIELD_NOTVALID, msg);
         }
 
         code = retVal.getCode();
@@ -109,7 +103,10 @@ public class ResponseAspect {
                 // 403
                 response.setStatus(HttpServletResponse.SC_FORBIDDEN);
                 break;
+            default:
+                response.setStatus(HttpServletResponse.SC_OK);
         }
+        response.setContentType("application/json;charset=UTF-8");
     }
 
     /**
