@@ -65,7 +65,7 @@
     <!-- 日志输出级别 -->
     <logger name="cn.edu.xmu.javaee" level="INFO"/>
     <logger name="cn.edu.xmu.javaee.core.util.Common" level="INFO"/>
-    <logger name="cn.edu.xmu.javaee.core" level="INFO"/>
+    <logger name="cn.edu.xmu.javaee.core" level="DEBUG"/>
     <logger name="cn.edu.xmu.javaee.goodsdemo.mapper" level="INFO"/>
     <root level="INFO">
         <appender-ref ref="STDOUT" />

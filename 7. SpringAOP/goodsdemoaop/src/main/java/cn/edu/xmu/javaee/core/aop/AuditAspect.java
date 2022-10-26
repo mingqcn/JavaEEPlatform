@@ -65,6 +65,9 @@ public class AuditAspect {
             departId = userAndDepart.getDepartId();
             userName=userAndDepart.getUserName();
             userLevel=userAndDepart.getUserLevel();
+        }else{
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            return new ReturnObject(ReturnNo.AUTH_INVALID_JWT);
         }
 
         //检验/shop的api中传入token是否和departId一致
@@ -120,7 +123,7 @@ public class AuditAspect {
             logger.error("aroundAudit : the api path is null");
         }
 
-        logger.info("aroundAudit : userId = {}, departId={}", userId, departId);
+        logger.debug("aroundAudit : userId = {}, departId={}", userId, departId);
         if (userId == null) {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             logger.info("aroundAudit : userId is null");

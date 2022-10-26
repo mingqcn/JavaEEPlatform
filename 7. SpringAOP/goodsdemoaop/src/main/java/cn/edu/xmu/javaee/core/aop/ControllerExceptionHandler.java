@@ -31,7 +31,7 @@ public class ControllerExceptionHandler {
             msg.append(error.getDefaultMessage());
             msg.append(";");
         }
-        logger.info("methodArgumentNotValid: msg = {}", msg.toString());
+        logger.debug("methodArgumentNotValid: msg = {}", msg.toString());
         response.setContentType("application/json;charset=UTF-8");
         ReturnObject retObj = new ReturnObject(ReturnNo.FIELD_NOTVALID, msg.toString());
         return new ResponseEntity(retObj, HttpStatus.BAD_REQUEST);

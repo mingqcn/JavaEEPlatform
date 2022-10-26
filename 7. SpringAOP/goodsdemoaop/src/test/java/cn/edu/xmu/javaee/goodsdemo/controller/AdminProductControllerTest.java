@@ -133,6 +133,34 @@ public class AdminProductControllerTest {
     }
 
     @Test
+    public void createProduct3() throws Exception {
+
+        String body = "{\"name\":\"水果糖\",\"originalPrice\":100,\"weight\":807,\"barcode\":\"1234455\",\"unit\":\"盒\",\"originPlace\":\"长沙\"}";
+        this.mockMvc.perform(MockMvcRequestBuilders.post(PRODUCT)
+                        .content(body.getBytes("utf-8"))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(MockMvcResultMatchers.status().isUnauthorized())
+                .andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.errno", is(ReturnNo.AUTH_NEED_LOGIN.getErrNo())));
+                //.andDo(MockMvcResultHandlers.print())
+
+    }
+
+    @Test
+    public void createProduct4() throws Exception {
+
+        String body = "{\"name\":\"水果糖\",\"originalPrice\":100,\"weight\":807,\"barcode\":\"1234455\",\"unit\":\"盒\",\"originPlace\":\"长沙\"}";
+        this.mockMvc.perform(MockMvcRequestBuilders.post(PRODUCT)
+                        .header("authorization", "123456787")
+                        .content(body.getBytes("utf-8"))
+                        .contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(MockMvcResultMatchers.status().isUnauthorized())
+                .andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.errno", is(ReturnNo.AUTH_INVALID_JWT.getErrNo())));
+                //.andDo(MockMvcResultHandlers.print())
+
+    }
+    @Test
     public void modiProduct1() throws Exception {
         String body = "{\"name\":\"奶糖\",\"originalPrice\":200}";
         this.mockMvc.perform(MockMvcRequestBuilders.put(PRODUCTID, 1580)

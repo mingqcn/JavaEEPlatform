@@ -35,11 +35,11 @@ public enum ReturnNo {
     AUTH_INVALID_ACCOUNT(700, "用户名不存在或者密码错误"),
     AUTH_ID_NOTEXIST(701,"登录用户id不存在"),
     AUTH_USER_FORBIDDEN(702,"用户被禁止登录"),
+    AUTH_NEED_LOGIN(704, "需要先登录"),
     //以下错误码提示可以自行修改
     //--------------------------------------------
 
     //状态码 403
-    AUTH_NEED_LOGIN(704, "需要先登录"),
     AUTH_NO_RIGHT(705, "无权限"),
     RESOURCE_ID_OUTSCOPE(505,"操作的资源id不是自己的对象"),
     FILE_NO_WRITE_PERMISSION(506,"目录文件夹没有写入的权限"),
