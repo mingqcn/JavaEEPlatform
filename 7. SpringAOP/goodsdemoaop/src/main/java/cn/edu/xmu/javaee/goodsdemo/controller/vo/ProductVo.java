@@ -39,6 +39,8 @@ public class ProductVo {
 
     private String originPlace;
 
+    private Byte status;
+
     private LocalDateTime gmtCreate;
 
     private LocalDateTime gmtModified;

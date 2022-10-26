@@ -79,6 +79,10 @@ public class ProductPoSqlProvider {
             sql.VALUES("`gmt_modified`", "#{gmtModified,jdbcType=TIMESTAMP}");
         }
         
+        if (row.getStatus() != null) {
+            sql.VALUES("`status`", "#{status,jdbcType=TINYINT}");
+        }
+        
         return sql.toString();
     }
 
@@ -110,6 +114,7 @@ public class ProductPoSqlProvider {
         sql.SELECT("`modifier_name`");
         sql.SELECT("`gmt_create`");
         sql.SELECT("`gmt_modified`");
+        sql.SELECT("`status`");
         sql.FROM("oomall_product");
         applyWhere(sql, example, false);
         
@@ -197,6 +202,10 @@ public class ProductPoSqlProvider {
             sql.SET("`gmt_modified` = #{row.gmtModified,jdbcType=TIMESTAMP}");
         }
         
+        if (row.getStatus() != null) {
+            sql.SET("`status` = #{row.status,jdbcType=TINYINT}");
+        }
+        
         applyWhere(sql, example, true);
         return sql.toString();
     }
@@ -227,6 +236,7 @@ public class ProductPoSqlProvider {
         sql.SET("`modifier_name` = #{row.modifierName,jdbcType=VARCHAR}");
         sql.SET("`gmt_create` = #{row.gmtCreate,jdbcType=TIMESTAMP}");
         sql.SET("`gmt_modified` = #{row.gmtModified,jdbcType=TIMESTAMP}");
+        sql.SET("`status` = #{row.status,jdbcType=TINYINT}");
         
         ProductPoExample example = (ProductPoExample) parameter.get("example");
         applyWhere(sql, example, true);
@@ -301,6 +311,10 @@ public class ProductPoSqlProvider {
         
         if (row.getGmtModified() != null) {
             sql.SET("`gmt_modified` = #{gmtModified,jdbcType=TIMESTAMP}");
+        }
+        
+        if (row.getStatus() != null) {
+            sql.SET("`status` = #{status,jdbcType=TINYINT}");
         }
         
         sql.WHERE("`id` = #{id,jdbcType=BIGINT}");

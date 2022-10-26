@@ -1,7 +1,6 @@
 //School of Informatics Xiamen University, GPL-3.0 license
-package cn.edu.xmu.javaee.core.aop;
+package cn.edu.xmu.javaee.goodsdemo.controller;
 
-import cn.edu.xmu.javaee.core.util.BusinessException;
 import cn.edu.xmu.javaee.core.util.ReturnNo;
 import cn.edu.xmu.javaee.core.util.ReturnObject;
 import org.slf4j.Logger;

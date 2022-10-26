@@ -34,14 +34,16 @@ public interface ProductPoMapper {
         "`barcode`, `unit`, `origin_place`, ",
         "`creator_id`, `creator_name`, ",
         "`modifier_id`, `modifier_name`, ",
-        "`gmt_create`, `gmt_modified`)",
+        "`gmt_create`, `gmt_modified`, ",
+        "`status`)",
         "values (#{goodsId,jdbcType=BIGINT}, #{skuSn,jdbcType=VARCHAR}, ",
         "#{name,jdbcType=VARCHAR}, #{originalPrice,jdbcType=BIGINT}, ",
         "#{weight,jdbcType=BIGINT}, #{imageUrl,jdbcType=VARCHAR}, ",
         "#{barcode,jdbcType=VARCHAR}, #{unit,jdbcType=VARCHAR}, #{originPlace,jdbcType=VARCHAR}, ",
         "#{creatorId,jdbcType=BIGINT}, #{creatorName,jdbcType=VARCHAR}, ",
         "#{modifierId,jdbcType=BIGINT}, #{modifierName,jdbcType=VARCHAR}, ",
-        "#{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP})"
+        "#{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, ",
+        "#{status,jdbcType=TINYINT})"
     })
     @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Long.class)
     int insert(ProductPo row);
@@ -79,7 +81,8 @@ public interface ProductPoMapper {
         @Result(column="modifier_id", property="modifierId", jdbcType=JdbcType.BIGINT),
         @Result(column="modifier_name", property="modifierName", jdbcType=JdbcType.VARCHAR),
         @Result(column="gmt_create", property="gmtCreate", jdbcType=JdbcType.TIMESTAMP),
-        @Result(column="gmt_modified", property="gmtModified", jdbcType=JdbcType.TIMESTAMP)
+        @Result(column="gmt_modified", property="gmtModified", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="status", property="status", jdbcType=JdbcType.TINYINT)
     })
     List<ProductPo> selectByExample(ProductPoExample example);
 
@@ -93,7 +96,7 @@ public interface ProductPoMapper {
         "select",
         "`id`, `goods_id`, `sku_sn`, `name`, `original_price`, `weight`, `image_url`, ",
         "`barcode`, `unit`, `origin_place`, `creator_id`, `creator_name`, `modifier_id`, ",
-        "`modifier_name`, `gmt_create`, `gmt_modified`",
+        "`modifier_name`, `gmt_create`, `gmt_modified`, `status`",
         "from oomall_product",
         "where `id` = #{id,jdbcType=BIGINT}"
     })
@@ -113,7 +116,8 @@ public interface ProductPoMapper {
         @Result(column="modifier_id", property="modifierId", jdbcType=JdbcType.BIGINT),
         @Result(column="modifier_name", property="modifierName", jdbcType=JdbcType.VARCHAR),
         @Result(column="gmt_create", property="gmtCreate", jdbcType=JdbcType.TIMESTAMP),
-        @Result(column="gmt_modified", property="gmtModified", jdbcType=JdbcType.TIMESTAMP)
+        @Result(column="gmt_modified", property="gmtModified", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="status", property="status", jdbcType=JdbcType.TINYINT)
     })
     ProductPo selectByPrimaryKey(Long id);
 
@@ -166,7 +170,8 @@ public interface ProductPoMapper {
           "`modifier_id` = #{modifierId,jdbcType=BIGINT},",
           "`modifier_name` = #{modifierName,jdbcType=VARCHAR},",
           "`gmt_create` = #{gmtCreate,jdbcType=TIMESTAMP},",
-          "`gmt_modified` = #{gmtModified,jdbcType=TIMESTAMP}",
+          "`gmt_modified` = #{gmtModified,jdbcType=TIMESTAMP},",
+          "`status` = #{status,jdbcType=TINYINT}",
         "where `id` = #{id,jdbcType=BIGINT}"
     })
     int updateByPrimaryKey(ProductPo row);

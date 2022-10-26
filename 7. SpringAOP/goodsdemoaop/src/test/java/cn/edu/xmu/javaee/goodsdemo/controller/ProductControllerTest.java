@@ -42,8 +42,8 @@ public class ProductControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.data.otherProduct[?(@.id== '%d' )].name", 2358).value("梅花味精"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.data.otherProduct[?(@.id== '%d' )].name", 2439).value("维达果园飘香迷你纸"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.data.otherProduct[?(@.id== '%d' )].name", 2929).value("干一杯"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.data.otherProduct[?(@.id== '%d' )].name", 3056).value("娃哈哈原味"));
-        //.andDo(MockMvcResultHandlers.print());
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data.otherProduct[?(@.id== '%d' )].name", 3056).value("娃哈哈原味"))
+                .andDo(MockMvcResultHandlers.print());
 
     }
 

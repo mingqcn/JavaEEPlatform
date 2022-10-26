@@ -92,6 +92,7 @@ public class ProductDao {
         Product product = null;
         try{
             ProductPo productPo = productPoMapper.selectByPrimaryKey(productId);
+            logger.debug("retrieveProductByID : productPo = {}", productPo);
             if (null == productPo){
                 throw new BusinessException(ReturnNo.RESOURCE_ID_NOTEXIST, "产品id不存在");
             }
@@ -114,15 +115,15 @@ public class ProductDao {
     private Product retrieveFullProduct(ProductPo productPo) throws DataAccessException{
         assert productPo != null;
         Product product =  cloneObj(productPo, Product.class);
-        logger.debug("retrieveFullProduct: product = {}", product);
-        List<OnSale> latestOnSale = onSaleDao.getLatestOnSale(productPo.getId());
+        List<OnSale> latestOnSale = onSaleDao.getLatestValidOnSale(productPo.getId());
         logger.debug("retrieveFullProduct: latestOnSale = {}", latestOnSale);
 
         product.setOnSaleList(latestOnSale);
+        logger.debug("retrieveFullProduct: product.onSaleList = {}", product.getOnSaleList());
         List<Product> otherProduct = retrieveOtherProduct(productPo);
         logger.debug("retrieveFullProduct: otherProduct = {}", otherProduct);
         product.addOtherProduct(otherProduct);
-        logger.debug("retrieveFullProduct: product = {}", product);
+        logger.debug("retrieveFullProduct: product.getValidOnSale = {}", product.getValidOnSale());
         return product;
     }
 

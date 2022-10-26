@@ -3,16 +3,12 @@ package cn.edu.xmu.javaee.goodsdemo.controller.vo;
 
 import cn.edu.xmu.javaee.goodsdemo.dao.bo.OnSale;
 import cn.edu.xmu.javaee.goodsdemo.dao.bo.Product;
-import com.alibaba.druid.filter.AutoLoad;
-import com.alibaba.druid.sql.ast.statement.SQLForeignKeyImpl;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,19 +18,19 @@ import java.util.List;
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @NoArgsConstructor
-public class ProductRetVo {
+public class ProductRetVo{
 
     private Long id;
-
-    private String skuSn;
-
     private String name;
+    private String imageUrl;
+    private Long price;
+    private Integer quantity;
+    private Byte status;
+    private String skuSn;
 
     private Long originalPrice;
 
     private Long weight;
-
-    private String imageUrl;
 
     private String barcode;
 
@@ -42,46 +38,40 @@ public class ProductRetVo {
 
     private String originPlace;
 
-    private Long price;
-
-    private Integer quantity;
-
-    private LocalDateTime gmtCreate;
-
-    private LocalDateTime gmtModified;
-
-    private List<ProductRetVo> otherProduct;
+    private List<SimpleProductRetVo> otherProduct;
 
     @JsonIgnore
-    private List<OnSale> onSaleList;
+    protected OnSale validOnSale;
 
     public Long getPrice() {
-        OnSale valid = this.findValidOnSale();
-        if (null != valid) {
-            return valid.getPrice();
+        if (null != this.validOnSale) {
+            return this.validOnSale.getPrice();
         } else {
             return null;
         }
     }
 
     public Integer getQuantity() {
-        OnSale valid = this.findValidOnSale();
-        if (null != valid) {
-            return valid.getQuantity();
+        if (null != this.validOnSale) {
+            return this.validOnSale.getQuantity();
         } else {
             return null;
         }
     }
 
     /**
-     * 获得当前有效的销售对象
+     * 获得商品状态
      * @return
      */
-    private OnSale findValidOnSale(){
-        if ((null != this.onSaleList) && (onSaleList.size()) > 0) {
-            return this.onSaleList.get(0);
-        } else {
-            return null;
+    public Byte getStatus() {
+        if ((Product.DRAFT == this.status) || (Product.BANNED == this.status)) {
+            return status;
+        }else{
+            if (null == this.getValidOnSale()){
+                return Product.OFFSHELF;
+            }else{
+                return Product.ONSHELF;
+            }
         }
     }
 }

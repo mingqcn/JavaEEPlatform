@@ -4,6 +4,7 @@ import cn.edu.xmu.javaee.core.model.PageObj;
 import cn.edu.xmu.javaee.core.util.JacksonUtil;
 import cn.edu.xmu.javaee.core.util.ReturnObject;
 import cn.edu.xmu.javaee.goodsdemo.controller.vo.ProductRetVo;
+import cn.edu.xmu.javaee.goodsdemo.controller.vo.SimpleProductRetVo;
 import cn.edu.xmu.javaee.goodsdemo.dao.bo.Product;
 import cn.edu.xmu.javaee.goodsdemo.service.ProductService;
 import com.github.pagehelper.PageInfo;
@@ -46,8 +47,9 @@ public class ProductController {
             product = productService.retrieveProductByID(id, true);
         }
         ProductRetVo productRetVo = cloneObj(product, ProductRetVo.class);
-        productRetVo.setOtherProduct(createListObj(product.getOtherProduct(), ProductRetVo.class));
-        productRetVo.setOnSaleList(product.getOnSaleList());
+        List<ProductRetVo> otherProduct = createListObj(product.getOtherProduct(), ProductRetVo.class);
+        productRetVo.setOtherProduct(createListObj(otherProduct, SimpleProductRetVo.class));
+        productRetVo.setValidOnSale(product.getValidOnSale());
         ReturnObject retObj = new ReturnObject(productRetVo);
         logger.debug("findProductById: retObj = {} " , JacksonUtil.toJson(retObj));
         return retObj;
@@ -69,7 +71,7 @@ public class ProductController {
         for (Product item : productList.getList()) {
             ProductRetVo  vo = cloneObj(item, ProductRetVo.class);
             logger.debug("searchProductByName: item = {}", item);
-            vo.setOtherProduct(createListObj(item.getOtherProduct(), ProductRetVo.class));
+            vo.setOtherProduct(createListObj(item.getOtherProduct(), SimpleProductRetVo.class));
             voObjs.add(vo);
             logger.debug("searchProductByName: voObjs = {}", voObjs);
         }
