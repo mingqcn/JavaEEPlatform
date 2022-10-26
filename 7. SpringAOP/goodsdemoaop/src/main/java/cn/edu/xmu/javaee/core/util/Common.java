@@ -125,11 +125,70 @@ public class Common {
                 try {
                     boField = boClass.getDeclaredField(voField.getName());
                     boField.setAccessible(true);
+                    Class<?> boFieldType = boField.getType();
+                    //属性名相同，类型相同，直接克隆
+                    if (voField.getType().equals(boFieldType)) {
+                        boField.setAccessible(true);
+                        Object newObject = boField.get(bo);
+                        voField.set(newVo, newObject);
+                    }
+                    //属性名相同，类型不同
+                    else {
+                        boolean boFieldIsIntegerOrByteAndVoFieldIsEnum = ("Integer".equals(boFieldType.getSimpleName()) || "Byte".equals(boFieldType.getSimpleName())) && voField.getType().isEnum();
+                        boolean voFieldIsIntegerOrByteAndBoFieldIsEnum = ("Integer".equals(voField.getType().getSimpleName()) || "Byte".equals(voField.getType().getSimpleName())) && boFieldType.isEnum();
+                        boolean voFieldIsLocalDateTimeAndAndBoFieldIsZonedDateTime = ("LocalDateTime".equals(voField.getType().getSimpleName()) && "ZonedDateTime".equals(boField.getType().getSimpleName()));
+                        boolean voFieldIsZonedDateTimeAndBoFieldIsLocalDateTime = ("ZonedDateTime".equals(voField.getType().getSimpleName()) && "LocalDateTime".equals(boField.getType().getSimpleName()));
+
+                        try{
+                            //整形或Byte转枚举
+                            if (boFieldIsIntegerOrByteAndVoFieldIsEnum) {
+                                Object newObj = boField.get(bo);
+                                if ("Byte".equals(boFieldType.getSimpleName())) {
+                                    newObj = ((Byte) newObj).intValue();
+                                }
+                                Object[] enumer = voField.getType().getEnumConstants();
+                                voField.set(newVo, enumer[(int) newObj]);
+                            }
+                            //枚举转整形或Byte
+                            else if (voFieldIsIntegerOrByteAndBoFieldIsEnum) {
+                                Object value = ((Enum) boField.get(bo)).ordinal();
+                                if ("Byte".equals(voField.getType().getSimpleName())) {
+                                    value = ((Integer) value).byteValue();
+                                }
+                                voField.set(newVo, value);
+                            }
+                            //ZonedDateTime转LocalDateTime
+                            else if(voFieldIsLocalDateTimeAndAndBoFieldIsZonedDateTime)
+                            {
+                                ZonedDateTime newObj = (ZonedDateTime) boField.get(bo);
+                                LocalDateTime localDateTime = newObj.withZoneSameInstant(ZoneId.systemDefault()).toLocalDateTime();
+                                voField.set(newVo, localDateTime);
+                            }
+                            //LocalDateTime转ZonedDateTime
+                            else if(voFieldIsZonedDateTimeAndBoFieldIsLocalDateTime)
+                            {
+                                LocalDateTime newObj = (LocalDateTime) boField.get(bo);
+                                ZonedDateTime zdt = newObj.atZone( ZoneId.systemDefault() );
+                                voField.set(newVo, zdt);
+                            }
+                            else {
+                                voField.set(newVo, null);
+                            }
+                        }
+                        //如果为空字段则不复制
+                        catch (Exception e)
+                        {
+                            voField.set(newVo, null);
+                        }
+                    }
                 }
                 //bo中查找不到对应的属性，那就有可能为特殊情况xxx，需要由xxxId与xxxName组装
                 catch (NoSuchFieldException e) {
+                    //默认设成null
+                    voField.set(newVo, null);
                     //提取头部
                     String head = voField.getName();
+                    logger.debug("cloneObj: voField = {} not found in vo", head);
                     Field boxxxNameField = null;
                     Field boxxxIdField = null;
                     for (Field bof : boFields) {
@@ -139,84 +198,27 @@ public class Common {
                             boxxxIdField = bof;
                         }
                     }
-                    //找不到xxxName或者找不到xxxId
-                    if (boxxxNameField == null || boxxxIdField == null) {
-                        voField.set(newVo, null);
-                        continue;
-                    }
+                    logger.debug("cloneObj: boxxxIdField = {}, boxxxNameField = {} ", boxxxIdField, boxxxNameField);
+                    //xxName和xxId属性均存在
+                    if (null != boxxxNameField  && null != boxxxIdField) {
+                        //bo的xxxId和xxxName组装为SimpleRetVo的id,name
+                        boxxxIdField.setAccessible(true);
+                        boxxxNameField.setAccessible(true);
+                        Object boxxxId = boxxxIdField.get(bo);
+                        Object boxxxName = boxxxNameField.get(bo);
 
-                    Object newSimpleRetVo = voField.getType().getDeclaredConstructor().newInstance();
-                    Field newSimpleRetVoIdField = newSimpleRetVo.getClass().getDeclaredField("id");
-                    Field newSimpleRetVoNameField = newSimpleRetVo.getClass().getDeclaredField("name");
-                    newSimpleRetVoIdField.setAccessible(true);
-                    newSimpleRetVoNameField.setAccessible(true);
+                        //这两个属性不为空
+                        if (null != boxxxId  || null != boxxxName) {
+                            Object newSimpleRetVo = voField.getType().getDeclaredConstructor().newInstance();
+                            Field newSimpleRetVoIdField = newSimpleRetVo.getClass().getDeclaredField("id");
+                            Field newSimpleRetVoNameField = newSimpleRetVo.getClass().getDeclaredField("name");
+                            newSimpleRetVoIdField.setAccessible(true);
+                            newSimpleRetVoNameField.setAccessible(true);
 
-                    //bo的xxxId和xxxName组装为SimpleRetVo的id,name
-                    boxxxIdField.setAccessible(true);
-                    boxxxNameField.setAccessible(true);
-                    Object boxxxId = boxxxIdField.get(bo);
-                    Object boxxxName = boxxxNameField.get(bo);
-
-                    newSimpleRetVoIdField.set(newSimpleRetVo, boxxxId);
-                    newSimpleRetVoNameField.set(newSimpleRetVo, boxxxName);
-
-                    voField.set(newVo, newSimpleRetVo);
-                    continue;
-                }
-                Class<?> boFieldType = boField.getType();
-                //属性名相同，类型相同，直接克隆
-                if (voField.getType().equals(boFieldType)) {
-                    boField.setAccessible(true);
-                    Object newObject = boField.get(bo);
-                    voField.set(newVo, newObject);
-                }
-                //属性名相同，类型不同
-                else {
-                    boolean boFieldIsIntegerOrByteAndVoFieldIsEnum = ("Integer".equals(boFieldType.getSimpleName()) || "Byte".equals(boFieldType.getSimpleName())) && voField.getType().isEnum();
-                    boolean voFieldIsIntegerOrByteAndBoFieldIsEnum = ("Integer".equals(voField.getType().getSimpleName()) || "Byte".equals(voField.getType().getSimpleName())) && boFieldType.isEnum();
-                    boolean voFieldIsLocalDateTimeAndAndBoFieldIsZonedDateTime = ("LocalDateTime".equals(voField.getType().getSimpleName()) && "ZonedDateTime".equals(boField.getType().getSimpleName()));
-                    boolean voFieldIsZonedDateTimeAndBoFieldIsLocalDateTime = ("ZonedDateTime".equals(voField.getType().getSimpleName()) && "LocalDateTime".equals(boField.getType().getSimpleName()));
-
-                    try{
-                        //整形或Byte转枚举
-                        if (boFieldIsIntegerOrByteAndVoFieldIsEnum) {
-                            Object newObj = boField.get(bo);
-                            if ("Byte".equals(boFieldType.getSimpleName())) {
-                                newObj = ((Byte) newObj).intValue();
-                            }
-                            Object[] enumer = voField.getType().getEnumConstants();
-                            voField.set(newVo, enumer[(int) newObj]);
+                            newSimpleRetVoIdField.set(newSimpleRetVo, boxxxId);
+                            newSimpleRetVoNameField.set(newSimpleRetVo, boxxxName);
+                            voField.set(newVo, newSimpleRetVo);
                         }
-                        //枚举转整形或Byte
-                        else if (voFieldIsIntegerOrByteAndBoFieldIsEnum) {
-                            Object value = ((Enum) boField.get(bo)).ordinal();
-                            if ("Byte".equals(voField.getType().getSimpleName())) {
-                                value = ((Integer) value).byteValue();
-                            }
-                            voField.set(newVo, value);
-                        }
-                        //ZonedDateTime转LocalDateTime
-                        else if(voFieldIsLocalDateTimeAndAndBoFieldIsZonedDateTime)
-                        {
-                            ZonedDateTime newObj = (ZonedDateTime) boField.get(bo);
-                            LocalDateTime localDateTime = newObj.withZoneSameInstant(ZoneId.systemDefault()).toLocalDateTime();
-                            voField.set(newVo, localDateTime);
-                        }
-                        //LocalDateTime转ZonedDateTime
-                        else if(voFieldIsZonedDateTimeAndBoFieldIsLocalDateTime)
-                        {
-                            LocalDateTime newObj = (LocalDateTime) boField.get(bo);
-                            ZonedDateTime zdt = newObj.atZone( ZoneId.systemDefault() );
-                            voField.set(newVo, zdt);
-                        }
-                        else {
-                            voField.set(newVo, null);
-                        }
-                    }
-                    //如果为空字段则不复制
-                    catch (Exception e)
-                    {
-                        voField.set(newVo, null);
                     }
                 }
             }

@@ -47,6 +47,7 @@ public class AdminProductController {
         Product product = null;
         product = productService.retrieveProductByID(id, false);
         ProductVo productVo = cloneObj(product, ProductVo.class);
+        logger.debug("getProductById: productVo = {} ", productVo );
         return new ReturnObject(productVo);
     }
 

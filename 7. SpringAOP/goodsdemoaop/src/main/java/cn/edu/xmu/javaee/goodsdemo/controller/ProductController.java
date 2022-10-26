@@ -49,7 +49,7 @@ public class ProductController {
         productRetVo.setOtherProduct(createListObj(product.getOtherProduct(), ProductRetVo.class));
         productRetVo.setOnSaleList(product.getOnSaleList());
         ReturnObject retObj = new ReturnObject(productRetVo);
-        logger.info("findProductById: retObj = {} " , JacksonUtil.toJson(retObj));
+        logger.debug("findProductById: retObj = {} " , JacksonUtil.toJson(retObj));
         return retObj;
     }
 
@@ -68,10 +68,10 @@ public class ProductController {
         List<ProductRetVo> voObjs = new ArrayList<>(productList.getList().size());
         for (Product item : productList.getList()) {
             ProductRetVo  vo = cloneObj(item, ProductRetVo.class);
-            logger.info("searchProductByName: item = {}", item);
+            logger.debug("searchProductByName: item = {}", item);
             vo.setOtherProduct(createListObj(item.getOtherProduct(), ProductRetVo.class));
             voObjs.add(vo);
-            logger.info("searchProductByName: voObjs = {}", voObjs);
+            logger.debug("searchProductByName: voObjs = {}", voObjs);
         }
 
         PageObj<ProductRetVo> data = new PageObj(voObjs, productList.getTotal(), productList.getPageNum(),productList.getPageSize(),productList.getPages());

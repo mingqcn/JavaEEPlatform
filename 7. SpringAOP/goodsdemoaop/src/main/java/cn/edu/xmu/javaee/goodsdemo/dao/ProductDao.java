@@ -73,7 +73,7 @@ public class ProductDao {
                 }
                 productList.add(product);
             }
-            logger.info("retrieveProductByName: productList = {}", productList);
+            logger.debug("retrieveProductByName: productList = {}", productList);
 
         }
         catch(DataAccessException e){
@@ -114,15 +114,15 @@ public class ProductDao {
     private Product retrieveFullProduct(ProductPo productPo) throws DataAccessException{
         assert productPo != null;
         Product product =  cloneObj(productPo, Product.class);
-        logger.info("retrieveFullProduct: product = {}", product);
+        logger.debug("retrieveFullProduct: product = {}", product);
         List<OnSale> latestOnSale = onSaleDao.getLatestOnSale(productPo.getId());
-        logger.info("retrieveFullProduct: latestOnSale = {}", latestOnSale);
+        logger.debug("retrieveFullProduct: latestOnSale = {}", latestOnSale);
 
         product.setOnSaleList(latestOnSale);
         List<Product> otherProduct = retrieveOtherProduct(productPo);
-        logger.info("retrieveFullProduct: otherProduct = {}", otherProduct);
+        logger.debug("retrieveFullProduct: otherProduct = {}", otherProduct);
         product.addOtherProduct(otherProduct);
-        logger.info("retrieveFullProduct: product = {}", product);
+        logger.debug("retrieveFullProduct: product = {}", product);
         return product;
     }
 
@@ -212,7 +212,7 @@ public class ProductDao {
                 product.setOnSaleList(createListObj(po.getOnSaleList(), OnSale.class));
                 productList.add(product);
             }
-            logger.info("findProductByName_manual: productList = {}", productList);
+            logger.debug("findProductByName_manual: productList = {}", productList);
         }
         catch(DataAccessException e){
             logger.error(e.getMessage());
@@ -241,7 +241,7 @@ public class ProductDao {
             product = cloneObj(productPoList.get(0), Product.class);
             product.addOtherProduct(createListObj(productPoList.get(0).getOtherProduct(), Product.class));
             product.setOnSaleList(createListObj(productPoList.get(0).getOnSaleList(), OnSale.class));
-            logger.info("findProductByID_manual: product = {}", product);
+            logger.debug("findProductByID_manual: product = {}", product);
         }
         catch(DataAccessException e){
             logger.error(e.getMessage());
