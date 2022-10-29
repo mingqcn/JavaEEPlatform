@@ -8,6 +8,8 @@ import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,42 +37,19 @@ public class JwtHelper {
     // Request中的变量名
     public static final String LOGIN_TOKEN_KEY = "authorization";
 
-    public class UserAndDepart{
+    @Getter
+    @AllArgsConstructor
+    public class Token{
         private Long userId;
         private String userName;
         private Long departId;
         private Date expireTime;
         private Integer userLevel;
 
-        public UserAndDepart(long userId, String userName,long departId,Integer userLevel,Date expireTime){
-            this.userId = userId;
-            this.userName=userName;
+        public void setDepartId(Long departId){
             this.departId = departId;
-            this.expireTime=expireTime;
-            this.userLevel = userLevel;
-        }
-
-        public Long getUserId() {
-            return userId;
-        }
-
-        public Long getDepartId() {
-            return departId;
-        }
-
-        public String getUserName(){
-            return userName;
-        }
-
-        public Date getExpTime(){
-            return expireTime;
-        }
-
-        public Integer getUserLevel(){
-            return userLevel;
         }
     }
-
 
     /**
      * 创建用户Token
@@ -122,7 +101,7 @@ public class JwtHelper {
      * @return UserAndDepart
      *    modifiedBy Ming Qiu 2020/11/3 23:09
      */
-    public UserAndDepart verifyTokenAndGetClaims(String token) {
+    public Token verifyTokenAndGetClaims(String token) {
         if (token == null || token.isEmpty()) {
             return null;
         }
@@ -138,7 +117,7 @@ public class JwtHelper {
             Claim claimUserName = claims.get("userName");
             Claim claimUserLevel = claims.get("userLevel");
             Claim expireTime=claims.get("exp");
-            return new UserAndDepart(claimUserId.asLong(),claimUserName.asString() ,claimDepartId.asLong(),claimUserLevel.asInt(),expireTime.asDate());
+            return new Token(claimUserId.asLong(),claimUserName.asString() ,claimDepartId.asLong(),expireTime.asDate(),claimUserLevel.asInt());
         } catch (JWTVerificationException exception) {
             return null;
         }

@@ -199,8 +199,8 @@ public class AdminProductControllerTest {
                         .header("authorization", adminToken))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.errno", is(ReturnNo.OK.getErrNo())));
-        //.andDo(MockMvcResultHandlers.print());
+                .andExpect(MockMvcResultMatchers.jsonPath("$.errno", is(ReturnNo.OK.getErrNo())))
+                .andDo(MockMvcResultHandlers.print());
 
         this.mockMvc.perform(MockMvcRequestBuilders.get(PRODUCTID, 1580)
                         .header("authorization", adminToken))

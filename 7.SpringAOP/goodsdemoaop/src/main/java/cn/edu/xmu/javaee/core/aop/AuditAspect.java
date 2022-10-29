@@ -4,9 +4,6 @@ package cn.edu.xmu.javaee.core.aop;
 import cn.edu.xmu.javaee.core.util.BusinessException;
 import cn.edu.xmu.javaee.core.util.JwtHelper;
 import cn.edu.xmu.javaee.core.util.ReturnNo;
-import cn.edu.xmu.javaee.core.util.ReturnObject;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -19,8 +16,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
@@ -36,15 +33,6 @@ import java.lang.reflect.Method;
 public class AuditAspect {
 
     private final Logger logger = LoggerFactory.getLogger(AuditAspect.class);
-
-    @Getter
-    @AllArgsConstructor
-    class Token{
-        private Long userId = null;
-        private Long departId = null;
-        private String userName=null;
-        private Integer userLevel=null;
-    }
 
     /**
      * @Audit的Around Advice
@@ -62,7 +50,7 @@ public class AuditAspect {
 
         String token = request.getHeader(JwtHelper.LOGIN_TOKEN_KEY);
 
-        Token decryptToken = decryptToken(token);
+        JwtHelper.Token decryptToken = decryptToken(token);
 
         checkDepartId(request, method, decryptToken);
 
@@ -79,7 +67,7 @@ public class AuditAspect {
         return obj;
     }
 
-    private void checkDepartId(HttpServletRequest request, Method method, Token decryptToken) throws BusinessException{
+    private void checkDepartId(HttpServletRequest request, Method method, JwtHelper.Token decryptToken) throws BusinessException{
         //检验/shop的api中传入token是否和departId一致
         String pathInfo = request.getPathInfo();
         if(null ==pathInfo) {
@@ -99,7 +87,7 @@ public class AuditAspect {
             String paths[] = pathInfo.split("/");
             for (int i = 0; i < paths.length; i++) {
                 //如果departId为0,可以操作所有的depart
-                if (decryptToken.departId == 0) {
+                if (0 == decryptToken.getDepartId()) {
                     flag = true;
                     break;
                 }
@@ -108,8 +96,8 @@ public class AuditAspect {
                         //找到路径上对应id 将其与string类型的departId比较
                         String pathId = paths[i + 1];
                         logger.debug("aroundAudit : did = {}" , pathId);
-                        if (!pathId.equals(decryptToken.departId.toString())) {
-                            logger.info("aroundAudit : 不匹配departId = {}", decryptToken.departId);
+                        if (!pathId.equals(decryptToken.getDepartId().toString())) {
+                            logger.info("aroundAudit : 不匹配departId = {}", decryptToken.getDepartId());
                             throw new BusinessException(ReturnNo.RESOURCE_ID_OUTSCOPE);
                         } else {
                             flag = true;
@@ -123,16 +111,16 @@ public class AuditAspect {
                 }
             }
             if (flag == false) {
-                logger.info("aroundAudit : 不匹配departId = {}", decryptToken.departId);
+                logger.info("aroundAudit : 不匹配departId = {}", decryptToken.getDepartId());
                 throw new BusinessException(ReturnNo.RESOURCE_ID_OUTSCOPE);
             }
         }
         else {
-            decryptToken.departId=null;
+            decryptToken.setDepartId(null);
         }
     }
 
-    private void putMethodParameter(Token token, Object[] args, Annotation[][] annotations) {
+    private void putMethodParameter(JwtHelper.Token token, Object[] args, Annotation[][] annotations) {
         for (int i = 0; i < annotations.length; i++) {
             Object param = args[i];
             Annotation[] paramAnn = annotations[i];
@@ -144,32 +132,32 @@ public class AuditAspect {
                 //这里判断当前注解是否为LoginUser.class
                 if (annotation.annotationType().equals(LoginUser.class)) {
                     //校验该参数，验证一次退出该注解
-                    args[i] = token.userId;
+                    args[i] = token.getUserId();
                 }
                 if (annotation.annotationType().equals(Depart.class)) {
                     //校验该参数，验证一次退出该注解
-                    args[i] = token.departId;
+                    args[i] = token.getDepartId();
                 }
                 if (annotation.annotationType().equals(LoginName.class)) {
                     //校验该参数，验证一次退出该注解
-                    args[i] = token.userName;
+                    args[i] = token.getUserName();
                 }
                 if (annotation.annotationType().equals(UserLevel.class)) {
                     //校验该参数，验证一次退出该注解
-                    args[i] = token.userLevel;
+                    args[i] = token.getUserLevel();
                 }
             }
         }
     }
 
-    private Token decryptToken(String token)  throws BusinessException{
+    private JwtHelper.Token decryptToken(String token)  throws BusinessException{
 
         if (null == token){
             logger.info("aroundAudit : no token..");
             throw new BusinessException(ReturnNo.AUTH_NEED_LOGIN);
         }
 
-        JwtHelper.UserAndDepart userAndDepart = new JwtHelper().verifyTokenAndGetClaims(token);
+        JwtHelper.Token userAndDepart = new JwtHelper().verifyTokenAndGetClaims(token);
 
         if (null == userAndDepart) {
             logger.info("aroundAudit : invalid token..");
@@ -185,6 +173,6 @@ public class AuditAspect {
             throw new BusinessException(ReturnNo.AUTH_NEED_LOGIN);
         }
         logger.debug("aroundAudit : userId = {}, departId={}, userName={}, userLevel={}", userId, departId, userName, userLevel);
-        return  new Token(userId,departId,userName,userLevel);
+        return  userAndDepart;
     }
 }
