@@ -17,7 +17,7 @@
 其中`-e MYSQL_ROOT_PASSWORD=123456`是设定数据库root账户密码
 ##在运行mysql服务的节点上运行sql脚本
 看一下mysql的服务运行在哪台服务器
-`docker service ps`
+`docker service ps mysql`
 切换到运行mysql服务的机器，看一下mysql容器在这台机器的container id，将容器的CONTAINER ID拷贝替换下述命令中[CONTAINER ID],用这个容器运行mysql的命令
 `docker exec -it [CONTAINER ID] mysql -uroot -p`
 用root账号登录mysql服务器，在运行起来的mysql命令行中用`source /sql/database.sql`建立oomall_demo数据库

@@ -54,6 +54,7 @@ public enum ReturnNo {
     private int errNo;
     private String message;
     private static final Map<Integer, ReturnNo> returnNoMap;
+
     static {
         returnNoMap = new HashMap();
         for (ReturnNo enum1 : values()) {

@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @Aspect
 @Component
-@Order(100)
+@Order(10)
 public class ResponseAspect {
 
     private final Logger logger = LoggerFactory.getLogger(ResponseAspect.class);
@@ -90,6 +90,7 @@ public class ResponseAspect {
 
             case AUTH_INVALID_JWT:
             case AUTH_JWT_EXPIRED:
+            case AUTH_NEED_LOGIN:
                 // 401
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                 break;
