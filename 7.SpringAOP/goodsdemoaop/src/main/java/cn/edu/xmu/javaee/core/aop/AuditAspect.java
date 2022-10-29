@@ -67,11 +67,18 @@ public class AuditAspect {
         return obj;
     }
 
+    /**
+     * 检查路径上的departId是否与token里一致
+     * @param request
+     * @param method
+     * @param decryptToken
+     * @throws BusinessException
+     */
     private void checkDepartId(HttpServletRequest request, Method method, JwtHelper.Token decryptToken) throws BusinessException{
         //检验/shop的api中传入token是否和departId一致
         String pathInfo = request.getPathInfo();
         if(null ==pathInfo) {
-            logger.info("aroundAudit : the api path is null");
+            logger.info("checkDepartId : the api path is null");
             throw new BusinessException(ReturnNo.RESOURCE_ID_NOTEXIST);
         }
 
@@ -83,7 +90,7 @@ public class AuditAspect {
 
         boolean flag=false;
         if(!"".equals(departName)) {
-            logger.debug("aroundAudit: getPathInfo = {}", pathInfo);
+            logger.debug("checkDepartId: getPathInfo = {}", pathInfo);
             String paths[] = pathInfo.split("/");
             for (int i = 0; i < paths.length; i++) {
                 //如果departId为0,可以操作所有的depart
@@ -95,13 +102,13 @@ public class AuditAspect {
                     if (i + 1 < paths.length) {
                         //找到路径上对应id 将其与string类型的departId比较
                         String pathId = paths[i + 1];
-                        logger.debug("aroundAudit : did = {}" , pathId);
+                        logger.debug("checkDepartId : did = {}" , pathId);
                         if (!pathId.equals(decryptToken.getDepartId().toString())) {
-                            logger.info("aroundAudit : 不匹配departId = {}", decryptToken.getDepartId());
+                            logger.info("checkDepartId : 不匹配departId = {}", decryptToken.getDepartId());
                             throw new BusinessException(ReturnNo.RESOURCE_ID_OUTSCOPE);
                         } else {
                             flag = true;
-                            logger.debug("aroundAudit : success match Id!");
+                            logger.debug("checkDepartId : success match Id!");
                         }
                     }
                     else {
@@ -111,7 +118,7 @@ public class AuditAspect {
                 }
             }
             if (flag == false) {
-                logger.info("aroundAudit : 不匹配departId = {}", decryptToken.getDepartId());
+                logger.info("checkDepartId : 不匹配departId = {}", decryptToken.getDepartId());
                 throw new BusinessException(ReturnNo.RESOURCE_ID_OUTSCOPE);
             }
         }
@@ -120,6 +127,12 @@ public class AuditAspect {
         }
     }
 
+    /**
+     * 将token的值设置到jp的参数上
+     * @param token
+     * @param args
+     * @param annotations
+     */
     private void putMethodParameter(JwtHelper.Token token, Object[] args, Annotation[][] annotations) {
         for (int i = 0; i < annotations.length; i++) {
             Object param = args[i];
@@ -150,25 +163,31 @@ public class AuditAspect {
         }
     }
 
+    /**
+     * 解密token
+     * @param tokenString token字符串
+     * @return 解密的JWTHelper.Token对象
+     * @throws BusinessException
+     */
     private JwtHelper.Token decryptToken(String tokenString)  throws BusinessException{
 
         if (null == tokenString){
-            logger.info("aroundAudit : no token..");
+            logger.info("decryptToken : no token..");
             throw new BusinessException(ReturnNo.AUTH_NEED_LOGIN);
         }
 
         JwtHelper.Token token = new JwtHelper().verifyTokenAndGetClaims(tokenString);
 
         if (null == token) {
-            logger.info("aroundAudit : invalid token..");
+            logger.info("decryptToken : invalid token..");
             throw new BusinessException(ReturnNo.AUTH_INVALID_JWT);
         }
 
         if (null == token.getUserId()) {
-            logger.info("aroundAudit : userId is null");
+            logger.info("decryptToken : userId is null");
             throw new BusinessException(ReturnNo.AUTH_NEED_LOGIN);
         }
-        logger.debug("aroundAudit : token = {}", token);
+        logger.debug("decryptToken : token = {}", token);
         return  token;
     }
 }
