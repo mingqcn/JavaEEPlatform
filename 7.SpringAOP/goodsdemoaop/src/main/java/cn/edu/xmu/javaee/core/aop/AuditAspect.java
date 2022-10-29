@@ -150,29 +150,25 @@ public class AuditAspect {
         }
     }
 
-    private JwtHelper.Token decryptToken(String token)  throws BusinessException{
+    private JwtHelper.Token decryptToken(String tokenString)  throws BusinessException{
 
-        if (null == token){
+        if (null == tokenString){
             logger.info("aroundAudit : no token..");
             throw new BusinessException(ReturnNo.AUTH_NEED_LOGIN);
         }
 
-        JwtHelper.Token userAndDepart = new JwtHelper().verifyTokenAndGetClaims(token);
+        JwtHelper.Token token = new JwtHelper().verifyTokenAndGetClaims(tokenString);
 
-        if (null == userAndDepart) {
+        if (null == token) {
             logger.info("aroundAudit : invalid token..");
             throw new BusinessException(ReturnNo.AUTH_INVALID_JWT);
         }
 
-        Long userId = userAndDepart.getUserId();
-        Long departId = userAndDepart.getDepartId();
-        String userName = userAndDepart.getUserName();
-        Integer userLevel = userAndDepart.getUserLevel();
-        if (userId == null) {
+        if (null == token.getUserId()) {
             logger.info("aroundAudit : userId is null");
             throw new BusinessException(ReturnNo.AUTH_NEED_LOGIN);
         }
-        logger.debug("aroundAudit : userId = {}, departId={}, userName={}, userLevel={}", userId, departId, userName, userLevel);
-        return  userAndDepart;
+        logger.debug("aroundAudit : token = {}", token);
+        return  token;
     }
 }
