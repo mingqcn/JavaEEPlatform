@@ -76,7 +76,7 @@ public class AuditAspect {
      */
     private void checkDepartId(HttpServletRequest request, Method method, JwtHelper.Token decryptToken) throws BusinessException{
         //检验/shop的api中传入token是否和departId一致
-        String pathInfo = request.getPathInfo();
+        String pathInfo = request.getRequestURI();
         logger.debug("checkDepartId : the api path is {}", pathInfo);
         if(null ==pathInfo) {
             logger.info("checkDepartId : the api path is null");
