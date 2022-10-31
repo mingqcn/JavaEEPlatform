@@ -4,6 +4,7 @@ import cn.edu.xmu.javaee.core.aop.Audit;
 import cn.edu.xmu.javaee.core.aop.LoginName;
 import cn.edu.xmu.javaee.core.aop.LoginUser;
 import cn.edu.xmu.javaee.core.model.PageObj;
+import cn.edu.xmu.javaee.core.util.JwtHelper;
 import cn.edu.xmu.javaee.core.util.ReturnNo;
 import cn.edu.xmu.javaee.core.util.ReturnObject;
 import cn.edu.xmu.javaee.goodsdemo.controller.vo.ProductRetVo;
@@ -28,7 +29,7 @@ import static cn.edu.xmu.javaee.core.util.Common.createPageObj;
  */
 @RestController /*Restful的Controller对象*/
 @RequestMapping(value = "/admin/products", produces = "application/json;charset=UTF-8")
-public class AdminProductController {
+public class AdminProductController{
 
     private final Logger logger = LoggerFactory.getLogger(AdminProductController.class);
 
