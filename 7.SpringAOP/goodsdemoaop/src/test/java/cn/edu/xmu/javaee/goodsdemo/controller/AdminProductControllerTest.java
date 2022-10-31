@@ -102,7 +102,7 @@ public class AdminProductControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isCreated())
                 .andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.errno", is(ReturnNo.CREATED.getErrNo())))
-                //.andDo(MockMvcResultHandlers.print())
+                .andDo(MockMvcResultHandlers.print())
                 .andReturn().getResponse().getContentAsString();
 
         ProductVo retObj = JacksonUtil.parseObject(ret, "data", ProductVo.class);
@@ -114,8 +114,8 @@ public class AdminProductControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.errno", is(ReturnNo.OK.getErrNo())))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.data.name", is("水果糖")))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.data.creator.id", is(1)))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.data.creator.name", is("13088admin")))
-                .andDo(MockMvcResultHandlers.print());
+                .andExpect(MockMvcResultMatchers.jsonPath("$.data.creator.name", is("13088admin")));
+                //.andDo(MockMvcResultHandlers.print());
     }
 
     @Test

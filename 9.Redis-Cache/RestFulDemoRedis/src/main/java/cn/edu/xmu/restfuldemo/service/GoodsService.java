@@ -58,7 +58,7 @@ public class GoodsService {
         queryObj.setName(name);
         ReturnObject<VoObject> retGoods = null;
         ReturnObject<List<Goods>> returnObject = goodsDao.findGoods(queryObj, false);
-        logger.info("searchByName: returnObject = "+returnObject.getCode());
+        logger.debug("searchByName: returnObject = {} ", returnObject.getCode());
         if (returnObject.getCode().equals(ResponseCode.OK)) {
             if (returnObject.getData().size() == 1) {
                 retGoods = new ReturnObject<>(returnObject.getData().get(0));
