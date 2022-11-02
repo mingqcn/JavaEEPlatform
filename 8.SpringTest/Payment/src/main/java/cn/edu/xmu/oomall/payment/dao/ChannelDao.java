@@ -20,7 +20,7 @@ public class ChannelDao{
 
     private Logger logger = LoggerFactory.getLogger(ChannelDao.class);
 
-    private static final String KEY = "C%d";
+    public static final String KEY = "C%d";
 
     private RedisUtil redisUtil;
 
@@ -39,6 +39,9 @@ public class ChannelDao{
             channel = (Channel) redisUtil.get(key);
         } else {
             ChannelPo po = this.channelPoMapper.selectByPrimaryKey(id);
+            if (null == po){
+                throw new BusinessException(ReturnNo.RESOURCE_ID_NOTEXIST, String.format(ReturnNo.RESOURCE_ID_NOTEXIST.getMessage(),"支付渠道", id));
+            }
             channel = cloneObj(po, Channel.class);
             //永不过期
             redisUtil.set(key, channel, -1);

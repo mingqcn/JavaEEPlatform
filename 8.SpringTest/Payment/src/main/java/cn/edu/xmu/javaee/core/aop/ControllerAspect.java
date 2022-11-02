@@ -22,14 +22,14 @@ import javax.servlet.http.HttpServletResponse;
 @Aspect
 @Component
 @Order(10)
-public class ResponseAspect {
+public class ControllerAspect {
 
-    private final Logger logger = LoggerFactory.getLogger(ResponseAspect.class);
+    private final Logger logger = LoggerFactory.getLogger(ControllerAspect.class);
 
-    @Value("${goodsdemo.result-page-size.max}")
+    @Value("${oomall.core.page-size.max}")
     private int max_page_size;
 
-    @Value("${goodsdemo.result-page-size.default}")
+    @Value("${oomall.core.page-size.default}")
     private int default_page_size;
 
     /**

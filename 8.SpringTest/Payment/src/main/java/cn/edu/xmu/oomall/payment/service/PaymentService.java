@@ -13,7 +13,9 @@ import cn.edu.xmu.oomall.payment.dao.bo.ShopChannel;
 import cn.edu.xmu.oomall.payment.service.channel.PayChannel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import static cn.edu.xmu.javaee.core.util.Common.clearFields;
@@ -32,6 +34,16 @@ public class PaymentService {
 
     private PayTransDao payTransDao;
 
+
+    @Autowired
+    @Lazy
+    public PaymentService(ApplicationContext context, ShopChannelDao shopChannelDao, PayTransDao payTransDao) {
+        this.logger = logger;
+        this.context = context;
+        this.shopChannelDao = shopChannelDao;
+        this.payTransDao = payTransDao;
+    }
+
     /**
      * 创建一个支付交易
      * @author Ming Qiu
@@ -46,11 +58,13 @@ public class PaymentService {
      */
     public PayTrans createPayment(String spOpenid, Long businessId, Long shopChannelId, Long amount, SimpleUser user) throws BusinessException {
         ShopChannel shop = this.shopChannelDao.findObjById(shopChannelId);
+        logger.debug("createPayment: shop = {}", shop);
         if (ShopChannel.INVALID == shop.getStatus()){
             throw new BusinessException(ReturnNo.PAY_SHOP_INVALID);
         }
 
         Channel channel = shop.getChannel();
+        logger.debug("createPayment: channel = {}", channel);
         if (Channel.INVALID == channel.getStatus()){
             throw new BusinessException(ReturnNo.PAY_CHANNEL_INVALID);
         }
@@ -63,10 +77,11 @@ public class PaymentService {
         payTransDao.insertObj(newObj, user);
 
         PayChannel payChannel = this.retPayChannel(shop);
+        logger.debug("createPayment: payChannel = {}", payChannel);
         payChannel.createPayment(newObj);
         clearFields(newObj,"id","prepayId");
         payTransDao.updateObjById(newObj, null);
-        return null;
+        return newObj;
     }
 
     private PayChannel retPayChannel(ShopChannel shop){

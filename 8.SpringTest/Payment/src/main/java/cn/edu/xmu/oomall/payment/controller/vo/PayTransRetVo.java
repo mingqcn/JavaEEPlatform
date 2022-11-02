@@ -13,34 +13,39 @@ import java.time.LocalDateTime;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PayTransRetVo {
 
-    protected Long id;
+    private Long id;
+    /**
+     * 预付id
+     */
+    private String prepayId;
+
     /**
      * 创建者id
      */
-    protected Long creatorId;
+    private Long creatorId;
 
     /**
      * 创建者
      */
-    protected String creatorName;
+    private String creatorName;
 
     /**
      * 修改者id
      */
-    protected Long modifierId;
+    private Long modifierId;
 
     /**
      * 修改者
      */
-    protected String modifierName;
+    private String modifierName;
 
     /**
      * 创建时间
      */
-    protected LocalDateTime gmtCreate;
+    private LocalDateTime gmtCreate;
 
     /**
      * 修改时间
      */
-    protected LocalDateTime gmtModified;
+    private LocalDateTime gmtModified;
 }

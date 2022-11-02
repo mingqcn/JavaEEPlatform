@@ -142,7 +142,7 @@
                         </goals>
                         <configuration>
                             <dataFile>target/jacoco.exec</dataFile>
-                            <outputDirectory>target/site/jacoco-ut</outputDirectory>
+                            <outputDirectory>target/site/jacoco</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
@@ -155,7 +155,7 @@
                 <executions>
                     <execution>
                         <id>remove-docker-image</id>
-                        <phase>pre-integration-test</phase>
+<!--                        <phase>pre-integration-test</phase>-->
                         <goals>
                             <goal>exec</goal>
                         </goals>
@@ -177,7 +177,7 @@
                 <executions>
                     <execution>
                         <id>build-image</id>
-                        <phase>pre-integration-test</phase>
+<!--                        <phase>pre-integration-test</phase>-->
                         <goals>
                             <goal>build</goal>
                         </goals>
@@ -220,15 +220,59 @@
                     <target>9</target>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>4.0.0-M3</version>
+                <configuration>
+                    <locales>zh_CN</locales>
+                    <outputEncoding>UTF-8</outputEncoding>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.wagon</groupId>
+                        <artifactId>wagon-webdav-jackrabbit</artifactId>
+                        <version>3.5.2</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-nop</artifactId>
+                        <version>2.0.3</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
         </plugins>
     </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>3.4.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>3.0.0-M7</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>report-only</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
+    </reporting>
 
     <!--    maven的仓库-->
     <repositories>
         <repository>
             <id>alimaven</id>
             <name>aliyun maven</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <url>https://maven.aliyun.com/nexus/content/groups/public</url>
         </repository>
     </repositories>
 

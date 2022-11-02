@@ -37,7 +37,6 @@ public class ShopChannelDao{
     private ChannelDao channelDao;
 
     @Autowired
-    @Lazy
     public ShopChannelDao(ShopChannelPoMapper shopChannelPoMapper, RedisUtil redisUtil, ChannelDao channelDao) {
         this.shopChannelPoMapper = shopChannelPoMapper;
         this.redisUtil = redisUtil;

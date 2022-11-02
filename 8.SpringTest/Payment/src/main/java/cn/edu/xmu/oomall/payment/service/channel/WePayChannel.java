@@ -2,6 +2,7 @@
 
 package cn.edu.xmu.oomall.payment.service.channel;
 
+import cn.edu.xmu.oomall.payment.dao.ShopChannelDao;
 import cn.edu.xmu.oomall.payment.dao.bo.Channel;
 import cn.edu.xmu.oomall.payment.dao.bo.PayTrans;
 import cn.edu.xmu.oomall.payment.dao.bo.ShopChannel;
@@ -9,15 +10,25 @@ import cn.edu.xmu.oomall.payment.service.PaymentService;
 import cn.edu.xmu.oomall.payment.service.openfeign.WePayService;
 import cn.edu.xmu.oomall.payment.service.openfeign.param.PostTransParam;
 import cn.edu.xmu.oomall.payment.service.openfeign.param.PostTransRetObj;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
  * 微信支付
  */
-@Service
+@Service("wePayChannel")
 public class WePayChannel implements PayChannel{
 
+    private Logger logger = LoggerFactory.getLogger(WePayChannel.class);
+
     private WePayService wePayService;
+
+    @Autowired
+    public WePayChannel(WePayService wePayService) {
+        this.wePayService = wePayService;
+    }
 
     @Override
     public void createPayment(PayTrans payTrans) {
@@ -35,6 +46,7 @@ public class WePayChannel implements PayChannel{
 
         param.setDescription("随便写啥");
         Channel channel = shop.getChannel();
+
         param.setSp_appid(channel.getAppid());
         param.setNotify_url(channel.getNotifyUrl());
         param.setSp_mchid(channel.getSpMchid());

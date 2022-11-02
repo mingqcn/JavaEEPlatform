@@ -46,7 +46,7 @@ public enum ReturnNo {
 
     //所有路径带id的API都可能返回此错误
     //状态码 404
-    RESOURCE_ID_NOTEXIST(504,"操作的资源id不存在"),
+    RESOURCE_ID_NOTEXIST(504,"%s对象(id=%d)不存在"),
 
     //状态码 500
     INTERNAL_SERVER_ERR(500,"服务器内部错误"),

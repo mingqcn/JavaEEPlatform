@@ -5,6 +5,7 @@ package cn.edu.xmu.oomall.payment.controller;
 import cn.edu.xmu.javaee.core.aop.Audit;
 import cn.edu.xmu.javaee.core.aop.LoginName;
 import cn.edu.xmu.javaee.core.aop.LoginUser;
+import cn.edu.xmu.javaee.core.model.ReturnNo;
 import cn.edu.xmu.javaee.core.model.ReturnObject;
 import cn.edu.xmu.javaee.core.model.SimpleUser;
 import cn.edu.xmu.oomall.payment.controller.vo.OrderPayVo;
@@ -43,10 +44,12 @@ public class InternalPaymentController {
     public ReturnObject createPayment(@Validated @RequestBody OrderPayVo orderPayVo, @LoginUser SimpleUser user){
         PayTrans payTrans =  paymentService.createPayment(orderPayVo.getSpOpenid(),
                 orderPayVo.getBusinessId(), orderPayVo.getShopChannelId(), orderPayVo.getAmount(), user);
+        logger.debug("createPayment: payTrans = {}", payTrans);
         PayTransRetVo vo = cloneObj(payTrans, PayTransRetVo.class);
-
+        logger.debug("createPayment: vo = {}", vo);
         clearFields(vo, "id", "prepayId");
-        return new ReturnObject(vo);
+        logger.debug("createPayment: vo = {}", vo);
+        return new ReturnObject(ReturnNo.CREATED, vo);
     }
 
 }

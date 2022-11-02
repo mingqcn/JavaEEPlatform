@@ -51,14 +51,19 @@ public class ShopChannel extends OOMallObject implements Serializable {
     private Channel channel;
 
     @Setter
-    private Long chanelId;
+    @Getter
+    private Long channelId;
 
     @Setter
     private ChannelDao channelDao;
 
     public Channel getChannel() throws BusinessException{
+        if (null == this.channelId){
+            return null;
+        }
+
         if (null == this.channel && null != channelDao){
-            this.channel = this.channelDao.findObjById(this.chanelId);
+            this.channel = this.channelDao.findObjById(this.channelId);
         }
         return this.channel;
     }

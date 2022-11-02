@@ -955,63 +955,63 @@ public class PayTransPoExample {
             return (Criteria) this;
         }
 
-        public Criteria andShopIdIsNull() {
-            addCriterion("`shop_id` is null");
+        public Criteria andShopChannelIdIsNull() {
+            addCriterion("`shop_channel_id` is null");
             return (Criteria) this;
         }
 
-        public Criteria andShopIdIsNotNull() {
-            addCriterion("`shop_id` is not null");
+        public Criteria andShopChannelIdIsNotNull() {
+            addCriterion("`shop_channel_id` is not null");
             return (Criteria) this;
         }
 
-        public Criteria andShopIdEqualTo(Long value) {
-            addCriterion("`shop_id` =", value, "shopId");
+        public Criteria andShopChannelIdEqualTo(Long value) {
+            addCriterion("`shop_channel_id` =", value, "shopChannelId");
             return (Criteria) this;
         }
 
-        public Criteria andShopIdNotEqualTo(Long value) {
-            addCriterion("`shop_id` <>", value, "shopId");
+        public Criteria andShopChannelIdNotEqualTo(Long value) {
+            addCriterion("`shop_channel_id` <>", value, "shopChannelId");
             return (Criteria) this;
         }
 
-        public Criteria andShopIdGreaterThan(Long value) {
-            addCriterion("`shop_id` >", value, "shopId");
+        public Criteria andShopChannelIdGreaterThan(Long value) {
+            addCriterion("`shop_channel_id` >", value, "shopChannelId");
             return (Criteria) this;
         }
 
-        public Criteria andShopIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("`shop_id` >=", value, "shopId");
+        public Criteria andShopChannelIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("`shop_channel_id` >=", value, "shopChannelId");
             return (Criteria) this;
         }
 
-        public Criteria andShopIdLessThan(Long value) {
-            addCriterion("`shop_id` <", value, "shopId");
+        public Criteria andShopChannelIdLessThan(Long value) {
+            addCriterion("`shop_channel_id` <", value, "shopChannelId");
             return (Criteria) this;
         }
 
-        public Criteria andShopIdLessThanOrEqualTo(Long value) {
-            addCriterion("`shop_id` <=", value, "shopId");
+        public Criteria andShopChannelIdLessThanOrEqualTo(Long value) {
+            addCriterion("`shop_channel_id` <=", value, "shopChannelId");
             return (Criteria) this;
         }
 
-        public Criteria andShopIdIn(List<Long> values) {
-            addCriterion("`shop_id` in", values, "shopId");
+        public Criteria andShopChannelIdIn(List<Long> values) {
+            addCriterion("`shop_channel_id` in", values, "shopChannelId");
             return (Criteria) this;
         }
 
-        public Criteria andShopIdNotIn(List<Long> values) {
-            addCriterion("`shop_id` not in", values, "shopId");
+        public Criteria andShopChannelIdNotIn(List<Long> values) {
+            addCriterion("`shop_channel_id` not in", values, "shopChannelId");
             return (Criteria) this;
         }
 
-        public Criteria andShopIdBetween(Long value1, Long value2) {
-            addCriterion("`shop_id` between", value1, value2, "shopId");
+        public Criteria andShopChannelIdBetween(Long value1, Long value2) {
+            addCriterion("`shop_channel_id` between", value1, value2, "shopChannelId");
             return (Criteria) this;
         }
 
-        public Criteria andShopIdNotBetween(Long value1, Long value2) {
-            addCriterion("`shop_id` not between", value1, value2, "shopId");
+        public Criteria andShopChannelIdNotBetween(Long value1, Long value2) {
+            addCriterion("`shop_channel_id` not between", value1, value2, "shopChannelId");
             return (Criteria) this;
         }
 

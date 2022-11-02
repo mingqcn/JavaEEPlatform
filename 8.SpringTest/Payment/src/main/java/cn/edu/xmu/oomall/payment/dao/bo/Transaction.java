@@ -67,8 +67,11 @@ public class Transaction extends OOMallObject{
     protected LocalDateTime adjustTime;
 
     @Setter
+    @Getter
     protected Long shopChannelId;
+
     @Setter
+    @Getter
     protected Long businessId;
     /**
      * 交易所属的商铺渠道
@@ -82,6 +85,7 @@ public class Transaction extends OOMallObject{
 
     @Setter
     protected ShopChannelDao shopChannelDao;
+
     @Setter
     protected BusinessDao businessDao;
 

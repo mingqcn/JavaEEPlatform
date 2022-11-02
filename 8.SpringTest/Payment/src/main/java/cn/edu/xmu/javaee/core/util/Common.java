@@ -111,6 +111,7 @@ public class Common {
      * @return 浅克隆的target对象
      */
     public static <T> T cloneObj(Object source, Class<T> targetClass) {
+        logger.debug("cloneObj: source = {}",source);
         Class sourceClass = source.getClass();
         T retObj = null;
         try {
@@ -122,13 +123,12 @@ public class Common {
                                 && !method.getDeclaringClass().equals(Object.class))
                     .collect(Collectors.toList());
 
-            logger.debug("cloneObj: sourceGetters = {}",sourceGetters.size());
-
             Arrays.stream(targetClass.getMethods())
                     .filter(method -> (setPattern.matcher(method.getName()).matches()
                             && (1 == method.getParameterCount())
                             && !method.getDeclaringClass().equals(Object.class)))
                     .forEach(targetMethod -> {
+                        logger.debug("cloneObj: setter = {}",targetMethod.getName());
                         String name = String.format("get%s", targetMethod.getName().substring(3));
                         sourceGetters.stream().filter(method -> method.getName().equals(name)).
                                 forEach(sourceMethod -> {
@@ -138,7 +138,7 @@ public class Common {
                                     } catch (Exception e) {
                                         logger.info("cloneObj: source object getter exception={}, name = {}", e, sourceMethod.getName());
                                     }
-
+                                    logger.debug("cloneObj: getter = {}, value = {}",name, value);
                                     try {
                                         targetMethod.invoke(targetObj, value);
                                     } catch (Exception e2) {

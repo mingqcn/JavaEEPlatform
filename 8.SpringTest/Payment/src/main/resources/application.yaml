@@ -66,6 +66,10 @@ server:
       min-spare: 100
 
 oomall:
+  core:
+    page-size:
+      max: 1000
+      default: 10
   payment:
     shopchannel:
       timeout: 3600

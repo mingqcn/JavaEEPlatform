@@ -29,9 +29,9 @@ public class DaoAspect {
         } catch(BusinessException e){
             throw e;
         }
-        catch (RuntimeException exception) {
+        catch (Exception exception) {
 
-            logger.error("doAround: obj = {}, method = {}, message = {}", target, ms.getName(), exception.getMessage());
+            logger.error("doAround: obj = {}, method = {}, e = {}", target, ms.getName(), exception);
             throw new BusinessException(ReturnNo.INTERNAL_SERVER_ERR, exception.getMessage());
         }
         return obj;

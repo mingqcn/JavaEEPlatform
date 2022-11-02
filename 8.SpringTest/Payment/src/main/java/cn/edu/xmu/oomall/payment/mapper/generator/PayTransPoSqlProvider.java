@@ -63,8 +63,8 @@ public class PayTransPoSqlProvider {
             sql.VALUES("`time_begin`", "#{timeBegin,jdbcType=TIMESTAMP}");
         }
         
-        if (row.getShopId() != null) {
-            sql.VALUES("`shop_id`", "#{shopId,jdbcType=BIGINT}");
+        if (row.getShopChannelId() != null) {
+            sql.VALUES("`shop_channel_id`", "#{shopChannelId,jdbcType=BIGINT}");
         }
         
         if (row.getBusinessId() != null) {
@@ -126,7 +126,7 @@ public class PayTransPoSqlProvider {
         sql.SELECT("`sp_openid`");
         sql.SELECT("`time_expire`");
         sql.SELECT("`time_begin`");
-        sql.SELECT("`shop_id`");
+        sql.SELECT("`shop_channel_id`");
         sql.SELECT("`business_id`");
         sql.SELECT("`creator_id`");
         sql.SELECT("`creator_name`");
@@ -206,8 +206,8 @@ public class PayTransPoSqlProvider {
             sql.SET("`time_begin` = #{row.timeBegin,jdbcType=TIMESTAMP}");
         }
         
-        if (row.getShopId() != null) {
-            sql.SET("`shop_id` = #{row.shopId,jdbcType=BIGINT}");
+        if (row.getShopChannelId() != null) {
+            sql.SET("`shop_channel_id` = #{row.shopChannelId,jdbcType=BIGINT}");
         }
         
         if (row.getBusinessId() != null) {
@@ -268,7 +268,7 @@ public class PayTransPoSqlProvider {
         sql.SET("`sp_openid` = #{row.spOpenid,jdbcType=VARCHAR}");
         sql.SET("`time_expire` = #{row.timeExpire,jdbcType=TIMESTAMP}");
         sql.SET("`time_begin` = #{row.timeBegin,jdbcType=TIMESTAMP}");
-        sql.SET("`shop_id` = #{row.shopId,jdbcType=BIGINT}");
+        sql.SET("`shop_channel_id` = #{row.shopChannelId,jdbcType=BIGINT}");
         sql.SET("`business_id` = #{row.businessId,jdbcType=BIGINT}");
         sql.SET("`creator_id` = #{row.creatorId,jdbcType=BIGINT}");
         sql.SET("`creator_name` = #{row.creatorName,jdbcType=VARCHAR}");
@@ -337,8 +337,8 @@ public class PayTransPoSqlProvider {
             sql.SET("`time_begin` = #{timeBegin,jdbcType=TIMESTAMP}");
         }
         
-        if (row.getShopId() != null) {
-            sql.SET("`shop_id` = #{shopId,jdbcType=BIGINT}");
+        if (row.getShopChannelId() != null) {
+            sql.SET("`shop_channel_id` = #{shopChannelId,jdbcType=BIGINT}");
         }
         
         if (row.getBusinessId() != null) {
