@@ -2,12 +2,20 @@
 
 package cn.edu.xmu.javaee.core.util;
 
+import cn.edu.xmu.javaee.core.model.SimpleUser;
 import cn.edu.xmu.oomall.payment.dao.bo.Business;
+import cn.edu.xmu.oomall.payment.dao.bo.PayTrans;
 import cn.edu.xmu.oomall.payment.dao.bo.RefundTrans;
+import cn.edu.xmu.oomall.payment.mapper.generator.po.BusinessPo;
+import cn.edu.xmu.oomall.payment.mapper.generator.po.PayTransPo;
+import cn.edu.xmu.oomall.payment.mapper.generator.po.RefundTransPo;
+import org.assertj.core.api.LocalDateTimeAssert;
+import org.assertj.core.util.DateUtil;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static cn.edu.xmu.javaee.core.util.Common.*;
 
@@ -17,7 +25,7 @@ public class CommonTest {
     @Test
     public void cloneObj1(){
         LocalDateTime now = LocalDateTime.now();
-        BussinessPo po = new BussinessPo();
+        BusinessPo po = new BusinessPo();
         po.setId(Long.valueOf(1));
         po.setName("测试");
         po.setCreatorId(Long.valueOf(2));
@@ -100,6 +108,43 @@ public class CommonTest {
         assertNull(po.getSuccessTime());
         assertNull(po.getAdjustId());
         assertNull(po.getAdjustTime());
+    }
 
+    @Test
+    public void putUserFields1(){
+        RefundTransPo po = new RefundTransPo();
+        SimpleUser user = new SimpleUser();
+        user.setId(Long.valueOf(2));
+        user.setName("test1");
+        user.setUserLevel(1);
+        putUserFields(po, "creator", user);
+        assertEquals(2, po.getCreatorId());
+        assertEquals("test1", po.getCreatorName());
+    }
+
+    @Test
+    public void putUserFields2(){
+        PayTrans bo = new PayTrans();
+        SimpleUser user = new SimpleUser();
+        user.setId(Long.valueOf(2));
+        user.setName("test1");
+        user.setUserLevel(1);
+        putUserFields(bo, "modifier", user);
+        System.out.println(bo);
+        assertEquals(2, bo.getModifierId());
+        assertEquals("test1", bo.getModifierName());
+        assertNull(bo.getCreatorId());
+        assertNull(bo.getCreatorName());
+        assertNull(bo.getAdjustId());
+        assertNull(bo.getAdjustName());
+    }
+
+    @Test
+    public  void putGmtFields1(){
+        PayTransPo po = new PayTransPo();
+        LocalDateTime now = LocalDateTime.now();
+        putGmtFields(po, "create");
+        assertThat(po.getGmtCreate()).isAfterOrEqualTo(now);
+        assertThat(po.getGmtModified()).isNull();
     }
 }

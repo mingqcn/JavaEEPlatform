@@ -1,6 +1,7 @@
 //School of Informatics Xiamen University, GPL-3.0 license
 package cn.edu.xmu.javaee.core.util;
 
+import cn.edu.xmu.javaee.core.model.UserToken;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -8,9 +9,6 @@ import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.ToString;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,21 +35,6 @@ public class JwtHelper {
     static final String AUDIENCE = "MINIAPP";
     // Request中的变量名
     public static final String LOGIN_TOKEN_KEY = "authorization";
-
-    @Getter
-    @AllArgsConstructor
-    @ToString
-    public class Token{
-        private Long userId;
-        private String userName;
-        private Long departId;
-        private Date expireTime;
-        private Integer userLevel;
-
-        public void setDepartId(Long departId){
-            this.departId = departId;
-        }
-    }
 
     /**
      * 创建用户Token
@@ -103,7 +86,7 @@ public class JwtHelper {
      * @return UserAndDepart
      *    modifiedBy Ming Qiu 2020/11/3 23:09
      */
-    public Token verifyTokenAndGetClaims(String token) {
+    public UserToken verifyTokenAndGetClaims(String token) {
         if (token == null || token.isEmpty()) {
             return null;
         }
@@ -119,7 +102,7 @@ public class JwtHelper {
             Claim claimUserName = claims.get("userName");
             Claim claimUserLevel = claims.get("userLevel");
             Claim expireTime=claims.get("exp");
-            return new Token(claimUserId.asLong(),claimUserName.asString() ,claimDepartId.asLong(),expireTime.asDate(),claimUserLevel.asInt());
+            return new UserToken(claimUserId.asLong(),claimUserName.asString() ,claimDepartId.asLong(),expireTime.asDate(),claimUserLevel.asInt());
         } catch (JWTVerificationException exception) {
             return null;
         }

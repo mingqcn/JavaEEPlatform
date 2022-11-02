@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.time.LocalDateTime;
@@ -30,6 +31,8 @@ public class Common {
     private static Pattern setPattern = Pattern.compile("set[A-Z][a-z][a-zA-Z0-9]*");
 
     private static Pattern getPattern = Pattern.compile("get[A-Z][a-z][a-zA-Z0-9]*");
+
+    private static Pattern firstCharPattern = Pattern.compile("^.");
 
     /**
      * 生成九位数序号
@@ -235,26 +238,29 @@ public class Common {
         if (null != user) {
 
             Class<?> aClass = obj.getClass();
+            String upperCaseField = firstCharPattern.matcher(field).replaceFirst(m -> m.group().toUpperCase());
             try {
-                Field creatorId = aClass.getDeclaredField(String.format("%sId", field));
-                creatorId.setAccessible(true);
-                creatorId.set(obj, user.getId());
-            } catch (NoSuchFieldException e) {
-                logger.error("putUserFields: obj = {}, message = {}", obj, e.getMessage());
+                Method idSetter = aClass.getMethod(String.format("set%sId", upperCaseField), Long.class);
+                logger.debug("putUserFields: obj = {}, field = {}",obj, upperCaseField);
+                idSetter.invoke(obj, user.getId());
             } catch (IllegalAccessException ex) {
-                logger.error("putUserFields: obj = {}, message = {}", obj, ex.getMessage());
-                throw new BusinessException(ReturnNo.INTERNAL_SERVER_ERR, ex.getMessage());
+                logger.info("putUserFields: obj = {}, e = {}", obj, ex);
+            } catch (NoSuchMethodException e) {
+                logger.info("putUserFields: obj = {}, e = {}", obj, e);
+            } catch (InvocationTargetException e) {
+                logger.info("putUserFields: obj = {}, e = {}", obj, e);
             }
 
             try {
-                Field creatorName = aClass.getDeclaredField(String.format("%sName", field));
-                creatorName.setAccessible(true);
-                creatorName.set(obj, user.getName());
-            } catch (NoSuchFieldException e) {
-                logger.error("putUserFields: obj = {}, message = {}", obj, e.getMessage());
-            } catch (IllegalAccessException ex) {
-                logger.error("putUserFields: obj = {}, message = {}", obj, ex.getMessage());
-                throw new BusinessException(ReturnNo.INTERNAL_SERVER_ERR, ex.getMessage());
+                Method nameSetter = aClass.getMethod(String.format("set%sName", upperCaseField), String.class);
+                logger.debug("putUserFields: obj = {}, field = {}",obj, upperCaseField);
+                nameSetter.invoke(obj, user.getName());
+            }catch (IllegalAccessException ex) {
+                logger.info("putUserFields: obj = {}, e = {}", obj, ex);
+            } catch (InvocationTargetException e) {
+                logger.info("putUserFields: obj = {}, e = {}", obj, e);
+            } catch (NoSuchMethodException e) {
+                logger.info("putUserFields: obj = {}, e = {}", obj, e);
             }
         }
     }
@@ -271,14 +277,13 @@ public class Common {
     public static void putGmtFields(Object obj, String dateField) throws BusinessException {
         try {
             Class<?> aClass = obj.getClass();
-            Field createName = aClass.getDeclaredField(String.format("gmt%s", dateField));
-            createName.setAccessible(true);
-            createName.set(obj, LocalDateTime.now());
-        } catch (NoSuchFieldException e) {
-            logger.error("putGmtFields: obj = {}, message = {}",obj,e.getMessage());
-        } catch (IllegalAccessException ex) {
-            logger.error("putGmtFields: obj = {}, message = {}",obj,ex.getMessage());
-            throw new BusinessException(ReturnNo.INTERNAL_SERVER_ERR, ex.getMessage());
+            String upperCaseField = firstCharPattern.matcher(dateField).replaceFirst(m -> m.group().toUpperCase());
+            Method dateSetter = aClass.getMethod(String.format("setGmt%s", upperCaseField), LocalDateTime.class);
+            dateSetter.invoke(obj, LocalDateTime.now());
+        } catch (IllegalAccessException | NoSuchMethodException ex) {
+            logger.info("putGmtFields: obj = {}, e = {}",obj,ex);
+        } catch (InvocationTargetException e) {
+            logger.info("putGmtFields: obj = {}, e = {}",obj,e);
         }
     }
 
