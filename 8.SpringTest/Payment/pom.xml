@@ -268,12 +268,12 @@
     </reporting>
 
     <!--    maven的仓库-->
-    <repositories>
+<!--    <repositories>
         <repository>
             <id>alimaven</id>
             <name>aliyun maven</name>
             <url>https://maven.aliyun.com/nexus/content/groups/public</url>
         </repository>
-    </repositories>
+    </repositories>-->
 
 </project>

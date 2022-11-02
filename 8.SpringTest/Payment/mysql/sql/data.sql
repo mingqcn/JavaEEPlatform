@@ -32,7 +32,7 @@ CREATE TABLE `payment_business` (
   `gmt_create` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `gmt_modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=501 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='业务';
+) ENGINE=InnoDB AUTO_INCREMENT=502 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='业务';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,6 +41,7 @@ CREATE TABLE `payment_business` (
 
 LOCK TABLES `payment_business` WRITE;
 /*!40000 ALTER TABLE `payment_business` DISABLE KEYS */;
+INSERT INTO `payment_business` VALUES (501,'电子商城',1,'admin111',NULL,NULL,'2022-11-02 10:48:06',NULL);
 /*!40000 ALTER TABLE `payment_business` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -67,7 +68,7 @@ CREATE TABLE `payment_channel` (
   `gmt_create` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `gmt_modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=501 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='支付渠道';
+) ENGINE=InnoDB AUTO_INCREMENT=502 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='支付渠道';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -76,6 +77,7 @@ CREATE TABLE `payment_channel` (
 
 LOCK TABLES `payment_channel` WRITE;
 /*!40000 ALTER TABLE `payment_channel` DISABLE KEYS */;
+INSERT INTO `payment_channel` VALUES (501,'100001','微信支付','1900007XXX','2022-05-02 18:49:48','2099-11-02 18:49:56',0,'wePayChannel',1,'admin111',NULL,NULL,'2022-11-02 10:51:31',NULL);
 /*!40000 ALTER TABLE `payment_channel` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -203,8 +205,8 @@ DROP TABLE IF EXISTS `payment_pay_trans`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `payment_pay_trans` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `out_no` varchar(128) NOT NULL,
-  `trans_no` varchar(128) NOT NULL,
+  `out_no` varchar(128) DEFAULT NULL,
+  `trans_no` varchar(128) DEFAULT NULL,
   `amount` bigint NOT NULL DEFAULT '0',
   `status` tinyint NOT NULL DEFAULT '0',
   `success_time` datetime DEFAULT NULL,
@@ -214,7 +216,7 @@ CREATE TABLE `payment_pay_trans` (
   `sp_openid` varchar(128) DEFAULT NULL,
   `time_expire` datetime DEFAULT NULL,
   `time_begin` datetime DEFAULT NULL,
-  `shop_id` bigint NOT NULL,
+  `shop_channel_id` bigint NOT NULL,
   `business_id` bigint NOT NULL,
   `creator_id` bigint DEFAULT NULL,
   `creator_name` varchar(128) DEFAULT NULL,
@@ -224,7 +226,7 @@ CREATE TABLE `payment_pay_trans` (
   `gmt_modified` datetime DEFAULT NULL,
   `prepay_id` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=501 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='支付交易';
+) ENGINE=InnoDB AUTO_INCREMENT=527 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='支付交易';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -296,7 +298,7 @@ CREATE TABLE `payment_shop_channel` (
   `gmt_modified` datetime DEFAULT NULL,
   `status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=501 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='商铺支付渠道账户';
+) ENGINE=InnoDB AUTO_INCREMENT=502 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='商铺支付渠道账户';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -305,6 +307,7 @@ CREATE TABLE `payment_shop_channel` (
 
 LOCK TABLES `payment_shop_channel` WRITE;
 /*!40000 ALTER TABLE `payment_shop_channel` DISABLE KEYS */;
+INSERT INTO `payment_shop_channel` VALUES (501,1,'1900008XXX',501,1,'admin111',NULL,NULL,'2022-11-02 10:53:41',NULL,0);
 /*!40000 ALTER TABLE `payment_shop_channel` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -317,4 +320,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-02  1:38:50
+-- Dump completed on 2022-11-03  0:03:23
