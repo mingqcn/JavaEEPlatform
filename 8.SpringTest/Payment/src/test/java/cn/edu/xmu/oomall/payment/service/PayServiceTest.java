@@ -1,6 +1,6 @@
 //School of Informatics Xiamen University, GPL-3.0 license
 
-package cn.edu.xmu.oomall.payment.controller;
+package cn.edu.xmu.oomall.payment.service;
 
 import cn.edu.xmu.javaee.core.model.SimpleUser;
 import cn.edu.xmu.javaee.core.util.RedisUtil;
@@ -33,7 +33,7 @@ public class PayServiceTest {
     @Test
     public void createPayment(){
         PostTransRetObj retObj = new PostTransRetObj();
-        retObj.setPrepayId("111111");
+        retObj.setPrepayId("2311111");
 
         SimpleUser user = new SimpleUser();
         user.setId(Long.valueOf(2));
@@ -44,8 +44,8 @@ public class PayServiceTest {
         Mockito.when(redisUtil.set(Mockito.anyString(), Mockito.any(), Mockito.anyLong())).thenReturn(true);
         Mockito.when(wePayService.postTransaction(Mockito.any())).thenReturn(retObj);
 
-        PayTrans obj = paymentService.createPayment("11111", Long.valueOf(501), Long.valueOf(501), Long.valueOf(100), user);
-        assertEquals("111111", obj.getPrepayId());
+        PayTrans obj = paymentService.createPayment("1122", "11111", Long.valueOf(501), Long.valueOf(501), Long.valueOf(100), user);
+        assertEquals("2311111", obj.getPrepayId());
 
     }
 }

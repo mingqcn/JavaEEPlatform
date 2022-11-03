@@ -16,10 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import static cn.edu.xmu.javaee.core.util.Common.*;
 
@@ -39,10 +36,10 @@ public class InternalPaymentController {
         this.paymentService = paymentService;
     }
 
-    @PostMapping("orders/{id}/payments")
+    @PostMapping("/payments")
     @Audit(departName = "shops")
     public ReturnObject createPayment(@Validated @RequestBody OrderPayVo orderPayVo, @LoginUser SimpleUser user){
-        PayTrans payTrans =  paymentService.createPayment(orderPayVo.getSpOpenid(),
+        PayTrans payTrans =  paymentService.createPayment(orderPayVo.getOutNo(), orderPayVo.getSpOpenid(),
                 orderPayVo.getBusinessId(), orderPayVo.getShopChannelId(), orderPayVo.getAmount(), user);
         logger.debug("createPayment: payTrans = {}", payTrans);
         PayTransRetVo vo = cloneObj(payTrans, PayTransRetVo.class);

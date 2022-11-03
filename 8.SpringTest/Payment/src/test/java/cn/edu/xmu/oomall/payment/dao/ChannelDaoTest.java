@@ -1,6 +1,6 @@
 //School of Informatics Xiamen University, GPL-3.0 license
 
-package cn.edu.xmu.oomall.payment.controller;
+package cn.edu.xmu.oomall.payment.dao;
 
 import cn.edu.xmu.javaee.core.exception.BusinessException;
 import cn.edu.xmu.javaee.core.util.RedisUtil;

@@ -12,6 +12,9 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class OrderPayVo {
 
+    @NotNull(message="内部交易号必填")
+    private String outNo;
+
     @NotNull(message="支付渠道必填")
     private Long shopChannelId;
 

@@ -63,9 +63,10 @@
 
 
     <!-- 日志输出级别 -->
-    <logger name="cn.edu.xmu.oomall.payment" level = "DEBUG"/>
-    <logger name="cn.edu.xmu.oomall.payment.service" level = "INFO"/>
-    <logger name="cn.edu.xmu.oomall.payment.dao" level = "INFO"/>
+    <logger name="cn.edu.xmu.oomall.payment" level = "INFO"/>
+    <logger name="cn.edu.xmu.oomall.payment.controller" level = "DEBUG"/>
+    <logger name="cn.edu.xmu.oomall.payment.service" level = "DEBUG"/>
+    <logger name="cn.edu.xmu.oomall.payment.dao" level = "DEBUG"/>
     <logger name="cn.edu.xmu.oomall.payment.mapper" level = "INFO"/>
     <logger name="cn.edu.xmu.javaee.core" level = "INFO"/>
     <logger name="cn.edu.xmu.javaee.core.util.Common" level = "INFO"/>

@@ -49,6 +49,7 @@ public class PaymentService {
      * @author Ming Qiu
      * <p>
      * date: 2022-11-01 19:18
+     * @param outNo 内部交易号
      * @param spOpenid 用户的支付id
      * @param businessId 业务Id
      * @param shopChannelId 商铺渠道Id
@@ -56,7 +57,7 @@ public class PaymentService {
      * @param user 当前登录用户
      * @return 支付交易对象
      */
-    public PayTrans createPayment(String spOpenid, Long businessId, Long shopChannelId, Long amount, SimpleUser user) throws BusinessException {
+    public PayTrans createPayment(String outNo, String spOpenid, Long businessId, Long shopChannelId, Long amount, SimpleUser user) throws BusinessException {
         ShopChannel shop = this.shopChannelDao.findObjById(shopChannelId);
         logger.debug("createPayment: shop = {}", shop);
         if (ShopChannel.INVALID == shop.getStatus()){
@@ -70,6 +71,7 @@ public class PaymentService {
         }
 
         PayTrans newObj = new PayTrans();
+        newObj.setOutNo(outNo);
         newObj.setSpOpenid(spOpenid);
         newObj.setBusinessId(businessId);
         newObj.setShopChannelId(shopChannelId);

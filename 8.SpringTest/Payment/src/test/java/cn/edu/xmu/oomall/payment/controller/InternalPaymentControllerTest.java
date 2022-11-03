@@ -40,7 +40,7 @@ public class InternalPaymentControllerTest {
 
     private static String adminToken;
 
-    private static final String ORDERS_PRODUCT = "/internal/orders/{id}/payments";
+    private static final String ORDERS_PRODUCT = "/internal/payments";
 
     @BeforeAll
     public static void setup(){
@@ -56,7 +56,7 @@ public class InternalPaymentControllerTest {
         Mockito.when(redisUtil.set(Mockito.anyString(), Mockito.any(), Mockito.anyLong())).thenReturn(true);
         Mockito.when(wePayService.postTransaction(Mockito.any())).thenReturn(retObj);
 
-        String body = "{\"spOpenid\":\"10000\",\"amount\":100,\"shopChannelId\":501,\"businessId\":501}";
+        String body = "{\"spOpenid\":\"10000\",\"amount\":100,\"shopChannelId\":501,\"businessId\":501,\"outNo\":\"xxxx\"}";
         String ret = this.mockMvc.perform(MockMvcRequestBuilders.post(ORDERS_PRODUCT, 100)
                         .header("authorization", adminToken)
                         .content(body.getBytes("utf-8"))

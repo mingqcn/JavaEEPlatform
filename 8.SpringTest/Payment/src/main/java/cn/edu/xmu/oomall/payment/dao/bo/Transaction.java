@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 public class Transaction extends OOMallObject{
+
     /**
      * 内部交易号
      */
