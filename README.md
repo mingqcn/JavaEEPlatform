@@ -1,2 +1,3 @@
 # JavaEEPlatform
-B站上由完整的高清的视频https://space.bilibili.com/689233562
+中国大学MOOC： https://www.icourse163.org/learn/XMU-1462056168
+B站： https://space.bilibili.com/689233562
