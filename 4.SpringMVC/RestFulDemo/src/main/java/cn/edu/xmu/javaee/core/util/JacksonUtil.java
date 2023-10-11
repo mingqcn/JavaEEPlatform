@@ -14,7 +14,7 @@
  * limitations under the License.
  **/
 
-package cn.edu.xmu.javaee.restfuldemo.util;
+package cn.edu.xmu.javaee.core.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;

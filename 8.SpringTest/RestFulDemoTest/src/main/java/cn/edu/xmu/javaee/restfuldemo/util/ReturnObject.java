@@ -1,4 +1,4 @@
-package cn.edu.xmu.javaee.restfuldemo.util;
+package cn.edu.xmu.javaee.core.util;
 
 import lombok.Data;
 

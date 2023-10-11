@@ -1,7 +1,7 @@
 package cn.edu.xmu.javaee.restfuldemo.controller.vo;
 
 import cn.edu.xmu.javaee.restfuldemo.model.Goods;
-import cn.edu.xmu.javaee.restfuldemo.util.GoodsFactory;
+import cn.edu.xmu.javaee.core.util.GoodsFactory;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

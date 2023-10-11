@@ -1,4 +1,4 @@
-package cn.edu.xmu.javaee.restfuldemo.util;
+package cn.edu.xmu.javaee.core.util;
 
 import cn.edu.xmu.javaee.restfuldemo.controller.vo.GoodsVo;
 import cn.edu.xmu.javaee.restfuldemo.controller.vo.ProductVo;

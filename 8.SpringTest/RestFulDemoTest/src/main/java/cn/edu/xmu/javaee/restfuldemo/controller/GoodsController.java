@@ -3,7 +3,7 @@ package cn.edu.xmu.javaee.restfuldemo.controller;
 import cn.edu.xmu.javaee.restfuldemo.controller.vo.GoodsVo;
 import cn.edu.xmu.javaee.restfuldemo.model.Goods;
 import cn.edu.xmu.javaee.restfuldemo.service.GoodsService;
-import cn.edu.xmu.javaee.restfuldemo.util.ResponseUtil;
+import cn.edu.xmu.javaee.core.util.ResponseUtil;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
