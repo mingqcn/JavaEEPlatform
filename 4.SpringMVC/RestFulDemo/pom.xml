@@ -55,18 +55,6 @@
             <artifactId>jackson-datatype-jdk8</artifactId>
             <version>${fasterxml.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>com.squareup</groupId>
-            <artifactId>javapoet</artifactId>
-            <version>1.13.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.auto.service</groupId>
-            <artifactId>auto-service</artifactId>
-            <version>1.0.1</version>
-        </dependency>
     </dependencies>
 
     <build>

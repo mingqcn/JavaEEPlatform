@@ -1,9 +1,8 @@
-package cn.edu.xmu.javaee.restfuldemo.config;
+package cn.edu.xmu.javaee.core.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
 
 /**
  * 跨域访问配置
@@ -26,3 +25,4 @@ public class CorsConfig implements WebMvcConfigurer {
                 .maxAge(3600);
     }
 }
+

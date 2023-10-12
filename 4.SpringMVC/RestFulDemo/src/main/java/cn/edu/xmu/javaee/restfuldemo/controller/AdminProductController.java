@@ -51,7 +51,7 @@ public class AdminProductController {
         newDraft.setShopId(shopId);
         ProductDraft draft = this.productService.createDraft(newDraft);
         SimpleProductDraftDto draftDto = SimpleProductDraftDto.builder().id(draft.getId()).name(draft.getName()).originalPrice(draft.getOriginalPrice()).originPlace(draft.getOriginPlace()).build();
-        return new ReturnObject(draftDto);
+        return new ReturnObject(ReturnNo.CREATED, ReturnNo.CREATED.getMessage(), draftDto);
     }
 
     /**
