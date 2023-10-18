@@ -1,8 +1,8 @@
 //School of Informatics Xiamen University, GPL-3.0 license
-package cn.edu.xmu.javaee.goodsdemo.controller;
+package cn.edu.xmu.javaee.productdemoaop.controller;
 
 import cn.edu.xmu.javaee.core.model.ReturnNo;
-import cn.edu.xmu.javaee.productdemo.ProductDemoApplication;
+import cn.edu.xmu.javaee.productdemo.ProductDemoAOPApplication;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import static org.hamcrest.CoreMatchers.*;
 
-@SpringBootTest(classes = ProductDemoApplication.class)
+@SpringBootTest(classes = ProductDemoAOPApplication.class)
 @AutoConfigureMockMvc
 @Transactional
 public class ProductControllerTest {

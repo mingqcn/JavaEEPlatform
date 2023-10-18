@@ -1,0 +1,60 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+server:
+  #服务端口号
+  port: 8080
+
+spring:
+  datasource:
+    #JDBC驱动
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #数据库服务器url
+    url: jdbc:mysql://mysql:3306/oomall_demo?serverTimezone=Asia/Shanghai
+    #数据库服务器用户名和密码
+    username: demouser
+    password: 123456
+    #数据库连接池
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      #初始化时建立物理连接的个数
+      initial-size: 3
+      #最小连接池数量
+      min-idle: 3
+      #最大连接池数量
+      max-active: 100
+      #获取连接时最大等待时间
+      max-wait: 60000
+      #配置监控页面访问登录名及密码
+      stat-view-servlet:
+        login-username: admin
+        login-password: 123456
+        enabled: true
+        url-pattern: /druid/*
+
+      filter:
+        stat:
+          #是否开启慢sql查询监控
+          log-slow-sql: true
+          #慢SQL执行时间
+          slow-sql-millis: 100
+      validation-query: select 1
+  jackson:
+    #JSON的时间数据的时区
+    time-zone: GMT+8
+
+mybatis:
+  #domain对象的包
+  type-aliases-package: cn.edu.xmu.javaee.goodsdemo.mapper.po
+  #mapper.xml所在的位置
+  #mapper-locations: classpath:cn.edu.xmu.javaee.goodsdemo.mapper/*/*.xml
+  #自动将SQL中查出来的带下划线的字段，转换为驼峰标志，再去匹配类中的属性
+  configuration:
+    #输出产生的SQL
+    #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #字段名和对象属性用驼峰映射
+    map-underscore-to-camel-case: true
+

@@ -1,8 +1,6 @@
 //School of Informatics Xiamen University, GPL-3.0 license
 package cn.edu.xmu.javaee.productdemo.dao;
 
-import cn.edu.xmu.javaee.core.exception.BusinessException;
-import cn.edu.xmu.javaee.core.model.ReturnNo;
 import cn.edu.xmu.javaee.productdemo.dao.bo.OnSale;
 import cn.edu.xmu.javaee.productdemo.mapper.generator.OnSalePoMapper;
 import cn.edu.xmu.javaee.productdemo.mapper.generator.po.OnSalePo;
@@ -37,19 +35,13 @@ public class OnSaleDao {
      */
     public List<OnSale> getLatestOnSale(Long productId) throws DataAccessException {
         LocalDateTime now = LocalDateTime.now();
-        List<OnSalePo> onsalePoList;
-        try{
-            OnSalePoExample example = new OnSalePoExample();
-            example.setOrderByClause("end_time DESC");
-            OnSalePoExample.Criteria criteria = example.createCriteria();
-            criteria.andProductIdEqualTo(productId);
-            criteria.andBeginTimeLessThanOrEqualTo(now);
-            criteria.andEndTimeGreaterThanOrEqualTo(now);
-            onsalePoList = onSalePoMapper.selectByExample(example);
-        } catch (DataAccessException e) {
-            logger.error(e.getMessage());
-            throw new BusinessException(ReturnNo.INTERNAL_SERVER_ERR, "数据库访问错误");
-        }
+        OnSalePoExample example = new OnSalePoExample();
+        example.setOrderByClause("end_time DESC");
+        OnSalePoExample.Criteria criteria = example.createCriteria();
+        criteria.andProductIdEqualTo(productId);
+        criteria.andBeginTimeLessThanOrEqualTo(now);
+        criteria.andEndTimeGreaterThanOrEqualTo(now);
+        List<OnSalePo> onsalePoList = onSalePoMapper.selectByExample(example);
         return onsalePoList.stream().map(po-> CloneFactory.copy(new OnSale(), po)).collect(Collectors.toList());
     }
 }
