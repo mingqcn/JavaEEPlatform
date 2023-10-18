@@ -1,9 +1,9 @@
 //School of Informatics Xiamen University, GPL-3.0 license
-package cn.edu.xmu.javaee.goodsdemo.controller;
+package cn.edu.xmu.javaee.productdemo.controller;
 
 import cn.edu.xmu.javaee.core.util.JwtHelper;
-import cn.edu.xmu.javaee.goodsdemo.GoodsDemoAopApplication;
-import cn.edu.xmu.javaee.goodsdemo.controller.vo.ProductVo;
+import cn.edu.xmu.javaee.productdemo.GoodsDemoAopApplication;
+import cn.edu.xmu.javaee.productdemo.controller.vo.ProductVo;
 import cn.edu.xmu.javaee.core.util.JacksonUtil;
 import cn.edu.xmu.javaee.core.util.ReturnNo;
 import org.junit.jupiter.api.BeforeAll;

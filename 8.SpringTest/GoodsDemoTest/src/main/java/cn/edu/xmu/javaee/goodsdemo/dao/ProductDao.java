@@ -1,15 +1,15 @@
 //School of Informatics Xiamen University, GPL-3.0 license
-package cn.edu.xmu.javaee.goodsdemo.dao;
+package cn.edu.xmu.javaee.productdemo.dao;
 
-import cn.edu.xmu.javaee.goodsdemo.dao.bo.OnSale;
-import cn.edu.xmu.javaee.goodsdemo.dao.bo.Product;
-import cn.edu.xmu.javaee.goodsdemo.dao.bo.User;
-import cn.edu.xmu.javaee.goodsdemo.mapper.generator.ProductPoMapper;
-import cn.edu.xmu.javaee.goodsdemo.mapper.generator.po.OnSalePo;
-import cn.edu.xmu.javaee.goodsdemo.mapper.generator.po.ProductPo;
-import cn.edu.xmu.javaee.goodsdemo.mapper.generator.po.ProductPoExample;
-import cn.edu.xmu.javaee.goodsdemo.mapper.manual.ProductAllMapper;
-import cn.edu.xmu.javaee.goodsdemo.mapper.manual.po.ProductAllPo;
+import cn.edu.xmu.javaee.productdemo.dao.bo.OnSale;
+import cn.edu.xmu.javaee.productdemo.dao.bo.Product;
+import cn.edu.xmu.javaee.productdemo.dao.bo.User;
+import cn.edu.xmu.javaee.productdemo.mapper.generator.ProductPoMapper;
+import cn.edu.xmu.javaee.productdemo.mapper.generator.po.OnSalePo;
+import cn.edu.xmu.javaee.productdemo.mapper.generator.po.ProductPo;
+import cn.edu.xmu.javaee.productdemo.mapper.generator.po.ProductPoExample;
+import cn.edu.xmu.javaee.productdemo.mapper.manual.ProductAllMapper;
+import cn.edu.xmu.javaee.productdemo.mapper.manual.po.ProductAllPo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +20,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.edu.xmu.javaee.goodsdemo.util.BusinessException;
-import cn.edu.xmu.javaee.goodsdemo.util.ReturnNo;
+import cn.edu.xmu.javaee.productdemo.util.BusinessException;
+import cn.edu.xmu.javaee.productdemo.util.ReturnNo;
 
 /**
  * @author Ming Qiu

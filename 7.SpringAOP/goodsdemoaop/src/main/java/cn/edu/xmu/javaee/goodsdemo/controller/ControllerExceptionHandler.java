@@ -1,5 +1,5 @@
 //School of Informatics Xiamen University, GPL-3.0 license
-package cn.edu.xmu.javaee.goodsdemo.controller;
+package cn.edu.xmu.javaee.productdemo.controller;
 
 import cn.edu.xmu.javaee.core.util.ReturnNo;
 import cn.edu.xmu.javaee.core.util.ReturnObject;

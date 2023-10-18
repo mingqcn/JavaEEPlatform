@@ -1,5 +1,5 @@
 //School of Informatics Xiamen University, GPL-3.0 license
-package cn.edu.xmu.javaee.goodsdemo.config;
+package cn.edu.xmu.javaee.productdemo.config;
 
 import cn.edu.xmu.javaee.core.util.JwtHelper;
 import org.slf4j.Logger;

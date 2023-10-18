@@ -1,14 +1,14 @@
 //School of Informatics Xiamen University, GPL-3.0 license
-package cn.edu.xmu.javaee.goodsdemo.dao;
+package cn.edu.xmu.javaee.productdemo.dao;
 
 import cn.edu.xmu.javaee.core.model.SimpleUser;
-import cn.edu.xmu.javaee.goodsdemo.dao.bo.OnSale;
-import cn.edu.xmu.javaee.goodsdemo.dao.bo.Product;
-import cn.edu.xmu.javaee.goodsdemo.mapper.generator.ProductPoMapper;
-import cn.edu.xmu.javaee.goodsdemo.mapper.generator.po.ProductPo;
-import cn.edu.xmu.javaee.goodsdemo.mapper.generator.po.ProductPoExample;
-import cn.edu.xmu.javaee.goodsdemo.mapper.manual.ProductAllMapper;
-import cn.edu.xmu.javaee.goodsdemo.mapper.manual.po.ProductAllPo;
+import cn.edu.xmu.javaee.productdemo.dao.bo.OnSale;
+import cn.edu.xmu.javaee.productdemo.dao.bo.Product;
+import cn.edu.xmu.javaee.productdemo.mapper.generator.ProductPoMapper;
+import cn.edu.xmu.javaee.productdemo.mapper.generator.po.ProductPo;
+import cn.edu.xmu.javaee.productdemo.mapper.generator.po.ProductPoExample;
+import cn.edu.xmu.javaee.productdemo.mapper.manual.ProductAllMapper;
+import cn.edu.xmu.javaee.productdemo.mapper.manual.po.ProductAllPo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;

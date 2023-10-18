@@ -1,13 +1,13 @@
-package cn.edu.xmu.javaee.goodsdemo.controller;
+package cn.edu.xmu.javaee.productdemo.controller;
 
-import cn.edu.xmu.javaee.goodsdemo.controller.vo.ProductRetVo;
-import cn.edu.xmu.javaee.goodsdemo.controller.vo.ProductVo;
-import cn.edu.xmu.javaee.goodsdemo.dao.bo.Product;
-import cn.edu.xmu.javaee.goodsdemo.dao.bo.User;
-import cn.edu.xmu.javaee.goodsdemo.service.ProductService;
-import cn.edu.xmu.javaee.goodsdemo.util.BusinessException;
-import cn.edu.xmu.javaee.goodsdemo.util.ResponseUtil;
-import cn.edu.xmu.javaee.goodsdemo.util.ReturnObject;
+import cn.edu.xmu.javaee.productdemo.controller.vo.ProductRetVo;
+import cn.edu.xmu.javaee.productdemo.controller.vo.ProductVo;
+import cn.edu.xmu.javaee.productdemo.dao.bo.Product;
+import cn.edu.xmu.javaee.productdemo.dao.bo.User;
+import cn.edu.xmu.javaee.productdemo.service.ProductService;
+import cn.edu.xmu.javaee.productdemo.util.BusinessException;
+import cn.edu.xmu.javaee.productdemo.util.ResponseUtil;
+import cn.edu.xmu.javaee.productdemo.util.ReturnObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static cn.edu.xmu.javaee.goodsdemo.util.Common.returnWithStatus;
+import static cn.edu.xmu.javaee.productdemo.util.Common.returnWithStatus;
 
 /**
  * 商品控制器

@@ -1,12 +1,12 @@
-package cn.edu.xmu.javaee.goodsdemo.controller;
+package cn.edu.xmu.javaee.productdemo.controller;
 
 import cn.edu.xmu.javaee.core.model.PageObj;
 import cn.edu.xmu.javaee.core.util.JacksonUtil;
 import cn.edu.xmu.javaee.core.util.ReturnObject;
-import cn.edu.xmu.javaee.goodsdemo.controller.vo.ProductRetVo;
-import cn.edu.xmu.javaee.goodsdemo.controller.vo.SimpleProductRetVo;
-import cn.edu.xmu.javaee.goodsdemo.dao.bo.Product;
-import cn.edu.xmu.javaee.goodsdemo.service.ProductService;
+import cn.edu.xmu.javaee.productdemo.controller.vo.ProductRetVo;
+import cn.edu.xmu.javaee.productdemo.controller.vo.SimpleProductRetVo;
+import cn.edu.xmu.javaee.productdemo.dao.bo.Product;
+import cn.edu.xmu.javaee.productdemo.service.ProductService;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package cn.edu.xmu.javaee.goodsdemo.controller;
+package cn.edu.xmu.javaee.productdemo.controller;
 
 import cn.edu.xmu.javaee.core.aop.Audit;
 import cn.edu.xmu.javaee.core.aop.LoginName;
@@ -6,10 +6,10 @@ import cn.edu.xmu.javaee.core.aop.LoginUser;
 import cn.edu.xmu.javaee.core.model.PageObj;
 import cn.edu.xmu.javaee.core.util.ReturnNo;
 import cn.edu.xmu.javaee.core.util.ReturnObject;
-import cn.edu.xmu.javaee.goodsdemo.controller.vo.ProductVo;
+import cn.edu.xmu.javaee.productdemo.controller.vo.ProductVo;
 import cn.edu.xmu.javaee.core.model.SimpleUser;
-import cn.edu.xmu.javaee.goodsdemo.dao.bo.Product;
-import cn.edu.xmu.javaee.goodsdemo.service.ProductService;
+import cn.edu.xmu.javaee.productdemo.dao.bo.Product;
+import cn.edu.xmu.javaee.productdemo.service.ProductService;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

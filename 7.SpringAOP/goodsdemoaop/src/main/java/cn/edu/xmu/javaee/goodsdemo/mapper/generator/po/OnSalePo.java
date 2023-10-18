@@ -1,4 +1,4 @@
-package cn.edu.xmu.javaee.goodsdemo.mapper.generator.po;
+package cn.edu.xmu.javaee.productdemo.mapper.generator.po;
 
 import java.time.LocalDateTime;
 

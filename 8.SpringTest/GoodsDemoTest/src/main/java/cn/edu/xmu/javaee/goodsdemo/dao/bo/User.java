@@ -1,5 +1,5 @@
 //School of Informatics Xiamen University, GPL-3.0 license
-package cn.edu.xmu.javaee.goodsdemo.dao.bo;
+package cn.edu.xmu.javaee.productdemo.dao.bo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

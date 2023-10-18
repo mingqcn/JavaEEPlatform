@@ -1,8 +1,8 @@
-package cn.edu.xmu.javaee.goodsdemo.service;
+package cn.edu.xmu.javaee.productdemo.service;
 
 import cn.edu.xmu.javaee.core.model.SimpleUser;
-import cn.edu.xmu.javaee.goodsdemo.dao.ProductDao;
-import cn.edu.xmu.javaee.goodsdemo.dao.bo.Product;
+import cn.edu.xmu.javaee.productdemo.dao.ProductDao;
+import cn.edu.xmu.javaee.productdemo.dao.bo.Product;
 import cn.edu.xmu.javaee.core.util.BusinessException;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;

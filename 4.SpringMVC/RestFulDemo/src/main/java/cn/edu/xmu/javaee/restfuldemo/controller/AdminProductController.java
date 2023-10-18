@@ -18,8 +18,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.http.HttpResponse;
-
 /**
  * 商品控制器
  * @author Ming Qiu

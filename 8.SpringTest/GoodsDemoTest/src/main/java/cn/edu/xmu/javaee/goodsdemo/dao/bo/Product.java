@@ -1,9 +1,9 @@
-package cn.edu.xmu.javaee.goodsdemo.dao.bo;
+package cn.edu.xmu.javaee.productdemo.dao.bo;
 
-import cn.edu.xmu.javaee.goodsdemo.mapper.generator.OnSalePoSqlProvider;
-import cn.edu.xmu.javaee.goodsdemo.mapper.generator.po.OnSalePo;
-import cn.edu.xmu.javaee.goodsdemo.mapper.generator.po.ProductPo;
-import cn.edu.xmu.javaee.goodsdemo.mapper.manual.po.ProductAllPo;
+import cn.edu.xmu.javaee.productdemo.mapper.generator.OnSalePoSqlProvider;
+import cn.edu.xmu.javaee.productdemo.mapper.generator.po.OnSalePo;
+import cn.edu.xmu.javaee.productdemo.mapper.generator.po.ProductPo;
+import cn.edu.xmu.javaee.productdemo.mapper.manual.po.ProductAllPo;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.slf4j.Logger;

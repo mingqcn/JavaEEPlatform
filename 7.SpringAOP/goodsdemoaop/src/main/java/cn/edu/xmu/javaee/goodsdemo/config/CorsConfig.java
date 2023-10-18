@@ -1,4 +1,4 @@
-package cn.edu.xmu.javaee.goodsdemo.config;
+package cn.edu.xmu.javaee.productdemo.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

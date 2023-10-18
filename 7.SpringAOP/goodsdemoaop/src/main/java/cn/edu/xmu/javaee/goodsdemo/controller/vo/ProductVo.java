@@ -1,5 +1,5 @@
 //School of Informatics Xiamen University, GPL-3.0 license
-package cn.edu.xmu.javaee.goodsdemo.controller.vo;
+package cn.edu.xmu.javaee.productdemo.controller.vo;
 
 import cn.edu.xmu.javaee.core.model.SimpleUser;
 import com.fasterxml.jackson.annotation.JsonInclude;

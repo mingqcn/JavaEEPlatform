@@ -1,5 +1,5 @@
 //School of Informatics Xiamen University, GPL-3.0 license
-package cn.edu.xmu.javaee.goodsdemo.util;
+package cn.edu.xmu.javaee.productdemo.util;
 
 import java.util.HashMap;
 import java.util.Map;

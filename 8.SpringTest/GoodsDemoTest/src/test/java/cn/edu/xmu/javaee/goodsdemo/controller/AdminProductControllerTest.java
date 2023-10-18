@@ -1,10 +1,10 @@
 //School of Informatics Xiamen University, GPL-3.0 license
-package cn.edu.xmu.javaee.goodsdemo.controller;
+package cn.edu.xmu.javaee.productdemo.controller;
 
-import cn.edu.xmu.javaee.goodsdemo.GoodsDemoApplication;
-import cn.edu.xmu.javaee.goodsdemo.controller.vo.ProductVo;
-import cn.edu.xmu.javaee.goodsdemo.util.JacksonUtil;
-import cn.edu.xmu.javaee.goodsdemo.util.ReturnNo;
+import cn.edu.xmu.javaee.productdemo.GoodsDemoApplication;
+import cn.edu.xmu.javaee.productdemo.controller.vo.ProductVo;
+import cn.edu.xmu.javaee.productdemo.util.JacksonUtil;
+import cn.edu.xmu.javaee.productdemo.util.ReturnNo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
