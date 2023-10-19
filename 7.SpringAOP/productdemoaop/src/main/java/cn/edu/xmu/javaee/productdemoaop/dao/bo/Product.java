@@ -1,4 +1,4 @@
-package cn.edu.xmu.javaee.productdemo.dao.bo;
+package cn.edu.xmu.javaee.productdemoaop.dao.bo;
 
 import cn.edu.xmu.javaee.productdemo.mapper.generator.po.OnSalePo;
 import cn.edu.xmu.javaee.productdemo.mapper.generator.po.ProductPo;

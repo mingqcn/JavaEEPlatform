@@ -1,10 +1,10 @@
-package cn.edu.xmu.javaee.productdemo.controller;
+package cn.edu.xmu.javaee.productdemoaop.controller;
 
 import cn.edu.xmu.javaee.core.exception.BusinessException;
 import cn.edu.xmu.javaee.core.model.ReturnObject;
 import cn.edu.xmu.javaee.productdemo.controller.dto.ProductDto;
-import cn.edu.xmu.javaee.productdemo.dao.bo.Product;
-import cn.edu.xmu.javaee.productdemo.service.ProductService;
+import cn.edu.xmu.javaee.productdemoaop.dao.bo.Product;
+import cn.edu.xmu.javaee.productdemoaop.service.ProductService;
 import cn.edu.xmu.javaee.productdemo.util.CloneFactory;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
@@ -37,7 +37,7 @@ public class ProductController {
     }
 
     @GetMapping("{id}")
-    public ReturnObject getProductById(@PathVariable("id") Long id, @RequestParam(required = false, defaultValue = "auto") String type, HttpServletResponse response) {
+    public ReturnObject getProductById(@PathVariable("id") Long id, @RequestParam(required = false, defaultValue = "auto") String type) {
         logger.debug("getProductById: id = {} " ,id);
         ReturnObject retObj = null;
         Product product = null;
@@ -54,7 +54,7 @@ public class ProductController {
 
 
     @GetMapping("")
-    public ReturnObject searchProductByName(@RequestParam String name, @RequestParam(required = false, defaultValue = "auto") String type, HttpServletResponse response) {
+    public ReturnObject searchProductByName(@RequestParam String name, @RequestParam(required = false, defaultValue = "auto") String type) {
         ReturnObject retObj = null;
         List<Product> productList = null;
         if (null != type && "manual" == type){

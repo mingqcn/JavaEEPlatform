@@ -1,8 +1,9 @@
 //School of Informatics Xiamen University, GPL-3.0 license
-package cn.edu.xmu.javaee.productdemo.dao;
+package cn.edu.xmu.javaee.productdemoaop.dao;
 
 import cn.edu.xmu.javaee.core.exception.BusinessException;
 import cn.edu.xmu.javaee.core.model.ReturnNo;
+import cn.edu.xmu.javaee.productdemo.dao.OnSaleDao;
 import cn.edu.xmu.javaee.productdemo.dao.bo.OnSale;
 import cn.edu.xmu.javaee.productdemo.dao.bo.Product;
 import cn.edu.xmu.javaee.productdemo.dao.bo.User;
@@ -39,7 +40,7 @@ public class ProductDao {
     private ProductAllMapper productAllMapper;
 
     @Autowired
-    public ProductDao(ProductPoMapper productPoMapper, OnSaleDao onSaleDao, ProductAllMapper productAllMapper) {
+    public ProductDao(ProductPoMapper productPoMapper, cn.edu.xmu.javaee.productdemo.dao.OnSaleDao onSaleDao, ProductAllMapper productAllMapper) {
         this.productPoMapper = productPoMapper;
         this.onSaleDao = onSaleDao;
         this.productAllMapper = productAllMapper;

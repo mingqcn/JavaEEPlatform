@@ -1,9 +1,9 @@
-package cn.edu.xmu.javaee.productdemo.service;
+package cn.edu.xmu.javaee.productdemoaop.service;
 
 import cn.edu.xmu.javaee.core.exception.BusinessException;
-import cn.edu.xmu.javaee.productdemo.dao.ProductDao;
-import cn.edu.xmu.javaee.productdemo.dao.bo.Product;
-import cn.edu.xmu.javaee.productdemo.dao.bo.User;
+import cn.edu.xmu.javaee.productdemoaop.dao.ProductDao;
+import cn.edu.xmu.javaee.productdemoaop.dao.bo.Product;
+import cn.edu.xmu.javaee.productdemoaop.dao.bo.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

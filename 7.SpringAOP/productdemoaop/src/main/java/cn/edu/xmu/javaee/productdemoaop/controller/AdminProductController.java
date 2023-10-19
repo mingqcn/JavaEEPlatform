@@ -1,5 +1,6 @@
 package cn.edu.xmu.javaee.productdemo.controller;
 
+import cn.edu.xmu.javaee.core.aop.LoginUser;
 import cn.edu.xmu.javaee.core.exception.BusinessException;
 import cn.edu.xmu.javaee.core.model.ReturnNo;
 import cn.edu.xmu.javaee.core.model.ReturnObject;
@@ -47,7 +48,7 @@ public class AdminProductController {
     }
 
     @GetMapping("{id}")
-    public ReturnObject getProductById(@PathVariable("id") Long id, HttpServletResponse response) {
+    public ReturnObject getProductById(@PathVariable("id") Long id) {
         logger.debug("getProductById: id = {} " ,id);
         ReturnObject retObj = null;
         Product product = productService.retrieveProductByID(id, false);
@@ -59,7 +60,7 @@ public class AdminProductController {
 
 
     @GetMapping("")
-    public ReturnObject searchProductByName(@RequestParam String name, HttpServletResponse response) {
+    public ReturnObject searchProductByName(@RequestParam String name) {
         ReturnObject retObj = null;
         List<Product> productList = null;
         productList = productService.retrieveProductByName(name, false);
@@ -70,10 +71,9 @@ public class AdminProductController {
 
 
     @PostMapping("")
-    public ReturnObject createProduct(@RequestBody @Validated(NewGroup.class) ProductVo productVo, HttpServletResponse response){
+    public ReturnObject createProduct(@RequestBody @Validated(NewGroup.class) ProductVo productVo, @LoginUser User user){
         ReturnObject retObj = null;
         Product product = CloneFactory.copy(new Product(), productVo);
-        User user = new User(Long.valueOf(1), "admin1");
         Product retProduct = productService.createProduct(product, user);
         ProductDto dto = CloneFactory.copy(new ProductDto(), retProduct);
         retObj = new ReturnObject(ReturnNo.CREATED, dto);
@@ -81,9 +81,8 @@ public class AdminProductController {
     }
 
     @PutMapping("{id}")
-    public ReturnObject modiProduct(@PathVariable Long id, @RequestBody @Validated(UpdateGroup.class) ProductVo productVo, HttpServletResponse response){
+    public ReturnObject modiProduct(@PathVariable Long id, @RequestBody @Validated(UpdateGroup.class) ProductVo productVo, @LoginUser User user){
         ReturnObject retObj = null;
-        User user = new User(Long.valueOf(2), "admin2");
         Product product = CloneFactory.copy(new Product(), productVo);;
         product.setId(id);
         productService.modifyProduct(product, user);
