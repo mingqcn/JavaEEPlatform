@@ -1,12 +1,12 @@
 //School of Informatics Xiamen University, GPL-3.0 license
 
-package cn.edu.xmu.javaee.productdemo.mapper.manual;
+package cn.edu.xmu.javaee.productdemoaop.mapper.manual;
 
-import cn.edu.xmu.javaee.productdemo.mapper.generator.ProductPoSqlProvider;
-import cn.edu.xmu.javaee.productdemo.mapper.generator.po.OnSalePo;
-import cn.edu.xmu.javaee.productdemo.mapper.generator.po.ProductPo;
-import cn.edu.xmu.javaee.productdemo.mapper.generator.po.ProductPoExample;
-import cn.edu.xmu.javaee.productdemo.mapper.manual.po.ProductAllPo;
+import cn.edu.xmu.javaee.productdemoaop.mapper.generator.ProductPoSqlProvider;
+import cn.edu.xmu.javaee.productdemoaop.mapper.generator.po.OnSalePo;
+import cn.edu.xmu.javaee.productdemoaop.mapper.generator.po.ProductPo;
+import cn.edu.xmu.javaee.productdemoaop.mapper.generator.po.ProductPoExample;
+import cn.edu.xmu.javaee.productdemoaop.mapper.manual.po.ProductAllPo;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 

@@ -1,4 +1,4 @@
-package cn.edu.xmu.javaee.productdemo;
+package cn.edu.xmu.javaee.productdemoaop;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;

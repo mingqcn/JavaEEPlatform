@@ -1,4 +1,4 @@
-package cn.edu.xmu.javaee.productdemo.controller;
+package cn.edu.xmu.javaee.productdemoaop.controller;
 
 import cn.edu.xmu.javaee.core.aop.LoginUser;
 import cn.edu.xmu.javaee.core.exception.BusinessException;
@@ -6,13 +6,13 @@ import cn.edu.xmu.javaee.core.model.ReturnNo;
 import cn.edu.xmu.javaee.core.model.ReturnObject;
 import cn.edu.xmu.javaee.core.validation.NewGroup;
 import cn.edu.xmu.javaee.core.validation.UpdateGroup;
-import cn.edu.xmu.javaee.productdemo.controller.dto.AdminProductDto;
-import cn.edu.xmu.javaee.productdemo.controller.dto.ProductDto;
-import cn.edu.xmu.javaee.productdemo.controller.vo.ProductVo;
-import cn.edu.xmu.javaee.productdemo.dao.bo.Product;
-import cn.edu.xmu.javaee.productdemo.dao.bo.User;
-import cn.edu.xmu.javaee.productdemo.service.ProductService;
-import cn.edu.xmu.javaee.productdemo.util.CloneFactory;
+import cn.edu.xmu.javaee.productdemoaop.controller.dto.AdminProductDto;
+import cn.edu.xmu.javaee.productdemoaop.controller.dto.ProductDto;
+import cn.edu.xmu.javaee.productdemoaop.controller.vo.ProductVo;
+import cn.edu.xmu.javaee.productdemoaop.dao.bo.Product;
+import cn.edu.xmu.javaee.productdemoaop.dao.bo.User;
+import cn.edu.xmu.javaee.productdemoaop.service.ProductService;
+import cn.edu.xmu.javaee.productdemoaop.util.CloneFactory;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

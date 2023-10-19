@@ -1,5 +1,5 @@
 //School of Informatics Xiamen University, GPL-3.0 license
-package cn.edu.xmu.javaee.productdemo.controller.vo;
+package cn.edu.xmu.javaee.productdemoaop.controller.vo;
 
 
 import cn.edu.xmu.javaee.core.validation.NewGroup;

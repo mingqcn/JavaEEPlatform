@@ -1,15 +1,15 @@
-package cn.edu.xmu.javaee.productdemo.util;
+package cn.edu.xmu.javaee.productdemoaop.util;
 
-import cn.edu.xmu.javaee.productdemo.controller.dto.AdminProductDto;
-import cn.edu.xmu.javaee.productdemo.controller.dto.OnSaleDto;
-import cn.edu.xmu.javaee.productdemo.controller.dto.ProductDto;
-import cn.edu.xmu.javaee.productdemo.controller.vo.ProductVo;
-import cn.edu.xmu.javaee.productdemo.dao.bo.OnSale;
-import cn.edu.xmu.javaee.productdemo.dao.bo.Product;
-import cn.edu.xmu.javaee.productdemo.dao.bo.User;
-import cn.edu.xmu.javaee.productdemo.mapper.generator.po.OnSalePo;
-import cn.edu.xmu.javaee.productdemo.mapper.generator.po.ProductPo;
-import cn.edu.xmu.javaee.productdemo.mapper.manual.po.ProductAllPo;
+import cn.edu.xmu.javaee.productdemoaop.controller.dto.AdminProductDto;
+import cn.edu.xmu.javaee.productdemoaop.controller.dto.OnSaleDto;
+import cn.edu.xmu.javaee.productdemoaop.controller.dto.ProductDto;
+import cn.edu.xmu.javaee.productdemoaop.controller.vo.ProductVo;
+import cn.edu.xmu.javaee.productdemoaop.dao.bo.OnSale;
+import cn.edu.xmu.javaee.productdemoaop.dao.bo.Product;
+import cn.edu.xmu.javaee.productdemoaop.dao.bo.User;
+import cn.edu.xmu.javaee.productdemoaop.mapper.generator.po.OnSalePo;
+import cn.edu.xmu.javaee.productdemoaop.mapper.generator.po.ProductPo;
+import cn.edu.xmu.javaee.productdemoaop.mapper.manual.po.ProductAllPo;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -2,10 +2,10 @@ package cn.edu.xmu.javaee.productdemoaop.controller;
 
 import cn.edu.xmu.javaee.core.exception.BusinessException;
 import cn.edu.xmu.javaee.core.model.ReturnObject;
-import cn.edu.xmu.javaee.productdemo.controller.dto.ProductDto;
+import cn.edu.xmu.javaee.productdemoaop.controller.dto.ProductDto;
 import cn.edu.xmu.javaee.productdemoaop.dao.bo.Product;
 import cn.edu.xmu.javaee.productdemoaop.service.ProductService;
-import cn.edu.xmu.javaee.productdemo.util.CloneFactory;
+import cn.edu.xmu.javaee.productdemoaop.util.CloneFactory;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

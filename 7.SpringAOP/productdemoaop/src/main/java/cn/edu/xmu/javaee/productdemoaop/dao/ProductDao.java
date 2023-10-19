@@ -3,17 +3,17 @@ package cn.edu.xmu.javaee.productdemoaop.dao;
 
 import cn.edu.xmu.javaee.core.exception.BusinessException;
 import cn.edu.xmu.javaee.core.model.ReturnNo;
-import cn.edu.xmu.javaee.productdemo.dao.OnSaleDao;
-import cn.edu.xmu.javaee.productdemo.dao.bo.OnSale;
-import cn.edu.xmu.javaee.productdemo.dao.bo.Product;
-import cn.edu.xmu.javaee.productdemo.dao.bo.User;
-import cn.edu.xmu.javaee.productdemo.mapper.generator.ProductPoMapper;
-import cn.edu.xmu.javaee.productdemo.mapper.generator.po.OnSalePo;
-import cn.edu.xmu.javaee.productdemo.mapper.generator.po.ProductPo;
-import cn.edu.xmu.javaee.productdemo.mapper.generator.po.ProductPoExample;
-import cn.edu.xmu.javaee.productdemo.mapper.manual.ProductAllMapper;
-import cn.edu.xmu.javaee.productdemo.mapper.manual.po.ProductAllPo;
-import cn.edu.xmu.javaee.productdemo.util.CloneFactory;
+import cn.edu.xmu.javaee.productdemoaop.dao.OnSaleDao;
+import cn.edu.xmu.javaee.productdemoaop.dao.bo.OnSale;
+import cn.edu.xmu.javaee.productdemoaop.dao.bo.Product;
+import cn.edu.xmu.javaee.productdemoaop.dao.bo.User;
+import cn.edu.xmu.javaee.productdemoaop.mapper.generator.ProductPoMapper;
+import cn.edu.xmu.javaee.productdemoaop.mapper.generator.po.OnSalePo;
+import cn.edu.xmu.javaee.productdemoaop.mapper.generator.po.ProductPo;
+import cn.edu.xmu.javaee.productdemoaop.mapper.generator.po.ProductPoExample;
+import cn.edu.xmu.javaee.productdemoaop.mapper.manual.ProductAllMapper;
+import cn.edu.xmu.javaee.productdemoaop.mapper.manual.po.ProductAllPo;
+import cn.edu.xmu.javaee.productdemoaop.util.CloneFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +40,7 @@ public class ProductDao {
     private ProductAllMapper productAllMapper;
 
     @Autowired
-    public ProductDao(ProductPoMapper productPoMapper, cn.edu.xmu.javaee.productdemo.dao.OnSaleDao onSaleDao, ProductAllMapper productAllMapper) {
+    public ProductDao(ProductPoMapper productPoMapper, OnSaleDao onSaleDao, ProductAllMapper productAllMapper) {
         this.productPoMapper = productPoMapper;
         this.onSaleDao = onSaleDao;
         this.productAllMapper = productAllMapper;

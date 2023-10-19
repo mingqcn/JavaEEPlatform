@@ -1,8 +1,8 @@
 package cn.edu.xmu.javaee.productdemoaop.dao.bo;
 
-import cn.edu.xmu.javaee.productdemo.mapper.generator.po.OnSalePo;
-import cn.edu.xmu.javaee.productdemo.mapper.generator.po.ProductPo;
-import cn.edu.xmu.javaee.productdemo.util.CloneFactory;
+import cn.edu.xmu.javaee.productdemoaop.mapper.generator.po.OnSalePo;
+import cn.edu.xmu.javaee.productdemoaop.mapper.generator.po.ProductPo;
+import cn.edu.xmu.javaee.productdemoaop.util.CloneFactory;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;

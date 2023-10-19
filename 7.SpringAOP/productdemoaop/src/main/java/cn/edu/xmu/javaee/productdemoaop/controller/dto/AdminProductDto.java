@@ -1,7 +1,7 @@
 //School of Informatics Xiamen University, GPL-3.0 license
-package cn.edu.xmu.javaee.productdemo.controller.dto;
+package cn.edu.xmu.javaee.productdemoaop.controller.dto;
 
-import cn.edu.xmu.javaee.productdemo.dao.bo.User;
+import cn.edu.xmu.javaee.productdemoaop.dao.bo.User;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 

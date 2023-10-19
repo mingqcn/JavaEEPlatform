@@ -1,7 +1,7 @@
-package cn.edu.xmu.javaee.productdemo.mapper.generator;
+package cn.edu.xmu.javaee.productdemoaop.mapper.generator;
 
-import cn.edu.xmu.javaee.productdemo.mapper.generator.po.ProductPo;
-import cn.edu.xmu.javaee.productdemo.mapper.generator.po.ProductPoExample;
+import cn.edu.xmu.javaee.productdemoaop.mapper.generator.po.ProductPo;
+import cn.edu.xmu.javaee.productdemoaop.mapper.generator.po.ProductPoExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;

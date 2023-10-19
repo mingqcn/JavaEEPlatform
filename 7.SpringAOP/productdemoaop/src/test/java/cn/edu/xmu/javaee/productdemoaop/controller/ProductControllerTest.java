@@ -2,7 +2,7 @@
 package cn.edu.xmu.javaee.productdemoaop.controller;
 
 import cn.edu.xmu.javaee.core.model.ReturnNo;
-import cn.edu.xmu.javaee.productdemo.ProductDemoAOPApplication;
+import cn.edu.xmu.javaee.productdemoaop.ProductDemoAOPApplication;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

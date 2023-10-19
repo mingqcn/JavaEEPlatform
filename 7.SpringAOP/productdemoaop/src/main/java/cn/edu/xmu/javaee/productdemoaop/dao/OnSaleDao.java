@@ -1,11 +1,11 @@
 //School of Informatics Xiamen University, GPL-3.0 license
-package cn.edu.xmu.javaee.productdemo.dao;
+package cn.edu.xmu.javaee.productdemoaop.dao;
 
-import cn.edu.xmu.javaee.productdemo.dao.bo.OnSale;
-import cn.edu.xmu.javaee.productdemo.mapper.generator.OnSalePoMapper;
-import cn.edu.xmu.javaee.productdemo.mapper.generator.po.OnSalePo;
-import cn.edu.xmu.javaee.productdemo.mapper.generator.po.OnSalePoExample;
-import cn.edu.xmu.javaee.productdemo.util.CloneFactory;
+import cn.edu.xmu.javaee.productdemoaop.dao.bo.OnSale;
+import cn.edu.xmu.javaee.productdemoaop.mapper.generator.OnSalePoMapper;
+import cn.edu.xmu.javaee.productdemoaop.mapper.generator.po.OnSalePo;
+import cn.edu.xmu.javaee.productdemoaop.mapper.generator.po.OnSalePoExample;
+import cn.edu.xmu.javaee.productdemoaop.util.CloneFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

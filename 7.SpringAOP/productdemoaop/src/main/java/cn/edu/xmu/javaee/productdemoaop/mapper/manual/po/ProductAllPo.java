@@ -1,7 +1,7 @@
-package cn.edu.xmu.javaee.productdemo.mapper.manual.po;
+package cn.edu.xmu.javaee.productdemoaop.mapper.manual.po;
 
-import cn.edu.xmu.javaee.productdemo.mapper.generator.po.OnSalePo;
-import cn.edu.xmu.javaee.productdemo.mapper.generator.po.ProductPo;
+import cn.edu.xmu.javaee.productdemoaop.mapper.generator.po.OnSalePo;
+import cn.edu.xmu.javaee.productdemoaop.mapper.generator.po.ProductPo;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
