@@ -1,4 +1,4 @@
-FROM openjdk:11-jre
+FROM openjdk:17-jre
 MAINTAINER mingqiu mingqiu@xmu.edu.cn
 WORKDIR /app
 ARG JAR_FILE
