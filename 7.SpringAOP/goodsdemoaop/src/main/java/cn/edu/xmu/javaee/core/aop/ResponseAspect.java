@@ -54,7 +54,7 @@ public class ResponseAspect {
         checkPageLimit(request, paramNames, args);
 
         try {
-            Object obj = jp.proceed();
+            Object obj = jp.proceed(args);
             retVal = (ReturnObject) obj;
         } catch (BusinessException exception) {
             logger.debug("doAround: BusinessException， errno = {}", exception.getErrno());
@@ -145,10 +145,10 @@ public class ResponseAspect {
         }
 
         for (int i = 0; i < paramNames.length; i++) {
-            if (paramNames[i].equals("page") && (args[i] == null)) {
+            if (paramNames[i].equals("page")) {
                 args[i] = page;
             }
-            if (paramNames[i].equals("pageSize") && (args[i] == null)) {
+            if (paramNames[i].equals("pageSize")) {
                 args[i] = pageSize;
             }
         }
