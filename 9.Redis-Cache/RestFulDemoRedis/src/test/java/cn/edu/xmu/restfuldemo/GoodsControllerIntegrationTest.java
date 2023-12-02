@@ -1,9 +1,9 @@
-package cn.edu.xmu.rocketmqdemo;
+package cn.edu.xmu.restfuldemo;
 
 
-import cn.edu.xmu.rocketmqdemo.model.GoodsVo;
-import cn.edu.xmu.rocketmqdemo.util.GoodsFactory;
-import cn.edu.xmu.rocketmqdemo.util.JacksonUtil;
+import cn.edu.xmu.restfuldemo.model.GoodsVo;
+import cn.edu.xmu.restfuldemo.util.GoodsFactory;
+import cn.edu.xmu.restfuldemo.util.JacksonUtil;
 import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Autowired;

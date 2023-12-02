@@ -1,4 +1,4 @@
-package cn.edu.xmu.rocketmqdemo;
+package cn.edu.xmu.restfuldemo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

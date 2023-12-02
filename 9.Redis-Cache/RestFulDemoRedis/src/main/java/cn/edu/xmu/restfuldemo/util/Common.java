@@ -1,6 +1,6 @@
-package cn.edu.xmu.rocketmqdemo.util;
+package cn.edu.xmu.restfuldemo.util;
 
-import cn.edu.xmu.rocketmqdemo.model.VoObject;
+import cn.edu.xmu.restfuldemo.model.VoObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -8,7 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 
 import javax.servlet.http.HttpServletResponse;
-import java.text.*;
+import java.text.FieldPosition;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;

@@ -1,4 +1,4 @@
-package cn.edu.xmu.rocketmqdemo.model;
+package cn.edu.xmu.restfuldemo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;

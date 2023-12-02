@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="adminui" />
+        <module name="Servlet_Maven" />
+        <module name="restfuldemo" />
+        <module name="restfuldemoredis" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="11">
+      <module name="adminui" target="1.8" />
+      <module name="restfuldemo" target="1.8" />
+      <module name="restfuldemoredis" target="1.8" />
+      <module name="Servlet_Maven" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="adminui" options="-parameters" />
+      <module name="restfuldemo" options="-parameters" />
+      <module name="restfuldemoredis" options="-parameters" />
+    </option>
+  </component>
+</project>

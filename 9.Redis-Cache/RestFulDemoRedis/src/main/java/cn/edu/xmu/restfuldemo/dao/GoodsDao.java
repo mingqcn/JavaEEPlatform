@@ -1,10 +1,10 @@
-package cn.edu.xmu.rocketmqdemo.dao;
+package cn.edu.xmu.restfuldemo.dao;
 
-import cn.edu.xmu.rocketmqdemo.mapper.GoodsMapper;
-import cn.edu.xmu.rocketmqdemo.model.*;
-import cn.edu.xmu.rocketmqdemo.util.RedisUtil;
-import cn.edu.xmu.rocketmqdemo.util.ResponseCode;
-import cn.edu.xmu.rocketmqdemo.util.ReturnObject;
+import cn.edu.xmu.restfuldemo.mapper.GoodsMapper;
+import cn.edu.xmu.restfuldemo.model.*;
+import cn.edu.xmu.restfuldemo.util.RedisUtil;
+import cn.edu.xmu.restfuldemo.util.ResponseCode;
+import cn.edu.xmu.restfuldemo.util.ReturnObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 
-import static cn.edu.xmu.rocketmqdemo.util.Common.*;
+import static cn.edu.xmu.restfuldemo.util.Common.*;
 /**
  * @author Ming Qiu
  **/

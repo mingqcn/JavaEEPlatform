@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/JavaEEPlatform.iml" filepath="$PROJECT_DIR$/.idea/JavaEEPlatform.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2.Preliminary/Servlet_Maven/Servlet_Maven.iml" filepath="$PROJECT_DIR$/2.Preliminary/Servlet_Maven/Servlet_Maven.iml" />
+      <module fileurl="file://$PROJECT_DIR$/3.SpringFrameWork/AdminUI/adminui.iml" filepath="$PROJECT_DIR$/3.SpringFrameWork/AdminUI/adminui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/8.SpringTest/RestFulDemoTest/restfuldemo.iml" filepath="$PROJECT_DIR$/8.SpringTest/RestFulDemoTest/restfuldemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/restfuldemoredis.iml" filepath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/restfuldemoredis.iml" />
+    </modules>
+  </component>
+</project>
