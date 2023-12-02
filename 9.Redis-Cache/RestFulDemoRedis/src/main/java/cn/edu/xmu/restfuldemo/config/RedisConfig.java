@@ -1,4 +1,4 @@
-package cn.edu.xmu.rocketmqdemo.config;
+package cn.edu.xmu.restfuldemo.config;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;

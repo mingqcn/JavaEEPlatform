@@ -1,7 +1,7 @@
-package cn.edu.xmu.rocketmqdemo.util;
+package cn.edu.xmu.restfuldemo.util;
 
-import cn.edu.xmu.rocketmqdemo.model.GoodsVo;
-import cn.edu.xmu.rocketmqdemo.model.ProductVo;
+import cn.edu.xmu.restfuldemo.model.GoodsVo;
+import cn.edu.xmu.restfuldemo.model.ProductVo;
 
 import java.util.ArrayList;
 import java.util.List;

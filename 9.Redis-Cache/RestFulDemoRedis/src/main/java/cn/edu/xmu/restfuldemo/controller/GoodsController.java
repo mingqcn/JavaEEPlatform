@@ -1,10 +1,10 @@
-package cn.edu.xmu.rocketmqdemo.controller;
+package cn.edu.xmu.restfuldemo.controller;
 
-import cn.edu.xmu.rocketmqdemo.model.GoodsRetVo;
-import cn.edu.xmu.rocketmqdemo.model.GoodsVo;
-import cn.edu.xmu.rocketmqdemo.model.VoObject;
-import cn.edu.xmu.rocketmqdemo.util.ResponseCode;
-import cn.edu.xmu.rocketmqdemo.util.ReturnObject;
+import cn.edu.xmu.restfuldemo.model.GoodsRetVo;
+import cn.edu.xmu.restfuldemo.model.GoodsVo;
+import cn.edu.xmu.restfuldemo.model.VoObject;
+import cn.edu.xmu.restfuldemo.util.ResponseCode;
+import cn.edu.xmu.restfuldemo.util.ReturnObject;
 import io.swagger.annotations.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,12 +13,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import cn.edu.xmu.rocketmqdemo.service.GoodsService;
-import cn.edu.xmu.rocketmqdemo.util.ResponseUtil;
+import cn.edu.xmu.restfuldemo.service.GoodsService;
+import cn.edu.xmu.restfuldemo.util.ResponseUtil;
 
 import javax.servlet.http.HttpServletResponse;
 
-import static cn.edu.xmu.rocketmqdemo.util.Common.*;
+import static cn.edu.xmu.restfuldemo.util.Common.*;
 /**
  * 商品控制器
  * @author Ming Qiu

@@ -1,0 +1,18 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:8081
+server:
+  port: 8080
+  tomcat:
+    threads:
+      #最大工作线程数
+      max: 2000
+      #最小工作线程数
+      min-spare: 100

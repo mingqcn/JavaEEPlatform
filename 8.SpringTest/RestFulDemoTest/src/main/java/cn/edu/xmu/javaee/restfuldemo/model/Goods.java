@@ -7,7 +7,6 @@ import java.util.List;
 @Data
 public class Goods {
 
-
     private Integer id;
 
     private String goodsSn;
@@ -18,11 +17,9 @@ public class Goods {
 
     private Integer brandId;
 
-
     private String brief;
 
     private List<Specification> specList;
-
 
     private List<Product> productList;
 

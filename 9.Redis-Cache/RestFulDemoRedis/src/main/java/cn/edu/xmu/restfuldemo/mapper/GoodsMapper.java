@@ -1,8 +1,8 @@
-package cn.edu.xmu.rocketmqdemo.mapper;
+package cn.edu.xmu.restfuldemo.mapper;
 
-import cn.edu.xmu.rocketmqdemo.model.GoodsPo;
-import cn.edu.xmu.rocketmqdemo.model.PriceStockPo;
-import cn.edu.xmu.rocketmqdemo.model.ProductPo;
+import cn.edu.xmu.restfuldemo.model.GoodsPo;
+import cn.edu.xmu.restfuldemo.model.PriceStockPo;
+import cn.edu.xmu.restfuldemo.model.ProductPo;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

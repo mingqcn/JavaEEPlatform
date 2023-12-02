@@ -14,8 +14,6 @@ import org.springframework.context.annotation.Scope;
 
 @Configuration
 public class AppConfig {
-
-
     @Bean
     @Scope("singleton")
     public Car haval(){

@@ -99,6 +99,7 @@ public class GoodsControllerIntegrationTest {
 
     @Test   //标识此方法为测试方法
     public void delGoodsTest() throws Exception {
+
         String responseString = this.mvc.perform(delete("/goods/1"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json;charset=UTF-8"))

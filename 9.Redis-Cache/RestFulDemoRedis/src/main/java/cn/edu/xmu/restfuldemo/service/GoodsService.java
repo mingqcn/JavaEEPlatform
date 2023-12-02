@@ -1,12 +1,12 @@
-package cn.edu.xmu.rocketmqdemo.service;
+package cn.edu.xmu.restfuldemo.service;
 
-import cn.edu.xmu.rocketmqdemo.model.GoodsVo;
-import cn.edu.xmu.rocketmqdemo.dao.GoodsDao;
-import cn.edu.xmu.rocketmqdemo.model.Goods;
-import cn.edu.xmu.rocketmqdemo.model.GoodsPo;
-import cn.edu.xmu.rocketmqdemo.model.VoObject;
-import cn.edu.xmu.rocketmqdemo.util.ResponseCode;
-import cn.edu.xmu.rocketmqdemo.util.ReturnObject;
+import cn.edu.xmu.restfuldemo.model.GoodsVo;
+import cn.edu.xmu.restfuldemo.dao.GoodsDao;
+import cn.edu.xmu.restfuldemo.model.Goods;
+import cn.edu.xmu.restfuldemo.model.GoodsPo;
+import cn.edu.xmu.restfuldemo.model.VoObject;
+import cn.edu.xmu.restfuldemo.util.ResponseCode;
+import cn.edu.xmu.restfuldemo.util.ReturnObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

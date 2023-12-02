@@ -1,6 +1,6 @@
-package cn.edu.xmu.rocketmqdemo.model;
+package cn.edu.xmu.restfuldemo.model;
 
-import cn.edu.xmu.rocketmqdemo.model.Product;
+import cn.edu.xmu.restfuldemo.model.Product;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

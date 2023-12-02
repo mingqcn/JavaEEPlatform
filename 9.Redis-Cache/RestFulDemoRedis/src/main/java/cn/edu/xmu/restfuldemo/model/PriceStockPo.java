@@ -1,4 +1,4 @@
-package cn.edu.xmu.rocketmqdemo.model;
+package cn.edu.xmu.restfuldemo.model;
 
 import lombok.Data;
 import org.apache.ibatis.type.Alias;

@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Servlet_Idea:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0ac68a4f-baf4-4e44-8b1a-366993022cee" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/2.Preliminary/Servlet_Idea/Servlet_idea.iml" beforeDir="false" afterPath="$PROJECT_DIR$/2.Preliminary/Servlet_Idea/Servlet_idea.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/3.SpringFrameWork/autowiredemo/src/main/java/cn/edu/xmu/javaee/autowiredemo/autowiredbean/Toyota.java" beforeDir="false" afterPath="$PROJECT_DIR$/3.SpringFrameWork/autowiredemo/src/main/java/cn/edu/xmu/javaee/autowiredemo/autowiredbean/Toyota.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/3.SpringFrameWork/autowiredemo/src/main/java/cn/edu/xmu/javaee/autowiredemo/config/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/3.SpringFrameWork/autowiredemo/src/main/java/cn/edu/xmu/javaee/autowiredemo/config/AppConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/8.SpringTest/RestFulDemoTest/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/8.SpringTest/RestFulDemoTest/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/8.SpringTest/RestFulDemoTest/src/main/java/cn/edu/xmu/javaee/restfuldemo/DemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/8.SpringTest/RestFulDemoTest/src/main/java/cn/edu/xmu/javaee/restfuldemo/DemoApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/8.SpringTest/RestFulDemoTest/src/main/java/cn/edu/xmu/javaee/restfuldemo/controller/vo/GoodsVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/8.SpringTest/RestFulDemoTest/src/main/java/cn/edu/xmu/javaee/restfuldemo/controller/vo/GoodsVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/8.SpringTest/RestFulDemoTest/src/main/java/cn/edu/xmu/javaee/restfuldemo/model/Goods.java" beforeDir="false" afterPath="$PROJECT_DIR$/8.SpringTest/RestFulDemoTest/src/main/java/cn/edu/xmu/javaee/restfuldemo/model/Goods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/8.SpringTest/RestFulDemoTest/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/8.SpringTest/RestFulDemoTest/src/main/resources/logback.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/8.SpringTest/RestFulDemoTest/src/test/java/cn/edu/xmu/javaee/restfuldemo/controller/GoodsControllerIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/8.SpringTest/RestFulDemoTest/src/test/java/cn/edu/xmu/javaee/restfuldemo/controller/GoodsControllerIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/8.SpringTest/TestTomcat/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/8.SpringTest/TestTomcat/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/DemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/DemoApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/config/CorsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/config/RedisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/config/RedisConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/config/Swagger2Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/config/Swagger2Configuration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/controller/GoodsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/controller/GoodsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/dao/GoodsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/dao/GoodsDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/mapper/GoodsMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/mapper/GoodsMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/Goods.java" beforeDir="false" afterPath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/Goods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/GoodsPo.java" beforeDir="false" afterPath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/GoodsPo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/GoodsRetVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/GoodsRetVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/GoodsVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/GoodsVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/PriceStockPo.java" beforeDir="false" afterPath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/PriceStockPo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/ProductPo.java" beforeDir="false" afterPath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/ProductPo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/ProductRetVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/ProductRetVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/ProductVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/ProductVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/VoObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/model/VoObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/service/GoodsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/service/GoodsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/util/Common.java" beforeDir="false" afterPath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/util/Common.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/util/JacksonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/util/JacksonUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/util/RedisUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/util/RedisUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/util/ResponseCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/util/ResponseCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/util/ResponseUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/util/ResponseUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/util/ReturnObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/restfuldemo/util/ReturnObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/test/java/cn/edu/xmu/restfuldemo/DemoApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/test/java/cn/edu/xmu/restfuldemo/DemoApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/test/java/cn/edu/xmu/restfuldemo/GoodsControllerIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/test/java/cn/edu/xmu/restfuldemo/GoodsControllerIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/test/java/cn/edu/xmu/restfuldemo/util/GoodsFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/test/java/cn/edu/xmu/restfuldemo/util/GoodsFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="1.8 (2)" />
+  </component>
+  <component name="ProjectId" id="2YIoqsBz2f5j3bfPLKuqfC956up" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/9.Redis-Cache/RestFulDemoRedis/src/main/java/cn/edu/xmu/rocketmqdemo" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.26595744" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.edu.xmu.restfuldemo.util" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.E:/workspace/idea-workspace/JavaEEPlatform">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="E:/workspace/idea-workspace/JavaEEPlatform" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="DemoApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="restfuldemoredis" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.edu.xmu.rocketmqdemo.DemoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="restfuldemo" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.edu.xmu.javaee.restfuldemo.DemoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tomcat 10.1.16" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.16" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="11" nameIsGenerated="true">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="Servlet_Idea:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/Servlet_Idea_war_exploded" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="6b05ca54-bd53-4c88-8a51-c5582b06ab02" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="62483" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="Servlet_Idea:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.16" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment />
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="578a5da8-15e8-4aa0-b904-7eddf97643f6" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="62483" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.E:/workspace/idea-workspace/JavaEEPlatform" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0ac68a4f-baf4-4e44-8b1a-366993022cee" name="Default Changelist" comment="" />
+      <created>1700222655753</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1700222655753</updated>
+      <workItem from="1700222660136" duration="3715000" />
+      <workItem from="1700227818337" duration="925000" />
+      <workItem from="1701342685896" duration="10160000" />
+      <workItem from="1701401910718" duration="18710000" />
+      <workItem from="1701484831178" duration="5378000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>

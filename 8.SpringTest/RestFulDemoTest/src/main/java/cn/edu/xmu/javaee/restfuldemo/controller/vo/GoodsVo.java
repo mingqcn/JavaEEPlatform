@@ -38,7 +38,7 @@ public class GoodsVo {
      * 由Vo对象创建Goods对象
      * @return Goods对象
      */
-    public Goods createGoods(){
+    public Goods createGoods() {
         Goods goods = new Goods();
         goods.setName(this.name);
         goods.setBrief(this.brief);
